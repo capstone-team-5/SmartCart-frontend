@@ -19,6 +19,8 @@ import SignUp from './Pages/SignUp';
 import User from './Pages/User';
 import UserCart from './Pages/UserCart';
 import UserEdit from './Pages/UserEdit';
+import Subscription from './Pages/Subscription';
+import ConfirmSubscription from './Pages/ConfirmSubscription';
 
 
 function App() {
@@ -40,6 +42,8 @@ function App() {
           <Route element={<User />} path='/user:id' />
           <Route element={<UserCart />} path='/user/:id/cart' />
           <Route element={<UserEdit />} path='/user/:id/edit' />
+          <Route element={<Subscription />} path='/user/:id/subscription' />
+          <Route element={<ConfirmSubscription />} path='/user/:id/subscription/confirmed' />
           <Route element={<FourOFour />} path='/*' />
 
         </Routes>
