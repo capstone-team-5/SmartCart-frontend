@@ -1,3 +1,5 @@
+//This component is for the user
+
 const UserComponent = () => {
     return (
         <div>

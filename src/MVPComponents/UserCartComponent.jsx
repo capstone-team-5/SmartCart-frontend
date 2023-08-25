@@ -1,3 +1,5 @@
+//This is the user's cart
+
 const UserCartComponent = () => {
     return (
         <div>

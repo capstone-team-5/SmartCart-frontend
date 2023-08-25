@@ -1,3 +1,5 @@
+//This is the sign-up page
+
 const SignUpComponent = () => {
     return (
         <div>

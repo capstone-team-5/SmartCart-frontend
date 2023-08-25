@@ -1,3 +1,5 @@
+//This component will translate the page
+
 const GoogleTranslateComponent = () => {
     return (
         <div>

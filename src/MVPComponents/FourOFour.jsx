@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+//This function is the error page, will take user back to the home page
+
 const FourOFourComponent = () => {
     return (
         <div>

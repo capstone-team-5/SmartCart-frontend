@@ -1,3 +1,5 @@
+//This function is a delete button
+
 const DeleteButtonComponent = () => {
     return (
         <div>

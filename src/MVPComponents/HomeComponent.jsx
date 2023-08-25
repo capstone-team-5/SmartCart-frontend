@@ -1,3 +1,5 @@
+//This is the home component
+
 const HomeComponent = () => {
     return (
         <div>
