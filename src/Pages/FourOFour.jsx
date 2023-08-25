@@ -1,4 +1,4 @@
-import FourOFourComponent from "../Components/FourOFour";
+import FourOFourComponent from "../MVPComponents/FourOFour";
 
 const FourOFour = () => {
     return (

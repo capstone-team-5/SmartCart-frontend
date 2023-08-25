@@ -1,4 +1,4 @@
-import LocationPageComponent from "../Components/LocationPageComponent";
+import LocationPageComponent from "../MVPComponents/LocationPageComponent";
 
 const Location = () => {
     return (

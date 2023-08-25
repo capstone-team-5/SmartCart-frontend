@@ -1,4 +1,4 @@
-import CartComponent from "../Components/CartComponent"
+import CartComponent from "../MVPComponents/CartComponent"
 
 const Cart = () => {
     return (
