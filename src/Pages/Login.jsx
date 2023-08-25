@@ -1,4 +1,4 @@
-import LoginComponent from "../Components/LoginComponent";
+import LoginComponent from "../MVPComponents/LoginComponent";
 
 const Login = () => {
     return (

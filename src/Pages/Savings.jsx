@@ -1,4 +1,4 @@
-import SavingsComponent from "../Components/SavingsComponent"
+import SavingsComponent from "../NonMVPComponents/SavingsComponent"
 
 const Savings = () => {
     return (

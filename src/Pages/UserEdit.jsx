@@ -1,4 +1,4 @@
-import UserEditComponent from "../Components/UserEditComponent"
+import UserEditComponent from "../MVPComponents/UserEditComponent"
 
 const UserEdit = () => {
     return (

@@ -1,4 +1,4 @@
-import LandingPageComponent from "../Components/LandingPageComponent"
+import LandingPageComponent from "../MVPComponents/LandingPageComponent"
 
 const LandingPage = () => {
     return (

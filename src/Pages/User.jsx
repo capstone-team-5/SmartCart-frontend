@@ -1,4 +1,4 @@
-import UserComponent from "../Components/UserComponent";
+import UserComponent from "../MVPComponents/UserComponent";
 
 const User = () => {
     return (

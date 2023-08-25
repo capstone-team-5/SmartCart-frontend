@@ -1,4 +1,4 @@
-import SignUpComponent from "../Components/SignUpComponent";
+import SignUpComponent from "../MVPComponents/SignUpComponent";
 
 const SignUp = () => {
     return (

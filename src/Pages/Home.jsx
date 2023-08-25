@@ -1,4 +1,4 @@
-import HomeComponent from "../Components/HomeComponent";
+import HomeComponent from "../MVPComponents/HomeComponent";
 
 const Home = () => {
     return (
