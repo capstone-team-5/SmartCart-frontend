@@ -24,7 +24,6 @@ import ConfirmSubscription from './Pages/ConfirmSubscription';
 import MeetTheDevelopers from './Pages/MeetTheDevelopers';
 
 
-
 function App() {
   return (
     <div className="App">
