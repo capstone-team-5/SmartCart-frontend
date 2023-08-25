@@ -1,3 +1,5 @@
+//This component will confirm payments
+
 const ConfirmSubscriptionComponent = () => {
     return (
         <div>

@@ -1,3 +1,5 @@
+//This function will allow users to delete their account
+
 const DeleteUserComponent = () => {
     return (
         <div>

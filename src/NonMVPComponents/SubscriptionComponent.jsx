@@ -1,3 +1,5 @@
+//This component will allow users to put in their payment information
+
 const SubscriptionComponent = () => {
     return (
         <div>

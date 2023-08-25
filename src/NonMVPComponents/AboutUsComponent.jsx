@@ -1,3 +1,5 @@
+//This function will talk about our app
+
 const AboutUsComponent = () => {
     return (
         <div>

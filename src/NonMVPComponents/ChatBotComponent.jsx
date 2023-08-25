@@ -1,3 +1,5 @@
+//This app will answer user questions
+
 const ChatBotComponent = () => {
     return (
         <div>

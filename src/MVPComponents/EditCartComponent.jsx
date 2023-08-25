@@ -1,3 +1,5 @@
+//This component will allow the user to edit the cart
+
 const EditCartComponent = () => {
     return (
         <h6>

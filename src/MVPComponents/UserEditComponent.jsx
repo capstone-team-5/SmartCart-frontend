@@ -1,3 +1,5 @@
+//This will allow the user to edit their information
+
 const UserEditComponent = () => {
     return (
         <div>

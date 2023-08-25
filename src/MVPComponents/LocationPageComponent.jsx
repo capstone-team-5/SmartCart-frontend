@@ -1,3 +1,5 @@
+//This will allow the user to enter their location
+
 const LocationPageComponent = () => {
     return (
         <div>

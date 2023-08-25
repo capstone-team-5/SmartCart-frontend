@@ -1,3 +1,5 @@
+//This function will allow users to search for grocery items
+
 const SearchComponent = () => {
     return (
         <div>

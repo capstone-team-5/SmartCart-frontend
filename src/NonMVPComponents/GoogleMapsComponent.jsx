@@ -1,3 +1,5 @@
+//This will pinpoint the user's location and stores around the area
+
 const GoogleMapsComponent = () => {
     return (
         <div>
