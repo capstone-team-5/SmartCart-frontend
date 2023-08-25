@@ -1,4 +1,4 @@
-import ConfirmSubscriptionComponent from "../Components/ConfirmSubscriptionComponent"
+import ConfirmSubscriptionComponent from "../NonMVPComponents/ConfirmSubscriptionComponent"
 
 const ConfirmSubscription = () => {
     return (
