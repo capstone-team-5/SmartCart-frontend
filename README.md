@@ -1,4 +1,3 @@
-# front end
 # $mrtCART Frontend
 
 Welcome to the $mrtCART front end application! This front end is designed with one core mission: to cater to the needs of shoppers who are seeking an effortless way to compare prices. Our backend empowers users to make informed purchasing decisions by providing them with a seamless and convenient experience when it comes to comparing prices for their desired products.
