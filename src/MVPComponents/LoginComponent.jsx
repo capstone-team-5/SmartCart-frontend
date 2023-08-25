@@ -1,3 +1,5 @@
+//This component will be for the login page
+
 const LoginComponent = () => {
     return (
         <div>

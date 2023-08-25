@@ -1,4 +1,4 @@
-import AboutUsComponent from "../MVPComponents/AboutUsComponent"
+import AboutUsComponent from "../NonMVPComponents/AboutUsComponent"
 
 const AboutUs = () => {
     return (

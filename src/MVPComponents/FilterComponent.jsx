@@ -1,3 +1,5 @@
+//This function will create various filters on grocery items for the user
+
 const FilterComponent = () => {
     return (
         <div>

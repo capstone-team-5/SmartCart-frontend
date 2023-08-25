@@ -1,3 +1,5 @@
+//This will be for the landing page
+
 const LandingPageComponent = () => {
     return (
         <div>
