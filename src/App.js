@@ -1,7 +1,10 @@
 // import logo from './logo.svg';
 import './App.css';
 
+//Dependencies
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 //Commons
 import Header from './Commons/Header';
@@ -22,22 +25,45 @@ import UserEdit from './Pages/UserEdit';
 import Subscription from './Pages/Subscription';
 import ConfirmSubscription from './Pages/ConfirmSubscription';
 import MeetTheDevelopers from './Pages/MeetTheDevelopers';
+import TestComponent from './MVPComponents/TestComponent';
 
 
 function App() {
+
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_BACKEND_API}/products`)
+    .then((response) => setCart(response.data))
+  },[])
+
+  const handleAddToCart = (food) => {
+    setCart([...cart, { name: food.product_name, image: food.product_image, price: food.product_price, id: food.product_id }],)
+  };
+
+  const handleDeleteItem = (id) => {
+    setCart(cart.filter((food) => food.product_id !== id))
+  };
+
+  const handleClearCart = () => {
+    setCart([])
+  };
+
+
   return (
     <div className="App">
 
       <BrowserRouter>
         
-        <Header />
+        <Header addToCart={handleAddToCart} />
         <Navbar />
         
         <Routes>
 
           <Route element={<Home />} path='/' />
+          <Route element={<TestComponent cart={cart} />} path='/test' />
           <Route element={<AboutUs />} path='/about-us' />
-          <Route element={<Cart />} path='/cart' />
+          <Route element={<Cart addToCart={handleAddToCart} deleteItem={handleDeleteItem} clearCart={handleClearCart} cart={cart}  />} path='/cart' />
           <Route element={<Location />} path='/location' />
           <Route element={<Login />} path='/login' />
           <Route element={<SignUp />} path='/sign-up' />
