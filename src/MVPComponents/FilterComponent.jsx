@@ -1,13 +1,13 @@
 //This function will create various filters on grocery items for the user
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const FilterComponent = () => {
-    return (
-        <div>
-            <h3>
-                This is the filter component
-            </h3>
-        </div>
-    )
+  return (
+    <div>
+      <h3>This is the filter component</h3>
+    </div>
+  );
 };
 
 export default FilterComponent;
