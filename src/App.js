@@ -22,6 +22,10 @@ import Subscription from "./Pages/Subscription";
 import ConfirmSubscription from "./Pages/ConfirmSubscription";
 import MeetTheDevelopers from "./Pages/MeetTheDevelopers";
 
+//Components
+
+import Filter from "./MVPComponents/FilterButtonsComponent";
+
 function App() {
   return (
     <div className="App">
@@ -40,6 +44,7 @@ function App() {
           <Route element={<UserCart />} path="/user/:id/cart" />
           <Route element={<UserEdit />} path="/user/:id/edit" />
           <Route element={<Subscription />} path="/user/:id/subscription" />
+          <Route element={<Filter />} path="/filter" />
           <Route
             element={<ConfirmSubscription />}
             path="/user/:id/subscription/confirmed"
@@ -47,7 +52,6 @@ function App() {
           <Route element={<MeetTheDevelopers />} path="/meet-the-developers" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
-
         <Footer />
       </BrowserRouter>
     </div>
