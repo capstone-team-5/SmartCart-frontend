@@ -24,7 +24,7 @@ import ConfirmSubscription from "./Pages/ConfirmSubscription";
 import MeetTheDevelopers from "./Pages/MeetTheDevelopers";
 import TestComponent from "./MVPComponents/TestComponent";
 
-//Component
+//Components
 
 import FilterButtonsComponent from "./MVPComponents/FilterButtonsComponent";
 
@@ -62,7 +62,6 @@ function App() {
       <BrowserRouter>
         <Header addToCart={handleAddToCart} />
         <Navbar />
-
         <Routes>
           <Route element={<Home />} path="/" />
           <Route element={<TestComponent cart={cart} />} path="/test" />
@@ -93,7 +92,6 @@ function App() {
           <Route element={<MeetTheDevelopers />} path="/meet-the-developers" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
-
         <Footer />
       </BrowserRouter>
     </div>
