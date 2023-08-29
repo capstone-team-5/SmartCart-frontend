@@ -26,8 +26,7 @@ import MeetTheDevelopers from "./Pages/MeetTheDevelopers";
 
 //Components
 
-import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
-import FilterResultsComponent from "./MVPComponents/FilterResultsComponent";
+import FilterButtonsComponent from "./MVPComponents/FilterButtonsComponent";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -67,9 +66,7 @@ function App() {
           <Route element={<Home />} path="/" />
           {/* <Route element={<TestComponent cart={cart} />} path="/test" /> */}
           <Route element={<AboutUs />} path="/about-us" />
-          <Route element={<FilterButtonComponent />} path="/filter" />
-          <Route element={<FilterResultsComponent />} path="/filter-results" />
-
+          <Route element={<FilterButtonsComponent />} path="/filter/:theme" />
           <Route
             element={
               <Cart
