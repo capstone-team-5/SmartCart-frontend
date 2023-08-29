@@ -2,17 +2,19 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+//This component will display individual products
+
 const IndividualProductComponent = () => {
 
     const [showOneItem, setShowOneItem] = useState({});
 
-    const {id} = useParams()
+    const { id } = useParams();
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_API}/products/${id}`)
-            .then((response) => setShowOneItem(response.data))  
-        .catch((error) => console.log(error))
-    }, [id])
+            .then((response) => setShowOneItem(response.data))
+            .catch((error) => console.log(error))
+    }, [id]);
 
 
     return (
