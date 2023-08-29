@@ -1,5 +1,3 @@
-// This function will create various filters on grocery items for the user
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FilterMenu from "./FilterMenuComponent";
@@ -15,11 +13,14 @@ const FilterButtonComponent = () => {
 
   const applyFilters = (selectedFilters) => {
     setFilterMenuOpen(false);
-    const queryParams = new URLSearchParams();
+    const queryParams = new URLSearchParams(); // Create a container for the filter values we want to add to the URL
+    queryParams.delete("filters"); // Clear any previously set "filters" parameter from the container
     selectedFilters.forEach((filter) => {
-      queryParams.append("filters", filter);
+      // Loop through each selected filter
+      queryParams.append("filters", filter); // Add each filter value to the container as a separate "filters" parameter
     });
-    navigate(`/filter-results?${queryParams.toString()}`);
+
+    navigate(`/filter-results?${queryParams.toString()}`); // Navigate to a new URL with the filter values added as parameters
   };
 
   return (
@@ -32,6 +33,16 @@ const FilterButtonComponent = () => {
         <FilterMenu
           onClose={() => setFilterMenuOpen(false)}
           onApply={applyFilters}
+          filterOptions={[
+            "Fresh",
+            "Frozen",
+            "Vegetarian",
+            "SeaFood",
+            "Gluten Free",
+            "Halal",
+            "Kosher",
+            "Non Processed Foods",
+          ]}
         />
       )}
     </div>

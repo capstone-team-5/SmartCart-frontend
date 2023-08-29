@@ -1,15 +1,20 @@
-import { Link } from 'react-router-dom';
-
-//This function is the error page, will take user back to the home page
+// This function is the error page, will take user back to the home page
+import { useNavigate, Link } from "react-router-dom";
 
 const FourOFourComponent = () => {
-    return (
-        <div>
-            <h1>
-                <h1> 404 This page does not exist. Please visit our <Link to='/'>home page</Link></h1>
-            </h1>
-        </div>
-    )
+  const navigate = useNavigate();
+  return (
+    <div>
+      <h1>
+        {" "}
+        Sorry, This page does not exist. Please visit our{" "}
+        <Link to="/">Home Page</Link>
+      </h1>
+      <div>
+        <button onClick={() => navigate(-1)}>Back</button>
+      </div>
+    </div>
+  );
 };
 
 export default FourOFourComponent;
