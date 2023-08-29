@@ -23,7 +23,14 @@ const IndividualProductComponent = () => {
                 <strong><h1>{showOneItem.product_name}</h1></strong>
                 <strong><p>${showOneItem.product_price}</p></strong>
                 <p>{showOneItem.product_description}</p>
-                <p>{showOneItem.product_weight}</p>
+                <p>{showOneItem.product_weight} {showOneItem.product_unit}</p>
+                <br/> 
+                {showOneItem.product_is_stock ? (
+                    <p>Is in stock</p>
+                ) : (
+                        <p>Out of stock</p>
+                )
+                }
             
             </>
             
