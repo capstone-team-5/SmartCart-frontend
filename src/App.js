@@ -27,6 +27,10 @@ import ConfirmSubscription from './Pages/ConfirmSubscription';
 import MeetTheDevelopers from './Pages/MeetTheDevelopers';
 import TestComponent from './MVPComponents/TestComponent';
 
+//Component
+
+import FilterButtonsComponent from './MVPComponents/FilterButtonsComponent';
+
 
 function App() {
 
@@ -63,6 +67,7 @@ function App() {
           <Route element={<Home />} path='/' />
           <Route element={<TestComponent cart={cart} />} path='/test' />
           <Route element={<AboutUs />} path='/about-us' />
+          <Route element={<FilterButtonsComponent />} path='/filter/:theme' />
           <Route element={<Cart addToCart={handleAddToCart} deleteItem={handleDeleteItem} clearCart={handleClearCart} cart={cart}  />} path='/cart' />
           <Route element={<Location />} path='/location' />
           <Route element={<Login />} path='/login' />
