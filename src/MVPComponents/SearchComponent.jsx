@@ -48,7 +48,7 @@ const SearchComponent = ({addToCart}) => {
                         <div key={product.product_id}>
                             <Link to={`/products/${product.product_id}`} onClick={handleProductClicked}>
                                 <h3>{product.product_name}</h3>
-                                {!clickedProduct && <img src={product.product_image} alt={product.product_name} />}
+                                {!clickedProduct && <img src={product.product_image} alt={product.product_name} width='150px'/>}
                             </Link>
                             <button onClick={addToCart}>Add To Cart</button>
                         </div>
