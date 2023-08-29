@@ -24,6 +24,7 @@ import Subscription from "./Pages/Subscription";
 import ConfirmSubscription from "./Pages/ConfirmSubscription";
 import MeetTheDevelopers from "./Pages/MeetTheDevelopers";
 import TestComponent from "./MVPComponents/TestComponent";
+import IndividualProduct from "./Pages/IndividualProduct";
 
 //Component
 
@@ -67,6 +68,7 @@ function App() {
           <Route element={<Home />} path='/' />
           <Route element={<TestComponent cart={cart} />} path='/test' />
           <Route element={<AboutUs />} path='/about-us' />
+          <Route element={<IndividualProduct />} path='/product/:id' />
           <Route element={<FilterButtonsComponent />} path='/filter/:theme' />
           <Route element={<Cart addToCart={handleAddToCart} deleteItem={handleDeleteItem} clearCart={handleClearCart} cart={cart}  />} path='/cart' />
           <Route element={<Location />} path='/location' />
