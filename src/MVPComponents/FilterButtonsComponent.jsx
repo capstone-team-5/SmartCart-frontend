@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import FilterResults from "../MVPComponents/FilterResultsComponent";
+import axios from "axios";
 
 const FilterButtonsComponent = () => {
   const [selectedTheme, setSelectedTheme] = useState("");
@@ -12,7 +13,8 @@ const FilterButtonsComponent = () => {
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/products`)
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/products`)
       .then((response) => response.json())
       .then((data) => {
         setData(data);
