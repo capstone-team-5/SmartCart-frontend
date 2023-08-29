@@ -14,6 +14,7 @@ const HomeComponent = () => {
 
     useEffect(()=> {
         axios.get(`${API}/products`).then((response) => {
+            console.log(response)
             setProducts(response.data);
             setLoading(false)
         })
@@ -36,7 +37,7 @@ const HomeComponent = () => {
             <h1>LIST OF THE PRODUCTS</h1>
             <ul>
                 {products.map((product)=> {
-                   return <li key = {product.product_id}>product</li>
+                   return <li key = {product.product_id}>{product.product_name}</li>
                 })}
             </ul>
         </div>
