@@ -3,10 +3,10 @@
 
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import FilterResults from "../MVPComponents/FilterResultsComponent";
+import FilterResults from "./FilterResultsComponent";
 import axios from "axios";
 
-const FilterButtonsComponent = () => {
+const FilterButtonComponent = () => {
   const [selectedTheme, setSelectedTheme] = useState("");
   const { theme } = useParams();
   const navigate = useNavigate();
@@ -111,5 +111,5 @@ const FilterButtonsComponent = () => {
   );
 };
 
-export default FilterButtonsComponent;
+export default FilterButtonComponent;
 
