@@ -26,7 +26,7 @@ import TestComponent from "./MVPComponents/TestComponent";
 
 //Components
 
-import FilterButtonsComponent from "./MVPComponents/FilterButtonsComponent";
+import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
 
 function App() {
   const [cart, setCart] = useState([]);
