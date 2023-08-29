@@ -1,18 +1,4 @@
-<<<<<<< HEAD
-//This function will create various filters on grocery items for the user
 
-const FilterButtonsComponent = () => {
-    return (
-        <div>
-            <h3>
-                This is the filter component
-            </h3>
-        </div>
-    )
-};
-
-export default FilterButtonsComponent;
-=======
 // This function will create various filters on grocery items for the user
 
 import React, { useState, useEffect } from "react";
@@ -126,4 +112,4 @@ const FilterButtonsComponent = () => {
 };
 
 export default FilterButtonsComponent;
->>>>>>> main
+
