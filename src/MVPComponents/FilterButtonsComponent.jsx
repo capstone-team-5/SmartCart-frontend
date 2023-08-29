@@ -1,4 +1,5 @@
-//This function will create various filters on grocery items for the user
+// This function will create various filters on grocery items for the user
+
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import FilterResults from "../MVPComponents/FilterResultsComponent";
@@ -57,8 +58,8 @@ const FilterButtonsComponent = () => {
   };
   return (
     <div>
-      <hr />
       <h6 className="text-xl text-red-900"> Start </h6>
+      <hr />
       {!theme ? (
         <>
           <button onClick={() => handleThemeClick("Store")}>Store</button>
@@ -101,8 +102,8 @@ const FilterButtonsComponent = () => {
             ))
           : null}
       </div>
-      <h6 className="text-xl text-red-900"> End </h6>
       <hr />
+      <h6 className="text-xl text-red-900"> End </h6>
     </div>
   );
 };
