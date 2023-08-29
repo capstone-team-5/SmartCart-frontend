@@ -1,6 +1,3 @@
-// import logo from './logo.svg';
-import "./App.css";
-
 //Dependencies
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
