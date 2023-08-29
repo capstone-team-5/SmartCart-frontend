@@ -22,7 +22,7 @@ import UserEdit from "./Pages/UserEdit";
 import Subscription from "./Pages/Subscription";
 import ConfirmSubscription from "./Pages/ConfirmSubscription";
 import MeetTheDevelopers from "./Pages/MeetTheDevelopers";
-import TestComponent from "./MVPComponents/TestComponent";
+// import TestComponent from "./MVPComponents/TestComponent";
 
 //Components
 
@@ -64,7 +64,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route element={<Home />} path="/" />
-          <Route element={<TestComponent cart={cart} />} path="/test" />
+          {/* <Route element={<TestComponent cart={cart} />} path="/test" /> */}
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<FilterButtonsComponent />} path="/filter/:theme" />
           <Route
