@@ -5,6 +5,7 @@ const IndividualProductComponent = () => {
     return (
         <div>
             <h3>This is an individual product</h3>
+            <h4>Test</h4>
         </div>
     )
 };
