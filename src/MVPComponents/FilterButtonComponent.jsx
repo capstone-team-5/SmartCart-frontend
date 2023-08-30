@@ -42,7 +42,8 @@ const FilterButtonComponent = () => {
             "Kosher",
             "Organic",
             "Vegan",
-            "Stock"
+            "Stock",
+            "Non_Processed",
             // "Dairy",
             // "Fruits",
             // "Vegetables",
