@@ -18,12 +18,46 @@ const FilterResultsComponent = () => {
         );
         setAllProducts(response.data);
 
-        // Filter the products based on selected checkboxes
+        // Separate boolean and category filters
+        const booleanFilters = [];
+        const categoryFilters = [];
+
+        selectedFilters.forEach((filter) => {
+          if (filter.startsWith("product_is_")) {
+            booleanFilters.push(filter);
+          } else if (
+            [
+              "Dairy",
+              "Fruits",
+              "Vegetables",
+              "Snacks",
+              "Breakfast",
+              "Bakery",
+              "Beverages",
+              "Seafood",
+              "Nuts",
+              "Pasta",
+            ].includes(filter)
+          ) {
+            categoryFilters.push(filter);
+          }
+        });
+
+        // Filter the products based on selected filters
         const updatedFilteredProducts = response.data.filter((product) => {
-          return selectedFilters.every((filter) => {
+          const booleanFilterSatisfied = booleanFilters.every((filter) => {
             const filterField = `product_is_${filter.toLowerCase()}`;
             return product[filterField];
           });
+
+          const categoryFilterSatisfied = categoryFilters.some((filter) => {
+            return product.product_category === filter;
+          });
+
+          return (
+            booleanFilterSatisfied &&
+            (categoryFilters.length === 0 || categoryFilterSatisfied)
+          );
         });
 
         setFilteredProducts(updatedFilteredProducts);

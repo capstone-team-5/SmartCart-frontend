@@ -43,6 +43,16 @@ const FilterButtonComponent = () => {
             "Non Processed Foods",
             "Organic",
             "Vegan",
+            "Dairy",
+            "Fruits",
+            "Vegetables",
+            "Snacks",
+            "Breakfast",
+            "Bakery",
+            "Beverages",
+            "Seafood",
+            "Nuts",
+            "Pasta",
           ]}
         />
       )}
