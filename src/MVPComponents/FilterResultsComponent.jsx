@@ -7,31 +7,36 @@ const FilterResultsComponent = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const selectedFilters = queryParams.getAll("filters");
+  const [allProducts, setAllProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
-    const fetchFilteredProducts = async () => {
+    const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/products`,
-          {
-            params: {
-              filters: selectedFilters,
-            },
-          }
+          `${process.env.REACT_APP_API_URL}/products`
         );
-        setFilteredProducts(response.data);
+        setAllProducts(response.data);
+
+        // Filter the products based on selected checkboxes
+        const updatedFilteredProducts = response.data.filter((product) => {
+          return selectedFilters.every((filter) => {
+            const filterField = `product_is_${filter.toLowerCase()}`;
+            return product[filterField];
+          });
+        });
+
+        setFilteredProducts(updatedFilteredProducts);
       } catch (error) {
-        console.error("Error fetching filtered products:", error);
+        console.error("Error fetching products:", error);
       }
     };
-
-    fetchFilteredProducts();
+    fetchProducts();
   }, [selectedFilters]);
 
   return (
     <div>
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-3 gap-2 border border-blue-500">
         {filteredProducts.map((product) => (
           <div key={product.product_id}>
             <img src={product.product_image} alt={product.product_name} />

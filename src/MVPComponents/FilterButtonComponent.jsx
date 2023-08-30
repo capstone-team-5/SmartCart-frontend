@@ -41,6 +41,8 @@ const FilterButtonComponent = () => {
             "Halal",
             "Kosher",
             "Non Processed Foods",
+            "Organic",
+            "Vegan",
           ]}
         />
       )}
