@@ -40,6 +40,7 @@ const FilterResultsComponent = () => {
           <div key={product.product_id}>
             <img src={product.product_image} alt={product.product_name} />
             <p>{product.product_name}</p>
+            <p>{product.product_description}</p>
           </div>
         ))}
       </div>
