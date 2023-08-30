@@ -17,7 +17,8 @@ const SearchComponent = ({addToCart}) => {
                     console.log(response.data)
                     const items = response.data;
                     const foundItems = items.filter((item) => 
-                        item.product_name.toLowerCase().includes(searchQuery.toLowerCase())
+                        item.product_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        item.product_category.toLowerCase().includes(searchQuery.toLowerCase())
                     );
                     setProducts(foundItems);
                 })
@@ -50,7 +51,7 @@ const SearchComponent = ({addToCart}) => {
                                 <strong><h3>{product.product_name}</h3></strong>
                                 {!clickedProduct && <img src={product.product_image} alt={product.product_name} width='150px'/>}
                             </Link>
-                            <button onClick={addToCart}>Add To Cart</button>
+                            <button onClick={() => addToCart(product)}>Add To Cart</button>
                             <br/> <br />
                         </div>
                     ))}
