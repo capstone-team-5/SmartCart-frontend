@@ -55,7 +55,7 @@ const SearchComponent = ({addToCart}) => {
                                 <strong><h3>{product.product_name}</h3></strong>
                                 {!clickedProduct && <img src={product.product_image} alt={product.product_name} width='150px'/>}
                             </Link>
-                            <button onClick={() => addToCart(product)}>Add To Cart</button>
+                            <button onClick={() => handleProductClicked(product)}>Add To Cart</button>
                             <br/> <br />
                         </div>
                     ))}
