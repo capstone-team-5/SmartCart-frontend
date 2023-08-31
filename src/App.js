@@ -75,7 +75,7 @@ function App() {
         <Header addToCart={handleAddToCart} />
         <Navbar />
         <Routes>
-          <Route element={<Home />} path="/" />
+          <Route element={<Home addToCart={handleAddToCart} />} path="/" />
           {/* <Route element={<TestComponent cart={cart} />} path='/test' /> */}
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<IndividualProduct />} path="/product/:id" />
