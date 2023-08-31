@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import CartLengthComponent from "./CartLengthComponent";
 
-const SearchComponent = ({addToCart}) => {
+const SearchComponent = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [products, setProducts] = useState([]);
@@ -16,7 +16,6 @@ const SearchComponent = ({addToCart}) => {
         if (searchQuery) {
             axios.get(`${process.env.REACT_APP_BACKEND_API}/products`)
                 .then((response) => {
-                    console.log(response.data)
                     const items = response.data;
                     const foundItems = items.filter((item) =>
                         item.product_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -42,7 +41,7 @@ const SearchComponent = ({addToCart}) => {
         setClickedProduct([]);
         setClickedProduct(true);
         setCartLength(cartLength + 1);
-    }
+    };
     
     return (
         <div>
