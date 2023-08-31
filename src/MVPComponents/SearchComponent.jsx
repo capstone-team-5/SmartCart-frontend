@@ -3,12 +3,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import CartLengthComponent from "./CartLengthComponent";
 
 const SearchComponent = ({addToCart}) => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [products, setProducts] = useState([]);
     const [clickedProduct, setClickedProduct] = useState(false);
+    const [cartLength, setCartLength] = useState(0);
 
     useEffect(() => {
         if (searchQuery) {
@@ -16,9 +18,10 @@ const SearchComponent = ({addToCart}) => {
                 .then((response) => {
                     console.log(response.data)
                     const items = response.data;
-                    const foundItems = items.filter((item) => 
+                    const foundItems = items.filter((item) =>
                         item.product_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                        item.product_category.toLowerCase().includes(searchQuery.toLowerCase())
+                        item.product_category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        item.product_brand.toLowerCase().includes(searchQuery.toLowerCase())
                     );
                     setProducts(foundItems);
                 })
@@ -38,6 +41,7 @@ const SearchComponent = ({addToCart}) => {
         setSearchQuery('');
         setClickedProduct([]);
         setClickedProduct(true);
+        setCartLength(cartLength + 1);
     }
     
     return (
@@ -57,6 +61,7 @@ const SearchComponent = ({addToCart}) => {
                     ))}
                 </div>
             ) : <div>{searchQuery && !clickedProduct ? 'This product does not exist.' : null}</div>}
+            <CartLengthComponent cartLength={cartLength} />
         </div>
     );
 };
