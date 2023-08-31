@@ -23,7 +23,6 @@ const IndividualProductComponent = () => {
                 <>
                 <img src={showOneItem.product_image} alt={showOneItem.product_name} width='350px' />
                 <strong><h1>{showOneItem.product_name}</h1></strong>
-                <strong><p>${showOneItem.product_price}</p></strong>
                 <p>{showOneItem.product_description}</p>
                 <p>{showOneItem.product_weight} {showOneItem.product_unit}</p>
                 <br/> 
