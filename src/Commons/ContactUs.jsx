@@ -25,11 +25,27 @@ const ContactUs = () => {
   return (
     <form ref={form} onSubmit={sendEmail}>
       <label>Name</label>
-      <input type="text" name="user_name" required />
+      <input
+        type="text"
+        name="user_name"
+        required
+        autoFocus
+        placeholder="Your Full Name..."
+      />
       <label>Email</label>
-      <input type="email" name="user_email" required />
+      <input
+        type="email"
+        name="user_email"
+        required
+        placeholder="Your Email..."
+      />
       <label>Message</label>
-      <textarea name="message" required />
+      <textarea
+        name="message"
+        rows="3"
+        required
+        placeholder="Your Message..."
+      />
       <input type="submit" value="Send" />
       <div>{message}</div>
     </form>
