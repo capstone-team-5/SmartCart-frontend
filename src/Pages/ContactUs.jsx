@@ -1,11 +1,12 @@
-//This is the contact us
+// This is the contact us page
 
+import ContactUsComponent from "../NonMVPComponents/ContactUsComponent";
 const ContactUs = () => {
-    return (
-        <div>
-
-        </div>
-    )
+  return (
+    <div>
+      <ContactUsComponent />
+    </div>
+  );
 };
 
 export default ContactUs;
