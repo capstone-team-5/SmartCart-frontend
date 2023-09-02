@@ -15,6 +15,7 @@ const ContactUs = () => {
         form.current,
         process.env.REACT_APP_EMAILJS_API_URL
       );
+      event.target.reset();
       setMessage("Email sent successfully!");
     } catch (error) {
       setMessage("An error occurred while sending the email.");
@@ -22,33 +23,63 @@ const ContactUs = () => {
     }
   };
 
+  // hide result
+  setTimeout(() => {
+    setMessage("");
+  }, 5000);
+
   return (
-    <form ref={form} onSubmit={sendEmail}>
-      <label>Name</label>
-      <input
-        type="text"
-        name="user_name"
-        required
-        autoFocus
-        placeholder="Your Full Name..."
-      />
-      <label>Email</label>
-      <input
-        type="email"
-        name="user_email"
-        required
-        placeholder="Your Email..."
-      />
-      <label>Message</label>
-      <textarea
-        name="message"
-        rows="3"
-        required
-        placeholder="Your Message..."
-      />
-      <input type="submit" value="Send" />
-      <div>{message}</div>
-    </form>
+    <div className="container contact-form">
+      <div className="contact-image">
+        <img
+          src="https://image.ibb.co/kUagtU/rocket_contact.png"
+          alt="rocket_contact"
+        />
+      </div>
+      <form ref={form} onSubmit={sendEmail} className="mb-6">
+        <h3>Drop Us a Message</h3>
+
+        <div className="row">
+          <div className="col-md-6">
+            <div className="form-group">
+              {" "}
+              <label>Name</label>
+              <input
+                type="text"
+                name="user_name"
+                required
+                autoFocus
+                placeholder="Your Full Name..."
+              />
+            </div>
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                name="user_email"
+                required
+                placeholder="Your Email..."
+              />
+            </div>
+            <div className="form-group">
+              <input type="submit" value="Send" />
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="form-group">
+              <label>Message</label>
+              <textarea
+                name="message"
+                rows="3"
+                required
+                placeholder="Your Message..."
+              />
+            </div>
+          </div>
+        </div>
+        <div>{message}</div>
+      </form>
+    </div>
   );
 };
 
