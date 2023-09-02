@@ -5,7 +5,7 @@ const IndividualProduct = () => {
         <div>
             <IndividualProductComponent />
         </div>
-    )
+    );
 };
 
 export default IndividualProduct;
