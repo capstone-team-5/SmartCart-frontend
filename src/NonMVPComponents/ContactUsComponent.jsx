@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import emailjs from "emailjs-com";
 
-const ContactUs = () => {
+const ContactUsComponent = () => {
   const form = useRef();
   const [message, setMessage] = useState("");
 
@@ -83,4 +83,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default ContactUsComponent;
