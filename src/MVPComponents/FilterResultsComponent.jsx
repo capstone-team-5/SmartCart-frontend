@@ -14,7 +14,7 @@ const FilterResultsComponent = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/products`
+          `${process.env.REACT_APP_BACKEND_API}/products`
         );
         setAllProducts(response.data);
 
