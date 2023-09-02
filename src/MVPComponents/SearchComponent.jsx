@@ -3,21 +3,24 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import CartLengthComponent from "./CartLengthComponent";
 
-const SearchComponent = ({addToCart}) => {
+const SearchComponent = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [products, setProducts] = useState([]);
     const [clickedProduct, setClickedProduct] = useState(false);
+    const [cartLength, setCartLength] = useState(0);
 
     useEffect(() => {
         if (searchQuery) {
             axios.get(`${process.env.REACT_APP_BACKEND_API}/products`)
                 .then((response) => {
-                    console.log(response.data)
                     const items = response.data;
-                    const foundItems = items.filter((item) => 
-                        item.product_name.toLowerCase().includes(searchQuery.toLowerCase())
+                    const foundItems = items.filter((item) =>
+                        item.product_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        item.product_category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        item.product_brand.toLowerCase().includes(searchQuery.toLowerCase())
                     );
                     setProducts(foundItems);
                 })
@@ -37,7 +40,8 @@ const SearchComponent = ({addToCart}) => {
         setSearchQuery('');
         setClickedProduct([]);
         setClickedProduct(true);
-    }
+        setCartLength(cartLength + 1);
+    };
     
     return (
         <div>
@@ -46,15 +50,17 @@ const SearchComponent = ({addToCart}) => {
                 <div>
                     {products.map((product) => (
                         <div key={product.product_id}>
-                            <Link to={`/products/${product.product_id}`} onClick={handleProductClicked}>
-                                <h3>{product.product_name}</h3>
+                            <Link to={`/product/${product.product_id}`} onClick={handleProductClicked}>
+                                <strong><h3>{product.product_name}</h3></strong>
                                 {!clickedProduct && <img src={product.product_image} alt={product.product_name} width='150px'/>}
                             </Link>
-                            <button onClick={addToCart}>Add To Cart</button>
+                            <button onClick={() => handleProductClicked(product)}>Add To Cart</button>
+                            <br/> <br />
                         </div>
                     ))}
                 </div>
             ) : <div>{searchQuery && !clickedProduct ? 'This product does not exist.' : null}</div>}
+            <CartLengthComponent cartLength={cartLength} />
         </div>
     );
 };

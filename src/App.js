@@ -107,34 +107,6 @@ function App() {
           />
           <Route element={<MeetTheDevelopers />} path="/meet-the-developers" />
           <Route element={<FourOFour />} path="/*" />
-          <Route element={<Home />} path="/" />
-          <Route element={<TestComponent cart={cart} />} path="/test" />
-          <Route element={<AboutUs />} path="/about-us" />
-          <Route element={<IndividualProduct />} path="/product/:id" />
-          <Route
-            element={
-              <Cart
-                addToCart={handleAddToCart}
-                deleteItem={handleDeleteItem}
-                clearCart={handleClearCart}
-                cart={cart}
-              />
-            }
-            path="/cart"
-          />
-          <Route element={<Location />} path="/location" />
-          <Route element={<Login />} path="/login" />
-          <Route element={<SignUp />} path="/sign-up" />
-          <Route element={<User />} path="/user:id" />
-          <Route element={<UserCart />} path="/user/:id/cart" />
-          <Route element={<UserEdit />} path="/user/:id/edit" />
-          <Route element={<Subscription />} path="/user/:id/subscription" />
-          <Route
-            element={<ConfirmSubscription />}
-            path="/user/:id/subscription/confirmed"
-          />
-          <Route element={<MeetTheDevelopers />} path="/meet-the-developers" />
-          <Route element={<FourOFour />} path="/*" />
         </Routes>
         <MailingListComponent />
         <Footer />
