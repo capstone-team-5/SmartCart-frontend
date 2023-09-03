@@ -37,13 +37,12 @@ const SearchComponent = () => {
     };
 
     const handleProductClicked = () => {
-        setSearchQuery('');
         setClickedProduct([]);
-        setClickedProduct(true);
-        
+        setClickedProduct(tru
     };
 
     const handleAddToCart = () => {
+        setSearchQuery('');
         setCartLength(cartLength + 1);
     };
     
