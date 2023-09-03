@@ -66,7 +66,9 @@ const MailingListComponent = () => {
               <div className="flex justify-center">
                 <div className="w-full max-w-sm">
                   <div className="text-center">
-                    <h2 className="text-blue-900 text-3xl mb-8">SUBSCRIBE</h2>
+                    <h2 className="text-blue-900 text-3xl mb-8">
+                      Subscribe to get updates!
+                    </h2>
                   </div>
                   <div className="flex items-center">
                     <input
@@ -74,7 +76,7 @@ const MailingListComponent = () => {
                       className="appearance-none bg-white border border-blue-500 rounded-full w-full py-2 px-4 leading-tight focus:outline-none focus:border-blue-700"
                       placeholder="Enter your email"
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(event) => setEmail(event.target.value)}
                     />
                     <button
                       className="bg-blue-900 text-white font-semibold py-2 px-4 rounded-full ml-2"

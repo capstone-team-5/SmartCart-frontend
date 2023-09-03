@@ -44,7 +44,6 @@ const FilterButtonComponent = () => {
             "Vegan",
             "Stock",
             "Non_Processed",
-            "Gluten Free",
             // "Dairy",
             // "Fruits",
             // "Vegetables",

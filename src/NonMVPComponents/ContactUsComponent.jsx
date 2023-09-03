@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 
 const ContactUsComponent = () => {
   const form = useRef();
@@ -17,16 +17,16 @@ const ContactUsComponent = () => {
       );
       event.target.reset();
       setMessage("Email sent successfully!");
+
+      // hide result after 5 seconds
+      setTimeout(() => {
+        setMessage("");
+      }, 5000);
     } catch (error) {
       setMessage("An error occurred while sending the email.");
       console.error(error);
     }
   };
-
-  // hide result
-  setTimeout(() => {
-    setMessage("");
-  }, 5000);
 
   return (
     <div className="container contact-form">
@@ -42,7 +42,6 @@ const ContactUsComponent = () => {
         <div className="row">
           <div className="col-md-6">
             <div className="form-group">
-              {" "}
               <label>Name</label>
               <input
                 type="text"
@@ -77,8 +76,9 @@ const ContactUsComponent = () => {
             </div>
           </div>
         </div>
-        <div>{message}</div>
       </form>
+
+      {message && <div>{message}</div>}
     </div>
   );
 };
