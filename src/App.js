@@ -42,6 +42,8 @@ function App() {
       .catch((error) => console.log(error));
   }, []);
 
+
+
   const handleAddToCart = (food) => {
     const updatedCart = [...cart];
     const existingItemIndex = updatedCart.findIndex(
@@ -58,9 +60,15 @@ function App() {
         length: 1,
       });
     }
-    setCart(updatedCart);
-    setCartLength(cartLength + 1);
+    
+  setCart(updatedCart);
+  setCartLength((previousCartLength) => previousCartLength + 1);
+    
   };
+
+  
+
+  
 
   const handleDeleteItem = (id) => {
     setCart(cart.filter((food) => food.product_id !== id));
@@ -80,7 +88,7 @@ function App() {
           {/* <Route element={<TestComponent cart={cart} />} path='/test' /> */}
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />
-          <Route element={<IndividualProduct />} path="/product/:id" />
+          <Route element={<IndividualProduct handleAddToCart={handleAddToCart} cartLength={cartLength} />} path="/product/:id" />
           <Route element={<FilterButtonComponent />} path="/filter" />
           <Route element={<FilterResultsComponent />} path="/filter-results" />
           <Route
