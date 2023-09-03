@@ -35,7 +35,7 @@ const ContactUsComponent = () => {
           <img
             src="https://actionenvelope.scene7.com/is/image/ActionEnvelope/LEVC-07?hei=413&wid=510&fmt=jpeg&qlt=75&bgc=ffffff"
             alt="envelope"
-            className="mx-auto w-24 h-24 top-3.5"
+            className="mx-auto w-24 h-24 -mt-8"
           />
           <h3 className="text-3xl text-blue-600 mt-4">Drop Us a Message</h3>
         </div>
