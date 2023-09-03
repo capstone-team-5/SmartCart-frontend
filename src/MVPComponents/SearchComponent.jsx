@@ -40,8 +40,13 @@ const SearchComponent = () => {
         setSearchQuery('');
         setClickedProduct([]);
         setClickedProduct(true);
+        
+    };
+
+    const handleAddToCart = () => {
         setCartLength(cartLength + 1);
     };
+    
     
     return (
         <div>
@@ -54,7 +59,7 @@ const SearchComponent = () => {
                                 <strong><h3>{product.product_name}</h3></strong>
                                 {!clickedProduct && <img src={product.product_image} alt={product.product_name} width='150px'/>}
                             </Link>
-                            <button onClick={() => handleProductClicked(product)}>Add To Cart</button>
+                            <button onClick={() => handleAddToCart(product)}>Add To Cart</button>
                             <br/> <br />
                         </div>
                     ))}
