@@ -38,7 +38,7 @@ const SearchComponent = () => {
 
     const handleProductClicked = () => {
         setClickedProduct([]);
-        setClickedProduct(tru
+        setClickedProduct(true);
     };
 
     const handleAddToCart = () => {
