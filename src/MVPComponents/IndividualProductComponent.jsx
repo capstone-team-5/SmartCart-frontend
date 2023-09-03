@@ -4,9 +4,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const IndividualProductComponent = () => {
+const IndividualProductComponent = ({ handleAddToCart, cartLength }) => {
   const [showOneItem, setShowOneItem] = useState({});
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -35,8 +34,12 @@ const IndividualProductComponent = () => {
           <br />
         </>
       )}
+      <p>Cart Length {cartLength}</p>
+      <button onClick={() => handleAddToCart(showOneItem)}>Add To Cart</button>
     </div>
   );
 };
 
 export default IndividualProductComponent;
+
+
