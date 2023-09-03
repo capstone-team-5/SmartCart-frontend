@@ -33,11 +33,6 @@ const IndividualProductComponent = () => {
             {showOneItem.product_weight} {showOneItem.product_unit}
           </p>
           <br />
-          {showOneItem.product_is_stock ? (
-            <p>Is in stock</p>
-          ) : (
-            <p>Out of stock</p>
-          )}
         </>
       )}
     </div>
