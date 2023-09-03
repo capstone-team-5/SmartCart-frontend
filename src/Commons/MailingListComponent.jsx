@@ -61,7 +61,7 @@ const MailingListComponent = () => {
             Thank you! Watch your inbox for deals, new items and more.
           </p>
         ) : (
-          <section className="py-20 bg-blue-500">
+          <section className="py-20">
             <div className="container mx-auto">
               <div className="flex justify-center">
                 <div className="w-full max-w-sm">
