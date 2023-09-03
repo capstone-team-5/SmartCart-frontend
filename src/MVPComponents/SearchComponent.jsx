@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import CartLengthComponent from "./CartLengthComponent";
+import { useNavigate } from "react-router-dom";
 
 const SearchComponent = () => {
 
@@ -11,6 +12,8 @@ const SearchComponent = () => {
     const [products, setProducts] = useState([]);
     const [clickedProduct, setClickedProduct] = useState(false);
     const [cartLength, setCartLength] = useState(0);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (searchQuery) {
@@ -37,13 +40,14 @@ const SearchComponent = () => {
     };
 
     const handleProductClicked = () => {
-        setClickedProduct([]);
+        setSearchQuery('');
         setClickedProduct(true);
     };
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (product) => {
         setSearchQuery('');
         setCartLength(cartLength + 1);
+        navigate(`/product/${product.product_id}`)
     };
     
     
