@@ -43,7 +43,7 @@ const Navbar = () => {
           >
             <img
               src="https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.webp"
-              //   style="height: 15px"
+              //   className="w-16 h-16"
               alt="TE Logo"
               loading="lazy"
             />
@@ -55,12 +55,12 @@ const Navbar = () => {
           >
             <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
               {/* <!-- Dashboard link --> */}
-              <Linnk
+              <Link
                 className="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
                 to="#"
                 data-te-nav-link-ref
               >
-                Dashboard
+                About Us
               </Link>
             </li>
             {/* <!-- Team link --> */}
@@ -70,7 +70,7 @@ const Navbar = () => {
                 to="#"
                 data-te-nav-link-ref
               >
-                Team
+                Contact Us
               </Link>
             </li>
             {/* <!-- Projects link --> */}
@@ -80,7 +80,7 @@ const Navbar = () => {
                 to="#"
                 data-te-nav-link-ref
               >
-                Projects
+                Products
               </Link>
             </li>
           </ul>
@@ -136,9 +136,9 @@ const Navbar = () => {
                 </svg>
               </span>
               {/* <!-- Notification counter --> */}
-              <span className="absolute -mt-4 ml-2.5 rounded-full bg-danger px-[0.35em] py-[0.15em] text-[0.6rem] font-bold leading-none text-white">
+              {/* <span className="absolute -mt-4 ml-2.5 rounded-full bg-danger px-[0.35em] py-[0.15em] text-[0.6rem] font-bold leading-none text-white">
                 1
-              </span>
+              </span> */}
             </Link>
             {/* <!-- First dropdown menu --> */}
             <ul
@@ -195,8 +195,7 @@ const Navbar = () => {
               {/* <!-- User avatar --> */}
               <img
                 src="https://tecdn.b-cdn.net/img/new/avatars/2.jpg"
-                className="rounded-full"
-                // style="height: 25px; width: 25px"
+                className="rounded-full w-24 h-24"
                 alt=""
                 loading="lazy"
               />
@@ -214,7 +213,7 @@ const Navbar = () => {
                   to="#"
                   data-te-dropdown-item-ref
                 >
-                  Action
+                  My Favourites ♥️
                 </Link>
               </li>
               <li>
@@ -223,7 +222,7 @@ const Navbar = () => {
                   to="#"
                   data-te-dropdown-item-ref
                 >
-                  Another action
+                  Profile Settings
                 </Link>
               </li>
               <li>
@@ -232,7 +231,7 @@ const Navbar = () => {
                   to="#"
                   data-te-dropdown-item-ref
                 >
-                  Something else here
+                  Sign Out
                 </Link>
               </li>
             </ul>
