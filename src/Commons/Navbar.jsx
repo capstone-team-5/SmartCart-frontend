@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaBars, FaHeart, FaUser } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FiSun, FiMoon } from "react-icons/fi";
@@ -55,11 +56,21 @@ const Navbar = () => {
       {showDropdown && (
         <div className="absolute mt-64 top-1/5 left-0 bg-white text-gray-800 shadow-lg p-2">
           <ul>
-            <li>About Us</li>
-            <li>Contact Us</li>
-            <li>Products</li>
-            <li>Testimonial</li>
-            <li>Feedback</li>
+            <Link to="/about-us">
+              <li>About Us</li>
+            </Link>
+            <Link to="/contact-us">
+              <li>Contact Us</li>
+            </Link>
+            <Link to="/">
+              <li>Products</li>
+            </Link>
+            <Link to="/">
+              <li>Testimonial</li>
+            </Link>
+            <Link to="/">
+              <li>Feedback</li>
+            </Link>
             {/* Add more menu items */}
           </ul>
         </div>
