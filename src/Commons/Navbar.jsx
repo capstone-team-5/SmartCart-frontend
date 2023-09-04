@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FaBars, FaHeart, FaUser } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FiSun, FiMoon } from "react-icons/fi";
-
 import logo_image from "../Assets/SmrtCART.PNG";
 
 const Navbar = () => {
@@ -20,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-700 p-4 flex justify-between items-center">
+    <nav className="bg-orange-300 p-4 flex justify-between items-center">
       <div className="flex items-center">
         <button onClick={toggleDropdown} className="text-white mr-4">
           <FaBars />
@@ -45,7 +44,7 @@ const Navbar = () => {
           {showUserDropdown && (
             <div className="absolute top-full right-0 mt-8 bg-white text-gray-800 shadow-lg p-4">
               <ul>
-                <li>My Favorites</li>
+                <li style={{ whiteSpace: "nowrap" }}>My Favorites</li>
                 <li>Settings</li>
                 <li>Sign Out</li>
               </ul>
