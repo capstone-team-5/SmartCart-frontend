@@ -43,7 +43,7 @@ const Navbar = () => {
             <FaUser />
           </button>
           {showUserDropdown && (
-            <div className="absolute top-full right-0 mt-2 bg-white text-gray-800 shadow-lg p-2">
+            <div className="absolute top-full right-0 mt-8 bg-white text-gray-800 shadow-lg p-4">
               <ul>
                 <li>My Favorites</li>
                 <li>Settings</li>
@@ -54,12 +54,11 @@ const Navbar = () => {
         </div>
       </div>
       {showDropdown && (
-        <div className="absolute mt-2 top-1/4 left-0 bg-white text-gray-800 shadow-lg p-2">
+        <div className="absolute mt-64 top-1/5 left-0 bg-white text-gray-800 shadow-lg p-2">
           <ul>
             <li>About Us</li>
             <li>Contact Us</li>
             <li>Products</li>
-            <li>Pricing</li>
             <li>Testimonial</li>
             <li>Feedback</li>
             {/* Add more menu items */}
