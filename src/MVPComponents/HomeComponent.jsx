@@ -1,4 +1,4 @@
-//This is the home component
+// This is the home component
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -13,7 +13,6 @@ const HomeComponent = () => {
     axios
       .get(`${API}/products`)
       .then((response) => {
-        console.log("response", response);
         setProducts(response.data);
         setLoading(false);
       })

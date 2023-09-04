@@ -29,13 +29,13 @@ const ContactUsComponent = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-300 min-h-screen flex justify-center items-center">
+    <div className="min-h-screen flex justify-center items-center">
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-lg w-full">
         <div className="text-center">
           <img
             src="https://actionenvelope.scene7.com/is/image/ActionEnvelope/LEVC-07?hei=413&wid=510&fmt=jpeg&qlt=75&bgc=ffffff"
             alt="envelope"
-            className="mx-auto w-24 h-24"
+            className="mx-auto w-24 h-24 -mt-8"
           />
           <h3 className="text-3xl text-blue-600 mt-4">Drop Us a Message</h3>
         </div>
