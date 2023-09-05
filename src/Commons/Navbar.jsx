@@ -37,28 +37,28 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex items-center">
-        <button className="text-black mx-4 text-2xl lg:text-3xl">
+        <button className="text-black mx-4 text-xl lg:text-2xl">
           <FiSun />
           <FiMoon />
         </button>
-        <button className="text-black mx-4 text-2xl lg:text-3xl">
+        <button className="text-black mx-4 text-xl lg:text-2xl">
           <FaHeart />
         </button>
-        <button className="text-black mx-4 text-2xl lg:text-3xl">
+        <button className="text-black mx-4 text-xl lg:text-2xl">
           <HiOutlineShoppingCart />
         </button>
         <div className="relative">
           <button
             onClick={toggleUserDropdown}
-            className="text-black text-2xl lg:text-3xl"
+            className="text-black text-xl lg:text-2xl"
           >
             <FaUser />
           </button>
           {showUserDropdown && (
             <div className="absolute top-full right-0 mt-8 bg-white text-gray-800 shadow-lg p-4">
               <ul>
-                <li style={{ whiteSpace: "nowrap" }}>My Favorites</li>
-                <li>Settings</li>
+                <li style={{ whiteSpace: "nowrap" }}>My Favorites ♥️ </li>
+                <li style={{ whiteSpace: "nowrap" }}>Profile Settings</li>
                 <li>Sign Out</li>
               </ul>
             </div>
@@ -71,6 +71,9 @@ const Navbar = () => {
             <Link to="/about-us">
               <li>About Us</li>
             </Link>
+            <Link to="/meet-the-developers">
+              <li>Meet the Developers</li>
+            </Link>
             <Link to="/contact-us">
               <li>Contact Us</li>
             </Link>
@@ -82,6 +85,9 @@ const Navbar = () => {
             </Link>
             <Link to="/">
               <li>Feedback</li>
+            </Link>
+            <Link to="/">
+              <li>Connect With Us @ Social Media</li>
             </Link>
             {/* Add more menu items */}
           </ul>
