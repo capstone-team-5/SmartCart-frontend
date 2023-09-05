@@ -23,7 +23,7 @@ import UserEdit from "./Pages/UserEdit";
 import Subscription from "./Pages/Subscription";
 import ConfirmSubscription from "./Pages/ConfirmSubscription";
 import MeetTheDevelopers from "./Pages/MeetTheDevelopers";
-import TestComponent from "./MVPComponents/TestComponent";
+
 import IndividualProduct from "./Pages/IndividualProduct";
 import ContactUs from "./Pages/ContactUs";
 
