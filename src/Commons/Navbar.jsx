@@ -87,7 +87,7 @@ const Navbar = () => {
               <li>Feedback</li>
             </Link>
             <Link to="/">
-              <li>Connect with Us @ Social Media</li>
+              <li>Connect With Us @ Social Media</li>
             </Link>
             {/* Add more menu items */}
           </ul>

@@ -1,6 +1,7 @@
 // This is the home component
 import axios from "axios";
 import { useState, useEffect } from "react";
+import CustomerTestimonialsComponent from "../NonMVPComponents/CustomerTestimonialsComponent";
 
 const API = process.env.REACT_APP_BACKEND_API;
 
@@ -38,6 +39,7 @@ const HomeComponent = () => {
           return <li key={product.product_id}>{product.product_name}</li>;
         })}
       </ul>
+      <CustomerTestimonialsComponent />
     </div>
   );
 };
