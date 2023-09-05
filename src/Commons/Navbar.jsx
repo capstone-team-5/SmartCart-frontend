@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaHeart, FaUser, FaSignOutAlt } from "react-icons/fa";
+import { FaBars, FaHeart, FaUser } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FiSun, FiMoon } from "react-icons/fi";
 import logo_image from "../Assets/SmrtCART.PNG";
@@ -22,30 +22,36 @@ const Navbar = () => {
   return (
     <nav className="bg-white p-4 flex justify-between items-center">
       <div className="flex items-center">
-        <button onClick={toggleDropdown} className="text-black mr-4">
+        <button
+          onClick={toggleDropdown}
+          className="text-black mr-4 text-2xl lg:text-3xl"
+        >
           <FaBars />
         </button>
         <Link to="/">
           <img
             src={logo_image}
             alt="SmartCART Logo"
-            className="w-24 h-24 rounded-full"
-          />{" "}
+            className="w-24 h-24 lg:w-48 lg:h-48 rounded-full"
+          />
         </Link>
       </div>
       <div className="flex items-center">
-        <button className="text-black mx-4">
+        <button className="text-black mx-4 text-2xl lg:text-3xl">
           <FiSun />
           <FiMoon />
         </button>
-        <button className="text-black mx-4">
+        <button className="text-black mx-4 text-2xl lg:text-3xl">
           <FaHeart />
         </button>
-        <button className="text-black mx-4">
+        <button className="text-black mx-4 text-2xl lg:text-3xl">
           <HiOutlineShoppingCart />
         </button>
         <div className="relative">
-          <button onClick={toggleUserDropdown} className="text-black">
+          <button
+            onClick={toggleUserDropdown}
+            className="text-black text-2xl lg:text-3xl"
+          >
             <FaUser />
           </button>
           {showUserDropdown && (
@@ -84,7 +90,9 @@ const Navbar = () => {
     </nav>
   );
 };
+
 export default Navbar;
+
 /* <FaUser className="w-8 h-8 rounded-full" />
     </button>
     User Dropdown content
