@@ -20,26 +20,26 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-orange-300 p-4 flex justify-between items-center">
+    <nav className="bg-white p-4 flex justify-between items-center">
       <div className="flex items-center">
-        <button onClick={toggleDropdown} className="text-white mr-4">
+        <button onClick={toggleDropdown} className="text-black mr-4">
           <FaBars />
         </button>
         <img src={logo_image} alt="Logo" className="w-16 h-16 rounded-full" />
       </div>
       <div className="flex items-center">
-        <button className="text-white mx-4">
+        <button className="text-black mx-4">
           <FiSun />
           <FiMoon />
         </button>
-        <button className="text-white mx-4">
+        <button className="text-black mx-4">
           <FaHeart />
         </button>
-        <button className="text-white mx-4">
+        <button className="text-black mx-4">
           <HiOutlineShoppingCart />
         </button>
         <div className="relative">
-          <button onClick={toggleUserDropdown} className="text-white">
+          <button onClick={toggleUserDropdown} className="text-black">
             <FaUser />
           </button>
           {showUserDropdown && (
