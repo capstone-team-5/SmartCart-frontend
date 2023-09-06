@@ -67,13 +67,12 @@ const userDropDown = [
 
 const Navbar = ({ cartLength }) => {
   const [open, setOpen] = useState(false);
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
 
   const handleMenu = () => {
     setOpen((prev) => !prev);
     setShowUserDropdown(false);
   };
-
-  const [showUserDropdown, setShowUserDropdown] = useState(false);
 
   const toggleUserDropdown = () => {
     setShowUserDropdown((prev) => !prev);
@@ -90,11 +89,15 @@ const Navbar = ({ cartLength }) => {
             <button
               type="button"
               onClick={handleMenu}
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-black hover:text-white hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              className=" inline-flex items-center justify-center p-2 rounded-md text-black hover:text-white hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
               aria-label={open ? "Close Main Menu" : "Open Main Menu"}
               aria-expanded={open}
             >
-              {open ? <FaTimes /> : <GiHamburgerMenu />}
+              {open ? (
+                <FaTimes className="lg:text-3xl md:text-xl sm:text-md" />
+              ) : (
+                <GiHamburgerMenu className="lg:text-3xl md:text-xl sm:text-md" />
+              )}
             </button>
 
             <Link to="/">
@@ -108,11 +111,12 @@ const Navbar = ({ cartLength }) => {
 
           {/* Emojis */}
           <div className="flex items-center space-x-4">
-            <FiSun className="text-black text-lg" />
-            <FiMoon className="text-black text-lg" />
+            <FiSun className="text-black text-lg lg:text-3xl md:text-xl sm:text-md" />
+            <FiMoon className="text-black text-lg lg:text-3xl md:text-xl sm:text-md" />
+            <FaHeart className="text-orange-500 text-lg lg:text-3xl md:text-xl sm:text-md" />
             <Link to="/cart">
               <div className="relative">
-                <HiOutlineShoppingCart className="text-black text-lg" />
+                <HiOutlineShoppingCart className="text-black text-lg lg:text-3xl md:text-xl sm:text-md" />
                 {cartLength > 0 && (
                   <div className="absolute -top-1 right-0 transform translate-x-2 -translate-y-2">
                     <div className="rounded-full bg-orange-500 text-white w-5 h-5 text-xs font-bold flex items-center justify-center">
@@ -124,7 +128,7 @@ const Navbar = ({ cartLength }) => {
             </Link>
             <div className="relative">
               <PiUserCircle
-                className="text-black text-2xl cursor-pointer"
+                className="text-black text-2xl cursor-pointer lg:text-3xl md:text-xl sm:text-md"
                 onClick={toggleUserDropdown}
               />
               {showUserDropdown && (
@@ -134,7 +138,7 @@ const Navbar = ({ cartLength }) => {
                       <li key={index} className="px-4 py-2 hover:bg-gray-100">
                         <Link
                           to={item.link}
-                          className="text-black hover:bg-gray-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap "
+                          className="text-black block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap "
                         >
                           {item.title}
                         </Link>
@@ -145,31 +149,15 @@ const Navbar = ({ cartLength }) => {
               )}
             </div>
           </div>
-          {/* Nav Links */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={index}
-                  className="text-black transition-all duration-500 hover:bg-gray-400 hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                  to={link.link}
-                >
-                  {link.title}
-                </Link>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
-
-      {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden">
+        <div>
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link, index) => (
               <Link
                 key={index}
-                className="text-black hover:bg-gray-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                className="text-black hover:bg-gray-100 block px-3 py-2 rounded-md text-base whitespace-nowrap font-medium"
                 to={link.link}
               >
                 {link.title}
