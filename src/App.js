@@ -30,6 +30,7 @@ import ContactUs from "./Pages/ContactUs";
 //Components
 import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
 import FilterResultsComponent from "./MVPComponents/FilterResultsComponent";
+import CartLengthComponent from "./MVPComponents/CartLengthComponent";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -81,8 +82,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header addToCart={handleAddToCart} />
         <Navbar />
+        <Header addToCart={handleAddToCart} />
+        <p>Cart Length <CartLengthComponent cartLength={cartLength} /></p>
         <Routes>
           <Route element={<Home addToCart={handleAddToCart} />} path="/" />
           {/* <Route element={<TestComponent cart={cart} />} path='/test' /> */}

@@ -1,7 +1,9 @@
 const CartLengthComponent = ({ cartLength }) => {
+
+    console.log('cartLength:', cartLength)
     return (
         <div>
-            <h3>Cart Length: {cartLength}</h3>
+            <h3>{cartLength}</h3>
         </div>
     )
 };
