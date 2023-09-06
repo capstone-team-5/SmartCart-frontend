@@ -89,6 +89,7 @@ function App() {
                 deleteItem={handleDeleteItem}
                 clearCart={handleClearCart}
                 cart={cart}
+                cartLength={cartLength}
               />
             }
             path="/cart"
