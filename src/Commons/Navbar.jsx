@@ -44,6 +44,25 @@ const navLinks = [
   },
 ];
 
+const userDropDown = [
+  {
+    title: "Sign In",
+    link: "/",
+  },
+  {
+    title: "Create Account",
+    link: "/",
+  },
+  {
+    title: "Profile Settings",
+    link: "/",
+  },
+  {
+    title: "Sign Out",
+    link: "/",
+  },
+];
+
 const Navbar = ({ cartLength }) => {
   const [open, setOpen] = useState(false);
 
