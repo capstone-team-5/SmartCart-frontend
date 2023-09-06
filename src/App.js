@@ -72,7 +72,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar cartLength={cartLength} />
         <Header addToCart={handleAddToCart} />
         <p>Cart Length <CartLengthComponent cartLength={cartLength} /></p>
         <Routes>
