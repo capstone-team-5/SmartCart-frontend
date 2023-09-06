@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaHeart, FaTimes } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FiSun, FiMoon } from "react-icons/fi";
-import { PiUserCircleThin } from "react-icons/pi";
+import { PiUserCircle } from "react-icons/pi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import logo_image from "../Assets/SmrtCART.PNG";
 
@@ -49,19 +49,19 @@ const navLinks = [
 const userDropDown = [
   {
     title: "Sign In",
-    link: "/",
+    link: "/signin",
   },
   {
     title: "Create Account",
-    link: "/",
+    link: "/signup",
   },
   {
     title: "Profile Settings",
-    link: "/",
+    link: "/profile",
   },
   {
     title: "Sign Out",
-    link: "/",
+    link: "/signout",
   },
 ];
 
@@ -70,7 +70,16 @@ const Navbar = ({ cartLength }) => {
 
   const handleMenu = () => {
     setOpen((prev) => !prev);
+    setShowUserDropdown(false);
   };
+
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
+
+  const toggleUserDropdown = () => {
+    setShowUserDropdown((prev) => !prev);
+    setOpen(false);
+  };
+
   return (
     <div className="bg-white">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,7 +122,25 @@ const Navbar = ({ cartLength }) => {
                 )}
               </div>
             </Link>
-            <PiUserCircleThin className="text-black text-lg" />
+            <div className="relative">
+              <PiUserCircle
+                className="text-black text-2xl cursor-pointer"
+                onClick={toggleUserDropdown}
+              />
+              {showUserDropdown && (
+                <div className="absolute mt-2 right-0 bg-white border border-gray-300 rounded-lg shadow-lg">
+                  <ul className="py-1">
+                    {userDropDown.map((item, index) => (
+                      <li key={index} className="px-4 py-2 hover:bg-gray-100">
+                        <Link to={item.link} className="text-gray-800">
+                          {item.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Nav Links */}
