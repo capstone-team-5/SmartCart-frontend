@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaHeart, FaUser, FaTimes } from "react-icons/fa";
+import { FaHeart, FaTimes } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FiSun, FiMoon } from "react-icons/fi";
+import { PiUserCircle } from "react-icons/pi";
+import { GiHamburgerMenu } from "react-icons/gi";
 import logo_image from "../Assets/SmrtCART.PNG";
 
 const navLinks = [
@@ -44,12 +46,40 @@ const navLinks = [
   },
 ];
 
+const userDropDown = [
+  {
+    title: "Sign In",
+    link: "/signin",
+  },
+  {
+    title: "Create Account",
+    link: "/signup",
+  },
+  {
+    title: "Profile Settings",
+    link: "/profile",
+  },
+  {
+    title: "Sign Out",
+    link: "/signout",
+  },
+];
+
 const Navbar = ({ cartLength }) => {
   const [open, setOpen] = useState(false);
 
   const handleMenu = () => {
     setOpen((prev) => !prev);
+    setShowUserDropdown(false);
   };
+
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
+
+  const toggleUserDropdown = () => {
+    setShowUserDropdown((prev) => !prev);
+    setOpen(false);
+  };
+
   return (
     <div className="bg-white">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,7 +94,7 @@ const Navbar = ({ cartLength }) => {
               aria-label={open ? "Close Main Menu" : "Open Main Menu"}
               aria-expanded={open}
             >
-              {open ? <FaTimes /> : <FaBars />}
+              {open ? <FaTimes /> : <GiHamburgerMenu />}
             </button>
 
             <Link to="/">
@@ -85,16 +115,36 @@ const Navbar = ({ cartLength }) => {
                 <HiOutlineShoppingCart className="text-black text-lg" />
                 {cartLength > 0 && (
                   <div className="absolute -top-1 right-0 transform translate-x-2 -translate-y-2">
-                    <div className="rounded-full bg-red-500 text-white w-5 h-5 text-xs font-bold flex items-center justify-center">
+                    <div className="rounded-full bg-orange-500 text-white w-5 h-5 text-xs font-bold flex items-center justify-center">
                       {cartLength}
                     </div>
                   </div>
                 )}
               </div>
             </Link>
-            <FaUser className="text-black text-lg" />
+            <div className="relative">
+              <PiUserCircle
+                className="text-black text-2xl cursor-pointer"
+                onClick={toggleUserDropdown}
+              />
+              {showUserDropdown && (
+                <div className="absolute mt-2 right-0">
+                  <ul className="py-1">
+                    {userDropDown.map((item, index) => (
+                      <li key={index} className="px-4 py-2 hover:bg-gray-100">
+                        <Link
+                          to={item.link}
+                          className="text-black hover:bg-gray-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap "
+                        >
+                          {item.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
-
           {/* Nav Links */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
