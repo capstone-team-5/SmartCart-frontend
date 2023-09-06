@@ -1,6 +1,7 @@
+//This function will display the number of items in the cart
+
 const CartLengthComponent = ({ cartLength }) => {
 
-    console.log('cartLength:', cartLength)
     return (
         <div>
             <h3>{cartLength}</h3>
