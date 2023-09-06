@@ -128,11 +128,14 @@ const Navbar = ({ cartLength }) => {
                 onClick={toggleUserDropdown}
               />
               {showUserDropdown && (
-                <div className="absolute mt-2 right-0 bg-white border border-gray-300 rounded-lg shadow-lg">
+                <div className="absolute mt-2 right-0">
                   <ul className="py-1">
                     {userDropDown.map((item, index) => (
                       <li key={index} className="px-4 py-2 hover:bg-gray-100">
-                        <Link to={item.link} className="text-gray-800">
+                        <Link
+                          to={item.link}
+                          className="text-black hover:bg-gray-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap "
+                        >
                           {item.title}
                         </Link>
                       </li>
@@ -142,7 +145,6 @@ const Navbar = ({ cartLength }) => {
               )}
             </div>
           </div>
-
           {/* Nav Links */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
