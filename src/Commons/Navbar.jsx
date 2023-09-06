@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaHeart, FaUser, FaTimes } from "react-icons/fa";
+import { FaHeart, FaTimes } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FiSun, FiMoon } from "react-icons/fi";
+import { PiUserCircleThin } from "react-icons/pi";
+import { GiHamburgerMenu } from "react-icons/gi";
 import logo_image from "../Assets/SmrtCART.PNG";
 
 const navLinks = [
@@ -83,7 +85,7 @@ const Navbar = ({ cartLength }) => {
               aria-label={open ? "Close Main Menu" : "Open Main Menu"}
               aria-expanded={open}
             >
-              {open ? <FaTimes /> : <FaBars />}
+              {open ? <FaTimes /> : <GiHamburgerMenu />}
             </button>
 
             <Link to="/">
@@ -111,7 +113,7 @@ const Navbar = ({ cartLength }) => {
                 )}
               </div>
             </Link>
-            <FaUser className="text-black text-lg" />
+            <PiUserCircleThin className="text-black text-lg" />
           </div>
 
           {/* Nav Links */}
