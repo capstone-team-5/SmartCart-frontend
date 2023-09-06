@@ -104,7 +104,7 @@ const Navbar = ({ cartLength }) => {
                 <HiOutlineShoppingCart className="text-black text-lg" />
                 {cartLength > 0 && (
                   <div className="absolute -top-1 right-0 transform translate-x-2 -translate-y-2">
-                    <div className="rounded-full bg-red-500 text-white w-5 h-5 text-xs font-bold flex items-center justify-center">
+                    <div className="rounded-full bg-orange-500 text-white w-5 h-5 text-xs font-bold flex items-center justify-center">
                       {cartLength}
                     </div>
                   </div>
