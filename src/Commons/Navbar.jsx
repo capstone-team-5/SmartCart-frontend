@@ -27,25 +27,49 @@ const navLinks = [
     link: "/",
   },
 ];
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const handleMenu = () => {
     setOpen((prev) => !prev);
   };
+
   return (
     <div className="bg-white">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/">
-              <img
-                src={logo_image}
-                alt="SmartCART Logo"
-                className="w-20 h-20 lg:w-40 lg:h-40 rounded-full"
-              />
-            </Link>
+          {/* hamburger button */}
+          <div className="flex items-center md:hidden">
+            {/* Hamburger Icon */}
+            <button
+              type="button"
+              onClick={handleMenu}
+              className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              aria-label={open ? "Close Main Menu" : "Open Main Menu"}
+              aria-expanded={open}
+            >
+              {open ? <FaTimes /> : <FaBars />}
+            </button>
+
+            <div className="flex items-center">
+              <Link to="/">
+                <img
+                  src={logo_image}
+                  alt="SmartCART Logo"
+                  className="w-20 h-20 lg:w-40 lg:h-40 rounded-full"
+                />
+              </Link>
+            </div>
           </div>
+          {/* Emojis */}
+          <div className="flex items-center space-x-2 md:hidden">
+            <FiSun className="text-black text-lg" />
+            <FiMoon className="text-black text-lg" />
+            <HiOutlineShoppingCart className="text-black text-lg" />
+            <FaUser className="text-black text-lg" />
+          </div>
+
           {/* Nav Links */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
@@ -59,24 +83,6 @@ const Navbar = () => {
                 </Link>
               ))}
             </div>
-          </div>
-          {/* hamburger button */}
-          <div className="-mr-2 flex md:hidden">
-            {/* Emojis */}
-            <FiSun className="text-black text-lg mr-2" />
-            <FiMoon className="text-black text-lg mr-2" />
-            <HiOutlineShoppingCart className="text-black text-lg mr-2" />
-            <FaUser className="text-black text-lg mr-2" />
-            {/* Hamburger Icon */}
-            <button
-              type="button"
-              onClick={handleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-              aria-label={open ? "Close Main Menu" : "Open Main Menu"}
-              aria-expanded={open}
-            >
-              {open ? <FaTimes /> : <FaBars />}
-            </button>
           </div>
         </div>
       </div>
@@ -99,6 +105,7 @@ const Navbar = () => {
     </div>
   );
 };
+
 export default Navbar;
 
 /* <FaUser className="w-8 h-8 rounded-full" />
@@ -128,7 +135,7 @@ export default Navbar;
     title: "Review A Store",
     link: "/",
   },
-    {
+  {
     title: "Profile Settings",
     link: "/",
   },
@@ -136,4 +143,5 @@ export default Navbar;
     title: "Sign Out",
     link: "/",
   },
+ 
 */
