@@ -110,13 +110,31 @@ const Navbar = ({ cartLength }) => {
           </div>
 
           {/* Emojis */}
-          <div className="flex items-center space-x-4">
-            <FiSun className="text-black text-lg lg:text-3xl md:text-xl sm:text-md" />
-            <FiMoon className="text-black text-lg lg:text-3xl md:text-xl sm:text-md" />
-            <FaHeart className="text-orange-500 text-lg lg:text-3xl md:text-xl sm:text-md" />
+          <div className="flex items-center space-x-4 md:space-x-8 lg:space-x-16">
+            <span className="hover:bg-gray-100 p-2 rounded-md group relative">
+              <FiSun className="text-black text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100" />
+              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-100 text-black py-1 px-2 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                Light Mode
+              </span>
+            </span>
+
+            <span className="hover:bg-gray-100 p-2 rounded-md group relative">
+              <FiMoon className="text-black text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100" />
+              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-100 text-black py-1 px-2 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                Dark Mode
+              </span>
+            </span>
+
+            <span className="hover:bg-gray-100 p-2 rounded-md group relative">
+              <FaHeart className="text-orange-500 text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100" />
+              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-100 text-black py-1 px-2 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                My Favorites
+              </span>
+            </span>
+
             <Link to="/cart">
               <div className="relative">
-                <HiOutlineShoppingCart className="text-black text-lg lg:text-3xl md:text-xl sm:text-md" />
+                <HiOutlineShoppingCart className="text-black text-lg lg:text-3xl md:text-xl sm:text-md hover:bg-gray-100 rounded-md" />
                 {cartLength > 0 && (
                   <div className="absolute -top-1 right-0 transform translate-x-2 -translate-y-2">
                     <div className="rounded-full bg-orange-500 text-white w-5 h-5 text-xs font-bold flex items-center justify-center">
@@ -128,7 +146,7 @@ const Navbar = ({ cartLength }) => {
             </Link>
             <div className="relative">
               <PiUserCircle
-                className="text-black text-2xl cursor-pointer lg:text-3xl md:text-xl sm:text-md"
+                className="text-black text-2xl cursor-pointer lg:text-3xl md:text-xl sm:text-md hover:bg-gray-100 rounded-md"
                 onClick={toggleUserDropdown}
               />
               {showUserDropdown && (
@@ -153,14 +171,16 @@ const Navbar = ({ cartLength }) => {
       </div>
       {open && (
         <div>
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <div className="px-4 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link, index) => (
               <Link
                 key={index}
-                className="text-black hover:bg-gray-100 block px-3 py-2 rounded-md text-base whitespace-nowrap font-medium"
+                className="text-black block px-3 py-2 rounded-md text-base whitespace-nowrap font-medium"
                 to={link.link}
               >
-                {link.title}
+                <span className="hover:bg-gray-100 px-4 py-4">
+                  {link.title}
+                </span>
               </Link>
             ))}
           </div>
