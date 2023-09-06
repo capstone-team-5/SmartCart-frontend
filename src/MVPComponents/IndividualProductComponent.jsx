@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import CartLengthComponent from "./CartLengthComponent";
 
 const IndividualProductComponent = ({ handleAddToCart, cartLength }) => {
   const [showOneItem, setShowOneItem] = useState({});
