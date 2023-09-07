@@ -1,10 +1,11 @@
 //This is the meet the developers page
 
+import MeetTheDevelopersComponent from '../NonMVPComponents/MeetTheDevelopersComponent'
 const MeetTheDevelopers = () => {
     return (
         <div>
             <h3>
-                <MeetTheDevelopers />
+                <MeetTheDevelopersComponent />
             </h3>
         </div>
     )
