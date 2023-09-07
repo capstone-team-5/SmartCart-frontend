@@ -34,7 +34,7 @@ const IndividualProductComponent = ({ handleAddToCart, cartLength }) => {
           <br />
         </>
       )}
-      <p>Cart Length {cartLength}</p>
+      
       <button onClick={() => handleAddToCart(showOneItem)}>Add To Cart</button>
     </div>
   );

@@ -1,7 +1,7 @@
 //Dependencies
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
+
 
 //Commons
 import Header from "./Commons/Header";
@@ -30,19 +30,11 @@ import ContactUs from "./Pages/ContactUs";
 //Components
 import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
 import FilterResultsComponent from "./MVPComponents/FilterResultsComponent";
+import CartLengthComponent from "./MVPComponents/CartLengthComponent";
 
 function App() {
   const [cart, setCart] = useState([]);
   const [cartLength, setCartLength] = useState(0);
-
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_API}/products`)
-      .then((response) => setCart(response.data))
-      .catch((error) => console.log(error));
-  }, []);
-
-
 
   const handleAddToCart = (food) => {
     const updatedCart = [...cart];
@@ -61,14 +53,12 @@ function App() {
       });
     }
     
-  setCart(updatedCart);
+    setCart(updatedCart);
+    console.log('update:', updatedCart)
   setCartLength((previousCartLength) => previousCartLength + 1);
     
   };
 
-  
-
-  
 
   const handleDeleteItem = (id) => {
     setCart(cart.filter((food) => food.product_id !== id));
@@ -76,13 +66,15 @@ function App() {
 
   const handleClearCart = () => {
     setCart([]);
+    setCartLength('')
   };
 
   return (
     <div className="App">
       <BrowserRouter>
+        <Navbar cartLength={cartLength} />
         <Header addToCart={handleAddToCart} />
-        <Navbar />
+        <p>Cart Length <CartLengthComponent cartLength={cartLength} /></p>
         <Routes>
           <Route element={<Home addToCart={handleAddToCart} />} path="/" />
           {/* <Route element={<TestComponent cart={cart} />} path='/test' /> */}
@@ -94,7 +86,6 @@ function App() {
           <Route
             element={
               <Cart
-                addToCart={handleAddToCart}
                 deleteItem={handleDeleteItem}
                 clearCart={handleClearCart}
                 cart={cart}
