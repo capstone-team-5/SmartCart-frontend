@@ -30,11 +30,14 @@ import ContactUs from "./Pages/ContactUs";
 //Components
 import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
 import FilterResultsComponent from "./MVPComponents/FilterResultsComponent";
-import CartLengthComponent from "./MVPComponents/CartLengthComponent";
 
 function App() {
   const [cart, setCart] = useState([]);
   const [cartLength, setCartLength] = useState(0);
+
+  const updateCartLength = (length) => {
+    setCartLength(length);
+  };
 
   const handleAddToCart = (food) => {
     const updatedCart = [...cart];
@@ -55,8 +58,8 @@ function App() {
     
     setCart(updatedCart);
     console.log('update:', updatedCart)
-  setCartLength((previousCartLength) => previousCartLength + 1);
-    
+    setCartLength((previousCartLength) => previousCartLength + 1);
+    updateCartLength(updateCartLength)
   };
 
 
@@ -74,7 +77,6 @@ function App() {
       <BrowserRouter>
         <Navbar cartLength={cartLength} />
         <Header addToCart={handleAddToCart} />
-        <p>Cart Length <CartLengthComponent cartLength={cartLength} /></p>
         <Routes>
           <Route element={<Home addToCart={handleAddToCart} />} path="/" />
           {/* <Route element={<TestComponent cart={cart} />} path='/test' /> */}
@@ -90,6 +92,7 @@ function App() {
                 clearCart={handleClearCart}
                 cart={cart}
                 cartLength={cartLength}
+                updateCartLength={updateCartLength}
               />
             }
             path="/cart"
