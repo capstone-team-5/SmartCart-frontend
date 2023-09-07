@@ -1,10 +1,10 @@
 import CartComponent from "../MVPComponents/CartComponent"
 
-const Cart = ({ deleteItem, clearCart, cart }) => {
+const Cart = ({ deleteItem, clearCart, cart, cartLength }) => {
     return (
         <div>
             <CartComponent deleteItem={deleteItem}
-            clearCart={clearCart} cart={cart}/>
+                clearCart={clearCart} cart={cart} cartLength={cartLength} />
         </div>
     )
 };

@@ -1,6 +1,7 @@
 //Dependencies
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 
 //Commons
@@ -30,11 +31,14 @@ import ContactUs from "./Pages/ContactUs";
 //Components
 import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
 import FilterResultsComponent from "./MVPComponents/FilterResultsComponent";
-import CartLengthComponent from "./MVPComponents/CartLengthComponent";
 
 function App() {
   const [cart, setCart] = useState([]);
   const [cartLength, setCartLength] = useState(0);
+
+  const updateCartLength = (length) => {
+    setCartLength(length);
+  };
 
   const handleAddToCart = (food) => {
     const updatedCart = [...cart];
@@ -55,14 +59,19 @@ function App() {
     
     setCart(updatedCart);
     console.log('update:', updatedCart)
-  setCartLength((previousCartLength) => previousCartLength + 1);
-    
+    setCartLength((previousCartLength) => previousCartLength + 1);
+    updateCartLength(updateCartLength)
   };
 
 
   const handleDeleteItem = (id) => {
-    setCart(cart.filter((food) => food.product_id !== id));
+    if (window.confirm('Are you sure you want to delete this item?')) {
+      const updatedCart = cart.filter(item => item.id !== id);
+      setCart(updatedCart);
+      setCartLength(updatedCart.length);
+    }
   };
+  
 
   const handleClearCart = () => {
     setCart([]);
@@ -74,7 +83,6 @@ function App() {
       <BrowserRouter>
         <Navbar cartLength={cartLength} />
         <Header addToCart={handleAddToCart} />
-        <p>Cart Length <CartLengthComponent cartLength={cartLength} /></p>
         <Routes>
           <Route element={<Home addToCart={handleAddToCart} />} path="/" />
           {/* <Route element={<TestComponent cart={cart} />} path='/test' /> */}
@@ -89,6 +97,8 @@ function App() {
                 deleteItem={handleDeleteItem}
                 clearCart={handleClearCart}
                 cart={cart}
+                cartLength={cartLength}
+                updateCartLength={updateCartLength}
               />
             }
             path="/cart"
