@@ -4,11 +4,17 @@ import emailjs from "@emailjs/browser";
 const ContactUsComponent = () => {
   const form = useRef();
   const [message, setMessage] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
 
   const sendEmail = async (event) => {
     event.preventDefault();
 
     try {
+      const name = form.current.user_name.value;
+      const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+      const email = form.current.user_email.value;
+
       await emailjs.sendForm(
         process.env.REACT_APP_EMAILJS_SERVICE_ID,
         process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
@@ -16,12 +22,16 @@ const ContactUsComponent = () => {
         process.env.REACT_APP_EMAILJS_API_URL
       );
       event.target.reset();
-      setMessage("Email sent successfully!");
+      setMessage(
+        `Thank you Dear ${capitalizedName}, Your message has been received successfully. Further we will reply at your ${email}.`
+      );
 
       // hide message after 5 seconds
       setTimeout(() => {
         setMessage("");
       }, 5000);
+      setUserName("");
+      setUserEmail("");
     } catch (error) {
       setMessage("An error occurred while sending the email.");
       console.error(error);
@@ -56,6 +66,8 @@ const ContactUsComponent = () => {
                 autoFocus
                 placeholder="Your Full Name..."
                 className="w-full rounded-lg py-2 px-3 mt-1 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                value={userName}
+                onChange={(event) => setUserName(event.target.value)}
               />
             </div>
             <div>
@@ -72,6 +84,8 @@ const ContactUsComponent = () => {
                 required
                 placeholder="Your Email..."
                 className="w-full rounded-lg py-2 px-3 mt-1 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                value={userEmail}
+                onChange={(event) => setUserEmail(event.target.value)}
               />
             </div>
           </div>
