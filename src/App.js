@@ -75,7 +75,8 @@ function App() {
 
   const handleClearCart = () => {
     setCart([]);
-    setCartLength('')
+    setCartLength('');
+    setCartLength(0);
   };
 
   return (
