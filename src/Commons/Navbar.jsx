@@ -108,7 +108,7 @@ const Navbar = ({ cartLength }) => {
               <img
                 src={logo_image}
                 alt="SmartCART Logo"
-                className="w-20 h-20 lg:w-40 lg:h-40 rounded-full ml-4 md:ml-0"
+                className="object-contain w-20 h-20 lg:w-40 lg:h-40 rounded-full ml-4 md:ml-0"
               />
             </Link>
           </div>
