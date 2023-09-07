@@ -79,17 +79,21 @@ const Navbar = ({ cartLength }) => {
     setOpen(false);
   };
 
+  // Function to close the drop-down menu when a link is clicked
+  const closeMenu = () => {
+    setOpen(false);
+    setShowUserDropdown(false);
+  };
+
   return (
     <div className="bg-white">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
-          {/* Hamburger button and Logo */}
           <div className="flex items-center">
-            {/* Hamburger Icon */}
             <button
               type="button"
               onClick={handleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-white hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white transition duration-300 ease-in-out transform hover:scale-105"
+              className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-white hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
               aria-label={open ? "Close Main Menu" : "Open Main Menu"}
               aria-expanded={open}
             >
@@ -100,7 +104,7 @@ const Navbar = ({ cartLength }) => {
               )}
             </button>
 
-            <Link to="/">
+            <Link to="/" className="cursor-pointer">
               <img
                 src={logo_image}
                 alt="SmartCART Logo"
@@ -111,22 +115,22 @@ const Navbar = ({ cartLength }) => {
 
           {/* Emojis */}
           <div className="flex items-center space-x-4 md:space-x-8 lg:space-x-16">
-            <span className="hover:bg-gray-100 p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105">
-              <FiSun className="text-black text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100" />
+            <span className="hover:bg-gray-100 p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
+              <FiSun className="text-black text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100 cursor-pointer" />
               <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-100 text-black py-1 px-2 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 Light Mode
               </span>
             </span>
 
-            <span className="hover:bg-gray-100 p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105">
-              <FiMoon className="text-black text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100" />
+            <span className="hover:bg-gray-100 p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
+              <FiMoon className="text-black text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100 cursor-pointer" />
               <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-100 text-black py-1 px-2 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 Dark Mode
               </span>
             </span>
 
-            <span className="hover:bg-gray-100 p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105">
-              <FaHeart className="text-orange-500 text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100" />
+            <span className="hover:bg-gray-100 p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
+              <FaHeart className="text-orange-500 text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100 cursor-pointer" />
               <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-100 text-black py-1 px-2 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 My Favorites
               </span>
@@ -134,10 +138,10 @@ const Navbar = ({ cartLength }) => {
 
             <Link
               to="/cart"
-              className="hover:bg-gray-100 p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105"
+              className="hover:bg-gray-100 p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
             >
               <div className="relative group">
-                <HiOutlineShoppingCart className="text-black text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100" />
+                <HiOutlineShoppingCart className="text-black text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100 cursor-pointer" />
                 <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-100 text-black py-1 px-2 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   My Cart
                 </span>
@@ -153,14 +157,11 @@ const Navbar = ({ cartLength }) => {
 
             <div className="relative p-2 rounded-md transition duration-300 ease-in-out transform hover:scale-105">
               <div
-                className={`text-black text-2xl cursor-pointer lg:text-3xl md:text-xl sm:text-md ${showUserDropdown}`}
+                className={`text-black text-2xl lg:text-3xl md:text-xl sm:text-md ${showUserDropdown}`}
                 onClick={toggleUserDropdown}
               >
-                <PiUserCircle />
+                <PiUserCircle className="cursor-pointer" />
               </div>
-              {/* <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-100 text-black py-1 px-2 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                My Account
-              </span> */}
               {showUserDropdown && (
                 <div className="absolute mt-2 right-0">
                   <ul className="py-1">
@@ -168,7 +169,8 @@ const Navbar = ({ cartLength }) => {
                       <li key={index} className="px-4 py-2 hover:bg-gray-100">
                         <Link
                           to={item.link}
-                          className="text-black block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap"
+                          className="text-black block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap cursor-pointer"
+                          onClick={closeMenu}
                         >
                           {item.title}
                         </Link>
@@ -187,8 +189,9 @@ const Navbar = ({ cartLength }) => {
             {navLinks.map((link, index) => (
               <Link
                 key={index}
-                className="text-black block px-3 py-2 rounded-md text-base whitespace-nowrap font-medium"
+                className="text-black block px-3 py-2 rounded-md text-base whitespace-nowrap font-medium cursor-pointer"
                 to={link.link}
+                onClick={closeMenu}
               >
                 <span className="hover:bg-gray-100 px-4 py-4">
                   {link.title}
@@ -203,7 +206,6 @@ const Navbar = ({ cartLength }) => {
 };
 
 export default Navbar;
-
 /* <FaUser className="w-8 h-8 rounded-full" />
     </button>
     User Dropdown content
