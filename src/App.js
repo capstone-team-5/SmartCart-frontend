@@ -67,8 +67,9 @@ function App() {
   const handleDeleteItem = (id) => {
     if (window.confirm('Are you sure you want to delete this item?')) {
       const updatedCart = cart.filter(item => item.id !== id);
+      const totalQuantity = updatedCart.reduce((total, item) => total + item.length, 0);
       setCart(updatedCart);
-      setCartLength(updatedCart.length);
+      setCartLength(totalQuantity);
     }
   };
   
