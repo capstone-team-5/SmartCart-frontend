@@ -23,10 +23,10 @@ const ContactUsComponent = () => {
       );
       event.target.reset();
       setMessage(
-        `Thank you Dear ${capitalizedName}, Your message has been received successfully. Further we will reply at your ${email}.`
+        `Thank you, ${capitalizedName}! Your message has been received successfully. We will reply to ${email}.`
       );
 
-      // hide message after 5 seconds
+      // Hide message after 5 seconds
       setTimeout(() => {
         setMessage("");
       }, 5000);
@@ -115,7 +115,7 @@ const ContactUsComponent = () => {
               required
               placeholder="Your Message..."
               className="w-full rounded-lg py-2 px-3 mt-1 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600"
-              style={{ width: "100%", height: "150px" }}
+              style={{ width: "100%", minHeight: "150px" }}
             />
           </div>
           <div className="text-center mt-6">
@@ -128,7 +128,7 @@ const ContactUsComponent = () => {
           </div>
         </form>
         {message && (
-          <div className="text-center text-red-600 mt-4">{message}</div>
+          <div className="text-center text-green-600 mt-4">{message}</div>
         )}
       </div>
     </div>
