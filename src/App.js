@@ -1,6 +1,7 @@
 //Dependencies
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 
 //Commons
@@ -64,8 +65,13 @@ function App() {
 
 
   const handleDeleteItem = (id) => {
-    setCart(cart.filter((food) => food.product_id !== id));
+    if (window.confirm('Are you sure you want to delete this item?')) {
+      const updatedCart = cart.filter(item => item.id !== id);
+      setCart(updatedCart);
+      setCartLength(updatedCart.length);
+    }
   };
+  
 
   const handleClearCart = () => {
     setCart([]);

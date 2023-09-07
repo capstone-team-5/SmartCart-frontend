@@ -15,7 +15,6 @@ const CartComponent = ({ deleteItem, clearCart, cart, cartLength }) => {
 
   const [upDateCartLength, setUpdateCartLength] = useState(cartLength);
 
-  console.log('length:', cartLength)
 
   const handleQuantityChange = (itemId, quantity) => {
     const updatedQuantities = { ...itemQuantities };
@@ -59,7 +58,7 @@ const CartComponent = ({ deleteItem, clearCart, cart, cartLength }) => {
               >
                 +
               </button>
-              <button onClick={() => deleteItem(item.product_id)}>Delete</button>
+              <button onClick={() => deleteItem(item.id)}>Delete</button>
             </p>
           </div>
         ))
