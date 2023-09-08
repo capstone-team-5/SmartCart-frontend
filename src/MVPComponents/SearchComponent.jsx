@@ -1,17 +1,14 @@
 //This function will allow users to search for grocery items
 
-import { useState, useEffect } from "react";
+
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import CartLengthComponent from "./CartLengthComponent";
-import { useNavigate } from "react-router-dom";
 
-const SearchComponent = ({ addToCart }) => {
+const SearchComponent = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [products, setProducts] = useState([]);
   const [clickedProduct, setClickedProduct] = useState(false);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (searchQuery) {
@@ -19,12 +16,19 @@ const SearchComponent = ({ addToCart }) => {
         .get(`${process.env.REACT_APP_BACKEND_API}/products`)
         .then((response) => {
           const items = response.data;
-          const foundItems = items.filter(
-            (item) =>
-              item.product_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              item.product_category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              item.product_brand.toLowerCase().includes(searchQuery.toLowerCase())
-          );
+          const productNamesSet = new Set(); 
+          const foundItems = items.filter((item) => {
+            const lowerCaseProductName = item.product_name.toLowerCase();
+            if (!productNamesSet.has(lowerCaseProductName)) {
+              productNamesSet.add(lowerCaseProductName);
+              return (
+                lowerCaseProductName.includes(searchQuery.toLowerCase()) ||
+                item.product_category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                item.product_brand.toLowerCase().includes(searchQuery.toLowerCase())
+              );
+            }
+            return false; 
+          });
           setProducts(foundItems);
         })
         .catch((error) => console.log(error));
@@ -40,21 +44,15 @@ const SearchComponent = ({ addToCart }) => {
   };
 
   const handleProductClicked = () => {
-    setSearchQuery('');
+    setSearchQuery("");
     setClickedProduct(true);
-  };
-
-  const handleAddToCart = (product) => {
-    setSearchQuery('');
-    addToCart(product); 
-    navigate(`/product/${product.product_id}`);
   };
 
   return (
     <div>
       <input
-        type='search'
-        placeholder='Search for a product...'
+        type="search"
+        placeholder="Search for a product..."
         value={searchQuery}
         onChange={handleSearchChange}
       />
@@ -62,23 +60,17 @@ const SearchComponent = ({ addToCart }) => {
         <div>
           {products.map((product) => (
             <div key={product.product_id}>
-              <Link to={`/product/${product.product_id}`} onClick={handleProductClicked}>
+              <Link to={`/search-results/${searchQuery}`} onClick={handleProductClicked}>
                 <strong>
                   <h3>{product.product_name}</h3>
                 </strong>
-                {!clickedProduct && (
-                  <img src={product.product_image} alt={product.product_name} width='150px' />
-                )}
               </Link>
-              <button onClick={() => handleAddToCart(product)}>Add To Cart</button>
-              <br /> <br />
             </div>
           ))}
         </div>
       ) : (
-        <div>{searchQuery && !clickedProduct ? 'This product does not exist.' : null}</div>
+        <div>{searchQuery && !clickedProduct ? "This product does not exist." : null}</div>
       )}
-      <CartLengthComponent />
     </div>
   );
 };

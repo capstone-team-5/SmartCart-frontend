@@ -129,7 +129,7 @@ function App() {
           <Route element={<Login />} path="/login" />
           <Route element={<SignUp />} path="/sign-up" />
           <Route element={<User />} path="/user:id" />
-          <Route element={<SearchResults />} path="/search-results/:query" />
+          <Route element={<SearchResults addToCart={handleAddToCart}/>} path="/search-results/:query" />
           <Route element={<UserCart />} path="/user/:id/cart" />
           <Route element={<UserEdit />} path="/user/:id/edit" />
           <Route element={<Subscription />} path="/user/:id/subscription" />
