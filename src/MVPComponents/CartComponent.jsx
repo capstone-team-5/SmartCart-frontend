@@ -60,6 +60,11 @@ const CartComponent = ({ deleteItem, clearCart, cart, cartLength, handleQuantity
         ))
       )}
       <button onClick={clearCart}>Clear Cart</button>
+      <br /> <br />
+      <Link to='/price-compare'>
+        {/* Will add loading to price compare */}
+        <button>Confirm Your Cart!</button>
+      </Link>
     </div>
   );
 };

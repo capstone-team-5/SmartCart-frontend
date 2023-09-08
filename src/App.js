@@ -27,10 +27,12 @@ import TestComponent from "./MVPComponents/TestComponent";
 import IndividualProduct from "./Pages/IndividualProduct";
 import ContactUs from "./Pages/ContactUs";
 import SearchResults from "./Pages/SearchResults";
+import PriceComparison from "./Pages/PriceComparsion";
 
 //Components
 import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
 import FilterResultsComponent from "./MVPComponents/FilterResultsComponent";
+
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -129,7 +131,8 @@ function App() {
           <Route element={<Login />} path="/login" />
           <Route element={<SignUp />} path="/sign-up" />
           <Route element={<User />} path="/user:id" />
-          <Route element={<SearchResults addToCart={handleAddToCart}/>} path="/search-results/:query" />
+          <Route element={<SearchResults addToCart={handleAddToCart} />} path="/search-results/:query" />
+          <Route element={<PriceComparison />} path="/price-compare" />
           <Route element={<UserCart />} path="/user/:id/cart" />
           <Route element={<UserEdit />} path="/user/:id/edit" />
           <Route element={<Subscription />} path="/user/:id/subscription" />
