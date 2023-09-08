@@ -1,7 +1,6 @@
 //Dependencies
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
 
 
 //Commons
@@ -56,11 +55,32 @@ function App() {
         length: 1,
       });
     }
-    
+    console.log('updatedCart:', updatedCart)
     setCart(updatedCart);
-    console.log('update:', updatedCart)
     setCartLength((previousCartLength) => previousCartLength + 1);
     updateCartLength(updateCartLength)
+  };
+
+  const [itemQuantities, setItemQuantities] = useState(
+    cart.reduce((quantities, item) => {
+      quantities[item.id] = item.length;
+      return quantities;
+    }, {})
+  );
+
+
+  const handleQuantityChange = (itemId, quantity) => {
+    const updatedQuantities = { ...itemQuantities };
+    updatedQuantities[itemId] = quantity;
+    setItemQuantities(updatedQuantities);
+    console.log("Updated quantities:", updatedQuantities);
+    
+    const cartAdjustedLength = Object.values(updatedQuantities).reduce(
+      (total, itemLength) => total + itemLength,
+      0
+    );
+    console.log("Cart adjusted length:", cartAdjustedLength);
+    setCartLength(cartAdjustedLength);
   };
 
 
@@ -100,6 +120,7 @@ function App() {
                 cart={cart}
                 cartLength={cartLength}
                 updateCartLength={updateCartLength}
+                handleQuantityChange={handleQuantityChange}
               />
             }
             path="/cart"
