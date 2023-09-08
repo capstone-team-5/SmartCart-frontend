@@ -2,11 +2,11 @@
 
 import SearchResultsComponent from "../MVPComponents/SearchResultsComponent"
 
-const SearchResults = () => {
+const SearchResults = ({addToCart}) => {
 
     return (
         <div>
-            <SearchResultsComponent />
+            <SearchResultsComponent addToCart={addToCart} />
         </div>
     )
 };
