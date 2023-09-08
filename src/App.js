@@ -73,13 +73,12 @@ function App() {
     const updatedQuantities = { ...itemQuantities };
     updatedQuantities[itemId] = quantity;
     setItemQuantities(updatedQuantities);
-    console.log("Updated quantities:", updatedQuantities);
     
     const cartAdjustedLength = Object.values(updatedQuantities).reduce(
       (total, itemLength) => total + itemLength,
       0
     );
-    console.log("Cart adjusted length:", cartAdjustedLength);
+    
     setCartLength(cartAdjustedLength);
   };
 
