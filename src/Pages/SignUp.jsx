@@ -1,9 +1,7 @@
 import SignUpComponent from "../MVPComponents/SignUpComponent";
 
 const SignUp = () => {
-    return (
-        <SignUpComponent />
-    )
+  return <SignUpComponent />;
 };
 
-export default SignUp
+export default SignUp;

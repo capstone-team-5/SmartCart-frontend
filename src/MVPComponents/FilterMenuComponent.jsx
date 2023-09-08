@@ -3,7 +3,8 @@ import React, { useState } from "react";
 const FilterMenuComponent = ({ onClose, onApply, filterOptions }) => {
   const [selectedFilters, setSelectedFilters] = useState([]);
 
-  const handleFilterChange = (filter) => { // responsible for toggling the check box of filters
+  const handleFilterChange = (filter) => {
+    // responsible for toggling the check box of filters
     if (selectedFilters.includes(filter)) {
       setSelectedFilters(selectedFilters.filter((item) => item !== filter));
     } else {
@@ -11,7 +12,8 @@ const FilterMenuComponent = ({ onClose, onApply, filterOptions }) => {
     }
   };
 
-  const clearFilters = () => { // resets the selectedFilters array
+  const clearFilters = () => {
+    // resets the selectedFilters array
     setSelectedFilters([]);
   };
 
