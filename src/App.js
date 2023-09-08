@@ -27,7 +27,7 @@ import TestComponent from "./MVPComponents/TestComponent";
 import IndividualProduct from "./Pages/IndividualProduct";
 import ContactUs from "./Pages/ContactUs";
 import SearchResults from "./Pages/SearchResults";
-import PriceComparison from "./Pages/PriceComparsion";
+import PriceComparison from "./Pages/PriceComparison";
 
 //Components
 import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
