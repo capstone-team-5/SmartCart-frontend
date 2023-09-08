@@ -1,7 +1,6 @@
 //Dependencies
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
 
 
 //Commons
@@ -27,6 +26,7 @@ import MeetTheDevelopers from "./Pages/MeetTheDevelopers";
 import TestComponent from "./MVPComponents/TestComponent";
 import IndividualProduct from "./Pages/IndividualProduct";
 import ContactUs from "./Pages/ContactUs";
+import SearchResults from "./Pages/SearchResults";
 
 //Components
 import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
@@ -56,11 +56,31 @@ function App() {
         length: 1,
       });
     }
-    
+    console.log('updatedCart:', updatedCart)
     setCart(updatedCart);
-    console.log('update:', updatedCart)
     setCartLength((previousCartLength) => previousCartLength + 1);
     updateCartLength(updateCartLength)
+  };
+
+  const [itemQuantities, setItemQuantities] = useState(
+    cart.reduce((quantities, item) => {
+      quantities[item.id] = item.length;
+      return quantities;
+    }, {})
+  );
+
+
+  const handleQuantityChange = (itemId, quantity) => {
+    const updatedQuantities = { ...itemQuantities };
+    updatedQuantities[itemId] = quantity;
+    setItemQuantities(updatedQuantities);
+    
+    const cartAdjustedLength = Object.values(updatedQuantities).reduce(
+      (total, itemLength) => total + itemLength,
+      0
+    );
+    
+    setCartLength(cartAdjustedLength);
   };
 
 
@@ -100,6 +120,7 @@ function App() {
                 cart={cart}
                 cartLength={cartLength}
                 updateCartLength={updateCartLength}
+                handleQuantityChange={handleQuantityChange}
               />
             }
             path="/cart"
@@ -108,6 +129,7 @@ function App() {
           <Route element={<Login />} path="/login" />
           <Route element={<SignUp />} path="/sign-up" />
           <Route element={<User />} path="/user:id" />
+          <Route element={<SearchResults />} path="/search-results/:query" />
           <Route element={<UserCart />} path="/user/:id/cart" />
           <Route element={<UserEdit />} path="/user/:id/edit" />
           <Route element={<Subscription />} path="/user/:id/subscription" />
