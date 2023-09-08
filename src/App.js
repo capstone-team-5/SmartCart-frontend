@@ -26,6 +26,7 @@ import MeetTheDevelopers from "./Pages/MeetTheDevelopers";
 import TestComponent from "./MVPComponents/TestComponent";
 import IndividualProduct from "./Pages/IndividualProduct";
 import ContactUs from "./Pages/ContactUs";
+import SearchResults from "./Pages/SearchResults";
 
 //Components
 import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
@@ -128,6 +129,7 @@ function App() {
           <Route element={<Login />} path="/login" />
           <Route element={<SignUp />} path="/sign-up" />
           <Route element={<User />} path="/user:id" />
+          <Route element={<SearchResults />} path="/search-results/:query" />
           <Route element={<UserCart />} path="/user/:id/cart" />
           <Route element={<UserEdit />} path="/user/:id/edit" />
           <Route element={<Subscription />} path="/user/:id/subscription" />
