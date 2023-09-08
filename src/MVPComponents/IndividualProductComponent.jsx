@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const IndividualProductComponent = ({ handleAddToCart, cartLength }) => {
+const IndividualProductComponent = ({ handleAddToCart }) => {
   const [showOneItem, setShowOneItem] = useState({});
   const { id } = useParams();
 
