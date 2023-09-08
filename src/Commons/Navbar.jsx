@@ -29,7 +29,7 @@ const navLinks = [
     link: "/",
   },
   {
-    title: "Contact-Us",
+    title: "Contact Us",
     link: "/contact-us",
   },
   {
@@ -108,7 +108,7 @@ const Navbar = ({ cartLength }) => {
               <img
                 src={logo_image}
                 alt="SmartCART Logo"
-                className="w-20 h-20 lg:w-40 lg:h-40 rounded-full ml-4 md:ml-0"
+                className="object-contain w-20 h-20 lg:w-40 lg:h-40 rounded-full ml-4 md:ml-0"
               />
             </Link>
           </div>
@@ -160,7 +160,7 @@ const Navbar = ({ cartLength }) => {
                 className={`text-black text-2xl lg:text-3xl md:text-xl sm:text-md ${showUserDropdown}`}
                 onClick={toggleUserDropdown}
               >
-                <PiUserCircle className="cursor-pointer" />
+                <PiUserCircle className="cursor-pointer w-8 h-8 rounded-full" />
               </div>
               {showUserDropdown && (
                 <div className="absolute mt-2 right-0">

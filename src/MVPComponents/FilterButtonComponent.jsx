@@ -44,16 +44,6 @@ const FilterButtonComponent = () => {
             "Vegan",
             "Stock",
             "Non_Processed",
-            // "Dairy",
-            // "Fruits",
-            // "Vegetables",
-            // "Snacks",
-            // "Breakfast",
-            // "Bakery",
-            // "Beverages",
-            // "Seafood",
-            // "Nuts",
-            // "Pasta",
           ]}
         />
       )}
