@@ -30,8 +30,6 @@ const CartComponent = ({ deleteItem, clearCart, cart, cartLength, handleQuantity
   const handleSubmit = () => {
     const cartIds = cart.map((food) => food.id);
     const convertIdsToString = cartIds.join(',');
-    console.log('cartIds:', cartIds)
-    console.log('convertIdsToString:', convertIdsToString)
 
     const backendEndPoint = `${process.env.REACT_APP_BACKEND_API}/compare-prices?productIds=${convertIdsToString}`
 
