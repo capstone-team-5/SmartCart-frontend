@@ -115,12 +115,16 @@ const Navbar = ({ cartLength }) => {
 
           {/* Emojis */}
           <div className="flex items-center space-x-4 md:space-x-8 lg:space-x-16">
-            <span className="hover:bg-gray-100 p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
-              <FiSun className="text-black text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100 cursor-pointer" />
-              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-100 text-black py-1 px-2 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                Light Mode
-              </span>
-            </span>
+            {/* <span className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
+              <FiSun className="text-black text-lg lg:text-3xl md:text-xl sm:text-md  cursor-pointer" />
+            </span> */}
+
+            <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
+              <FiSun className="text-black text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
+              <p className="invisible text-black font-semibold peer-hover:visible absolute top-0 left-0 mt-8 ml-2 ">
+                Light
+              </p>
+            </div>
 
             <span className="hover:bg-gray-100 p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
               <FiMoon className="text-black text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100 cursor-pointer" />
