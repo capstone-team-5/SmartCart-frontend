@@ -7,10 +7,7 @@ import FilterResultsComponent from "./FilterResultsComponent";
 const CategoryComponent = () => {
   const [selectedCategory, setSelectedCategory] = useState(""); // to choose which category user selects
   const [categories, setCategories] = useState([]); // to fetch unique categories from backend
-  const [products, setProducts] = useState([]); // to fetch all products from backend
-  const [filteredProducts, setFilteredProducts] = useState([]); // to filter products based on selected category
   const [isLoading, setIsLoading] = useState(true);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,7 +19,6 @@ const CategoryComponent = () => {
           ...new Set(data.map((item) => item.product_category)),
         ];
         setCategories(uniqueCategories);
-        setProducts(data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -31,25 +27,15 @@ const CategoryComponent = () => {
       });
   }, []);
 
-  useEffect(() => {
-    // Check if a category is selected and filter products accordingly
-    if (selectedCategory) {
-      const filtered = products.filter(
-        (product) => product.product_category === selectedCategory
-      );
-      setFilteredProducts(filtered);
-    }
-  }, [selectedCategory, products]);
-
   // Function to handle category selection
   const handleCategorySelection = (category) => {
+    setSelectedCategory(category);
     navigate(`/filter-results?category=${category}`);
   };
 
   return (
     <div>
       {isLoading ? (
-        // Render a loading indicator (e.g., a spinner or loading message)
         <p>Loading...</p>
       ) : (
         // Render the category buttons
@@ -73,20 +59,7 @@ const CategoryComponent = () => {
         </div>
       )}
       {/* Render the products based on selected category */}
-      {selectedCategory && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 rounded-lg shadow-green-500/50 border shadow-md">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((item) => (
-              <FilterResultsComponent
-                key={item.product_id}
-                filteredCategory={selectedCategory}
-              />
-            ))
-          ) : (
-            <p>No products found for the selected category.</p>
-          )}
-        </div>
-      )}
+      {selectedCategory && <FilterResultsComponent />}
     </div>
   );
 };
