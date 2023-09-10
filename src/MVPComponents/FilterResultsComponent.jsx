@@ -2,29 +2,29 @@
 
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const FilterResultsComponent = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const selectedCategory = queryParams.get("category");
-  // const [products, setProducts] = useState([]); // to fetch all products from backend
   const [filteredProducts, setFilteredProducts] = useState([]); // to filter products based on selected category
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Fetch all products from the backend
-    fetch(`${process.env.REACT_APP_BACKEND_API}/products`)
-      .then((response) => response.json())
-      .then((data) => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_API}/products`)
+      .then((response) => {
         if (selectedCategory) {
           // If a category is selected, filter the products
-          const filtered = data.filter(
+          const filtered = response.data.filter(
             (product) => product.product_category === selectedCategory
           );
           setFilteredProducts(filtered);
         } else {
           // If no category is selected, set all products
-          setFilteredProducts(data);
+          setFilteredProducts(response.data);
         }
         setIsLoading(false);
       })
