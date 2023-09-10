@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
-const FilterResultsComponent = () => {
+const Rejected = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const selectedFilters = queryParams.getAll("filters");
@@ -48,4 +48,4 @@ const FilterResultsComponent = () => {
   );
 };
 
-export default FilterResultsComponent;
+export default Rejected;
