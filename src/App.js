@@ -106,7 +106,7 @@ function App() {
         <Header addToCart={handleAddToCart} />
         <Routes>
           <Route element={<Home addToCart={handleAddToCart} />} path="/" />
-          <Route element={<TestComponent cart={cart} />} path="/test" />
+          <Route element={<TestComponent cart={cart} />} path='/test' />
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />
           <Route
