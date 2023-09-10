@@ -17,8 +17,8 @@ const navLinks = [
     link: "/about-us",
   },
   {
-    title: "View Products",
-    link: "/",
+    title: "Shop by Category",
+    link: "/category",
   },
   {
     title: "My Favorites ♥️",
