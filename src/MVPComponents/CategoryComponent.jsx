@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FilterResultsComponent from "./FilterResultsComponent";
+import axios from "axios";
 
 const CategoryComponent = () => {
   const [selectedCategory, setSelectedCategory] = useState(""); // to choose which category user selects
@@ -12,11 +13,11 @@ const CategoryComponent = () => {
 
   useEffect(() => {
     // Fetch all products from backend and extract only unique categories to categories
-    fetch(`${process.env.REACT_APP_BACKEND_API}/products`)
-      .then((response) => response.json())
-      .then((data) => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_API}/products`)
+      .then((response) => {
         const uniqueCategories = [
-          ...new Set(data.map((item) => item.product_category)),
+          ...new Set(response.data.map((item) => item.product_category)),
         ];
         setCategories(uniqueCategories);
         setIsLoading(false);
