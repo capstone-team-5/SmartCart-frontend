@@ -28,7 +28,7 @@ const CategoryComponent = () => {
   }, []);
 
   // Function to handle category selection
-  const handleCategorySelection = (category) => {
+  const handleCategoryClick = (category) => {
     setSelectedCategory(category);
     navigate(`/filter-results?category=${category}`);
   };
@@ -46,7 +46,7 @@ const CategoryComponent = () => {
                 <div className="bg-green-50 rounded-full w-44 h-40 flex items-center justify-center rounded-lg shadow-green-500/50 shadow-md">
                   <button
                     className="mt-2 font-bold text-black-100 text-center text-3xl tracking-wide p-0  w-full"
-                    onClick={() => handleCategorySelection(category)}
+                    onClick={() => handleCategoryClick(category)}
                   >
                     {category}
                   </button>

@@ -42,24 +42,26 @@ const FilterResultsComponent = () => {
       ) : (
         <div>
           {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
-              <div
-                key={product.product_id}
-                className="rounded-lg shadow-green-500/50 border shadow-md overflow-hidden"
-              >
-                <img
-                  src={product.product_image}
-                  alt={product.product_name}
-                  className="w-full h-60 object-cover"
-                />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
+              {filteredProducts.map((product) => (
+                <div
+                  key={product.product_id}
+                  className="bg-white rounded-lg shadow-md overflow-hidden"
+                >
+                  <img
+                    src={product.product_image}
+                    alt={product.product_name}
+                    className="w-full h-48 object-contain"
+                  />
 
-                <div className="p-4 text-center">
-                  <h2 className="text-2xl font-bold mb-2">
-                    {product.product_name}
-                  </h2>
+                  <div className="p-4">
+                    <h2 className="text-lg text-center font-semibold">
+                      {product.product_name}
+                    </h2>
+                  </div>
                 </div>
-              </div>
-            ))
+              ))}
+            </div>
           ) : (
             <p>No products found for the selected category.</p>
           )}
