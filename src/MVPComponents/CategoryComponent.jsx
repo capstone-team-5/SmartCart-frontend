@@ -2,7 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import FilterResultsComponent from "./Rejected";
+=======
+import FilterResultsComponent from "./FilterResultsComponent";
+>>>>>>> 8c83955440858bcc3874cc4ffd45da6eafebfe4b
 import axios from "axios";
 
 const CategoryComponent = () => {

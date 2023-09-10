@@ -1,11 +1,11 @@
-import UserCartComponent from "../MVPComponents/UserCartComponent"
+import UserCartComponent from "../MVPComponents/UserCartComponent";
 
 const UserCart = () => {
-    return (
-        <div>
-            <UserCartComponent />
-        </div>
-    )
+  return (
+    <div>
+      <UserCartComponent />
+    </div>
+  );
 };
 
 export default UserCart;

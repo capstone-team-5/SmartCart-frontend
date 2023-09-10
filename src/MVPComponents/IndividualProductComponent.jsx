@@ -34,12 +34,10 @@ const IndividualProductComponent = ({ handleAddToCart }) => {
           <br />
         </>
       )}
-      
+
       <button onClick={() => handleAddToCart(showOneItem)}>Add To Cart</button>
     </div>
   );
 };
 
 export default IndividualProductComponent;
-
-
