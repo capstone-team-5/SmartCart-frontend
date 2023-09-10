@@ -4,7 +4,7 @@ const DiandreComponent = () => {
     return (
         <div>
             <h3>
-                This is about Diandre
+                This is about Diandre Miller
             </h3>
         </div>
     )

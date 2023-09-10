@@ -3,9 +3,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const CartComponent = ({ deleteItem, clearCart, cart, cartLength, handleQuantityChange, updateCartLength }) => {
   const [itemQuantities, setItemQuantities] = useState({});
+
 
   useEffect(() => {
     const quantities = cart.reduce((quantities, item) => {
@@ -23,6 +25,23 @@ const CartComponent = ({ deleteItem, clearCart, cart, cartLength, handleQuantity
       handleQuantityChange(itemId, updatedQuantities[itemId]);
       setItemQuantities(updatedQuantities);
     }
+  };
+
+  const handleSubmit = () => {
+    const cartIds = cart.map((food) => food.id);
+    const convertIdsToString = cartIds.join(',');
+
+    const backendEndPoint = `${process.env.REACT_APP_BACKEND_API}/compare-prices?productIds=${convertIdsToString}`
+
+    axios.get(backendEndPoint)
+      .then((response) => {
+        if (response.status === 200) {
+        console.log('the ids have been successfully sent')
+        } else {
+          console.log('The ids were not sent')
+      }
+    })
+    .catch(error => console.log('error:',error))
   };
 
   useEffect(() => {
@@ -63,7 +82,7 @@ const CartComponent = ({ deleteItem, clearCart, cart, cartLength, handleQuantity
       <br /> <br />
       <Link to='/price-compare'>
         {/* Will add loading to price compare */}
-        <button>Confirm Your Cart!</button>
+        <button onClick={handleSubmit}>Confirm Your Cart!</button>
       </Link>
     </div>
   );
