@@ -8,6 +8,7 @@ import axios from 'axios';
  */
 const SignUpComponent = () => {
   const [formData, setFormData] = useState({
+    id: Math.random().toString(36).substr(2, 9), // Generate a random ID. Replace with an appropriate method to obtain an ID
     username: '',
     email: '',
     password: '',

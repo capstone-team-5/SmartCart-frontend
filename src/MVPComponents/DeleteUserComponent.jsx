@@ -14,11 +14,17 @@ const DeleteUserComponent = () => {
    * Handle the user account deletion process.
    */
   const handleDelete = async () => {
+    const userId = localStorage.getItem('userId'); // Assuming the user's ID is stored in local storage
+    if (!userId) {
+      setMessage('User ID not found.');
+      return;
+    }
+
     setLoading(true);
     setMessage(null);
 
     try {
-      const response = await axios.delete(`${process.env.REACT_APP_BACKEND_API}/users/delete`);
+      const response = await axios.delete(`${process.env.REACT_APP_BACKEND_API}/users/delete/${userId}`);
 
       if(response.status === 200) {
         setMessage('Account deleted successfully!');
