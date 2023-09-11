@@ -29,6 +29,7 @@ import ContactUs from "./Pages/ContactUs";
 import SearchResults from "./Pages/SearchResults";
 import PriceComparison from "./Pages/PriceComparison";
 import FilterResults from "./Pages/FilterResults";
+import LandingPage from "./Pages/LandingPage"
 
 //Components
 import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
@@ -108,7 +109,8 @@ function App() {
         <Navbar cartLength={cartLength} />
         <Header addToCart={handleAddToCart} />
         <Routes>
-          <Route element={<Home addToCart={handleAddToCart} />} path="/" />
+          <Route element={<LandingPage />} path='/' />
+          <Route element={<Home addToCart={handleAddToCart} />} path="/home" />
           <Route element={<TestComponent cart={cart} />} path='/test' />
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />
