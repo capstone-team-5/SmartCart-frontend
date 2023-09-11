@@ -1,6 +1,7 @@
 // This component will allow users to receive mailing list information
 
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const MailingListComponent = () => {
   const [subscribed, setSubscribed] = useState(false);
@@ -11,7 +12,7 @@ const MailingListComponent = () => {
     event.preventDefault();
 
     if (!email || !validateEmail(email)) {
-      setErrorMessage("Please enter a valid email");
+      setErrorMessage("Please enter a valid email address");
     } else {
       setSubscribed(true);
       setErrorMessage("");
@@ -25,75 +26,71 @@ const MailingListComponent = () => {
 
   return (
     <div>
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="max-w-md p-8 rounded shadow-md">
-          {subscribed ? (
-            <p className="text-center text-blue-600">
-              Thank you! Watch your inbox for deals, new items and more.
-            </p>
-          ) : (
-            <form className="flex flex-col gap-4 sm:flex-row items-center">
-              <label className="text-black text-lg font-bold whitespace-nowrap">
-                Subscribe to get updates!
-              </label>
-              <input
-                type="email"
-                placeholder="✉️ Enter your email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                className="border rounded py-2 px-3 text-black placeholder-black focus:outline-none focus:ring focus:border-blue-300"
-              />
-              {errorMessage && <p className="text-red-600">{errorMessage}</p>}
-              <button
-                onClick={handleSignUp}
-                className="py-2 px-4 bg-blue-500 text-white rounded whitespace-nowrap hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
-              >
-                Sign up
-              </button>
-            </form>
-          )}
-        </div>
-      </div>
+      {subscribed ? (
+        <p className="text-center text-red-600">Thank you!</p>
+      ) : (
+        <section className="bg-white dark:bg-gray-900 rounded">
+          <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+            <div className="mx-auto max-w-screen-md sm:text-center">
+              <h2 className="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl dark:text-white">
+                Sign up for our newsletter
+              </h2>
+              <p className="mx-auto mb-8 max-w-2xl font-light text-gray-500 md:mb-12 sm:text-xl dark:text-gray-400">
+                Stay up to date with the deals, announcements and exclusive
+                discounts
+              </p>
+              <form action="#">
+                <div className="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
+                  <div className="relative w-full">
+                    <label
+                      htmlFor="email"
+                      className="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      Email address
+                    </label>
 
-      <div>
-        {subscribed ? (
-          <p className="text-center text-blue-600">
-            Thank you! Watch your inbox for deals, new items and more.
-          </p>
-        ) : (
-          <section className="py-20">
-            <div className="container mx-auto">
-              <div className="flex justify-center">
-                <div className="w-full max-w-sm">
-                  <div className="text-center">
-                    <h2 className="text-blue-900 text-3xl mb-8">
-                      Subscribe to get updates!
-                    </h2>
-                  </div>
-                  <div className="flex items-center">
+                    <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"></div>
                     <input
+                      className="block p-3 pl-10 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 text-black placeholder-black"
+                      placeholder="✉️ &nbsp; Enter your email"
                       type="email"
-                      className="appearance-none bg-white border border-blue-500 rounded-full w-full py-2 px-4 leading-tight focus:outline-none focus:border-blue-700"
-                      placeholder="Enter your email"
+                      id="email"
                       value={email}
+                      required
                       onChange={(event) => setEmail(event.target.value)}
+                      aria-invalid="true"
                     />
+                  </div>
+
+                  <div>
                     <button
-                      className="bg-blue-900 text-white font-semibold py-2 px-4 rounded-full ml-2"
+                      type="submit"
                       onClick={handleSignUp}
+                      className="py-3 px-5 w-full text-sm font-semibold text-center text-black rounded-lg border cursor-pointer bg-orange-300 border-primary-600 sm:rounded-none sm:rounded-r-lg hover:text-orange-800 focus:ring-4 focus:ring-orange-700 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-gray-800 "
                     >
                       Subscribe
                     </button>
                   </div>
+                </div>
+                <div className="mx-auto max-w-screen-sm text-sm text-left text-gray-500 newsletter-form-footer dark:text-gray-300">
+                  We care about the protection of your data.{" "}
+                  <Link
+                    to="#"
+                    className="font-medium text-primary-600 dark:text-primary-500 hover:underline"
+                  >
+                    Read our Privacy Policy
+                  </Link>
                   {errorMessage && (
-                    <p className="text-red-500 mt-2">{errorMessage}</p>
+                    <p className="text-red-500 underline text-center font-medium mt-2">
+                      {errorMessage}
+                    </p>
                   )}
                 </div>
-              </div>
+              </form>
             </div>
-          </section>
-        )}
-      </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 };
