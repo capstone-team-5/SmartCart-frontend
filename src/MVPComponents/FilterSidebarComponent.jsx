@@ -121,16 +121,17 @@ const FilterSideBarComponent = ({ applyFilters }) => {
   };
 
   return (
-    <div>
+    <div className="bg-white p-4 md:p-8 md:w-1/3 shadow-lg rounded-lg">
       {/* Render filter options */}
       <div>
-        <h3>Special Diets</h3>
+        <h3 className="text-lg font-semibold mb-2">Special Diets</h3>
         {selectedFilters.specialDiets.map((option) => (
-          <label key={option.value}>
+          <label key={option.value} className="block mb-2">
             <input
               type="checkbox"
               value={option.value}
               checked={option.checked}
+              className="mr-2"
               onChange={() =>
                 handleCheckboxChange("specialDiets", option.value)
               }
@@ -142,13 +143,14 @@ const FilterSideBarComponent = ({ applyFilters }) => {
 
       {/* Render certification options */}
       <div>
-        <h3>Certifications</h3>
+        <h3 className="text-lg font-semibold mb-2">Certifications</h3>
         {selectedFilters.certifications.map((option) => (
-          <label key={option.value}>
+          <label key={option.value} className="block mb-2">
             <input
               type="checkbox"
               value={option.value}
               checked={option.checked}
+              className="mr-2"
               onChange={() =>
                 handleCheckboxChange("certifications", option.value)
               }
@@ -160,13 +162,14 @@ const FilterSideBarComponent = ({ applyFilters }) => {
 
       {/* Render health label options */}
       <div>
-        <h3>Health Labels</h3>
+        <h3 className="text-lg font-semibold mb-2">Health Labels</h3>
         {selectedFilters.healthLabels.map((option) => (
-          <label key={option.value}>
+          <label key={option.value} className="block mb-2">
             <input
               type="checkbox"
               value={option.value}
               checked={option.checked}
+              className="mr-2"
               onChange={() =>
                 handleCheckboxChange("healthLabels", option.value)
               }
@@ -178,13 +181,14 @@ const FilterSideBarComponent = ({ applyFilters }) => {
 
       {/* Render allergen options */}
       <div>
-        <h3>Allergens</h3>
+        <h3 className="text-lg font-semibold mb-2">Allergens</h3>
         {selectedFilters.allergens.map((option) => (
-          <label key={option.value}>
+          <label key={option.value} className="block mb-2">
             <input
               type="checkbox"
               value={option.value}
               checked={option.checked}
+              className="mr-2"
               onChange={() => handleCheckboxChange("allergens", option.value)}
             />
             {option.name}
@@ -194,13 +198,14 @@ const FilterSideBarComponent = ({ applyFilters }) => {
 
       {/* Render brand options */}
       <div>
-        <h3>Brand</h3>
+        <h3 className="text-lg font-semibold mb-2">Brand</h3>
         {brands.map((brand) => (
-          <label key={brand}>
+          <label key={brand} className="block mb-2">
             <input
               type="radio"
               value={brand}
               checked={selectedFilters.brand.value === brand}
+              className="mr-2"
               onChange={() => handleBrandChange(brand)}
             />
             {brand}
@@ -210,14 +215,15 @@ const FilterSideBarComponent = ({ applyFilters }) => {
 
       {/* Render category options */}
       <div>
-        <h3>Categories</h3>
+        <h3 className="text-lg font-semibold mb-2">Categories</h3>
         {categories.map((category) => (
-          <label key={category}>
+          <label key={category} className="block mb-2">
             <input
               type="radio"
               value={category}
               checked={selectedFilters.category.value === category}
-              onChange={() => handleCategoryChange(category)} // Use handleCategoryChange here
+              className="mr-2"
+              onChange={() => handleCategoryChange(category)}
             />
             {category}
           </label>
@@ -225,7 +231,12 @@ const FilterSideBarComponent = ({ applyFilters }) => {
       </div>
 
       {/* Apply filters button */}
-      <button onClick={handleApplyFilters}>Apply Filters</button>
+      <button
+        onClick={handleApplyFilters}
+        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 mt-4 rounded-lg"
+      >
+        Apply Filters
+      </button>
     </div>
   );
 };
