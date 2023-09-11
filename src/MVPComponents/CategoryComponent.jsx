@@ -31,7 +31,7 @@ const CategoryComponent = () => {
   // Function to handle category selection
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
-    navigate(`/fil?category=${category}`);
+    navigate(`/filter?category=${category}`);
   };
 
   return (
