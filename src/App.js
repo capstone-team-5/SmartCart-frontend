@@ -28,10 +28,11 @@ import IndividualProduct from "./Pages/IndividualProduct";
 import ContactUs from "./Pages/ContactUs";
 import SearchResults from "./Pages/SearchResults";
 import PriceComparison from "./Pages/PriceComparison";
+import FilterResults from "./Pages/FilterResults";
 
 //Components
 import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
-import FilterResultsComponent from "./MVPComponents/FilterResultsComponent";
+
 
 
 function App() {
@@ -108,12 +109,12 @@ function App() {
         <Header addToCart={handleAddToCart} />
         <Routes>
           <Route element={<Home addToCart={handleAddToCart} />} path="/" />
-          {/* <Route element={<TestComponent cart={cart} />} path='/test' /> */}
+          <Route element={<TestComponent cart={cart} />} path='/test' />
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />
           <Route element={<IndividualProduct handleAddToCart={handleAddToCart} cartLength={cartLength} />} path="/product/:id" />
           <Route element={<FilterButtonComponent />} path="/filter" />
-          <Route element={<FilterResultsComponent />} path="/filter-results" />
+          <Route element={<FilterResults addToCart={handleAddToCart} />} path="/filter-results" />
           <Route
             element={
               <Cart
@@ -132,7 +133,7 @@ function App() {
           <Route element={<SignUp />} path="/sign-up" />
           <Route element={<User />} path="/user:id" />
           <Route element={<SearchResults addToCart={handleAddToCart} />} path="/search-results/:query" />
-          <Route element={<PriceComparison />} path="/price-compare" />
+          <Route element={<PriceComparison cart={cart} />} path="/price-compare" />
           <Route element={<UserCart />} path="/user/:id/cart" />
           <Route element={<UserEdit />} path="/user/:id/edit" />
           <Route element={<Subscription />} path="/user/:id/subscription" />
