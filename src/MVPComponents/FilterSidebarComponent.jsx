@@ -39,10 +39,15 @@ const FilterSideBarComponent = ({ applyFilters }) => {
       name: "Brand",
       value: "", // Storing the brand user has selected
     },
+    category: {
+      name: "Categories",
+      value: "", // Storing the category user has selected
+    },
   };
 
   const [selectedFilters, setSelectedFilters] = useState(initialFilters);
   const [brands, setBrands] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -53,7 +58,11 @@ const FilterSideBarComponent = ({ applyFilters }) => {
         const uniqueBrands = [
           ...new Set(response.data.map((item) => item.product_brand)),
         ];
+        const uniqueCategories = [
+          ...new Set(response.data.map((item) => item.product_category)),
+        ];
         setBrands(uniqueBrands);
+        setCategories(uniqueCategories);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -80,12 +89,15 @@ const FilterSideBarComponent = ({ applyFilters }) => {
     setSelectedFilters(updatedFilters);
   };
 
+  const handleCategoryChange = (category) => {
+    // Update the selected category in the selectedFilters state
+    const updatedFilters = { ...selectedFilters };
+    updatedFilters.category.value = category;
+    setSelectedFilters(updatedFilters);
+  };
+
   // Define the applyFilters function here, so it has access to selectedFilters
   const handleApplyFilters = () => {
-    console.log("Applying filters...");
-    console.log("selectedFilters:", selectedFilters);
-    console.log("typeof applyFilters:", typeof applyFilters);
-
     // Call the applyFilters function and pass the selectedFilters state
     if (typeof applyFilters === "function") {
       const appliedFilters = {
@@ -100,6 +112,7 @@ const FilterSideBarComponent = ({ applyFilters }) => {
         ),
         allergens: selectedFilters.allergens.filter((option) => option.checked),
         brand: selectedFilters.brand.value,
+        category: selectedFilters.category.value,
       };
       applyFilters(appliedFilters);
     } else {
@@ -191,6 +204,22 @@ const FilterSideBarComponent = ({ applyFilters }) => {
               onChange={() => handleBrandChange(brand)}
             />
             {brand}
+          </label>
+        ))}
+      </div>
+
+      {/* Render category options */}
+      <div>
+        <h3>Categories</h3>
+        {categories.map((category) => (
+          <label key={category}>
+            <input
+              type="radio"
+              value={category}
+              checked={selectedFilters.category.value === category}
+              onChange={() => handleCategoryChange(category)} // Use handleCategoryChange here
+            />
+            {category}
           </label>
         ))}
       </div>
