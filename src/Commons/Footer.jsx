@@ -7,7 +7,6 @@ import {
   AiFillLinkedin,
 } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa6";
-import { GrFormNext } from "react-icons/gr";
 import logo_image from "../Assets/SmrtCART.PNG";
 
 const Footer = () => {
@@ -21,9 +20,6 @@ const Footer = () => {
               alt="SmartCART Logo"
               className="object-contain w-20 h-20 lg:w-40 lg:h-40 rounded-full ml-4 md:ml-0"
             />
-            <span>
-              <h6>Smart CART</h6>
-            </span>
           </div>
 
           <div className="flex items-center gap-x-4 mt-12">
@@ -82,6 +78,9 @@ const Footer = () => {
           </p>
           <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
             Account Settings
+          </p>
+          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
+            FAQ
           </p>
         </div>
       </div>
