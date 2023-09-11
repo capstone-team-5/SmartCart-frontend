@@ -8,85 +8,190 @@ import {
 } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa6";
 import logo_image from "../Assets/SmrtCART.PNG";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="mx-auto container py-16 xl:px-20 lg:px-12 sm:px-6 px-4">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 md:gap-8 gap-4">
-        <div className="flex flex-col flex-shrink-0">
-          <div>
-            <img
-              src={logo_image}
-              alt="SmartCART Logo"
-              className="object-contain w-20 h-20 lg:w-40 lg:h-40 rounded-full ml-4 md:ml-0"
-            />
+    <div>
+      <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+      <footer className="bg-gray-50 dark:bg-gray-900">
+        <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+          <div className="md:flex md:justify-between">
+            <div className="mb-6 md:mb-0">
+              <Link to="/" className="flex items-center">
+                <img
+                  src={logo_image}
+                  alt="SmartCART Logo"
+                  className="object-contain w-40 h-40 mr-3 lg:w-56 lg:h-56 rounded-full ml-4 md:ml-0"
+                />
+                <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                  Smart CART
+                </span>
+              </Link>
+            </div>
+            <div className="grid lg:grid-cols-3 md:grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-1">
+              <div>
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                  About Us
+                </h2>
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <li className="mb-4">
+                    <Link to="/about-us" className="hover:underline">
+                      About Smart CART
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link to="/" className="hover:underline">
+                      Meet Our Developers
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link to="/" className="hover:underline">
+                      Careers
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link to="/" className="hover:underline">
+                      News & Blog
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link to="/" className="hover:underline">
+                      Advertise with Us
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                  Support
+                </h2>
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <li className="mb-4">
+                    <Link to="/contact-us" className="hover:underline ">
+                      Contact Us
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link to="/" className="hover:underline">
+                      Feedback
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link to="/" className="hover:underline ">
+                      Testimonials
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link to="/" className="hover:underline ">
+                      Mailing List
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link to="/" className="hover:underline ">
+                      Make a Donation
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                  Account
+                </h2>
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <li className="mb-4">
+                    <Link to="#" className="hover:underline">
+                      Sign In
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link to="#" className="hover:underline">
+                      Create Account
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link to="#" className="hover:underline">
+                      Forgot Password
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link to="#" className="hover:underline">
+                      Account Settings
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link to="#" className="hover:underline">
+                      FAQ
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
+          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
 
-          <div className="flex items-center gap-x-4 mt-12">
-            <div className="opacity-50 w-8 h-8 flex-shrink-0 bg-gray-800 cursor-pointer hover:bg-gray-700 rounded-full flex items-center justify-center">
-              <AiFillInstagram size={18} color="white" />
-            </div>
-            <div className="opacity-50 w-8 h-8 flex-shrink-0 bg-gray-800 cursor-pointer hover:bg-gray-700 rounded-full flex items-center justify-center">
-              <AiFillFacebook size={18} color="white" />
-            </div>
-            <div className="opacity-50 w-8 h-8 flex-shrink-0 bg-gray-800 cursor-pointer hover-bg-gray-700 rounded-full flex items-center justify-center">
-              <AiFillYoutube size={18} color="white" />
-            </div>
-            <div className="opacity-50 w-8 h-8 flex-shrink-0 bg-gray-800 cursor-pointer hover-bg-gray-700 rounded-full flex items-center justify-center">
-              <AiFillGithub size={18} color="white" />
-            </div>
-            <div className="opacity-50 w-8 h-8 flex-shrink-0 bg-gray-800 cursor-pointer hover-bg-gray-700 rounded-full flex items-center justify-center">
-              <AiFillLinkedin size={18} color="white" />
-            </div>
-            <div className="opacity-50 w-8 h-8 flex-shrink-0 bg-gray-800 cursor-pointer hover-bg-gray-700 rounded-full flex items-center justify-center">
-              <FaTiktok size={14} color="white" />
+          <div className="sm:flex sm:items-center sm:justify-between">
+            <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+              © 2023{" "}
+              <Link to="/" className="hover:underline">
+                Smart CART™
+              </Link>
+              . All Rights Reserved.
+            </span>
+            <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
+              <Link
+                to="#"
+                target="_blank"
+                className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              >
+                <AiFillFacebook size={18} color="gray" />
+                <span className="sr-only">Facebook page</span>
+              </Link>
+
+              <Link
+                to="#"
+                target="_blank"
+                className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              >
+                <AiFillInstagram size={18} color="gray" />
+                <span className="sr-only">Instagram page</span>
+              </Link>
+              <Link
+                to="https://www.youtube.com/@Keepit100Dre"
+                target="_blank"
+                className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              >
+                <AiFillYoutube size={18} color="gray" />
+                <span className="sr-only">YouTube</span>
+              </Link>
+              <Link
+                to="#"
+                target="_blank"
+                className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              >
+                <FaTiktok size={14} color="gray" />
+                <span className="sr-only">TikTok page</span>
+              </Link>
+              <Link
+                to="https://github.com/orgs/capstone-team-5/dashboard"
+                target="_blank"
+                className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              >
+                <AiFillGithub size={18} color="gray" />
+                <span className="sr-only">GitHub</span>
+              </Link>
+              <Link
+                to="https://www.linkedin.com/in/vandhanamohan/"
+                target="_blank"
+                className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              >
+                <AiFillLinkedin size={18} color="gray" />
+                <span className="sr-only">LinkedIn</span>
+              </Link>
             </div>
           </div>
         </div>
-        <div className="sm:ml-0 ml-8">
-          <h2 className="text-base font-semibold leading-4 text-gray-800">
-            About Smart CART
-          </h2>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            About Us
-          </p>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            Meet Our Developers
-          </p>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            Leave a Feedback
-          </p>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            Contact us
-          </p>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            Testimonials
-          </p>
-        </div>
-        <div>
-          <h2 className="text-base font-semibold leading-4 text-gray-800">
-            Support
-          </h2>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            Sign In
-          </p>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            Create Account
-          </p>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            Forgot Password
-          </p>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            Account Settings
-          </p>
-          <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">
-            FAQ
-          </p>
-        </div>
-      </div>
-      <p className="text-sm text-center leading-none text-gray-800 mt-4">
-        Copyright © 2023 Smart CART All rights reserved
-      </p>
+      </footer>
     </div>
   );
 };
