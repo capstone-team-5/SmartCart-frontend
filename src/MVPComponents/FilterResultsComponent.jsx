@@ -1,13 +1,9 @@
 // This function will display results based on user selected category user and from filter side bar
 
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import axios from "axios";
 
-const FilterResultsComponent = ({ addToCart }) => {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const selectedCategory = queryParams.get("category");
+const FilterResultsComponent = ({ addToCart, selectedCategory }) => {
   const [filteredProducts, setFilteredProducts] = useState([]); // to filter products based on selected category
   const [isLoading, setIsLoading] = useState(true);
 
