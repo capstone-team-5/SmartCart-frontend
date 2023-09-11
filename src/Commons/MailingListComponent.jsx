@@ -66,7 +66,7 @@ const MailingListComponent = () => {
                     <button
                       type="submit"
                       onClick={handleSignUp}
-                      className="py-3 px-5 w-full text-sm font-semibold text-center text-black rounded-lg border cursor-pointer bg-orange-300 border-primary-600 sm:rounded-none sm:rounded-r-lg hover:text-orange-800 focus:ring-4 focus:ring-orange-700 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-gray-800 "
+                      className="py-3 px-5 w-full text-sm font-semibold hover:underline text-center text-black rounded-lg border cursor-pointer bg-orange-300 border-primary-600 sm:rounded-none sm:rounded-r-lg hover:text-orange-800 focus:ring-4 focus:ring-orange-700 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-gray-800 "
                     >
                       Subscribe
                     </button>
