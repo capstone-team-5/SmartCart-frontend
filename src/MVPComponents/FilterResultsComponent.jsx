@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const FilterResultsComponent = ({ addToCart, selectedCategory }) => {
+const FilterResultsComponent = ({ addToCart, selectedCategory, data }) => {
   const [filteredProducts, setFilteredProducts] = useState([]); // to filter products based on selected category
   const [isLoading, setIsLoading] = useState(true);
 
@@ -37,9 +37,9 @@ const FilterResultsComponent = ({ addToCart, selectedCategory }) => {
         <p>Loading...</p>
       ) : (
         <div>
-          {filteredProducts.length > 0 ? (
+          {data.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
-              {filteredProducts.map((product) => (
+              {data.map((product) => (
                 <div
                   key={product.product_id}
                   className="bg-white rounded-lg shadow-md overflow-hidden"
