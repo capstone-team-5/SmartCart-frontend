@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import CategoryPage from "./CategoryPage";
-// import FilterResults from "./FilterResults";
 import FilterResultsComponent from "../MVPComponents/FilterResultsComponent";
 import axios from "axios";
 
@@ -26,12 +25,11 @@ const Filter = () => {
     const filteredData = filterDataWithFilters(filters, originalData);
     console.log("final", filters, filteredData);
     setFilteredData(filteredData);
-    setSelectedFilters(filters);
   };
 
   // Function to filter data based on the selected filters
-  const filterDataWithFilters = (filters, originalData) => {
-    let filteredData = [...originalData];
+  const filterDataWithFilters = (filters, data) => {
+    let filteredData = [...data];
     // Apply filters for special diets
     if (filters.specialDiets.length > 0) {
       filteredData = filteredData.filter((item) => {
@@ -79,6 +77,15 @@ const Filter = () => {
         return item.product_brand === filters.brand;
       });
     }
+
+    // Apply filter for category
+    if (filters.category) {
+      filteredData = filteredData.filter((item) => {
+        // Check if the item's category matches the selected category
+        return item.product_category === filters.category;
+      });
+    }
+
     return filteredData;
   };
 
