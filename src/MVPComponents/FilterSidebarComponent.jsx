@@ -120,6 +120,11 @@ const FilterSideBarComponent = ({ applyFilters }) => {
     }
   };
 
+  const clearFilters = () => {
+    // resets the selectedFilters array
+    setSelectedFilters(initialFilters);
+  };
+
   return (
     <div className="bg-white p-4 md:p-8 md:w-1/3 shadow-lg rounded-lg">
       {/* Render filter options */}
@@ -236,6 +241,12 @@ const FilterSideBarComponent = ({ applyFilters }) => {
         className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 mt-4 rounded-lg"
       >
         Apply Filters
+      </button>
+      <button
+        onClick={clearFilters}
+        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 mt-4 rounded-lg"
+      >
+        Clear All
       </button>
     </div>
   );
