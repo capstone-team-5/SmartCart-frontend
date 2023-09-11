@@ -115,40 +115,37 @@ const Navbar = ({ cartLength }) => {
 
           {/* Emojis */}
           <div className="flex items-center space-x-4 md:space-x-8 lg:space-x-16">
-            {/* <span className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
-              <FiSun className="text-black text-lg lg:text-3xl md:text-xl sm:text-md  cursor-pointer" />
-            </span> */}
-
             <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
-              <FiSun className="text-black text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
-              <p className="invisible text-black font-semibold peer-hover:visible absolute top-0 left-0 mt-8 ml-2 ">
+              <FiSun className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
+              <p className="invisible text-black font-semibold peer-hover:visible absolute">
                 Light
               </p>
             </div>
 
-            <span className="hover:bg-gray-100 p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
-              <FiMoon className="text-black text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100 cursor-pointer" />
-              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-100 text-black py-1 px-2 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                Dark Mode
-              </span>
-            </span>
+            <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
+              <FiMoon className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
+              <p className="invisible text-black font-semibold peer-hover:visible absolute">
+                Dark
+              </p>
+            </div>
 
-            <span className="hover:bg-gray-100 p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
-              <FaHeart className="text-orange-500 text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100 cursor-pointer" />
-              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-100 text-black py-1 px-2 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
+              <FaHeart className="text-orange-500 peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
+              <p className="invisible text-black font-semibold peer-hover:visible absolute ">
                 My Favorites
-              </span>
-            </span>
+              </p>
+            </div>
 
             <Link
               to="/cart"
-              className="hover:bg-gray-100 p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
+              className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
             >
-              <div className="relative group">
-                <HiOutlineShoppingCart className="text-black text-lg lg:text-3xl md:text-xl sm:text-md group-hover:text-gray-100 cursor-pointer" />
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-100 text-black py-1 px-2 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
+                <HiOutlineShoppingCart className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
+                <p className="invisible text-black font-semibold peer-hover:visible absolute">
                   My Cart
-                </span>
+                </p>
+
                 {cartLength > 0 && (
                   <div className="absolute -top-1 right-0 transform translate-x-2 -translate-y-2">
                     <div className="rounded-full bg-orange-500 text-black w-5 h-5 text-xs font-bold flex items-center justify-center">
@@ -159,12 +156,15 @@ const Navbar = ({ cartLength }) => {
               </div>
             </Link>
 
-            <div className="relative p-2 rounded-md transition duration-300 ease-in-out transform hover:scale-105">
+            <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
               <div
-                className={`text-black text-2xl lg:text-3xl md:text-xl sm:text-md ${showUserDropdown}`}
+                className={`text-black text-lg  ${showUserDropdown}`}
                 onClick={toggleUserDropdown}
               >
-                <PiUserCircle className="cursor-pointer w-8 h-8 rounded-full" />
+                <PiUserCircle className="text-black peer w-8 h-8 rounded-full cursor-pointer" />
+                <p className="invisible text-black font-semibold peer-hover:visible absolute">
+                  My Account
+                </p>
               </div>
               {showUserDropdown && (
                 <div className="absolute mt-2 right-0">
