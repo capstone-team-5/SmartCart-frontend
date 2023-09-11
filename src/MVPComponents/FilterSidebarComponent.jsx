@@ -1,6 +1,7 @@
-//This function will list a sidebar with extensive choices for user to filter
-import React, { useEffect, useState } from "react";
+// This function will list a sidebar with extensive choices for user to filter
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+
 const FilterSideBarComponent = ({ applyFilters }) => {
   const initialFilters = {
     specialDiets: [
@@ -37,27 +38,143 @@ const FilterSideBarComponent = ({ applyFilters }) => {
     ],
     brand: {
       name: "Brand",
-      value: "", // Store user-selected brand here
+      value: "", // Storing the brand user has selected
     },
   };
 
   const [selectedFilters, setSelectedFilters] = useState(initialFilters);
   const [brands, setBrands] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch unique brands from the backend and populate the brands state
-    axios.get(`${process.env.REACT_APP_BACKEND_API}/brands`)
-      .then((response) => 
-        setBrands(response.data);
+    // Fetch all products from backend and extract only unique brands
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_API}/products`)
+      .then((response) => {
+        const uniqueBrands = [
+          ...new Set(response.data.map((item) => item.product_brand)),
+        ];
+        setBrands(uniqueBrands);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error(error);
+        setIsLoading(false);
       });
   }, []);
+  const handleCheckboxChange = (category, value) => {
+    // Update the selectedFilters state when a checkbox is checked/unchecked
+    const updatedFilters = { ...selectedFilters };
+    const selectedCategory = updatedFilters[category];
+    const selectedOption = selectedCategory.find(
+      (option) => option.value === value
+    );
+    selectedOption.checked = !selectedOption.checked;
+    setSelectedFilters(updatedFilters);
+  };
+
+  const handleBrandChange = (brand) => {
+    // Update the selected brand in the selectedFilters state
+    const updatedFilters = { ...selectedFilters };
+    updatedFilters.brand.value = brand;
+    setSelectedFilters(updatedFilters);
+  };
+
+  const handleApplyFilters = () => {
+    // Call the applyFilters function and pass the selectedFilters state
+    applyFilters(selectedFilters);
+  };
 
   return (
     <div>
-      <h3>This is the FilterSideBar page</h3>
+      {/* Render filter options */}
+      <div>
+        <h3>Special Diets</h3>
+        {selectedFilters.specialDiets.map((option) => (
+          <label key={option.value}>
+            <input
+              type="checkbox"
+              value={option.value}
+              checked={option.checked}
+              onChange={() =>
+                handleCheckboxChange("specialDiets", option.value)
+              }
+            />
+            {option.name}
+          </label>
+        ))}
+      </div>
+
+      {/* Render certification options */}
+      <div>
+        <h3>Certifications</h3>
+        {selectedFilters.certifications.map((option) => (
+          <label key={option.value}>
+            <input
+              type="checkbox"
+              value={option.value}
+              checked={option.checked}
+              onChange={() =>
+                handleCheckboxChange("certifications", option.value)
+              }
+            />
+            {option.name}
+          </label>
+        ))}
+      </div>
+
+      {/* Render health label options */}
+      <div>
+        <h3>Health Labels</h3>
+        {selectedFilters.healthLabels.map((option) => (
+          <label key={option.value}>
+            <input
+              type="checkbox"
+              value={option.value}
+              checked={option.checked}
+              onChange={() =>
+                handleCheckboxChange("healthLabels", option.value)
+              }
+            />
+            {option.name}
+          </label>
+        ))}
+      </div>
+
+      {/* Render allergen options */}
+      <div>
+        <h3>Allergens</h3>
+        {selectedFilters.allergens.map((option) => (
+          <label key={option.value}>
+            <input
+              type="checkbox"
+              value={option.value}
+              checked={option.checked}
+              onChange={() => handleCheckboxChange("allergens", option.value)}
+            />
+            {option.name}
+          </label>
+        ))}
+      </div>
+
+      {/* Render brand options */}
+      <div>
+        <h3>Brand</h3>
+        {brands.map((brand) => (
+          <label key={brand}>
+            <input
+              type="radio"
+              value={brand}
+              checked={selectedFilters.brand.value === brand}
+              onChange={() => handleBrandChange(brand)}
+            />
+            {brand}
+          </label>
+        ))}
+      </div>
+
+      {/* Apply filters button */}
+      <button onClick={handleApplyFilters}>Apply Filters</button>
     </div>
   );
 };
