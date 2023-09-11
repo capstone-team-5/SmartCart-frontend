@@ -18,14 +18,10 @@ const navLinks = [
   },
   {
     title: "Shop by Category",
-    link: "/category",
+    link: "/categories",
   },
   {
     title: "My Favorites ♥️",
-    link: "/",
-  },
-  {
-    title: "Categories",
     link: "/",
   },
   {
@@ -118,14 +114,14 @@ const Navbar = ({ cartLength }) => {
             <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
               <FiSun className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
               <p className="invisible text-black font-semibold peer-hover:visible absolute">
-                Light
+                Light Mode
               </p>
             </div>
 
             <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
               <FiMoon className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
               <p className="invisible text-black font-semibold peer-hover:visible absolute">
-                Dark
+                Dark Mode
               </p>
             </div>
 
