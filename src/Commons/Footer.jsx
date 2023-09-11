@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   AiFillInstagram,
   AiFillFacebook,
@@ -9,13 +8,15 @@ import {
 import { FaTiktok } from "react-icons/fa6";
 import logo_image from "../Assets/SmrtCART.PNG";
 import { Link } from "react-router-dom";
+import MailingListComponent from "./MailingListComponent";
 
 const Footer = () => {
   return (
     <div>
-      <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <footer className="bg-gray-50 dark:bg-gray-900">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+          <MailingListComponent />
+          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
               <Link to="/" className="flex items-center">
@@ -46,17 +47,17 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className="mb-4">
-                    <Link to="/" className="hover:underline">
+                    <Link to="#" className="hover:underline">
                       Careers
                     </Link>
                   </li>
                   <li className="mb-4">
-                    <Link to="/" className="hover:underline">
+                    <Link to="#" className="hover:underline">
                       News & Blog
                     </Link>
                   </li>
                   <li className="mb-4">
-                    <Link to="/" className="hover:underline">
+                    <Link to="#" className="hover:underline">
                       Advertise with Us
                     </Link>
                   </li>
