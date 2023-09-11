@@ -1,4 +1,3 @@
-// This function will list a sidebar with extensive choices for user to filter
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -62,6 +61,7 @@ const FilterSideBarComponent = ({ applyFilters }) => {
         setIsLoading(false);
       });
   }, []);
+
   const handleCheckboxChange = (category, value) => {
     // Update the selectedFilters state when a checkbox is checked/unchecked
     const updatedFilters = { ...selectedFilters };
@@ -80,9 +80,31 @@ const FilterSideBarComponent = ({ applyFilters }) => {
     setSelectedFilters(updatedFilters);
   };
 
+  // Define the applyFilters function here, so it has access to selectedFilters
   const handleApplyFilters = () => {
+    console.log("Applying filters...");
+    console.log("selectedFilters:", selectedFilters);
+    console.log("typeof applyFilters:", typeof applyFilters);
+
     // Call the applyFilters function and pass the selectedFilters state
-    applyFilters(selectedFilters);
+    if (typeof applyFilters === "function") {
+      const appliedFilters = {
+        specialDiets: selectedFilters.specialDiets.filter(
+          (option) => option.checked
+        ),
+        certifications: selectedFilters.certifications.filter(
+          (option) => option.checked
+        ),
+        healthLabels: selectedFilters.healthLabels.filter(
+          (option) => option.checked
+        ),
+        allergens: selectedFilters.allergens.filter((option) => option.checked),
+        brand: selectedFilters.brand.value,
+      };
+      applyFilters(appliedFilters);
+    } else {
+      console.error("applyFilters is not a function");
+    }
   };
 
   return (
