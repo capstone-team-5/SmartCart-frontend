@@ -29,7 +29,7 @@ const MailingListComponent = () => {
       {subscribed ? (
         <p className="text-center text-red-600">Thank you!</p>
       ) : (
-        <section className="bg-white dark:bg-gray-900 rounded">
+        <section className="bg-gray-50 dark:bg-gray-900 rounded">
           <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
             <div className="mx-auto max-w-screen-md sm:text-center">
               <h2 className="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl dark:text-white">
@@ -51,7 +51,7 @@ const MailingListComponent = () => {
 
                     <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"></div>
                     <input
-                      className="block p-3 pl-10 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 text-black placeholder-black"
+                      className="block p-3 pl-10 w-full text-md bg-gray-50 rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 text-black placeholder-black"
                       placeholder="✉️ &nbsp; Enter your email"
                       type="email"
                       id="email"
@@ -66,13 +66,13 @@ const MailingListComponent = () => {
                     <button
                       type="submit"
                       onClick={handleSignUp}
-                      className="py-3 px-5 w-full text-sm font-semibold hover:underline text-center text-black rounded-lg border cursor-pointer bg-orange-300 border-primary-600 sm:rounded-none sm:rounded-r-lg hover:text-orange-800 focus:ring-4 focus:ring-orange-700 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-gray-800 "
+                      className="py-3 px-5 w-full text-md font-bold hover:underline text-center text-black rounded-lg border cursor-pointer bg-orange-300 border-primary-600 sm:rounded-none sm:rounded-r-lg hover:text-orange-800 focus:ring-4 focus:ring-orange-700 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-gray-800 "
                     >
                       Subscribe
                     </button>
                   </div>
                 </div>
-                <div className="mx-auto max-w-screen-sm text-sm text-left text-gray-500 newsletter-form-footer dark:text-gray-300">
+                <div className="mx-auto max-w-screen-sm text-sm text-center text-gray-500 newsletter-form-footer dark:text-gray-300">
                   We care about the protection of your data.{" "}
                   <Link
                     to="#"
