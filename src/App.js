@@ -7,7 +7,7 @@ import { useState } from "react";
 import Header from "./Commons/Header";
 import Navbar from "./Commons/Navbar";
 import Footer from "./Commons/Footer";
-import MailingListComponent from "./Commons/MailingListComponent";
+
 
 //Pages
 import AboutUs from "./Pages/AboutUs";
@@ -30,8 +30,13 @@ import SearchResults from "./Pages/SearchResults";
 import PriceComparison from "./Pages/PriceComparison";
 
 //Components
-import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
-import FilterResultsComponent from "./MVPComponents/FilterResultsComponent";
+
+// import FilterButtonComponent from "./MVPComponents/RejectedButton";
+// import FilterResultsComponent from "./MVPComponents/FilterResultsComponent";
+import MailingListComponent from "./Commons/MailingListComponent";
+import CategoryPage from "./Pages/CategoryPage";
+import FilterResults from "./Pages/FilterResults";
+import Filter from "./Pages/Filter"
 
 
 function App() {
@@ -108,12 +113,15 @@ function App() {
         <Header addToCart={handleAddToCart} />
         <Routes>
           <Route element={<Home addToCart={handleAddToCart} />} path="/" />
-          {/* <Route element={<TestComponent cart={cart} />} path='/test' /> */}
+          <Route element={<TestComponent cart={cart} />} path='/test' />
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />
           <Route element={<IndividualProduct handleAddToCart={handleAddToCart} cartLength={cartLength} />} path="/product/:id" />
-          <Route element={<FilterButtonComponent />} path="/filter" />
-          <Route element={<FilterResultsComponent />} path="/filter-results" />
+          
+          
+
+          
+
           <Route
             element={
               <Cart
