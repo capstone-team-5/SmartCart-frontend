@@ -3,7 +3,7 @@
 const DeleteButtonComponent = () => {
     return (
         <div>
-            <button>Delete</button>
+            <button onClick="DeleteButtonComponent()">Delete</button>
         </div>
     )
 }
