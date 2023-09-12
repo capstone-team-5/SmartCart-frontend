@@ -124,7 +124,7 @@ const CartComponent = ({
                         <span className="sr-only">Quantity button</span>
                         <FaMinus />
                       </button>
-                      <div className="bg-gray-50 w-12 md:w-14 border border-gray-300 text-gray-900 sm:text-sm md:text-md lg:text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                      <div className="bg-gray-50 w-12 md:w-14 border border-gray-300 text-gray-900 sm:text-sm md:text-md lg:text-lg text-center rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         {itemQuantities[item.id]}
                       </div>
                       <button
