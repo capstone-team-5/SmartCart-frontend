@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import FilterResultsComponent from "./Rejected";
+import FilterResultsComponent from "./FilterResultsComponent";
 import axios from "axios";
 
 const CategoryComponent = () => {
