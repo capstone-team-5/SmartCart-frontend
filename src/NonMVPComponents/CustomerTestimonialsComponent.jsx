@@ -101,7 +101,7 @@ const CustomerTestimonialsComponent = () => {
                       <img
                         src={testimonial.image}
                         alt={testimonial.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </div>
                     <h5 className="mb-1 text-lg font-bold">
