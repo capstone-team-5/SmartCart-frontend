@@ -11,7 +11,7 @@ const applyTheme = () => {
 };
 
 const setTheme = (theme) => {
-  if (theme === "light") {
+  if (theme === "dark") {
     localStorage.theme = "dark";
   } else {
     localStorage.theme = "light";
