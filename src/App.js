@@ -2,12 +2,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
-
 //Commons
 import Header from "./Commons/Header";
 import Navbar from "./Commons/Navbar";
 import Footer from "./Commons/Footer";
-
 
 //Pages
 import AboutUs from "./Pages/AboutUs";
@@ -28,16 +26,10 @@ import IndividualProduct from "./Pages/IndividualProduct";
 import ContactUs from "./Pages/ContactUs";
 import SearchResults from "./Pages/SearchResults";
 import PriceComparison from "./Pages/PriceComparison";
-
-//Components
-
-// import FilterButtonComponent from "./MVPComponents/RejectedButton";
-// import FilterResultsComponent from "./MVPComponents/FilterResultsComponent";
-import MailingListComponent from "./Commons/MailingListComponent";
-import CategoryPage from "./Pages/CategoryPage";
 import FilterResults from "./Pages/FilterResults";
-import Filter from "./Pages/Filter"
-
+import LandingPage from "./Pages/LandingPage";
+import CategoryPage from "./Pages/CategoryPage";
+import Filter from "./Pages/Filter";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -63,10 +55,10 @@ function App() {
         length: 1,
       });
     }
-    console.log('updatedCart:', updatedCart)
+    console.log("updatedCart:", updatedCart);
     setCart(updatedCart);
     setCartLength((previousCartLength) => previousCartLength + 1);
-    updateCartLength(updateCartLength)
+    updateCartLength(updateCartLength);
   };
 
   const [itemQuantities, setItemQuantities] = useState(
@@ -76,30 +68,30 @@ function App() {
     }, {})
   );
 
-
   const handleQuantityChange = (itemId, quantity) => {
     const updatedQuantities = { ...itemQuantities };
     updatedQuantities[itemId] = quantity;
     setItemQuantities(updatedQuantities);
-    
+
     const cartAdjustedLength = Object.values(updatedQuantities).reduce(
       (total, itemLength) => total + itemLength,
       0
     );
-    
+
     setCartLength(cartAdjustedLength);
   };
 
-
   const handleDeleteItem = (id) => {
-    if (window.confirm('Are you sure you want to delete this item?')) {
-      const updatedCart = cart.filter(item => item.id !== id);
-      const totalQuantity = updatedCart.reduce((total, item) => total + item.length, 0);
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      const updatedCart = cart.filter((item) => item.id !== id);
+      const totalQuantity = updatedCart.reduce(
+        (total, item) => total + item.length,
+        0
+      );
       setCart(updatedCart);
       setCartLength(totalQuantity);
     }
   };
-  
 
   const handleClearCart = () => {
     setCart([]);
@@ -112,16 +104,24 @@ function App() {
         <Navbar cartLength={cartLength} />
         <Header addToCart={handleAddToCart} />
         <Routes>
-          <Route element={<Home addToCart={handleAddToCart} />} path="/" />
-          <Route element={<TestComponent cart={cart} />} path='/test' />
+          <Route element={<LandingPage />} path="/" />
+          <Route element={<Home addToCart={handleAddToCart} />} path="/home" />
+          <Route element={<TestComponent cart={cart} />} path="/test" />
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />
-          <Route element={<IndividualProduct handleAddToCart={handleAddToCart} cartLength={cartLength} />} path="/product/:id" />
-          
-          
-
-          
-
+          <Route
+            element={
+              <IndividualProduct
+                handleAddToCart={handleAddToCart}
+                cartLength={cartLength}
+              />
+            }
+            path="/product/:id"
+          />
+          <Route
+            element={<FilterResults addToCart={handleAddToCart} />}
+            path="/filter-results"
+          />
           <Route
             element={
               <Cart
@@ -139,8 +139,14 @@ function App() {
           <Route element={<Login />} path="/login" />
           <Route element={<SignUp />} path="/sign-up" />
           <Route element={<User />} path="/user:id" />
-          <Route element={<SearchResults addToCart={handleAddToCart} />} path="/search-results/:query" />
-          <Route element={<PriceComparison />} path="/price-compare" />
+          <Route
+            element={<SearchResults addToCart={handleAddToCart} />}
+            path="/search-results/:query"
+          />
+          <Route
+            element={<PriceComparison cart={cart} />}
+            path="/price-compare"
+          />
           <Route element={<UserCart />} path="/user/:id/cart" />
           <Route element={<UserEdit />} path="/user/:id/edit" />
           <Route element={<Subscription />} path="/user/:id/subscription" />
@@ -149,9 +155,10 @@ function App() {
             path="/user/:id/subscription/confirmed"
           />
           <Route element={<MeetTheDevelopers />} path="/meet-the-developers" />
+          <Route element={<CategoryPage />} path="/categories" />
+          <Route element={<Filter />} path="/filter" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
-        <MailingListComponent />
         <Footer />
       </BrowserRouter>
     </div>

@@ -1,9 +1,9 @@
 import HomeComponent from "../MVPComponents/HomeComponent";
 
-const Home = () => {
+const Home = ({ addToCart }) => {
     return (
         <div>
-            <HomeComponent />
+            <HomeComponent addToCart={addToCart} />
         </div>
     )
 };

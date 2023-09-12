@@ -2,10 +2,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import CustomerTestimonialsComponent from "../NonMVPComponents/CustomerTestimonialsComponent";
+import { Link } from "react-router-dom";
 
 const API = process.env.REACT_APP_BACKEND_API;
 
-const HomeComponent = () => {
+const HomeComponent = ({addToCart}) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,12 +34,15 @@ const HomeComponent = () => {
   }
   return (
     <div>
-      <h1>LIST OF THE PRODUCTS</h1>
-      <ul>
-        {products.map((product) => {
-          return <li key={product.product_id}>{product.product_name}</li>;
-        })}
-      </ul>
+      {products.map((product) => {
+        return <div key={product.product_id}>
+          <Link to={`/product/${product.product_id}`}>
+            <img src={product.product_image} alt={product.product_name} width='200px' />
+            <p>{product.product_name}</p>
+          </Link>
+          <button onClick={() => addToCart(product)}>Add To Cart</button>
+        </div>
+      })}
       <CustomerTestimonialsComponent />
     </div>
   );
