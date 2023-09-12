@@ -7,6 +7,7 @@ import axios from 'axios';
 
 const CartComponent = ({ deleteItem, clearCart, cart, cartLength, handleQuantityChange, updateCartLength }) => {
   const [itemQuantities, setItemQuantities] = useState({});
+  const [comparison, setComparison] = useState({});
 
 
   useEffect(() => {
@@ -35,6 +36,8 @@ const CartComponent = ({ deleteItem, clearCart, cart, cartLength, handleQuantity
 
     axios.get(backendEndPoint)
       .then((response) => {
+        setComparison(response.data)
+        console.log(response.data)
         if (response.status === 200) {
         console.log('the ids have been successfully sent')
         } else {
