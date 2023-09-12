@@ -56,7 +56,6 @@ const FilterResultsComponent = ({ addToCart, selectedCategory, data }) => {
                     </h2>
                   </div>
                   <button onClick={() => addToCart(product)}>
-                    {/* diandre logic - cart is undefinned in inspect */}
                     Add To Cart
                   </button>
                 </div>
