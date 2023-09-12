@@ -10,7 +10,7 @@ import logo_image from "../Assets/SmrtCART.PNG";
 const navLinks = [
   {
     title: "Home",
-    link: "/",
+    link: "/home",
   },
   {
     title: "About Us",
