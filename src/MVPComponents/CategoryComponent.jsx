@@ -31,7 +31,7 @@ const CategoryComponent = () => {
   // Function to handle category selection
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
-    navigate(`/filter-results?category=${category}`);
+    navigate(`/filter?category=${category}`);
   };
 
   return (
@@ -59,8 +59,6 @@ const CategoryComponent = () => {
           )}
         </div>
       )}
-      {/* Render the products based on selected category */}
-      {selectedCategory && <FilterResultsComponent />}
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import FilterMenu from "./FilterMenuComponent";
+import FilterMenu from "./RejectedMenu";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
 
-const FilterButtonComponent = () => {
+const RejectedButton = () => {
   const [isFilterMenuOpen, setFilterMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -85,4 +85,4 @@ const FilterButtonComponent = () => {
   );
 };
 
-export default FilterButtonComponent;
+export default RejectedButton;

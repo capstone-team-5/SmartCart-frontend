@@ -7,7 +7,7 @@ import { useState } from "react";
 import Header from "./Commons/Header";
 import Navbar from "./Commons/Navbar";
 import Footer from "./Commons/Footer";
-import MailingListComponent from "./Commons/MailingListComponent";
+
 
 //Pages
 import AboutUs from "./Pages/AboutUs";
@@ -30,9 +30,10 @@ import SearchResults from "./Pages/SearchResults";
 import PriceComparison from "./Pages/PriceComparison";
 import FilterResults from "./Pages/FilterResults";
 import LandingPage from "./Pages/LandingPage"
+import CategoryPage from "./Pages/CategoryPage";
+import Filter from "./Pages/Filter"
 
-//Components
-import FilterButtonComponent from "./MVPComponents/FilterButtonComponent";
+
 
 
 
@@ -115,7 +116,6 @@ function App() {
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />
           <Route element={<IndividualProduct handleAddToCart={handleAddToCart} cartLength={cartLength} />} path="/product/:id" />
-          <Route element={<FilterButtonComponent />} path="/filter" />
           <Route element={<FilterResults addToCart={handleAddToCart} />} path="/filter-results" />
           <Route
             element={
@@ -144,9 +144,10 @@ function App() {
             path="/user/:id/subscription/confirmed"
           />
           <Route element={<MeetTheDevelopers />} path="/meet-the-developers" />
+          <Route element={<CategoryPage />} path="/categories" />
+          <Route element={<Filter />} path="/filter" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
-        <MailingListComponent />
         <Footer />
       </BrowserRouter>
     </div>
