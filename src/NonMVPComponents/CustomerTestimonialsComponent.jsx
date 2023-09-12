@@ -65,36 +65,36 @@ const CustomerTestimonialsComponent = () => {
       id: 4,
       name: "John Doe",
       job: "Web Developer",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec ultrices risus, ac bibendum felis. Sed ut facilisis sapien.",
+      text: "Lorem ipsum dolor sit amet, cnec ultrices risus, ac bibendum felis. Sed ut facilisis sapien.",
     },
     {
       id: 5,
       name: "John Doe",
       job: "Web Developer",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec ultrices risus, ac bibendum felis. Sed ut facilisis sapien.",
+      text: "Lorem ipsum dolor sit amet, csce nec ultrices risus, ac bibendum felis. Sed ut facilisis sapien.",
       image: "URL_TO_IMAGE",
     },
     {
       id: 6,
       name: "John Doe",
       job: "Web Developer",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec ultrices risus, ac bibendum felis. Sed ut facilisis sapien.",
+      text: "Lorem ipsum dolor sit amet, csce nec ultrices risus, ac bibendum felis. Sed ut facilisis sapien.",
       image: "URL_TO_IMAGE",
     },
     // Add more testimonials here
   ];
 
   return (
-    <div className="container my-24 mx-auto md:px-6">
+    <div className="container my-24 mx-auto md:px-6 lg:px-8 bg-orange-500">
       <section className="mb-32 text-center">
-        <h2 className="mb-12 pb-4 text-center text-3xl font-bold">
+        <h2 className="mb-4 pb-4 p-4 text-center text-3xl font-bold">
           Testimonials
         </h2>
 
         <Slider {...settings}>
           {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="mb-6 lg:mb-0">
-              <div className="relative block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-200">
+            <div key={testimonial.id} className="mb-6 lg:mb-8">
+              <div className="relative block rounded-lg mr-4 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-200">
                 <div className="p-6">
                   <div className="text-center">
                     <div className="relative inline-block rounded-full overflow-hidden w-24 h-24 shadow-md mb-2">
