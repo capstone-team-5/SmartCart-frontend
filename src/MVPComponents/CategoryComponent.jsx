@@ -59,6 +59,8 @@ const CategoryComponent = () => {
           )}
         </div>
       )}
+      {/* Render the products based on selected category */}
+      {selectedCategory && <FilterResultsComponent />}
     </div>
   );
 };
