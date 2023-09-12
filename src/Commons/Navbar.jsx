@@ -100,7 +100,7 @@ const Navbar = ({ cartLength }) => {
               )}
             </button>
 
-            <Link to="/" className="cursor-pointer">
+            <Link to="/home" className="cursor-pointer">
               <img
                 src={logo_image}
                 alt="SmartCART Logo"
