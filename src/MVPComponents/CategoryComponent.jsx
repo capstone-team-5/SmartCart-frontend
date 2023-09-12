@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import FilterResultsComponent from "./Rejected";
+import FilterResultsComponent from "./FilterResultsComponent";
 import axios from "axios";
 
 const CategoryComponent = () => {
@@ -59,6 +59,8 @@ const CategoryComponent = () => {
           )}
         </div>
       )}
+      {/* Render the products based on selected category */}
+      {selectedCategory && <FilterResultsComponent />}
     </div>
   );
 };

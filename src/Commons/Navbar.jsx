@@ -113,21 +113,21 @@ const Navbar = ({ cartLength }) => {
           <div className="flex items-center space-x-4 md:space-x-8 lg:space-x-16">
             <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
               <FiSun className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
-              <p className="invisible text-black font-semibold peer-hover:visible absolute">
+              <p className="invisible text-black text-sm font-light peer-hover:visible absolute">
                 Light Mode
               </p>
             </div>
 
             <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
               <FiMoon className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
-              <p className="invisible text-black font-semibold peer-hover:visible absolute">
+              <p className="invisible text-black text-sm font-light peer-hover:visible absolute">
                 Dark Mode
               </p>
             </div>
 
             <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
               <FaHeart className="text-orange-500 peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
-              <p className="invisible text-black font-semibold peer-hover:visible absolute ">
+              <p className="invisible text-black font-light text-sm peer-hover:visible absolute ">
                 My Favorites
               </p>
             </div>
@@ -138,7 +138,7 @@ const Navbar = ({ cartLength }) => {
             >
               <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
                 <HiOutlineShoppingCart className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
-                <p className="invisible text-black font-semibold peer-hover:visible absolute">
+                <p className="invisible text-black text-sm font-light peer-hover:visible absolute">
                   My Cart
                 </p>
 
@@ -158,7 +158,7 @@ const Navbar = ({ cartLength }) => {
                 onClick={toggleUserDropdown}
               >
                 <PiUserCircle className="text-black peer w-8 h-8 rounded-full cursor-pointer" />
-                <p className="invisible text-black font-semibold peer-hover:visible absolute">
+                <p className="invisible text-black text-sm font-light peer-hover:visible absolute">
                   My Account
                 </p>
               </div>
