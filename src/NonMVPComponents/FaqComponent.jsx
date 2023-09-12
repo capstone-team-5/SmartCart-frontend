@@ -14,8 +14,7 @@ const FaqComponent = () => {
       <div className="mt-4 flex md:justify-between md:items-start md:flex-row flex-col justify-start items-start">
         <div className=" ">
           <p className=" font-light text-base leading-6 text-gray-600 lg:w-8/12 md:w-9/12 ">
-            Here are few of the most frequently asked questions by our
-            customers.
+            Here are few of the most frequently asked questions by our customers.
           </p>
         </div>
       </div>
