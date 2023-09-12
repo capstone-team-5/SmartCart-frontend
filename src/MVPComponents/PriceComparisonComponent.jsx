@@ -57,7 +57,7 @@ const PriceComparisonComponent = ({ cart }) => {
           .filter((item) => comparison[store.store_id].hasOwnProperty(item.id))
           .reduce((total, item) => {
             const itemPrice = parseFloat(comparison[store.store_id][item.id]);
-            console.log('itemPrice:', itemPrice)
+            console.log('itemPrice1:', itemPrice)
             const itemQuantity = itemQuantities[item.id];
             console.log('itemQuantity:', itemQuantity)
               if (!isNaN(itemPrice) && !isNaN(itemQuantity)) {
