@@ -63,9 +63,9 @@ const CustomerTestimonialsComponent = () => {
     },
     {
       id: 4,
-      name: "John Doe",
-      job: "Web Developer",
-      text: "Lorem ipsum dolor sit amet, cnec ultrices risus, ac bibendum felis. Sed ut facilisis sapien.",
+      name: "Jese Leos",
+      job: "Design Lead",
+      text: "Mindblowing workflow, Aesthetically, the well designed components are beautiful.",
     },
     {
       id: 5,
