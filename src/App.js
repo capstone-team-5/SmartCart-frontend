@@ -156,7 +156,7 @@ function App() {
           />
           <Route element={<MeetTheDevelopers />} path="/meet-the-developers" />
           <Route element={<CategoryPage />} path="/categories" />
-          <Route element={<Filter />} path="/filter" />
+          <Route element={<Filter addToCart={handleAddToCart} />} path="/filter" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
         <Footer />

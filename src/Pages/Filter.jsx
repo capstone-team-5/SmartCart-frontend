@@ -3,7 +3,7 @@ import CategoryPage from "./CategoryPage";
 import FilterResultsComponent from "../MVPComponents/FilterResultsComponent";
 import axios from "axios";
 
-const Filter = () => {
+const Filter = ({addToCart}) => {
   const [selectedFilters, setSelectedFilters] = useState({});
   const [filteredData, setFilteredData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
@@ -93,7 +93,7 @@ const Filter = () => {
     <div>
       <CategoryPage applyFilters={applyFilters} />
       {Object.keys(selectedFilters).length > 0 && (
-        <FilterResultsComponent data={filteredData} />
+        <FilterResultsComponent addToCart={addToCart} data={filteredData} />
       )}
     </div>
   );
