@@ -38,9 +38,7 @@ const CartComponent = ({
   const handleSubmit = () => {
     const cartIds = cart.map((food) => food.id);
     const convertIdsToString = cartIds.join(",");
-
     const backendEndPoint = `${process.env.REACT_APP_BACKEND_API}/compare-prices?productIds=${convertIdsToString}`;
-
     axios
       .get(backendEndPoint)
       .then((response) => {
@@ -84,16 +82,16 @@ const CartComponent = ({
             </caption>
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="px-2 py-2 md:px-6 md:py-3">
                   <span className="sr-only">Image</span>
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg">
                   Product Name
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg">
                   Quantity
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg">
                   Action
                 </th>
               </tr>
@@ -104,29 +102,33 @@ const CartComponent = ({
                   key={item.id}
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                 >
-                  <td className="w-32 p-4 object-contain">
+                  <td className="p-2 md:p-0 lg:p-0 md:w-52 lg:w-52">
                     <Link to={`/product/${item.id}`}>
-                      <img src={item.image} alt={item.name} />
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="max-w-full h-auto"
+                      />
                     </Link>
                   </td>
-                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                  <td className="px-2 py-2 md:px-6 md:py-4 font-semibold text-gray-900 dark:text-white sm:text-sm md:text-md lg:text-lg">
                     {item.name}
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-2 py-2 md:px-6 md:py-4">
                     <div className="flex items-center space-x-3">
                       <button
-                        className="inline-flex items-center justify-center p-1 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                        className="inline-flex items-center justify-center p-1 sm:text-sm md:text-md lg:text-lg font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                         type="button"
                         onClick={() => handleQuantityChangeClick(item.id, -1)}
                       >
                         <span className="sr-only">Quantity button</span>
                         <FaMinus />
                       </button>
-                      <div className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                      <div className="bg-gray-50 w-12 md:w-14 border border-gray-300 text-gray-900 sm:text-sm md:text-md lg:text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         {itemQuantities[item.id]}
                       </div>
                       <button
-                        className="inline-flex items-center justify-center h-6 w-6 p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                        className="inline-flex items-center justify-center h-6 w-6 p-1 sm:text-sm md:text-md lg:text-lg font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                         type="button"
                         onClick={() => handleQuantityChangeClick(item.id, 1)}
                       >
@@ -135,9 +137,9 @@ const CartComponent = ({
                       </button>
                     </div>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-2 py-2 md:px-6 md:py-4">
                     <button
-                      className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                      className="font-medium text-red-600 dark:text-red-500 hover:underline sm:text-sm md:text-md lg:text-lg"
                       onClick={() => deleteItem(item.id)}
                     >
                       Remove
