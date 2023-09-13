@@ -31,7 +31,7 @@ const Footer = () => {
               </Link>
             </div>
             <div className="grid lg:grid-cols-3 md:grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-1">
-              <div>
+            <div className="mb-6">
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                   About Us
                 </h2>
@@ -63,7 +63,7 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-              <div>
+              <div className="mb-6">
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                   Support
                 </h2>
@@ -95,7 +95,7 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-              <div>
+              <div className="mb-6">
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                   Account
                 </h2>
