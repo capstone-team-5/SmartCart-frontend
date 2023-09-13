@@ -111,7 +111,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
 
           {/* Icons */}
           <div className="flex items-center space-x-4 md:space-x-8 lg:space-x-16">
-            <div className="relative">
+            <div className="relative -mt-12 mr-16">
               <div className="p-2 rounded-md group absolute dark:invisible transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
                 <FiSun
                   className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer rounded-full"
