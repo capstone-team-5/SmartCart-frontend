@@ -10,7 +10,7 @@ const UserComponent = () => {
             <h1 className="text-4xl"><strong>Account Settings</strong></h1>
             <br>
             </br>
-            <h2 className="text-4xl">Account Information</h2>
+            <h2 className="text-2xl">Account Information</h2>
             <br>
             </br>
             <label for="email">Email</label>
@@ -21,7 +21,7 @@ const UserComponent = () => {
             <br></br>
             <input type="text" placeholder="" />
             <br></br>
-            <h2 class="text-2xl">Personal Information</h2>
+            <h2 className="text-2xl">Personal Information</h2>
             <br></br>
             <label for="name">Name</label>
             <br></br>
