@@ -1,6 +1,7 @@
 //Dependencies
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { applyTheme, setTheme } from "./Theme";
 
 //Commons
 import Header from "./Commons/Header";
@@ -31,9 +32,25 @@ import LandingPage from "./Pages/LandingPage";
 import CategoryPage from "./Pages/CategoryPage";
 import Filter from "./Pages/Filter";
 
+// Components
+
+import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
+import FaqComponent from "./NonMVPComponents/FaqComponent";
+
 function App() {
   const [cart, setCart] = useState([]);
   const [cartLength, setCartLength] = useState(0);
+  const [appTheme, setAppTheme] = useState("dark");
+
+  useEffect(() => {
+    applyTheme();
+  }, []);
+
+  const handleThemeChange = (theme) => {
+    setTheme(theme);
+    setAppTheme(theme);
+    applyTheme();
+  };
 
   const updateCartLength = (length) => {
     setCartLength(length);
@@ -101,7 +118,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar cartLength={cartLength} />
+        <Navbar
+          cartLength={cartLength}
+          theme={appTheme}
+          handleThemeChange={handleThemeChange}
+        />
         <Header addToCart={handleAddToCart} />
         <Routes>
           <Route element={<LandingPage />} path="/" />
@@ -156,7 +177,18 @@ function App() {
           />
           <Route element={<MeetTheDevelopers />} path="/meet-the-developers" />
           <Route element={<CategoryPage />} path="/categories" />
-          <Route element={<Filter addToCart={handleAddToCart} />} path="/filter" />
+          <Route
+            element={<Filter addToCart={handleAddToCart} />}
+            path="/filter"
+          />
+          <Route
+            element={<CustomerTestimonialsComponent />}
+            path="/testimonials"
+          />
+          <Route
+            element={<FaqComponent />}
+            path="/faq"
+          />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
         <Footer />
