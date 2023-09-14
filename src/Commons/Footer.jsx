@@ -31,7 +31,7 @@ const Footer = () => {
               </Link>
             </div>
             <div className="grid lg:grid-cols-3 md:grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-1">
-            <div className="mb-6">
+              <div className="mb-6">
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                   About Us
                 </h2>
@@ -74,7 +74,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className="mb-4">
-                    <Link to="/" className="hover:underline">
+                    <Link to="/feedback" className="hover:underline">
                       Feedback
                     </Link>
                   </li>
@@ -111,8 +111,8 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className="mb-4">
-                    <Link to="#" className="hover:underline">
-                      Forgot Password
+                    <Link to="/change-password" className="hover:underline">
+                      Change Password
                     </Link>
                   </li>
                   <li className="mb-4">
