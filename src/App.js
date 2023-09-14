@@ -35,6 +35,7 @@ import Filter from "./Pages/Filter";
 // Components
 
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
+import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
 import FaqComponent from "./NonMVPComponents/FaqComponent";
 
 function App() {
@@ -185,10 +186,8 @@ function App() {
             element={<CustomerTestimonialsComponent />}
             path="/testimonials"
           />
-          <Route
-            element={<FaqComponent />}
-            path="/faq"
-          />
+          <Route element={<FaqComponent />} path="/faq" />
+          <Route element={<FeedbackComponent />} path="/feedback" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
         <Footer />
