@@ -1,6 +1,6 @@
 //This component is for the user
 import React from 'react';
-import DeleteButtonComponent from './DeleteButtonComponent.jsx';
+
 const UserComponent = () => {
     
 
@@ -22,11 +22,14 @@ const UserComponent = () => {
             <input type="text" placeholder="" />
             <br></br>
             <h2 class="text-2xl">Personal Information</h2>
-         
-        
-         
-            <DeleteButtonComponent />
-           
+            <br></br>
+            <label for="name">Name</label>
+            <br></br>
+            <input type="text" placeholder="" />
+            <br></br>
+            <label for="phone">Phone Number</label>
+            <br></br>
+            <input tpye="text" placeholder="xxx-xxx-xxxx" />
         </div>
     
     )
