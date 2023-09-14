@@ -37,6 +37,7 @@ import Filter from "./Pages/Filter";
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
 import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
 import FaqComponent from "./NonMVPComponents/FaqComponent";
+import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -188,6 +189,10 @@ function App() {
           />
           <Route element={<FaqComponent />} path="/faq" />
           <Route element={<FeedbackComponent />} path="/feedback" />
+          <Route
+            element={<ChangePasswordComponent />}
+            path="/change-password"
+          />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
         <Footer />
