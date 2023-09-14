@@ -33,6 +33,7 @@ const FilterSideBarComponent = ({ applyFilters }) => {
     allergens: [
       { name: "Gluten-Free", value: "product_is_gluten", checked: false },
       { name: "Peanut-Free", value: "product_is_peanut", checked: false },
+      { name: "Treenut-Free", value: "product_is_treenut", checked: false },
       // Add other Allergen options
     ],
     brand: {
