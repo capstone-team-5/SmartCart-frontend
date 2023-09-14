@@ -79,7 +79,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className="mb-4">
-                    <Link to="/" className="hover:underline ">
+                    <Link to="/testimonials" className="hover:underline ">
                       Testimonials
                     </Link>
                   </li>
@@ -121,7 +121,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className="mb-4">
-                    <Link to="#" className="hover:underline">
+                    <Link to="/faq" className="hover:underline">
                       FAQ
                     </Link>
                   </li>
