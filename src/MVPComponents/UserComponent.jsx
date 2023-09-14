@@ -8,8 +8,21 @@ const UserComponent = () => {
         
         <div>
             <h1 class="text-4xl"><strong>Account Settings</strong></h1>
-            <input type="text" placeholder="First Name" />
-            <input type="text" placeholder="Last Name" />
+            <br>
+            </br>
+            <h2 class="text-2xl">Account Information</h2>
+            <br>
+            </br>
+            <label for="email">Email</label>
+            <br></br>
+            <input type="text" placeholder="" />
+            <br></br>
+            <label for="password">Password</label>
+            <br></br>
+            <input type="text" placeholder="" />
+            <br></br>
+            <h2 class="text-2xl">Personal Information</h2>
+         
         
          
             <DeleteButtonComponent />
