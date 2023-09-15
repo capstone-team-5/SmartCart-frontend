@@ -35,7 +35,7 @@ const CategoryComponent = () => {
   };
 
   return (
-    <div>
+    <div className="bg-gray-50 dark:bg-gray-900"> 
       {isLoading ? (
         <p>Loading...</p>
       ) : (

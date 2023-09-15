@@ -33,6 +33,7 @@ const FilterSideBarComponent = ({ applyFilters }) => {
     allergens: [
       { name: "Gluten-Free", value: "product_is_gluten", checked: false },
       { name: "Peanut-Free", value: "product_is_peanut", checked: false },
+      { name: "Treenut-Free", value: "product_is_treenut", checked: false },
       // Add other Allergen options
     ],
     brand: {
@@ -126,7 +127,7 @@ const FilterSideBarComponent = ({ applyFilters }) => {
   };
 
   return (
-    <div className="bg-white p-4 md:p-8 md:w-1/3 shadow-lg rounded-lg">
+    <div className="p-4 md:p-8 md:w-1/3 shadow-lg rounded-lg bg-gray-50 dark:bg-gray-900">
       {/* Render filter options */}
       <div>
         <h3 className="text-lg font-semibold mb-2">Special Diets</h3>
