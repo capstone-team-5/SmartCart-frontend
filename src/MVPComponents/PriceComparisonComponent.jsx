@@ -7,12 +7,12 @@ const PriceComparisonComponent = ({ cart }) => {
   const [loading, setLoading] = useState(true);
   const [itemQuantities, setItemQuantities] = useState({});
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
-    
-    console.log('price Compare Cart:', cart)
 
-    // if (cart.length > 1) {
-    //     console.log('name:', cart[0].name)
-    // }
+  console.log("price Compare Cart:", cart);
+
+  // if (cart.length > 1) {
+  //     console.log('name:', cart[0].name)
+  // }
 
   useEffect(() => {
     axios
@@ -57,14 +57,14 @@ const PriceComparisonComponent = ({ cart }) => {
           .filter((item) => comparison[store.store_id].hasOwnProperty(item.id))
           .reduce((total, item) => {
             const itemPrice = parseFloat(comparison[store.store_id][item.id]);
-            console.log('itemPrice1:', itemPrice)
+            console.log("itemPrice1:", itemPrice);
             const itemQuantity = itemQuantities[item.id];
-            console.log('itemQuantity:', itemQuantity)
-              if (!isNaN(itemPrice) && !isNaN(itemQuantity)) {
-                console.log('total1:', typeof total)
+            console.log("itemQuantity:", itemQuantity);
+            if (!isNaN(itemPrice) && !isNaN(itemQuantity)) {
+              console.log("total1:", typeof total);
               return total + itemPrice * itemQuantity;
-              }
-              console.log('total2:', typeof total)
+            }
+            console.log("total2:", typeof total);
             return total;
           }, 0);
         newStoreTotalPrices[store.store_id] = storeTotalPrice;

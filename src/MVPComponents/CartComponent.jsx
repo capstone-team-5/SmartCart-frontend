@@ -85,13 +85,22 @@ const CartComponent = ({
                 <th scope="col" className="px-2 py-2 md:px-6 md:py-3">
                   <span className="sr-only">Image</span>
                 </th>
-                <th scope="col" className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg">
+                <th
+                  scope="col"
+                  className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg"
+                >
                   Product Name
                 </th>
-                <th scope="col" className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg">
+                <th
+                  scope="col"
+                  className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg"
+                >
                   Quantity
                 </th>
-                <th scope="col" className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg">
+                <th
+                  scope="col"
+                  className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg"
+                >
                   Action
                 </th>
               </tr>
