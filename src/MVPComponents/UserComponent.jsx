@@ -1,7 +1,7 @@
 //This component is for the user
 import React from 'react';
 import { useState } from 'react';
-
+import DeleteButtonComponent from './DeleteButtonComponent';
 const UserComponent = () => {
     const [formData, setFormData] = useState({
         email:'', 
@@ -16,8 +16,7 @@ const UserComponent = () => {
             [name]: value
         })
     };
-   
-   
+
         
     return (     
         
@@ -59,6 +58,8 @@ const UserComponent = () => {
             name="phone" 
             value={formData.phone} 
             onChange={handleTextChange} />
+            <br />
+            <DeleteButtonComponent />
         </div>
     
     )
