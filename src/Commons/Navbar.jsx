@@ -61,7 +61,7 @@ const userDropDown = [
   },
 ];
 
-const Navbar = ({ cartLength }) => {
+const Navbar = ({ cartLength, theme, handleThemeChange }) => {
   const [open, setOpen] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
 
@@ -109,20 +109,25 @@ const Navbar = ({ cartLength }) => {
             </Link>
           </div>
 
-          {/* Emojis */}
+          {/* Icons */}
           <div className="flex items-center space-x-4 md:space-x-8 lg:space-x-16">
-            <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
-              <FiSun className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
-              <p className="invisible text-black text-sm font-light peer-hover:visible absolute">
-                Light Mode
-              </p>
-            </div>
-
-            <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
-              <FiMoon className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
-              <p className="invisible text-black text-sm font-light peer-hover:visible absolute">
-                Dark Mode
-              </p>
+            <div className="relative -mt-12 mr-16">
+              <div className="p-2 rounded-md group absolute transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
+                {theme === "light" ? (
+                  <FiSun
+                    className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer rounded-full dark:text-white"
+                    onClick={() => handleThemeChange("dark")}
+                  />
+                ) : (
+                  <FiMoon
+                    className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer"
+                    onClick={() => handleThemeChange("light")}
+                  />
+                )}
+                <p className="invisible text-black text-sm font-light peer-hover:visible absolute">
+                  {theme === "light" ? "Light Mode" : "Dark Mode"}
+                </p>
+              </div>
             </div>
 
             <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
