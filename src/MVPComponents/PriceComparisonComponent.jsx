@@ -21,7 +21,6 @@ const PriceComparisonComponent = ({ cart }) => {
   useEffect(() => {
     const cartIds = cart.map((food) => food.id);
     const convertIdsToString = cartIds.join(",");
-    console.log('convert:', convertIdsToString)
     const backendEndPoint = `${process.env.REACT_APP_BACKEND_API}/compare-prices?productIds=${convertIdsToString}`;
 
     axios
