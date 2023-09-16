@@ -1,16 +1,13 @@
-// This function will list all categories
-
 import { useState, useEffect } from "react";
 import FilterResultsComponent from "./FilterResultsComponent";
 import axios from "axios";
 
 const CategoryComponent = () => {
-  const [selectedCategory, setSelectedCategory] = useState(""); // to choose which category user selects
-  const [categories, setCategories] = useState([]); // to fetch categories from backend
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch all categories from backend
     axios
       .get(`${process.env.REACT_APP_BACKEND_API}/products/categories`)
       .then((response) => {
@@ -23,22 +20,10 @@ const CategoryComponent = () => {
       });
   }, []);
 
-  // Function to handle category selection
-
   const handleCategoryClick = (category) => {
     setIsLoading(true);
-    axios
-      .get(
-        `${process.env.REACT_APP_BACKEND_API}/products/categories/${category}`
-      ) // API request to fetch products
-      .then((response) => {
-        setSelectedCategory(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setIsLoading(false);
-      });
+    setSelectedCategory(category);
+    setIsLoading(false);
   };
 
   return (
@@ -55,7 +40,7 @@ const CategoryComponent = () => {
                     key={categoryObj.product_category}
                     className="text-center text-gray-500 dark:text-gray-400"
                   >
-                    <div className="bg-green-50 rounded-full w-44 h-40 flex items-center justify-center shadow-green-500/50 shadow-md">
+                    <div className="bg-green-50 rounded w-44 h-40 flex items-center justify-center shadow-green-500/50 shadow-md">
                       <button
                         className="mt-2 font-bold text-black-100 text-center text-3xl tracking-wide p-0 w-full"
                         onClick={() =>
