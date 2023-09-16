@@ -3,7 +3,7 @@ import FilterSideBarComponent from "../MVPComponents/FilterSideBarComponent";
 
 const CategoryPage = ({ applyFilters }) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-2 lg:gap-4 border border-indigo-500">
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-2 lg:gap-4">
       <div className="lg:col-span-1">
         <FilterSideBarComponent applyFilters={applyFilters} />
       </div>
