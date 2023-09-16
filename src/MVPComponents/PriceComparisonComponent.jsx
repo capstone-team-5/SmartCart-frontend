@@ -1,11 +1,15 @@
+//This Component Will Compare Your Entire Cart Across Stores
+
 import React, { useState, useEffect } from "react";
+import FadeLoader from "react-spinners/FadeLoader";
 import axios from "axios";
 
 const PriceComparisonComponent = ({ cart }) => {
   const [comparison, setComparison] = useState({});
   const [stores, setStores] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState("Finding Shops In Your Area");
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
+  const [showDrumRoll, setShowDrumRoll] = useState(false);
 
   useEffect(() => {
     axios
@@ -27,7 +31,19 @@ const PriceComparisonComponent = ({ cart }) => {
       .get(backendEndPoint)
       .then((response) => {
         setComparison(response.data.stores);
-        setLoading(false);
+
+        setTimeout(() => {
+          setLoading('Calculating Your Savings');
+        }, 3000);
+
+        setTimeout(() => {
+          setLoading('Drum Roll !!!!');
+          setShowDrumRoll(true);
+        }, 6000);
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 9000);
       })
       .catch((error) => {
         console.error("Error fetching comparison data:", error);
@@ -41,10 +57,10 @@ const PriceComparisonComponent = ({ cart }) => {
     stores.forEach((store) => {
       if (comparison.hasOwnProperty(store.store_id)) {
         const storeTotalPrice = cart.reduce((total, item) => {
-          const itemPrice = parseFloat(comparison[store.store_id][item.id]);
+          const itemPrice = Number(comparison[store.store_id][item.id]);
           const itemQuantity = item.length || 0;
 
-          if (!isNaN(itemPrice) && !isNaN(itemQuantity)) {
+          if (Number(itemPrice) && Number(itemQuantity)) {
             return total + itemPrice * itemQuantity;
           }
 
@@ -58,7 +74,6 @@ const PriceComparisonComponent = ({ cart }) => {
     setStoreTotalPrices(newStoreTotalPrices);
   }, [cart, comparison, stores]);
 
-  // Sort stores by the lowest cart price
   const sortedStores = stores
     .filter((store) => comparison.hasOwnProperty(store.store_id))
     .sort((a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]);
@@ -103,8 +118,24 @@ const PriceComparisonComponent = ({ cart }) => {
 
   return (
     <div>
-      {loading ? (
-        <p>Finding stores. Saving you money.</p>
+      {loading !== false ? (
+        <div>
+          <p>{loading}</p>
+          {showDrumRoll ? (
+            <img
+              src="https://media0.giphy.com/media/YqWtkg0PflgGdwjrtc/giphy.gif?cid=6c09b952ugqlrnk8zvzvjkowgp2y63wn21s6466w6khi0ggr&ep=v1_stickers_related&rid=giphy.gif&ct=s"
+              alt="Drum Roll"
+            />
+          ) : (
+            <FadeLoader
+              color={'#de8613'}
+              loading={true}
+              size={10000}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          )}
+        </div>
       ) : (
         <div>
           {sortedStores.map((store) => renderStoreInfo(store))}
@@ -115,5 +146,4 @@ const PriceComparisonComponent = ({ cart }) => {
 };
 
 export default PriceComparisonComponent;
-
 
