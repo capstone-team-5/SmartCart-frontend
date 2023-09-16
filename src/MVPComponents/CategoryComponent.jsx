@@ -1,5 +1,5 @@
 // This function will list all categories
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import FilterResultsComponent from "./FilterResultsComponent";
 import { Link } from "react-scroll";
 import axios from "axios";
@@ -41,46 +41,48 @@ const CategoryComponent = () => {
 
   return (
     <section className="bg-white dark:bg-gray-900">
+      <div id="categorySection">
       {isLoading ? (
         <p>Loading...</p>
       ) : (
         <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
-          <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
-            <div className="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {categories.length > 0 ? (
-                categories.map((categoryObj) => (
-                  <div
-                    key={categoryObj.product_category}
-                    className="text-center text-gray-500 dark:text-gray-400"
-                  >
-                    <div className="bg-green-50 rounded w-44 h-40 flex items-center justify-center shadow-green-500/50 shadow-md">
-                      <Link
-                        activeClass="active"
-                        className="mt-2 font-bold text-black-100 text-center text-3xl tracking-wide p-0 w-full cursor-pointer"
-                        to="filterResults" // ID of the target section
-                        spy={true}
-                        smooth={true}
-                        offset={-70} // Adjust the offset as needed
-                        duration={500}
-                        onClick={() =>
-                          handleCategoryClick(categoryObj.product_category)
-                        }
-                      >
-                        {categoryObj.product_category}
-                      </Link>
-                    </div>
+          <div className="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {categories.length > 0 ? (
+              categories.map((categoryObj) => (
+                <div
+                  key={categoryObj.product_category}
+                  className="text-center text-gray-500 dark:text-gray-400"
+                >
+                  <div className="bg-green-50 rounded w-44 h-40 flex items-center justify-center shadow-green-500/50 shadow-md">
+                    <Link
+                      activeClass="active"
+                      className="mt-2 font-bold text-black-100 text-center text-3xl tracking-wide p-0 w-full cursor-pointer"
+                      to="filterResults"
+                      spy={true}
+                      smooth={true}
+                      offset={-60} // Adjust the offset as needed
+                      duration={500}
+                      onClick={() =>
+                        handleCategoryClick(categoryObj.product_category)
+                      }
+                    >
+                      {categoryObj.product_category}
+                    </Link>
                   </div>
-                ))
-              ) : (
-                <p>No Categories Found!</p>
-              )}
-            </div>
+                </div>
+              ))
+            ) : (
+              <p>No Categories Found!</p>
+            )}
           </div>
         </div>
       )}
-      {selectedCategory && (
-        <FilterResultsComponent selectedCategory={selectedCategory} />
-      )}
+      </div>
+      <div id="filterResults">
+        {selectedCategory && (
+          <FilterResultsComponent selectedCategory={selectedCategory} />
+        )}
+      </div>
     </section>
   );
 };
