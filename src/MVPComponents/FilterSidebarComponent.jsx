@@ -127,7 +127,8 @@ const FilterSideBarComponent = ({ applyFilters }) => {
   };
 
   return (
-    <div className="p-4 md:p-8 md:w-1/3 shadow-lg rounded-lg bg-gray-50 dark:bg-gray-900">
+    <div className="shadow-lg rounded-lg bg-red-50 dark:bg-gray-900">
+      {/* p-4 md:p-8 md:w-1/3 */}
       {/* Render filter options */}
       <div>
         <h3 className="text-lg font-semibold mb-2">Special Diets</h3>
