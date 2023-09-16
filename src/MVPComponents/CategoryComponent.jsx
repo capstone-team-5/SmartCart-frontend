@@ -1,14 +1,15 @@
+// This function will list all categories
 import { useState, useEffect } from "react";
 import FilterResultsComponent from "./FilterResultsComponent";
 import axios from "axios";
 
 const CategoryComponent = () => {
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(""); // to choose which category user selects
+  const [categories, setCategories] = useState([]); // to fetch categories from backend
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios
+    axios // Fetch all categories from backend
       .get(`${process.env.REACT_APP_BACKEND_API}/products/categories`)
       .then((response) => {
         setCategories(response.data);
@@ -19,11 +20,21 @@ const CategoryComponent = () => {
         setIsLoading(false);
       });
   }, []);
-
+  // Function to handle category selection
   const handleCategoryClick = (category) => {
     setIsLoading(true);
-    setSelectedCategory(category);
-    setIsLoading(false);
+    axios
+      .get(
+        `${process.env.REACT_APP_BACKEND_API}/products/categories/${category}`
+      ) // API request to fetch products depend on category selection
+      .then((response) => {
+        setSelectedCategory(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -59,7 +70,6 @@ const CategoryComponent = () => {
           </div>
         </div>
       )}
-
       {selectedCategory && (
         <FilterResultsComponent selectedCategory={selectedCategory} />
       )}
