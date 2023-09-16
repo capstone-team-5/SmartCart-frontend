@@ -47,7 +47,11 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className="mb-4">
-                    <Link to="https://github.com/capstone-team-5/SmartCart-frontend" className="hover:underline">
+                    <Link
+                      to="https://github.com/capstone-team-5/SmartCart-frontend"
+                      target="_blank"
+                      className="hover:underline"
+                    >
                       Contribute
                     </Link>
                   </li>
