@@ -1,6 +1,7 @@
 // This function will list all categories
 import { useState, useEffect } from "react";
 import FilterResultsComponent from "./FilterResultsComponent";
+import { Link } from "react-scroll";
 import axios from "axios";
 
 const CategoryComponent = () => {
@@ -20,6 +21,7 @@ const CategoryComponent = () => {
         setIsLoading(false);
       });
   }, []);
+
   // Function to handle category selection
   const handleCategoryClick = (category) => {
     setIsLoading(true);
@@ -52,14 +54,20 @@ const CategoryComponent = () => {
                     className="text-center text-gray-500 dark:text-gray-400"
                   >
                     <div className="bg-green-50 rounded w-44 h-40 flex items-center justify-center shadow-green-500/50 shadow-md">
-                      <button
-                        className="mt-2 font-bold text-black-100 text-center text-3xl tracking-wide p-0 w-full"
+                      <Link
+                        activeClass="active"
+                        className="mt-2 font-bold text-black-100 text-center text-3xl tracking-wide p-0 w-full cursor-pointer"
+                        to="filterResults" // ID of the target section
+                        spy={true}
+                        smooth={true}
+                        offset={-70} // Adjust the offset as needed
+                        duration={500}
                         onClick={() =>
                           handleCategoryClick(categoryObj.product_category)
                         }
                       >
                         {categoryObj.product_category}
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 ))
