@@ -1,14 +1,21 @@
+import React, { useState } from "react";
 import CategoryComponent from "../MVPComponents/CategoryComponent";
 import FilterSideBarComponent from "../MVPComponents/FilterSideBarComponent";
 
-const CategoryPage = ({ applyFilters }) => {
+const CategoryPage = () => {
+  const [appliedFilters, setAppliedFilters] = useState(null);
+
+  const handleApplyFilters = (filters) => {
+    setAppliedFilters(filters);
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-2 lg:gap-4">
       <div className="lg:col-span-1">
-        <FilterSideBarComponent applyFilters={applyFilters} />
+        <FilterSideBarComponent applyFiltersCallback={handleApplyFilters} />
       </div>
       <div className="lg:col-span-3">
-        <CategoryComponent />
+        <CategoryComponent appliedFilters={appliedFilters} />
       </div>
     </div>
   );
