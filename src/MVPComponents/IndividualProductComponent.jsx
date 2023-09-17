@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
+import { FaHeart } from "react-icons/fa";
 import axios from "axios";
 
 const IndividualProductComponent = ({ handleAddToCart }) => {
@@ -49,7 +50,8 @@ const IndividualProductComponent = ({ handleAddToCart }) => {
                 className="text-gray-300 dark:text-gray-600"
               />
             </div>
-
+            <button><FaHeart className="text-orange-500 peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" /></button>
+            
             <div className="flex justify-end mt-4">
               <button
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

@@ -46,7 +46,8 @@ const SearchComponent = () => {
     setClickedProduct(false);
   };
 
-  const handleProductClicked = () => {
+  const handleProductClicked = (productName) => {
+    setSearchQuery(productName)
     setSearchQuery("");
     setClickedProduct(true);
   };
@@ -63,10 +64,14 @@ const SearchComponent = () => {
         <div>
           {products.map((product) => (
             <div key={product.product_id}>
+
               <Link
                 to={`/search-results/${searchQuery}`}
                 onClick={handleProductClicked}
               >
+
+              <Link to={`/search-results/${product.product_name}`} onClick={() => handleProductClicked(product.product_name)}>
+
                 <strong>
                   <h3>{product.product_name}</h3>
                 </strong>
