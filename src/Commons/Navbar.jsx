@@ -10,7 +10,7 @@ import logo_image from "../Assets/SmrtCART.PNG";
 const navLinks = [
   {
     title: "Home",
-    link: "/",
+    link: "/home",
   },
   {
     title: "About Us",
@@ -22,7 +22,7 @@ const navLinks = [
   },
   {
     title: "My Favorites ♥️",
-    link: "/",
+    link: "/favorites",
   },
   {
     title: "Contact Us",
@@ -45,7 +45,7 @@ const navLinks = [
 const userDropDown = [
   {
     title: "Sign In",
-    link: "/signin",
+    link: "/sign-up",
   },
   {
     title: "Create Account",
@@ -53,7 +53,7 @@ const userDropDown = [
   },
   {
     title: "Profile Settings",
-    link: "/profile",
+    link: "/user/:id",
   },
   {
     title: "Sign Out",
@@ -131,10 +131,12 @@ const Navbar = ({ cartLength, theme, handleThemeChange }) => {
             </div>
 
             <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
-              <FaHeart className="text-orange-500 peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
-              <p className="invisible text-black font-light text-sm peer-hover:visible absolute ">
-                My Favorites
-              </p>
+              <Link to='/favorites'>
+               <FaHeart className="text-orange-500 peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
+                <p className="invisible text-black font-light text-sm peer-hover:visible absolute ">
+                  My Favorites
+                 </p>
+              </Link>
             </div>
 
             <Link

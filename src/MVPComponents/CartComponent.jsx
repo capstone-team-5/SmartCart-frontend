@@ -26,14 +26,31 @@ const CartComponent = ({
     setItemQuantities(quantities);
   }, [cart]);
 
+
   const handleQuantityChangeClick = (itemId, change) => {
     const updatedQuantities = { ...itemQuantities };
     if (updatedQuantities[itemId] + change >= 1) {
       updatedQuantities[itemId] += change;
-      handleQuantityChange(itemId, updatedQuantities[itemId]);
       setItemQuantities(updatedQuantities);
+  
+      const updatedCart = [...cart];
+      const itemIndex = updatedCart.findIndex((item) => item.id === itemId);
+  
+      if (itemIndex !== -1) {
+        updatedCart[itemIndex].length = updatedQuantities[itemId];
+      } else {
+        const newItem = {
+          id: itemId,
+          length: updatedQuantities[itemId],
+        };
+        updatedCart.push(newItem);
+      }
+  
+      handleQuantityChange(updatedCart);
     }
   };
+  
+  
 
   const handleSubmit = () => {
     const cartIds = cart.map((food) => food.id);
@@ -53,6 +70,7 @@ const CartComponent = ({
       .catch((error) => console.log("error:", error));
   };
 
+
   useEffect(() => {
     const cartTotal = Object.values(itemQuantities).reduce(
       (total, quantity) => total + quantity,
@@ -66,7 +84,7 @@ const CartComponent = ({
       {cart.length === 0 ? (
         <p className="mx-auto mb-8 max-w-2xl font-light text-black md:mb-12 sm:text-xl dark:text-gray-400">
           Your cart is empty. Click Cart to Add Items
-          <Link to="/">
+          <Link to="/home">
             <img
               src="https://i.pinimg.com/originals/66/22/ab/6622ab37c6db6ac166dfec760a2f2939.gif"
               alt="Add Items to Cart"
@@ -165,7 +183,6 @@ const CartComponent = ({
             Clear Cart
           </button>
           <Link to="/price-compare">
-            {/* Will add loading to price compare */}
             <button
               className="font-medium bg-blue-200 p-4 m-4 text-red-600 dark:text-red-500 hover:underline"
               onClick={handleSubmit}
@@ -177,6 +194,10 @@ const CartComponent = ({
       )}
     </div>
   );
+
+  
+
+  
 };
 
 export default CartComponent;

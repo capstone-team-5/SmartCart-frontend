@@ -1,4 +1,4 @@
-//This function will allow users to search for grocery items
+// This function will allow users to search for grocery items
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -46,7 +46,8 @@ const SearchComponent = () => {
     setClickedProduct(false);
   };
 
-  const handleProductClicked = () => {
+  const handleProductClicked = (productName) => {
+    setSearchQuery(productName);
     setSearchQuery("");
     setClickedProduct(true);
   };
@@ -64,8 +65,8 @@ const SearchComponent = () => {
           {products.map((product) => (
             <div key={product.product_id}>
               <Link
-                to={`/search-results/${searchQuery}`}
-                onClick={handleProductClicked}
+                to={`/search-results/${product.product_name}`}
+                onClick={() => handleProductClicked(product.product_name)}
               >
                 <strong>
                   <h3>{product.product_name}</h3>
