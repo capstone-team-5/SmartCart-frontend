@@ -26,14 +26,31 @@ const CartComponent = ({
     setItemQuantities(quantities);
   }, [cart]);
 
+
   const handleQuantityChangeClick = (itemId, change) => {
     const updatedQuantities = { ...itemQuantities };
     if (updatedQuantities[itemId] + change >= 1) {
       updatedQuantities[itemId] += change;
-      handleQuantityChange(itemId, updatedQuantities[itemId]);
       setItemQuantities(updatedQuantities);
+  
+      const updatedCart = [...cart];
+      const itemIndex = updatedCart.findIndex((item) => item.id === itemId);
+  
+      if (itemIndex !== -1) {
+        updatedCart[itemIndex].length = updatedQuantities[itemId];
+      } else {
+        const newItem = {
+          id: itemId,
+          length: updatedQuantities[itemId],
+        };
+        updatedCart.push(newItem);
+      }
+  
+      handleQuantityChange(updatedCart);
     }
   };
+  
+  
 
   const handleSubmit = () => {
     const cartIds = cart.map((food) => food.id);

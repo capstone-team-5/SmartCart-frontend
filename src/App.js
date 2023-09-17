@@ -31,6 +31,7 @@ import FilterResults from "./Pages/FilterResults";
 import LandingPage from "./Pages/LandingPage";
 import CategoryPage from "./Pages/CategoryPage";
 import Filter from "./Pages/Filter";
+import Favorites from "./Pages/Favorites";
 
 // Components
 
@@ -162,7 +163,7 @@ function App() {
           <Route element={<Location />} path="/location" />
           <Route element={<Login />} path="/login" />
           <Route element={<SignUp />} path="/sign-up" />
-          <Route element={<User />} path="/user:id" />
+          <Route element={<User />} path="/user/:id" />
           <Route
             element={<SearchResults addToCart={handleAddToCart} />}
             path="/search-results/:query"
@@ -172,6 +173,8 @@ function App() {
             path="/price-compare"
           />
           <Route element={<UserCart />} path="/user/:id/cart" />
+          <Route element={<Favorites />} path='/favorites' /> 
+          {/* the route for favorites with become '/user/favorite/:id' */}
           <Route element={<UserEdit />} path="/user/:id/edit" />
           <Route element={<Subscription />} path="/user/:id/subscription" />
           <Route
