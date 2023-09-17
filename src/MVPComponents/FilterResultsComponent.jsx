@@ -1,13 +1,51 @@
+import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll";
+import axios from "axios";
+import FilterSideBarComponent from "./FilterSideBarComponent";
 
-const FilterResultsComponent = ({ selectedCategory }) => {
+const FilterResultsComponent = ({ selectedCategory, appliedFilters }) => {
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedCat, setSelectedCat] = useState([]);
+
+  const applyFiltersCallback = (filters) => {
+    setSelectedCat([]);
+    applyFilters(filters);
+  };
+
+  const applyFilters = (filters) => {
+    // Fetch filtered products based on applied filters
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_API}/products/filter`, {
+        params: filters,
+      })
+      .then((response) => {
+        setFilteredProducts(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  useEffect(() => {
+    if (appliedFilters) {
+      applyFilters(appliedFilters);
+    }
+  }, [appliedFilters]);
+
   if (!Array.isArray(selectedCategory) || selectedCategory.length === 0) {
-    return <p> No Products in this category </p>;
+    return (
+      <div>
+        <FilterSideBarComponent applyFiltersCallback={applyFiltersCallback} />
+        <p>No Products in this category</p>
+      </div>
+    );
   }
 
   return (
     <div>
-      <h3 className="p-6 text-center text-xl">Shopping in {selectedCategory[0].product_category} category</h3>
+      <h3 className="p-6 text-center text-xl">
+        Shopping in {selectedCategory[0].product_category} category
+      </h3>
       <Link
         to="categorySection"
         spy={true}
