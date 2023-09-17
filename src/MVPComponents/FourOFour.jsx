@@ -1,6 +1,7 @@
 //  This function is the error page, will take user back to the home page
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const FourOFourComponent = () => {
   const navigate = useNavigate();
@@ -20,8 +21,15 @@ const FourOFourComponent = () => {
             className="inline-flex text-black dark:text-white bg-blue-300 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4"
             aria-label="Go Back"
           >
-            Back to Homepage
+            Back
           </button>
+
+          <Link to='/home'>
+          <button className="inline-flex text-black dark:text-white bg-blue-300 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4"
+            aria-label="Home">
+            Return To Home Page
+            </button>
+          </Link>
         </div>
       </div>
     </section>
