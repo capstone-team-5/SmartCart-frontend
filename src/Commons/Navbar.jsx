@@ -5,7 +5,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { PiUserCircle } from "react-icons/pi";
 import { GiHamburgerMenu } from "react-icons/gi";
-import logo_image from "../Assets/SmrtCART.PNG";
+import logo_image from "../Assets/SmrtCARTLogo3.png";
 
 const navLinks = [
   {

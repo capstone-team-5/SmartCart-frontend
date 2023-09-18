@@ -6,7 +6,7 @@ import {
   AiFillLinkedin,
 } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa6";
-import logo_image from "../Assets/SmrtCART.PNG";
+import logo_image from "../Assets/SmrtCARTLogo3.png";
 import { Link } from "react-router-dom";
 import MailingListComponent from "./MailingListComponent";
 
@@ -26,7 +26,7 @@ const Footer = () => {
                   className="object-contain w-40 h-40 mr-3 lg:w-56 lg:h-56 rounded-full ml-4 md:ml-0"
                 />
                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                  Smart CART
+                  {/* Smart CART */}
                 </span>
               </Link>
             </div>
