@@ -98,7 +98,29 @@ const FilterSideBarComponent = ({ applyFiltersCallback }) => {
   };
 
   const handleApplyFilters = () => {
-    applyFiltersCallback(filters);
+    // Create an object to hold the filter values
+    const appliedFilters = {
+      specialDiets: filters.specialDiets.reduce((acc, item) => {
+        acc[item.value] = item.checked;
+        return acc;
+      }, {}),
+      certifications: filters.certifications.reduce((acc, item) => {
+        acc[item.value] = item.checked;
+        return acc;
+      }, {}),
+      healthLabels: filters.healthLabels.reduce((acc, item) => {
+        acc[item.value] = item.checked;
+        return acc;
+      }, {}),
+      allergens: filters.allergens.reduce((acc, item) => {
+        acc[item.value] = item.checked;
+        return acc;
+      }, {}),
+      brand: { value: filters.brand.value }, // Update brand filter
+      category: { value: filters.category.value }, // Update category filter
+    };
+
+    applyFiltersCallback(appliedFilters);
   };
 
   const clearFilters = () => {
