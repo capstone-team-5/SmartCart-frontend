@@ -4,7 +4,7 @@ import FilterResultsComponent from "./FilterResultsComponent";
 import { Link } from "react-scroll";
 import axios from "axios";
 
-const CategoryComponent = ({ appliedFilters }) => {
+const CategoryComponent = ({ appliedFilters, applyFiltersCallback }) => {
   const [selectedCategory, setSelectedCategory] = useState(""); // to choose which category user selects
   const [categories, setCategories] = useState([]); // to fetch categories from backend
   const [isLoading, setIsLoading] = useState(true);
@@ -37,6 +37,8 @@ const CategoryComponent = ({ appliedFilters }) => {
         console.error(error);
         setIsLoading(false);
       });
+    // Clear filters when selecting a category
+    applyFiltersCallback({});
   };
 
   return (
