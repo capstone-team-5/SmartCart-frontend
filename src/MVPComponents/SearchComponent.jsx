@@ -1,5 +1,4 @@
-//This function will allow users to search for grocery items
-
+// This function will allow users to search for grocery items
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -16,18 +15,22 @@ const SearchComponent = () => {
         .get(`${process.env.REACT_APP_BACKEND_API}/products`)
         .then((response) => {
           const items = response.data;
-          const productNamesSet = new Set(); 
+          const productNamesSet = new Set();
           const foundItems = items.filter((item) => {
             const lowerCaseProductName = item.product_name.toLowerCase();
             if (!productNamesSet.has(lowerCaseProductName)) {
               productNamesSet.add(lowerCaseProductName);
               return (
                 lowerCaseProductName.includes(searchQuery.toLowerCase()) ||
-                item.product_category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                item.product_brand.toLowerCase().includes(searchQuery.toLowerCase())
+                item.product_category
+                  .toLowerCase()
+                  .includes(searchQuery.toLowerCase()) ||
+                item.product_brand
+                  .toLowerCase()
+                  .includes(searchQuery.toLowerCase())
               );
             }
-            return false; 
+            return false;
           });
           setProducts(foundItems);
         })
@@ -44,7 +47,7 @@ const SearchComponent = () => {
   };
 
   const handleProductClicked = (productName) => {
-    setSearchQuery(productName)
+    setSearchQuery(productName);
     setSearchQuery("");
     setClickedProduct(true);
   };
@@ -61,7 +64,10 @@ const SearchComponent = () => {
         <div>
           {products.map((product) => (
             <div key={product.product_id}>
-              <Link to={`/search-results/${product.product_name}`} onClick={() => handleProductClicked(product.product_name)}>
+              <Link
+                to={`/search-results/${product.product_name}`}
+                onClick={() => handleProductClicked(product.product_name)}
+              >
                 <strong>
                   <h3>{product.product_name}</h3>
                 </strong>
@@ -70,11 +76,14 @@ const SearchComponent = () => {
           ))}
         </div>
       ) : (
-        <div>{searchQuery && !clickedProduct ? "This product does not exist." : null}</div>
+        <div>
+          {searchQuery && !clickedProduct
+            ? "This product does not exist."
+            : null}
+        </div>
       )}
     </div>
   );
 };
 
 export default SearchComponent;
-

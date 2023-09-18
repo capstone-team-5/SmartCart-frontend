@@ -33,11 +33,11 @@ const PriceComparisonComponent = ({ cart }) => {
         setComparison(response.data.stores);
 
         setTimeout(() => {
-          setLoading('Calculating Your Savings');
+          setLoading("Calculating Your Savings");
         }, 3000);
 
         setTimeout(() => {
-          setLoading('Drum Roll !!!!');
+          setLoading("Drum Roll !!!!");
           setShowDrumRoll(true);
         }, 6000);
 
@@ -76,7 +76,9 @@ const PriceComparisonComponent = ({ cart }) => {
 
   const sortedStores = stores
     .filter((store) => comparison.hasOwnProperty(store.store_id))
-    .sort((a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]);
+    .sort(
+      (a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
+    );
 
   const renderStoreInfo = (store) => {
     const storeItems = cart.filter((item) =>
@@ -85,7 +87,11 @@ const PriceComparisonComponent = ({ cart }) => {
 
     return (
       <div key={store.store_id}>
-        <img src={store.store_image} alt={`${store.store_name}`} width="200px" />
+        <img
+          src={store.store_image}
+          alt={`${store.store_name}`}
+          width="200px"
+        />
         <h3>Store Name: {store.store_name}</h3>
         <p>Address: {store.store_address}</p>
         <p>City: {store.store_city}</p>
@@ -95,7 +101,7 @@ const PriceComparisonComponent = ({ cart }) => {
         <ul>
           {storeItems.map((item) => (
             <li key={item.id}>
-              <img src={item.image} alt={item.name} width='100px' />
+              <img src={item.image} alt={item.name} width="100px" />
               Item: {item.name}
               <br />
               Price per item: ${comparison[store.store_id][item.id]}
@@ -104,12 +110,13 @@ const PriceComparisonComponent = ({ cart }) => {
               <br />
               Total cost for this item: $
               {(
-                comparison[store.store_id][item.id] *
-                (item.length || 0)
+                comparison[store.store_id][item.id] * (item.length || 0)
               ).toFixed(2)}
             </li>
           ))}
-          <li>Total Cart Price: ${storeTotalPrices[store.store_id]?.toFixed(2)}</li>
+          <li>
+            Total Cart Price: ${storeTotalPrices[store.store_id]?.toFixed(2)}
+          </li>
           <br /> <br />
         </ul>
       </div>
@@ -128,7 +135,7 @@ const PriceComparisonComponent = ({ cart }) => {
             />
           ) : (
             <FadeLoader
-              color={'#de8613'}
+              color={"#de8613"}
               loading={true}
               size={10000}
               aria-label="Loading Spinner"
@@ -137,13 +144,10 @@ const PriceComparisonComponent = ({ cart }) => {
           )}
         </div>
       ) : (
-        <div>
-          {sortedStores.map((store) => renderStoreInfo(store))}
-        </div>
+        <div>{sortedStores.map((store) => renderStoreInfo(store))}</div>
       )}
     </div>
   );
 };
 
 export default PriceComparisonComponent;
-
