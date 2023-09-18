@@ -1,9 +1,9 @@
-//This component will talk about Diandre
-
+// This component will talk about Diandre
+import { Link } from "react-router-dom";
 const DiandreComponent = () => {
-    return (
-        <div>
-             <p>
+  return (
+    <div>
+      <p>
         Hi my name is Diandre and I am 29 years. I am a first generation
         American from Brooklyn, NY. I am currently a student at Pursuit learning
         various programming languages and frameworks such as JavaScript, React,
@@ -32,19 +32,19 @@ const DiandreComponent = () => {
         job as a software engineer.
         <br /> <br />
         Check out my{" "}
-        <a href="https://www.linkedin.com/in/diandre-miller/" target="_blank">
+        <Link to="https://www.linkedin.com/in/diandre-miller/" target="_blank">
           {" "}
           LinkedIn
-        </a>{" "}
+        </Link>{" "}
         and{" "}
-        <a href="https://github.com/DiandreMiller" target="_blank">
+        <Link to="https://github.com/DiandreMiller" target="_blank">
           {" "}
           GitHub{" "}
-        </a>{" "}
-        to see what I’ve been working on.
+        </Link>{" "}
+        to see what I've been working on.
       </p>
-        </div>
-    )
+    </div>
+  );
 };
 
 export default DiandreComponent;

@@ -34,7 +34,7 @@ const navLinks = [
   },
   {
     title: "Feedback",
-    link: "/",
+    link: "/feedback",
   },
   {
     title: "Review A Store",
@@ -61,9 +61,10 @@ const userDropDown = [
   },
 ];
 
-const Navbar = ({ cartLength, theme, handleThemeChange }) => {
+const Navbar = ({ cartLength, theme, handleThemeChange}) => {
   const [open, setOpen] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
+
 
   const handleMenu = () => {
     setOpen((prev) => !prev);
