@@ -131,11 +131,11 @@ const Navbar = ({ cartLength, theme, handleThemeChange }) => {
             </div>
 
             <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
-              <Link to='/favorites'>
-               <FaHeart className="text-orange-500 peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
+              <Link to="/favorites">
+                <FaHeart className="text-orange-500 peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
                 <p className="invisible text-black font-light text-sm peer-hover:visible absolute ">
                   My Favorites
-                 </p>
+                </p>
               </Link>
             </div>
 
