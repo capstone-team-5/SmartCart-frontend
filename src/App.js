@@ -42,8 +42,7 @@ import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent"
 function App() {
   const [cart, setCart] = useState([]);
   const [cartLength, setCartLength] = useState(() => {
-    const storedCartLength = parseInt(window.localStorage.getItem('Testing_Cart_Length'));
-    console.log('is it working:', storedCartLength)
+  const storedCartLength = parseInt(window.localStorage.getItem('Testing_Cart_Length'));
     return isNaN(storedCartLength) ? 0 : storedCartLength;
   });
   const [appTheme, setAppTheme] = useState("dark");
@@ -56,7 +55,6 @@ function App() {
 
   useEffect(() => {
     window.localStorage.setItem('Testing_Cart_Length', cartLength.toString());
-    console.log("Updated cart length in local storage:", cartLength);
   }, [cartLength]);
 
 // This useEffect retrieves the cart length from local storage when the component mounts
@@ -65,21 +63,15 @@ useEffect(() => {
 
   const storedCartLength = parseInt(window.localStorage.getItem('Testing_Cart_Length'));
   if (!isNaN(storedCartLength)) {
-    console.log("Retrieved cart length from local storage:", storedCartLength);
     setCartLength(storedCartLength);
-  } else {
-    console.log("Cart length not found in local storage.");
-  }
+  } 
   setLoading(false);
 }, []);
 
 
 useEffect(() => {
   window.localStorage.setItem('Testing_Cart_Length', cartLength.toString());
-  console.log("Updated cart length in local storage:", cartLength);
 }, [cartLength]);
-
-
 
 
   const handleThemeChange = (theme) => {
@@ -233,86 +225,6 @@ useEffect(() => {
       )}
     </BrowserRouter>
   </div>
-    
-    // <div className="App">
-    //   <BrowserRouter>
-    //     <Navbar
-    //       cartLength={cartLength}
-    //       theme={appTheme}
-    //       handleThemeChange={handleThemeChange}
-    //       updateCartLength={setCartLength}
-    //     />
-    //     <Header addToCart={handleAddToCart} />
-    //     <Routes>
-    //       <Route element={<LandingPage />} path="/" />
-    //       <Route element={<Home addToCart={handleAddToCart} />} path="/home" />
-    //       <Route element={<TestComponent updateCartLength={setCartLength} cartLength={cartLength} cart={cart} addToCart={handleAddToCart} />} path="/test" />
-    //       <Route element={<AboutUs />} path="/about-us" />
-    //       <Route element={<ContactUs />} path="/contact-us" />
-    //       <Route
-    //         element={
-    //           <IndividualProduct
-    //             handleAddToCart={handleAddToCart}
-    //             cartLength={cartLength}
-    //           />
-    //         }
-    //         path="/product/:id"
-    //       />
-    //       <Route
-    //         element={
-    //           <Cart
-    //             deleteItem={handleDeleteItem}
-    //             clearCart={handleClearCart}
-    //             cart={cart}
-    //             cartLength={cartLength}
-    //             updateCartLength={updateCartLength}
-    //             handleQuantityChange={handleQuantityChange}
-    //           />
-    //         }
-    //         path="/cart"
-    //       />
-    //       <Route element={<Location />} path="/location" />
-    //       <Route element={<Login />} path="/login" />
-    //       <Route element={<SignUp />} path="/sign-up" />
-    //       <Route element={<User />} path="/user/:id" />
-    //       <Route
-    //         element={<SearchResults addToCart={handleAddToCart} />}
-    //         path="/search-results/:query"
-    //       />
-    //       <Route
-    //         element={<PriceComparison cart={cart} />}
-    //         path="/price-compare"
-    //       />
-    //       <Route element={<UserCart />} path="/user/:id/cart" />
-    //       <Route element={<Favorites />} path='/favorites' /> 
-    //       {/* the route for favorites with become '/user/favorite/:id' */}
-    //       <Route element={<UserEdit />} path="/user/:id/edit" />
-    //       <Route element={<Subscription />} path="/user/:id/subscription" />
-    //       <Route
-    //         element={<ConfirmSubscription />}
-    //         path="/user/:id/subscription/confirmed"
-    //       />
-    //       <Route element={<MeetTheDevelopers />} path="/meet-the-developers" />
-    //       <Route element={<CategoryPage />} path="/categories" />
-    //       <Route
-    //         element={<CustomerTestimonialsComponent />}
-    //         path="/testimonials"
-    //       />
-    //       <Route element={<FaqComponent />} path="/faq" />
-    //       <Route element={<FeedbackComponent />} path="/feedback" />
-    //       <Route
-    //         element={<ChangePasswordComponent />}
-    //         path="/change-password"
-    //       />
-    //       <Route
-    //         element={<ForgotPasswordComponent />}
-    //         path="/forgot-password"
-    //       />
-    //       <Route element={<FourOFour />} path="/*" />
-    //     </Routes>
-    //     <Footer />
-    //   </BrowserRouter>
-    // </div>
   );
 }
 
