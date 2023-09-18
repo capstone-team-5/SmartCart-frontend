@@ -40,7 +40,11 @@ import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent"
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
 
 function App() {
-  const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(() => {
+    const storedCartData = JSON.parse(window.localStorage.getItem('Testing_Cart'));
+    return Array.isArray(storedCartData) ? storedCartData : [];
+  });
+  
   const [cartLength, setCartLength] = useState(() => {
   const storedCartLength = parseInt(window.localStorage.getItem('Testing_Cart_Length'));
     return isNaN(storedCartLength) ? 0 : storedCartLength;
@@ -48,6 +52,7 @@ function App() {
   const [appTheme, setAppTheme] = useState("dark");
   const [loading, setLoading] = useState(true);
   
+
 
   useEffect(() => {
     applyTheme();
@@ -57,7 +62,7 @@ function App() {
     window.localStorage.setItem('Testing_Cart_Length', cartLength.toString());
   }, [cartLength]);
 
-// This useEffect retrieves the cart length from local storage when the component mounts
+
 useEffect(() => {
   applyTheme();
 
@@ -99,9 +104,11 @@ useEffect(() => {
         id: food.product_id,
         length: 1,
       });
+      
     }
     console.log("updatedCart:", updatedCart);
     setCart(updatedCart);
+    window.localStorage.setItem('Testing_Cart', JSON.stringify(updatedCart))
     setCartLength((previousCartLength) => previousCartLength + 1);
     updateCartLength(updateCartLength);
   };
@@ -134,6 +141,7 @@ useEffect(() => {
         0
       );
       setCart(updatedCart);
+      window.localStorage.setItem('Testing_Cart', JSON.stringify(updatedCart));
       setCartLength(totalQuantity);
     }
   };
@@ -141,6 +149,7 @@ useEffect(() => {
   const handleClearCart = () => {
     setCart([]);
     setCartLength(0);
+    window.localStorage.removeItem('Testing_Cart');
   };
 
   return (
