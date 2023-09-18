@@ -15,7 +15,10 @@ const CategoryPage = () => {
         <FilterSideBarComponent applyFiltersCallback={handleApplyFilters} />
       </div>
       <div className="lg:col-span-3">
-        <CategoryComponent appliedFilters={appliedFilters} />
+        <CategoryComponent
+          appliedFilters={appliedFilters}
+          applyFiltersCallback={handleApplyFilters}
+        />
       </div>
     </div>
   );
