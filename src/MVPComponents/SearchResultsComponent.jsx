@@ -5,10 +5,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const SearchResultsComponent = ({addToCart}) => {
+const SearchResultsComponent = ({ addToCart }) => {
   const [filteredResults, setFilteredResults] = useState([]);
-    const { query } = useParams(); 
-    
+  const { query } = useParams();
 
   useEffect(() => {
     if (query) {
@@ -19,7 +18,9 @@ const SearchResultsComponent = ({addToCart}) => {
           const foundItems = items.filter(
             (item) =>
               item.product_name.toLowerCase().includes(query.toLowerCase()) ||
-              item.product_category.toLowerCase().includes(query.toLowerCase()) ||
+              item.product_category
+                .toLowerCase()
+                .includes(query.toLowerCase()) ||
               item.product_brand.toLowerCase().includes(query.toLowerCase())
           );
           setFilteredResults(foundItems);
@@ -36,14 +37,17 @@ const SearchResultsComponent = ({addToCart}) => {
       <ul>
         {filteredResults.map((product) => (
           <li key={product.product_id}>
-                <div>
-                    <Link to={`/product/${product.product_id}`}>
-                        <img src={product.product_image} alt={product.product_name} width='200px' />
-                        <p>{product.product_name}</p>
-                    </Link>
-                    <p>{product.product_description}</p>
-                    <button onClick={() => addToCart(product)}>Add To Cart</button>
-                    
+            <div>
+              <Link to={`/product/${product.product_id}`}>
+                <img
+                  src={product.product_image}
+                  alt={product.product_name}
+                  width="200px"
+                />
+                <p>{product.product_name}</p>
+              </Link>
+              <p>{product.product_description}</p>
+              <button onClick={() => addToCart(product)}>Add To Cart</button>
             </div>
           </li>
         ))}
@@ -53,4 +57,3 @@ const SearchResultsComponent = ({addToCart}) => {
 };
 
 export default SearchResultsComponent;
-
