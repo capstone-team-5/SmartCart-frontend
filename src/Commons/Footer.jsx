@@ -7,13 +7,14 @@ import {
 } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa6";
 import logo_image from "../Assets/SmrtCARTLogo3.png";
+import logo from "../Assets/SmrtCARTLogo4.png"
 import { Link } from "react-router-dom";
 import MailingListComponent from "./MailingListComponent";
 import { useParams } from "react-router-dom";
 
 const {id} = useParams
 
-const Footer = () => {
+const Footer = ({ appTheme }) => {
   return (
     <div>
       <footer className="bg-gray-50 dark:bg-gray-900">
@@ -21,16 +22,24 @@ const Footer = () => {
           <MailingListComponent />
           <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <div className="md:flex md:justify-between">
-            <div className="mb-6 md:mb-0">
-              <Link to="/home" className="flex items-center">
+          <div className="mb-6 md:mb-0">
+            <Link to="/home" className="flex items-center">
+              {appTheme === 'light' ? (
                 <img
                   src={logo_image}
                   alt="SmartCART Logo"
                   className="object-contain w-40 h-40 mr-3 lg:w-56 lg:h-56 rounded-full ml-4 md:ml-0"
-                />
-    
-              </Link>
+                 />
+                ) : (
+               <img
+                 src={logo}
+                  alt="SmartCART Logo"
+                  className="object-contain w-40 h-40 mr-3 lg:w-56 lg:h-56 rounded-full ml-4 md:ml-0"
+                 />
+              )}
+             </Link>
             </div>
+            
             <div className="grid lg:grid-cols-3 md:grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-1">
               <div className="mb-6">
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
