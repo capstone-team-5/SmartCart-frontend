@@ -85,44 +85,51 @@ const CustomerTestimonialsComponent = () => {
   ];
 
   return (
-    <div className="container my-24 mx-auto md:px-6 lg:px-8 bg-orange-500">
+    <div className="container my-24 mx-auto md:px-6 lg:px-8 bg-gray-300 dark:bg-gray-900">
       <section className="mb-32 text-center">
-        <h2 className="mb-4 pb-4 p-4 text-center text-3xl font-bold">
+        <h2 className="mb-4 pb-4 p-4 text-center text-3xl font-bold dark:text-white">
           Testimonials
         </h2>
-
         <Slider {...settings}>
           {testimonials.map((testimonial) => (
             <div key={testimonial.id} className="mb-6 lg:mb-8">
               <div className="relative block rounded-lg mr-4 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-200">
                 <div className="p-6">
                   <div className="text-center">
-                    <div className="relative inline-block rounded-full overflow-hidden w-24 h-24 shadow-md mb-2">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-full h-full object-contain"
-                      />
+                    <div className="flex items-center flex-wrap">
+                      {" "}
+                      {/* Change to flex-wrap */}
+                      <div className="relative inline-block rounded-full overflow-hidden w-24 h-24 shadow-md mb-2">
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <div className="flex flex-col justify-center ml-2 sm:ml-4 md:ml-6 lg:ml-8">
+                        {" "}
+                        {/* Adjust spacing */}
+                        <h5 className="mb-1 text-lg font-bold">
+                          {testimonial.name}
+                        </h5>
+                        <h6 className="mb-1 font-medium text-primary dark:text-primary-400">
+                          {testimonial.job}
+                        </h6>
+                        <div className="mb-2">
+                          {Array.from({ length: 5 }).map((_, index) => (
+                            <span
+                              key={index}
+                              role="img"
+                              aria-label="heart"
+                              className="text-red-500 text-2xl"
+                            >
+                              ❤️
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                    <h5 className="mb-1 text-lg font-bold">
-                      {testimonial.name}
-                    </h5>
-                    <h6 className="mb-1 font-medium text-primary dark:text-primary-400">
-                      {testimonial.job}
-                    </h6>
-                    <div className="mb-2">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <span
-                          key={index}
-                          role="img"
-                          aria-label="heart"
-                          className="text-red-500 text-2xl"
-                        >
-                          ❤️
-                        </span>
-                      ))}
-                    </div>
-                    <p>{testimonial.text}</p>
+                    <p className="overflow-hidden h-16">{testimonial.text}</p>
                   </div>
                 </div>
               </div>

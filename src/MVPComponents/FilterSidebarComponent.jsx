@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const FilterSideBarComponent = ({ applyFilters }) => {
-  const initialFilters = {
+const FilterSideBarComponent = ({ applyFiltersCallback }) => {
+  const [originalData, setOriginalData] = useState([]);
+  const [brands, setBrands] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [filters, setFilters] = useState({
     specialDiets: [
       { name: "Vegan", value: "product_is_vegan", checked: false },
       { name: "Vegetarian", value: "product_is_vegetarian", checked: false },
       // Add other Special Diets options
     ],
+
     certifications: [
       {
         name: "USDA Organic",
@@ -33,6 +38,7 @@ const FilterSideBarComponent = ({ applyFilters }) => {
     allergens: [
       { name: "Gluten-Free", value: "product_is_gluten", checked: false },
       { name: "Peanut-Free", value: "product_is_peanut", checked: false },
+      { name: "Treenut-Free", value: "product_is_treenut", checked: false },
       // Add other Allergen options
     ],
     brand: {
@@ -43,18 +49,15 @@ const FilterSideBarComponent = ({ applyFilters }) => {
       name: "Categories",
       value: "", // Storing the category user has selected
     },
-  };
+  });
 
-  const [selectedFilters, setSelectedFilters] = useState(initialFilters);
-  const [brands, setBrands] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
+  // Fetch all products from backend and extract only unique brands
   useEffect(() => {
-    // Fetch all products from backend and extract only unique brands
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_API}/products`)
-      .then((response) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACKEND_API}/products`
+        );
         const uniqueBrands = [
           ...new Set(response.data.map((item) => item.product_brand)),
         ];
@@ -63,83 +66,98 @@ const FilterSideBarComponent = ({ applyFilters }) => {
         ];
         setBrands(uniqueBrands);
         setCategories(uniqueCategories);
+        setOriginalData(response.data);
         setIsLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error(error);
         setIsLoading(false);
-      });
+      }
+    };
+    fetchData();
   }, []);
 
-  const handleCheckboxChange = (category, value) => {
-    // Update the selectedFilters state when a checkbox is checked/unchecked
-    const updatedFilters = { ...selectedFilters };
-    const selectedCategory = updatedFilters[category];
-    const selectedOption = selectedCategory.find(
-      (option) => option.value === value
-    );
-    selectedOption.checked = !selectedOption.checked;
-    setSelectedFilters(updatedFilters);
+  const handleCheckboxChange = (category, index) => {
+    const updatedFilters = { ...filters };
+    updatedFilters[category][index].checked =
+      !updatedFilters[category][index].checked;
+    setFilters(updatedFilters);
   };
 
   const handleBrandChange = (brand) => {
-    // Update the selected brand in the selectedFilters state
-    const updatedFilters = { ...selectedFilters };
+    // Update the selected brand in the filters state
+    const updatedFilters = { ...filters };
     updatedFilters.brand.value = brand;
-    setSelectedFilters(updatedFilters);
+    setFilters(updatedFilters);
   };
 
   const handleCategoryChange = (category) => {
-    // Update the selected category in the selectedFilters state
-    const updatedFilters = { ...selectedFilters };
+    // Update the selected category in the filters state
+    const updatedFilters = { ...filters };
     updatedFilters.category.value = category;
-    setSelectedFilters(updatedFilters);
+    setFilters(updatedFilters);
   };
 
-  // Define the applyFilters function here, so it has access to selectedFilters
   const handleApplyFilters = () => {
-    // Call the applyFilters function and pass the selectedFilters state
-    if (typeof applyFilters === "function") {
-      const appliedFilters = {
-        specialDiets: selectedFilters.specialDiets.filter(
-          (option) => option.checked
-        ),
-        certifications: selectedFilters.certifications.filter(
-          (option) => option.checked
-        ),
-        healthLabels: selectedFilters.healthLabels.filter(
-          (option) => option.checked
-        ),
-        allergens: selectedFilters.allergens.filter((option) => option.checked),
-        brand: selectedFilters.brand.value,
-        category: selectedFilters.category.value,
-      };
-      applyFilters(appliedFilters);
-    } else {
-      console.error("applyFilters is not a function");
-    }
+    // Create an object to hold the filter values
+    const appliedFilters = {
+      specialDiets: filters.specialDiets.reduce((acc, item) => {
+        acc[item.value] = item.checked;
+        return acc;
+      }, {}),
+      certifications: filters.certifications.reduce((acc, item) => {
+        acc[item.value] = item.checked;
+        return acc;
+      }, {}),
+      healthLabels: filters.healthLabels.reduce((acc, item) => {
+        acc[item.value] = item.checked;
+        return acc;
+      }, {}),
+      allergens: filters.allergens.reduce((acc, item) => {
+        acc[item.value] = item.checked;
+        return acc;
+      }, {}),
+      brand: { value: filters.brand.value }, // Update brand filter
+      category: { value: filters.category.value }, // Update category filter
+    };
+
+    applyFiltersCallback(appliedFilters);
   };
 
   const clearFilters = () => {
-    // resets the selectedFilters array
-    setSelectedFilters(initialFilters);
+    const resetFilters = {
+      specialDiets: filters.specialDiets.map((item) => ({
+        ...item,
+        checked: false,
+      })),
+      certifications: filters.certifications.map((item) => ({
+        ...item,
+        checked: false,
+      })),
+      healthLabels: filters.healthLabels.map((item) => ({
+        ...item,
+        checked: false,
+      })),
+      allergens: filters.allergens.map((item) => ({ ...item, checked: false })),
+      brand: { ...filters.brand, value: "" },
+      category: { ...filters.category, value: "" },
+    };
+    setFilters(resetFilters);
   };
 
   return (
-    <div className="bg-white p-4 md:p-8 md:w-1/3 shadow-lg rounded-lg">
+    <div className="shadow-lg p-4 md:p-8 rounded-lg bg-red-50 dark:bg-gray-900">
+      <h2 className="text-lg font-bold mb-2">Filter Options</h2>
       {/* Render filter options */}
       <div>
         <h3 className="text-lg font-semibold mb-2">Special Diets</h3>
-        {selectedFilters.specialDiets.map((option) => (
-          <label key={option.value} className="block mb-2">
+        {filters.specialDiets.map((option, index) => (
+          <label key={index} className="block mb-2">
             <input
               type="checkbox"
               value={option.value}
               checked={option.checked}
               className="mr-2"
-              onChange={() =>
-                handleCheckboxChange("specialDiets", option.value)
-              }
+              onChange={() => handleCheckboxChange("specialDiets", index)}
             />
             {option.name}
           </label>
@@ -149,16 +167,14 @@ const FilterSideBarComponent = ({ applyFilters }) => {
       {/* Render certification options */}
       <div>
         <h3 className="text-lg font-semibold mb-2">Certifications</h3>
-        {selectedFilters.certifications.map((option) => (
-          <label key={option.value} className="block mb-2">
+        {filters.certifications.map((option, index) => (
+          <label key={index} className="block mb-2">
             <input
               type="checkbox"
               value={option.value}
               checked={option.checked}
               className="mr-2"
-              onChange={() =>
-                handleCheckboxChange("certifications", option.value)
-              }
+              onChange={() => handleCheckboxChange("certifications", index)}
             />
             {option.name}
           </label>
@@ -168,16 +184,14 @@ const FilterSideBarComponent = ({ applyFilters }) => {
       {/* Render health label options */}
       <div>
         <h3 className="text-lg font-semibold mb-2">Health Labels</h3>
-        {selectedFilters.healthLabels.map((option) => (
-          <label key={option.value} className="block mb-2">
+        {filters.healthLabels.map((option, index) => (
+          <label key={index} className="block mb-2">
             <input
               type="checkbox"
               value={option.value}
               checked={option.checked}
               className="mr-2"
-              onChange={() =>
-                handleCheckboxChange("healthLabels", option.value)
-              }
+              onChange={() => handleCheckboxChange("healthLabels", index)}
             />
             {option.name}
           </label>
@@ -187,14 +201,14 @@ const FilterSideBarComponent = ({ applyFilters }) => {
       {/* Render allergen options */}
       <div>
         <h3 className="text-lg font-semibold mb-2">Allergens</h3>
-        {selectedFilters.allergens.map((option) => (
-          <label key={option.value} className="block mb-2">
+        {filters.allergens.map((option, index) => (
+          <label key={index} className="block mb-2">
             <input
               type="checkbox"
               value={option.value}
               checked={option.checked}
               className="mr-2"
-              onChange={() => handleCheckboxChange("allergens", option.value)}
+              onChange={() => handleCheckboxChange("allergens", index)}
             />
             {option.name}
           </label>
@@ -209,7 +223,7 @@ const FilterSideBarComponent = ({ applyFilters }) => {
             <input
               type="radio"
               value={brand}
-              checked={selectedFilters.brand.value === brand}
+              checked={filters.brand.value === brand}
               className="mr-2"
               onChange={() => handleBrandChange(brand)}
             />
@@ -226,7 +240,7 @@ const FilterSideBarComponent = ({ applyFilters }) => {
             <input
               type="radio"
               value={category}
-              checked={selectedFilters.category.value === category}
+              checked={filters.category.value === category}
               className="mr-2"
               onChange={() => handleCategoryChange(category)}
             />

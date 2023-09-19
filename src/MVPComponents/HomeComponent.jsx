@@ -33,7 +33,7 @@ const HomeComponent = ({ addToCart }) => {
     return <p>Error: {error}</p>;
   }
   return (
-    <div>
+    <div className="bg-gray-50 dark:bg-gray-900">
       {products.map((product) => {
         return (
           <div key={product.product_id}>
