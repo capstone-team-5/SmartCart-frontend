@@ -59,6 +59,8 @@ const UserComponent = () => {
             value={formData.phone} 
             onChange={handleTextChange} />
             <br />
+            
+
             <DeleteButtonComponent />
         </div>
     
