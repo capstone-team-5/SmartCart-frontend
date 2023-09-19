@@ -147,9 +147,12 @@ useEffect(() => {
   };
 
   const handleClearCart = () => {
-    setCart([]);
-    setCartLength(0);
-    window.localStorage.removeItem('Testing_Cart');
+    if (window.confirm("This Will Delete Your Entire Cart. This Action CANNOT Be Undone!")) {
+      setCart([]);
+      setCartLength(0);
+      window.localStorage.removeItem('Testing_Cart');
+    }
+    
   };
 
   return (
