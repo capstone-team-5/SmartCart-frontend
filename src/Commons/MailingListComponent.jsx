@@ -16,6 +16,12 @@ const MailingListComponent = () => {
     } else {
       setSubscribed(true);
       setErrorMessage("");
+      // Hide the "Thank you!" message after 5 seconds
+      setTimeout(() => {
+        setSubscribed(false);
+      }, 2000);
+      // Clear the email input after subscribing
+      setEmail("");
     }
   }
 
@@ -27,7 +33,7 @@ const MailingListComponent = () => {
   return (
     <div>
       {subscribed ? (
-        <p className="text-center text-red-600">Thank you!</p>
+        <h3 className="text-center text-red-600">Thank you for Subscribing!</h3>
       ) : (
         <section className="bg-gray-50 dark:bg-gray-900 rounded">
           <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
