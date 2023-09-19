@@ -232,7 +232,7 @@ useEffect(() => {
             <Route element={<ForgotPasswordComponent />} path="/forgot-password" />
             <Route element={<FourOFour />} path="/*" />
           </Routes>
-          <Footer />
+          <Footer appTheme={appTheme} />
         </>
       )}
     </BrowserRouter>
