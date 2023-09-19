@@ -5,7 +5,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { PiUserCircle } from "react-icons/pi";
 import { GiHamburgerMenu } from "react-icons/gi";
-import logo_image from "../Assets/SmrtCART.PNG";
+import logo_image from "../Assets/SmrtCARTLogo3.png";
 
 const navLinks = [
   {
@@ -34,7 +34,7 @@ const navLinks = [
   },
   {
     title: "Feedback",
-    link: "/",
+    link: "/feedback",
   },
   {
     title: "Review A Store",
@@ -61,9 +61,10 @@ const userDropDown = [
   },
 ];
 
-const Navbar = ({ cartLength, theme, handleThemeChange }) => {
+const Navbar = ({ cartLength, theme, handleThemeChange}) => {
   const [open, setOpen] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
+
 
   const handleMenu = () => {
     setOpen((prev) => !prev);

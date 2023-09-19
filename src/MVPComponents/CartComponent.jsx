@@ -13,7 +13,9 @@ const CartComponent = ({
   cartLength,
   handleQuantityChange,
   updateCartLength,
+
 }) => {
+
   const [itemQuantities, setItemQuantities] = useState({});
   const [comparison, setComparison] = useState({});
 
@@ -26,16 +28,15 @@ const CartComponent = ({
     setItemQuantities(quantities);
   }, [cart]);
 
-
   const handleQuantityChangeClick = (itemId, change) => {
     const updatedQuantities = { ...itemQuantities };
     if (updatedQuantities[itemId] + change >= 1) {
       updatedQuantities[itemId] += change;
       setItemQuantities(updatedQuantities);
-  
+
       const updatedCart = [...cart];
       const itemIndex = updatedCart.findIndex((item) => item.id === itemId);
-  
+
       if (itemIndex !== -1) {
         updatedCart[itemIndex].length = updatedQuantities[itemId];
       } else {
@@ -45,12 +46,12 @@ const CartComponent = ({
         };
         updatedCart.push(newItem);
       }
-  
+
       handleQuantityChange(updatedCart);
+
+      localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
     }
   };
-  
-  
 
   const handleSubmit = () => {
     const cartIds = cart.map((food) => food.id);
@@ -70,13 +71,14 @@ const CartComponent = ({
       .catch((error) => console.log("error:", error));
   };
 
-
   useEffect(() => {
     const cartTotal = Object.values(itemQuantities).reduce(
       (total, quantity) => total + quantity,
       0
     );
     updateCartLength(cartTotal);
+
+    localStorage.setItem("Testing_Cart_Quantities", JSON.stringify(itemQuantities));
   }, [itemQuantities, cartLength, updateCartLength]);
 
   return (

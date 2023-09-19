@@ -41,7 +41,11 @@ const DiandreComponent = () => {
           {" "}
           GitHub{" "}
         </Link>{" "}
+<<<<<<< HEAD
         to see what I’ve been working on.
+=======
+        to see what I've been working on.
+>>>>>>> 42dce289f73f60dc748aef540e5100e465d60685
       </p>
     </div>
   );
