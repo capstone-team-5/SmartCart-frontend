@@ -13,14 +13,15 @@ const DeleteButtonComponent = () => {
         // Code to handle the delete action goes here
        const confirmed = window.confirm("Are you you want to delete this user profile?")
        if(confirmed) {
-        axios.delete(`${process.env.REACT_APP_BACKEND_API}/users/${id}`)
-            .then((response) => {
-                console.log(response.data);
-                navigate(`/users`);
+        axios.delete(`${process.env.REACT_APP_BACKEND_API}/shopper/${id}`)
+            .then(() => {
+                alert("User Profile Deleted");
+                navigate(`/shopper`);
             }
             )
-            .catch((error) => {
-                console.error(error);
+            .catch(() => {
+                alert("User Profile Not Deleted")
+               
             }
             );
 
