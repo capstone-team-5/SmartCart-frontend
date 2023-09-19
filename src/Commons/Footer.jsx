@@ -19,7 +19,7 @@ const Footer = () => {
           <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
-              <Link to="/" className="flex items-center">
+              <Link to="/home" className="flex items-center">
                 <img
                   src={logo_image}
                   alt="SmartCART Logo"

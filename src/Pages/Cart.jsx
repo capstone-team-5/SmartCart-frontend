@@ -1,6 +1,6 @@
 import CartComponent from "../MVPComponents/CartComponent"
 
-const Cart = ({ deleteItem, clearCart, cart, cartLength, handleQuantityChange, updateCartLength}) => {
+const Cart = ({ deleteItem, clearCart, cart, cartLength, handleQuantityChange, updateCartLength }) => {
     return (
         <div>
             <CartComponent deleteItem={deleteItem}
