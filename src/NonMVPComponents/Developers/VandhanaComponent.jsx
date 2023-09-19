@@ -39,7 +39,7 @@ const VandhanaComponent = () => {
           {" "}
           GitHub{" "}
         </Link>{" "}
-        to see what I've been working on.
+        to see what I've been working on. to see what I've been working on.
       </p>
     </div>
   );
