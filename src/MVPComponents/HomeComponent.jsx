@@ -46,24 +46,42 @@ const HomeComponent = ({ addToCart }) => {
   };
 
   return (
-    <div className="dark:bg-gray-900">
+    <div className="bg-red-100 dark:bg-gray-900">
+      <h1> Fresh Produce</h1>
+      <div class="p-5 md:p-10">
+        <div class="columns-1 gap-5 sm:columns-2 lg:columns-3 xl:columns-4">
+          {products.map((product, index) => {
+            return (
+              <div
+                key={product.product_id}
+                className={index === 0 ? "" : "mt-5"}
+              >
+                <Link to={`/product/${product.product_id}`}>
+                  <img src={product.product_image} alt={product.product_name} />
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <h3>Trending</h3>
       <div
         id="custom-controls-gallery"
-        className="relative w-full"
+        className="relative"
         data-carousel="slide"
       >
-        <div className="relative h-96 overflow-hidden rounded-lg">
+        <div className="relative h-96 overflow-hidden dark:bg-gray-900 rounded-lg">
           <Slider {...settings}>
             {products.map((product, index) => (
               <div
                 key={product.product_id}
-                className="duration-700 ease-in-out"
+                className="duration-700 ease-in-out dark:bg-gray-900"
                 data-carousel-item
               >
                 <img
                   src={product.product_image}
                   alt={product.product_name}
-                  className="max-w-full h-96 object-contain"
+                  className="w-full h-96 object-contain dark:bg-gray-900 border border-spacing-4 border-blue-500 "
                 />
               </div>
             ))}
