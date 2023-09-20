@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll";
 
 const FilterResultsComponent = ({ selectedCategory, appliedFilters }) => {
+  console.log("Selected category:", selectedCategory);
   console.log("appliedFilters:", appliedFilters);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -33,6 +34,7 @@ const FilterResultsComponent = ({ selectedCategory, appliedFilters }) => {
                 "Product category value:",
                 selectedCategory[0]?.product_category
               );
+              console.log("Filter value:", appliedFilters.specialDiets);
               console.log("Filter:", appliedFilters.specialDiets);
               console.log("Product category value:", product[filterCategory]);
               console.log("Filter value:", filterValues);
