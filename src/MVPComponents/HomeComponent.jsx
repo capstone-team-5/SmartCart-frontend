@@ -42,7 +42,7 @@ const HomeComponent = ({ addToCart }) => {
     autoplay: true,
     speed: 1000,
     autoplaySpeed: 3000,
-    arrows: true,
+    arrows: false,
   };
 
   return (
@@ -81,12 +81,13 @@ const HomeComponent = ({ addToCart }) => {
                 <img
                   src={product.product_image}
                   alt={product.product_name}
-                  className="w-full h-96 object-contain dark:bg-gray-900 border border-spacing-4 border-blue-500 "
+                  className="w-full h-full object-contain"
                 />
               </div>
             ))}
           </Slider>
         </div>
+
         <div className="flex justify-center items-center pt-4">
           <button
             type="button"
