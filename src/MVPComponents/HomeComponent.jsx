@@ -46,7 +46,7 @@ const HomeComponent = ({ addToCart }) => {
   };
 
   return (
-    <div className="bg-red-200 dark:bg-gray-900">
+    <div className="bg-red-100 dark:bg-gray-900">
       <h1> Fresh Produce</h1>
       <div class="p-5 md:p-10">
         <div class="columns-1 gap-5 sm:columns-2 lg:columns-3 xl:columns-4">
