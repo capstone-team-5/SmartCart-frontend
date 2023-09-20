@@ -1,7 +1,7 @@
 // This function will list all categories
 import React, { useState, useEffect } from "react";
 import FilterResultsComponent from "./FilterResultsComponent";
-import { Link } from "react-scroll";
+import { Link as RouterLink } from "react-scroll";
 import axios from "axios";
 
 const CategoryComponent = ({ appliedFilters, applyFiltersCallback }) => {
@@ -56,7 +56,7 @@ const CategoryComponent = ({ appliedFilters, applyFiltersCallback }) => {
                     className="text-center text-gray-500 dark:text-gray-400"
                   >
                     <div className="bg-green-50 rounded w-44 h-40 flex items-center justify-center shadow-green-500/50 shadow-md">
-                      <Link
+                      <RouterLink
                         activeClass="active"
                         className="mt-2 font-bold text-black-100 text-center text-3xl tracking-wide p-0 w-full cursor-pointer"
                         to="filterResults"
@@ -69,7 +69,7 @@ const CategoryComponent = ({ appliedFilters, applyFiltersCallback }) => {
                         }
                       >
                         {categoryObj.product_category}
-                      </Link>
+                      </RouterLink>
                     </div>
                   </div>
                 ))

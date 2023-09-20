@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-scroll";
 
 const FilterResultsComponent = ({ selectedCategory, appliedFilters }) => {
   console.log("Selected category:", selectedCategory);
@@ -62,7 +63,7 @@ const FilterResultsComponent = ({ selectedCategory, appliedFilters }) => {
       <h3 className="p-6 text-center text-xl">
         Shopping in {selectedCategory[0].product_category} category
       </h3>
-      <Link
+      <RouterLink
         to="categorySection"
         spy={true}
         smooth={true}
@@ -70,7 +71,7 @@ const FilterResultsComponent = ({ selectedCategory, appliedFilters }) => {
         duration={500}
       >
         <button className="text-blue-500 text-xl">Back to Categories</button>
-      </Link>
+      </RouterLink>
       <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
         <div className="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {filteredProducts.map((product) => (
@@ -78,11 +79,13 @@ const FilterResultsComponent = ({ selectedCategory, appliedFilters }) => {
               key={product.product_id}
               className="bg-white rounded-lg shadow-md overflow-hidden"
             >
-              <img
-                src={product.product_image}
-                alt={product.product_name}
-                className="w-full h-48 object-contain"
-              />
+              <Link to={`/product/${product.product_id}`}>
+                <img
+                  src={product.product_image}
+                  alt={product.product_name}
+                  className="w-full h-48 object-contain"
+                />
+              </Link>
               <div className="p-4">
                 <h2 className="text-lg text-center font-semibold">
                   {product.product_name}
