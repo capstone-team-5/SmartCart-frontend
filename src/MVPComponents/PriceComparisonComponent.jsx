@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import FadeLoader from "react-spinners/FadeLoader";
 import axios from "axios";
+import { Link, useParams } from "react-router-dom";
+
 
 const PriceComparisonComponent = ({ cart }) => {
   const [comparison, setComparison] = useState({});
@@ -10,6 +12,8 @@ const PriceComparisonComponent = ({ cart }) => {
   const [loading, setLoading] = useState("Finding Shops In Your Area");
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
+
+  const {id} = useParams
 
   useEffect(() => {
     axios
@@ -34,16 +38,16 @@ const PriceComparisonComponent = ({ cart }) => {
 
         setTimeout(() => {
           setLoading("Calculating Your Savings");
-        }, 3000);
+        }, 2500);
 
         setTimeout(() => {
           setLoading("Drum Roll !!!!");
           setShowDrumRoll(true);
-        }, 6000);
+        }, 5000);
 
         setTimeout(() => {
           setLoading(false);
-        }, 9000);
+        }, 7500);
       })
       .catch((error) => {
         console.error("Error fetching comparison data:", error);
@@ -51,6 +55,7 @@ const PriceComparisonComponent = ({ cart }) => {
       });
   }, [cart]);
 
+  //This will have to be move to app.js to find out where the user shopped in order to calculate savings
   useEffect(() => {
     const newStoreTotalPrices = {};
 
@@ -146,6 +151,7 @@ const PriceComparisonComponent = ({ cart }) => {
       ) : (
         <div>{sortedStores.map((store) => renderStoreInfo(store))}</div>
       )}
+      <Link to={`/user/${id}/where-did-you-shop`}><button>See Your Savings</button></Link>
     </div>
   );
 };
