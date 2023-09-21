@@ -28,6 +28,23 @@ function Reviews() {
           )
           .catch((c) => console.warn("catch", c));
       };
+
+      const handleDelete = (reviewId) => {
+        axios
+          .delete(`${API}/stores/${id}/reviews/${reviewId}`)
+          .then(
+            (response) => {
+              const copyReviewArray = [...reviews];
+              const indexDeletedReview = copyReviewArray.findIndex((review) => {
+                return review.id === reviewId;
+              });
+              copyReviewArray.splice(indexDeletedReview, 1);
+              setReviews(copyReviewArray);
+            },
+            (error) => console.error(error)
+          )
+          .catch((c) => console.warn("catch", c));
+      };
     
 
     return(
@@ -41,10 +58,11 @@ function Reviews() {
             key={review.id}
             review={review}
             handleSubmit={""}
-            handelDelete={""}
+            handelDelete={handleDelete}
             />
         ))}
 
     </section>
     );
 }
+export default Reviews;
