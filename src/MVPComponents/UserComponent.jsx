@@ -4,7 +4,7 @@ import { useState } from 'react';
 import DeleteButtonComponent from './DeleteButtonComponent';
 const UserComponent = () => {
     const [formData, setFormData] = useState({
-        email:'', 
+        user_email:'', 
         password:'', 
         name:'', 
         phone:''
@@ -30,7 +30,7 @@ const UserComponent = () => {
             <input type="text" 
             placeholder=""
             name="email"
-            value={formData.email} 
+            value={formData.user_email} 
             onchange={handleTextChange}/>
             <br />
             <label htmlFor="password">Password</label>
