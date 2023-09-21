@@ -25,10 +25,10 @@ function Review({ review, handelDelete, handleSubmit }) {
                 <div className=""
                 style={{paddingBottom: "10rem"}}
                 >
-                    <h4 className="">Title : {review.title}</h4>
+                    
                     <h4 className="">Rating : {review.rating}</h4>
                     <h5 className="">Reviewer : {review.reviewer}</h5>
-                    <p className="">Description : {review.content}</p>
+                    <p className="">Comment : {review.comment}</p>
                     </div>
 
             )}
