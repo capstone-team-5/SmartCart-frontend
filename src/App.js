@@ -21,7 +21,7 @@ import UserEdit from "./Pages/UserEdit";
 import Subscription from "./Pages/Subscription";
 import ConfirmSubscription from "./Pages/ConfirmSubscription";
 import MeetTheDevelopers from "./Pages/MeetTheDevelopers";
-import TestComponent from "./MVPComponents/TestComponent";
+// import TestComponent from "./MVPComponents/TestComponent";
 import IndividualProduct from "./Pages/IndividualProduct";
 import ContactUs from "./Pages/ContactUs";
 import SearchResults from "./Pages/SearchResults";
@@ -182,7 +182,7 @@ function App() {
                 element={<Home addToCart={handleAddToCart} />}
                 path="/home"
               />
-              <Route
+              {/* <Route
                 element={
                   <TestComponent
                     updateCartLength={setCartLength}
@@ -192,7 +192,7 @@ function App() {
                   />
                 }
                 path="/test"
-              />
+              /> */}
               <Route element={<Savings />} path="/user/:id/savings" />
               <Route element={<AboutUs />} path="/about-us" />
               <Route element={<ContactUs />} path="/contact-us" />
