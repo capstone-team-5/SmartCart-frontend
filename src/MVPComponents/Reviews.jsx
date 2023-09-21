@@ -45,6 +45,22 @@ function Reviews() {
           )
           .catch((c) => console.warn("catch", c));
       };
+
+      const handleEdit = (updatedReview) => {
+        console.log(updatedReview);
+        axios
+          .put(`${API}/stores/${id}/reviews/${updatedReview.id}`, updatedReview)
+          .then((response) => {
+            console.log(" in the response");
+            const copyReviewArray = [...reviews];
+            const indexUpdatedReview = copyReviewArray.findIndex((review) => {
+              return review.id === updatedReview.id;
+            });
+            copyReviewArray[indexUpdatedReview] = response.data;
+            setReviews(copyReviewArray);
+          })
+          .catch((c) => console.warn("catch", c));
+      };
     
 
     return(
@@ -57,8 +73,8 @@ function Reviews() {
             <Review
             key={review.id}
             review={review}
-            handleSubmit={""}
-            handelDelete={handleDelete}
+            handleSubmit={handleEdit}
+            handleDelete={handleDelete}
             />
         ))}
 
