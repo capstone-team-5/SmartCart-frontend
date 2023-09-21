@@ -30,6 +30,8 @@ import PriceComparison from "./Pages/PriceComparison";
 import LandingPage from "./Pages/LandingPage";
 import CategoryPage from "./Pages/CategoryPage";
 import Favorites from "./Pages/Favorites";
+import Savings from "./Pages/Savings"
+import WhereDidYouShop from "./Pages/WhereDidYouShop";
 
 // Components
 
@@ -38,6 +40,7 @@ import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
 import FaqComponent from "./NonMVPComponents/FaqComponent";
 import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent";
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
+import LocationComponent from "./Commons/LocationComponent";
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -161,12 +164,14 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        
         <Navbar
           cartLength={cartLength}
           theme={appTheme}
           handleThemeChange={handleThemeChange}
           updateCartLength={setCartLength}
         />
+        <LocationComponent />
         {loading ? (
           <div>Loading...</div>
         ) : (
@@ -188,7 +193,8 @@ function App() {
                   />
                 }
                 path="/test"
-              />
+                />
+              <Route element={<Savings />} path="/user/:id/savings" />
               <Route element={<AboutUs />} path="/about-us" />
               <Route element={<ContactUs />} path="/contact-us" />
               <Route
@@ -252,8 +258,9 @@ function App() {
               <Route
                 element={<ForgotPasswordComponent />}
                 path="/forgot-password"
-              />
-              <Route element={<FourOFour />} path="/*" />
+                />
+            <Route element={<WhereDidYouShop />} path='/user/:id/where-did-you-shop' />  
+            <Route element={<FourOFour />} path="/*" />
             </Routes>
             <Footer appTheme={appTheme} />
           </>
