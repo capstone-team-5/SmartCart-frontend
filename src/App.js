@@ -12,6 +12,7 @@ import Footer from "./Commons/Footer";
 import AboutUs from "./Pages/AboutUs";
 import Cart from "./Pages/Cart";
 import Home from "./Pages/Home";
+import Location from "./Pages/Location";
 import Login from "./Pages/Login";
 import FourOFour from "./Pages/FourOFour";
 import SignUp from "./Pages/SignUp";
@@ -27,7 +28,7 @@ import ContactUs from "./Pages/ContactUs";
 import SearchResults from "./Pages/SearchResults";
 import PriceComparison from "./Pages/PriceComparison";
 import LandingPage from "./Pages/LandingPage";
-// import CategoryPage from "./Pages/CategoryPage";
+import CategoryPage from "./Pages/CategoryPage";
 import Favorites from "./Pages/Favorites";
 import Savings from "./Pages/Savings";
 import WhereDidYouShop from "./Pages/WhereDidYouShop";
@@ -218,6 +219,7 @@ function App() {
                 }
                 path="/cart"
               />
+              <Route element={<Location />} path="/location" />
               <Route element={<Login />} path="/login" />
               <Route element={<SignUp />} path="/sign-up" />
               <Route element={<User />} path="/user/:id" />
@@ -242,6 +244,7 @@ function App() {
                 element={<MeetTheDevelopers />}
                 path="/meet-the-developers"
               />
+              <Route element={<CategoryPage />} path="/categories" />
               <Route
                 element={<CustomerTestimonialsComponent />}
                 path="/testimonials"
