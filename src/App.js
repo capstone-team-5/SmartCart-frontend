@@ -12,7 +12,6 @@ import Footer from "./Commons/Footer";
 import AboutUs from "./Pages/AboutUs";
 import Cart from "./Pages/Cart";
 import Home from "./Pages/Home";
-import Location from "./Pages/Location";
 import Login from "./Pages/Login";
 import FourOFour from "./Pages/FourOFour";
 import SignUp from "./Pages/SignUp";
@@ -28,9 +27,9 @@ import ContactUs from "./Pages/ContactUs";
 import SearchResults from "./Pages/SearchResults";
 import PriceComparison from "./Pages/PriceComparison";
 import LandingPage from "./Pages/LandingPage";
-import CategoryPage from "./Pages/CategoryPage";
+// import CategoryPage from "./Pages/CategoryPage";
 import Favorites from "./Pages/Favorites";
-import Savings from "./Pages/Savings"
+import Savings from "./Pages/Savings";
 import WhereDidYouShop from "./Pages/WhereDidYouShop";
 
 // Components
@@ -41,6 +40,9 @@ import FaqComponent from "./NonMVPComponents/FaqComponent";
 import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent";
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
 import LocationComponent from "./Commons/LocationComponent";
+
+// Styling
+import "./App.css";
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -56,7 +58,7 @@ function App() {
     );
     return isNaN(storedCartLength) ? 0 : storedCartLength;
   });
-  const [appTheme, setAppTheme] = useState("dark");
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -85,7 +87,6 @@ function App() {
 
   const handleThemeChange = (theme) => {
     setTheme(theme);
-    setAppTheme(theme);
     applyTheme();
   };
 
@@ -164,10 +165,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        
         <Navbar
           cartLength={cartLength}
-          theme={appTheme}
           handleThemeChange={handleThemeChange}
           updateCartLength={setCartLength}
         />
@@ -193,7 +192,7 @@ function App() {
                   />
                 }
                 path="/test"
-                />
+              />
               <Route element={<Savings />} path="/user/:id/savings" />
               <Route element={<AboutUs />} path="/about-us" />
               <Route element={<ContactUs />} path="/contact-us" />
@@ -219,7 +218,6 @@ function App() {
                 }
                 path="/cart"
               />
-              <Route element={<Location />} path="/location" />
               <Route element={<Login />} path="/login" />
               <Route element={<SignUp />} path="/sign-up" />
               <Route element={<User />} path="/user/:id" />
@@ -244,7 +242,6 @@ function App() {
                 element={<MeetTheDevelopers />}
                 path="/meet-the-developers"
               />
-              <Route element={<CategoryPage />} path="/categories" />
               <Route
                 element={<CustomerTestimonialsComponent />}
                 path="/testimonials"
@@ -258,11 +255,14 @@ function App() {
               <Route
                 element={<ForgotPasswordComponent />}
                 path="/forgot-password"
-                />
-            <Route element={<WhereDidYouShop />} path='/user/:id/where-did-you-shop' />  
-            <Route element={<FourOFour />} path="/*" />
+              />
+              <Route
+                element={<WhereDidYouShop />}
+                path="/user/:id/where-did-you-shop"
+              />
+              <Route element={<FourOFour />} path="/*" />
             </Routes>
-            <Footer appTheme={appTheme} />
+            <Footer handleThemeChange={handleThemeChange} />
           </>
         )}
       </BrowserRouter>
