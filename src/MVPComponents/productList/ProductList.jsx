@@ -36,7 +36,7 @@ const ProductList = () => {
               {/* <Link to={`/product/${product.product_id}`}>
                 <img src={product.product_image} alt={product.product_name} />
               </Link> */}
-              <IndividualProductComponent item={product} />
+              <IndividualProductComponent item={products} />
             </div>
           );
         })}

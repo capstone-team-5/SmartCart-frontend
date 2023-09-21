@@ -6,16 +6,16 @@ import { AiFillStar } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 import axios from "axios";
 
-const IndividualProductComponent = ({ item, handleAddToCart }) => {
-  // const [item, setitem] = useState({});
+const IndividualProductComponent = ({ item,  handleAddToCart }) => {
+  const [oneItem, setitem] = useState({});
   const { id } = useParams();
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_BACKEND_API}/products/${id}`)
-  //     .then((response) => setitem(response.data))
-  //     .catch((error) => console.log(error));
-  // }, [id]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_API}/products/${id}`)
+      .then((response) => setitem(response.data))
+      .catch((error) => console.log(error));
+  }, [id]);
 
   return (
     <div>
