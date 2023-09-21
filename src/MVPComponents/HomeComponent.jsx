@@ -2,7 +2,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -31,6 +30,8 @@ const HomeComponent = ({ addToCart }) => {
   if (loading) {
     return <p>Loading...</p>;
   }
+
+  
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -87,29 +88,6 @@ const HomeComponent = ({ addToCart }) => {
             ))}
           </Slider>
         </div>
-
-        <div className="flex justify-center items-center pt-4">
-          <button
-            type="button"
-            className="flex justify-center items-center mr-4 h-full cursor-pointer group focus:outline-none"
-            data-carousel-prev
-          >
-            <span className="text-gray-400 hover:text-gray-900 dark:hover:text-white group-focus:text-gray-900 dark:group-focus:text-white">
-              <AiFillLeftCircle className="w-5 h-5" />
-              <span className="sr-only">Previous</span>
-            </span>
-          </button>
-          <button
-            type="button"
-            className="flex justify-center items-center h-full cursor-pointer group focus:outline-none"
-            data-carousel-next
-          >
-            <span className="text-gray-400 hover:text-gray-900 dark:hover:text-white group-focus:text-gray-900 dark:group-focus:text-white">
-              <AiFillRightCircle className="w-5 h-5" />
-              <span className="sr-only">Next</span>
-            </span>
-          </button>
-        </div>
       </div>
     </div>
   );
@@ -117,7 +95,6 @@ const HomeComponent = ({ addToCart }) => {
 
 export default HomeComponent;
 /*
-// <div className="bg-gray-50 dark:bg-gray-900">
       {/* {products.map((product) => {
         return (
           <div key={product.product_id}>

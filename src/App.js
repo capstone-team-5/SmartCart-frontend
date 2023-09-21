@@ -22,7 +22,7 @@ import UserEdit from "./Pages/UserEdit";
 import Subscription from "./Pages/Subscription";
 import ConfirmSubscription from "./Pages/ConfirmSubscription";
 import MeetTheDevelopers from "./Pages/MeetTheDevelopers";
-import TestComponent from "./MVPComponents/TestComponent";
+// import TestComponent from "./MVPComponents/TestComponent";
 import IndividualProduct from "./Pages/IndividualProduct";
 import ContactUs from "./Pages/ContactUs";
 import SearchResults from "./Pages/SearchResults";
@@ -38,6 +38,9 @@ import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
 import FaqComponent from "./NonMVPComponents/FaqComponent";
 import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent";
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
+
+// Styling
+import "./App.css";
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -171,14 +174,14 @@ function App() {
           <div>Loading...</div>
         ) : (
           <>
-            <Header addToCart={handleAddToCart} />
+            {/* <Header addToCart={handleAddToCart} /> */}
             <Routes>
               <Route element={<LandingPage />} path="/" />
               <Route
                 element={<Home addToCart={handleAddToCart} />}
                 path="/home"
               />
-              <Route
+              {/* <Route
                 element={
                   <TestComponent
                     updateCartLength={setCartLength}
@@ -188,7 +191,7 @@ function App() {
                   />
                 }
                 path="/test"
-              />
+              /> */}
               <Route element={<AboutUs />} path="/about-us" />
               <Route element={<ContactUs />} path="/contact-us" />
               <Route
@@ -255,7 +258,7 @@ function App() {
               />
               <Route element={<FourOFour />} path="/*" />
             </Routes>
-            <Footer appTheme={appTheme} />
+            {/* <Footer appTheme={appTheme} /> */}
           </>
         )}
       </BrowserRouter>
