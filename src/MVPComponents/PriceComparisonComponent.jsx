@@ -118,7 +118,7 @@ const PriceComparisonComponent = ({ cart }) => {
             <div key={store.store_id}>
               {index === 0 && (
                 <div>
-                  <h1 className="text-green-500 font-semibold text-2xl">
+                  <h1>
                     Best Value
                   </h1>
                 </div>
