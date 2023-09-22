@@ -39,7 +39,7 @@ import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
 import FaqComponent from "./NonMVPComponents/FaqComponent";
 import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent";
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
-import LocationComponent from "./Commons/LocationComponent";
+// import LocationComponent from "./Commons/LocationComponent";
 
 // Styling
 import "./App.css";
@@ -60,10 +60,6 @@ function App() {
   });
 
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    applyTheme();
-  }, []);
 
   useEffect(() => {
     window.localStorage.setItem("Testing_Cart_Length", cartLength.toString());
@@ -170,7 +166,7 @@ function App() {
           handleThemeChange={handleThemeChange}
           updateCartLength={setCartLength}
         />
-        <LocationComponent />
+        {/* <LocationComponent /> */}
         {loading ? (
           <div>Loading...</div>
         ) : (
