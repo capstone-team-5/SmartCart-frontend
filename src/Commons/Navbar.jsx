@@ -82,7 +82,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white relative">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           <div className="flex items-center">
@@ -196,7 +196,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
         </div>
       </div>
       {open && (
-        <div>
+        <div className="absolute top-16  bg-white left-0 w-72 z-50">
           <div className="px-4 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link, index) => (
               <Link
