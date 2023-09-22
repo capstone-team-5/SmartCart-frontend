@@ -62,10 +62,6 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    applyTheme();
-  }, []);
-
-  useEffect(() => {
     window.localStorage.setItem("Testing_Cart_Length", cartLength.toString());
   }, [cartLength]);
 

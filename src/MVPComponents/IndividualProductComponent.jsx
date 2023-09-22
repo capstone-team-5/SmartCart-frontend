@@ -8,6 +8,7 @@ import axios from "axios";
 
 const IndividualProductComponent = ({ handleAddToCart }) => {
   const [showOneItem, setShowOneItem] = useState({});
+  const [showRestOfCard, setShowRestOfCard] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -16,6 +17,14 @@ const IndividualProductComponent = ({ handleAddToCart }) => {
       .then((response) => setShowOneItem(response.data))
       .catch((error) => console.log(error));
   }, [id]);
+
+  const toggleShowRestOfCard = () => {
+    setShowRestOfCard(!showRestOfCard);
+  };
+
+  const toggleShowLess = () => {
+    setShowRestOfCard(false);
+  };
 
   return (
     <div>
@@ -36,32 +45,49 @@ const IndividualProductComponent = ({ handleAddToCart }) => {
                 {showOneItem.product_weight} {showOneItem.product_unit}
               </h6>
             </div>
-            <p className="text-sm text-gray-700 dark:text-gray-400 mt-2">
-              {showOneItem.product_description}
-            </p>
-
-            <div className="flex items-center mt-3">
-              <AiFillStar size={18} className="text-yellow-400 mr-1" />
-              <AiFillStar size={18} className="text-yellow-400 mr-1" />
-              <AiFillStar size={18} className="text-yellow-400 mr-1" />
-              <AiFillStar size={18} className="text-yellow-400 mr-1" />
-              <AiFillStar
-                size={18}
-                className="text-gray-300 dark:text-gray-600"
-              />
-            </div>
-            <button>
-              <FaHeart className="text-orange-500 peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
-            </button>
-
-            <div className="flex justify-end mt-4">
+            {!showRestOfCard && (
               <button
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                onClick={() => handleAddToCart(showOneItem)}
+                onClick={toggleShowRestOfCard}
+                className="text-blue-500 hover:underline mt-2"
               >
-                Add To Cart
+                Show More
               </button>
-            </div>
+            )}
+            {showRestOfCard && (
+              <div>
+                <p className="text-sm text-gray-700 dark:text-gray-400 mt-2">
+                  {showOneItem.product_description}
+                </p>
+                <div className="flex items-center mt-3">
+                  <AiFillStar size={18} className="text-yellow-400 mr-1" />
+                  <AiFillStar size={18} className="text-yellow-400 mr-1" />
+                  <AiFillStar size={18} className="text-yellow-400 mr-1" />
+                  <AiFillStar size={18} className="text-yellow-400 mr-1" />
+                  <AiFillStar
+                    size={18}
+                    className="text-gray-300 dark:text-gray-600"
+                  />
+                </div>
+                <button>
+                  <FaHeart className="text-orange-500 peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
+                </button>
+
+                <div className="flex justify-end mt-4">
+                  <button
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    onClick={() => handleAddToCart(showOneItem)}
+                  >
+                    Add To Cart
+                  </button>
+                  <button
+                    onClick={toggleShowLess}
+                    className="text-blue-500 hover:underline ml-2"
+                  >
+                    Show Less
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
