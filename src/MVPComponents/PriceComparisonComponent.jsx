@@ -35,10 +35,9 @@ const PriceComparisonComponent = ({ cart }) => {
       .get(backendEndPoint)
       .then((response) => {
         setComparison(response.data.stores);
-
         setTimeout(() => {
           setLoading("Calculating Your Savings");
-        }, 2500);
+        }, 1500);
 
         setTimeout(() => {
           setLoading("Drum Roll !!!!");
@@ -151,7 +150,7 @@ const PriceComparisonComponent = ({ cart }) => {
       ) : (
         <div>{sortedStores.map((store) => renderStoreInfo(store))}</div>
       )}
-      <Link to={`/user/${id}/where-did-you-shop`}><button>See Your Savings</button></Link>
+      {/* <Link to={`/user/${id}/where-did-you-shop`}><button>See Your Savings</button></Link> */}
     </div>
   );
 };
