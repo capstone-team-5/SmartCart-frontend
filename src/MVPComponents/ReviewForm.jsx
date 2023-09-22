@@ -7,10 +7,10 @@ function ReviewForm(props) {
   const { reviewDetails } = props;
 
   const [review, setReview] = useState({
-    reviewer: "",
-    rating: "",
-    comment: "",
-    timestamp:"",
+    shopper_firebase_uid: "",
+   review_rating: "",
+    review_comment: "",
+    review_timestamp:"",
     store_id: id,
   });
 
@@ -32,10 +32,10 @@ function ReviewForm(props) {
       props.toggleView();
     }
     setReview({
-        reviewer: "",
-        rating: "",
-        comment: "",
-        timestamp:"",
+        shopper_firebase_uid: "",
+        review_rating: "",
+        review_comment: "",
+        review_timestamp:"",
         store_id: id,
     });
   };
@@ -49,10 +49,10 @@ function ReviewForm(props) {
           </label>
           <input
             id="reviewer"
-            value={review.reviewer}
+            value={review.shopper_firebase_uid}
             type="text"
             onChange={handleTextChange}
-            placeholder="Your name"
+            placeholder="Shopper"
             required
             className="border border-gray-300 rounded-md px-3 py-2 relative bg-white shadow outline-none focus:outline-none focus:ring lg:w-3/4"
           />
@@ -71,7 +71,7 @@ function ReviewForm(props) {
             min="0"
             max="5"
             step="1"
-            value={review.rating}
+            value={review.review_rating}
             onChange={handleTextChange}
             placeholder="Your Rating"
             className="border border-gray-300 rounded-md px-3 py-2 relative bg-white shadow outline-none focus:outline-none focus:ring lg:w-3/4"
@@ -86,7 +86,7 @@ function ReviewForm(props) {
             id="comment"
             type="text"
             name="comment"
-            value={review.comment}
+            value={review.review_comment}
             placeholder="What do you think..."
             onChange={handleTextChange}
             className="border border-gray-300 rounded-md px-3 py-2 relative bg-white shadow outline-none focus:outline-none focus:ring lg:w-3/4"

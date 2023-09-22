@@ -1,7 +1,7 @@
 import ReviewForm from "./ReviewForm";
 import { useState } from "react";
 
-function Review({ review, handelDelete, handleSubmit }) {
+function Review({ review, handleDelete, handleSubmit }) {
     const [viewEditForm, toggleEditForm] = useState(false);
     const toggleView = ()=> {
         toggleEditForm(!viewEditForm);
@@ -35,7 +35,7 @@ function Review({ review, handelDelete, handleSubmit }) {
             <button
             type="button"
             className=""
-            onClick={()=> handelDelete(review.id)}>Delete</button>
+            onClick={()=> handleDelete(review.id)}>Delete</button>
             
 
             
