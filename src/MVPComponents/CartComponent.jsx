@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaMinus, FaPlus } from "react-icons/fa6";
-
 import axios from "axios";
 
 const CartComponent = ({
@@ -13,9 +12,7 @@ const CartComponent = ({
   cartLength,
   handleQuantityChange,
   updateCartLength,
-
 }) => {
-
   const [itemQuantities, setItemQuantities] = useState({});
   const [comparison, setComparison] = useState({});
 
@@ -61,12 +58,6 @@ const CartComponent = ({
       .get(backendEndPoint)
       .then((response) => {
         setComparison(response.data);
-        console.log(response.data);
-        if (response.status === 200) {
-          console.log("the ids have been successfully sent");
-        } else {
-          console.log("The ids were not sent");
-        }
       })
       .catch((error) => console.log("error:", error));
   };
@@ -78,7 +69,10 @@ const CartComponent = ({
     );
     updateCartLength(cartTotal);
 
-    localStorage.setItem("Testing_Cart_Quantities", JSON.stringify(itemQuantities));
+    localStorage.setItem(
+      "Testing_Cart_Quantities",
+      JSON.stringify(itemQuantities)
+    );
   }, [itemQuantities, cartLength, updateCartLength]);
 
   return (
@@ -95,89 +89,91 @@ const CartComponent = ({
           </Link>
         </p>
       ) : (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <caption className="p-5 mb-4 text-3xl tracking-tight sm:text-4xl font-extrabold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-              Shopping List
-            </caption>
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-              <tr>
-                <th scope="col" className="px-2 py-2 md:px-6 md:py-3">
-                  <span className="sr-only">Image</span>
-                </th>
-                <th
-                  scope="col"
-                  className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg"
-                >
-                  Product Name
-                </th>
-                <th
-                  scope="col"
-                  className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg"
-                >
-                  Quantity
-                </th>
-                <th
-                  scope="col"
-                  className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg"
-                >
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {cart.map((item) => (
-                <tr
-                  key={item.id}
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                >
-                  <td className="p-2 md:p-0 lg:p-0 md:w-52 lg:w-52">
-                    <Link to={`/product/${item.id}`}>
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="max-w-full h-auto"
-                      />
-                    </Link>
-                  </td>
-                  <td className="px-2 py-2 md:px-6 md:py-4 font-semibold text-gray-900 dark:text-white sm:text-sm md:text-md lg:text-lg">
-                    {item.name}
-                  </td>
-                  <td className="px-2 py-2 md:px-6 md:py-4">
-                    <div className="flex items-center space-x-3">
-                      <button
-                        className="inline-flex items-center justify-center p-1 sm:text-sm md:text-md lg:text-lg font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                        type="button"
-                        onClick={() => handleQuantityChangeClick(item.id, -1)}
-                      >
-                        <span className="sr-only">Quantity button</span>
-                        <FaMinus />
-                      </button>
-                      <div className="bg-gray-50 w-12 md:w-14 border border-gray-300 text-gray-900 sm:text-sm md:text-md lg:text-lg text-center rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        {itemQuantities[item.id]}
-                      </div>
-                      <button
-                        className="inline-flex items-center justify-center h-6 w-6 p-1 sm:text-sm md:text-md lg:text-lg font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                        type="button"
-                        onClick={() => handleQuantityChangeClick(item.id, 1)}
-                      >
-                        <span className="sr-only">Quantity button</span>
-                        <FaPlus />
-                      </button>
-                    </div>
-                  </td>
-                  <td className="px-2 py-2 md:px-6 md:py-4">
-                    <button
-                      className="font-medium text-red-600 dark:text-red-500 hover:underline sm:text-sm md:text-md lg:text-lg"
-                      onClick={() => deleteItem(item.id)}
-                    >
-                      Remove
-                    </button>
-                  </td>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <caption className="p-5 mb-4 text-3xl tracking-tight sm:text-4xl font-extrabold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                Shopping List
+              </caption>
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                  <th scope="col" className="px-2 py-2 md:px-6 md:py-3">
+                    <span className="sr-only">Image</span>
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-2 py-2 md:px-6 md:py-3 text-center sm:text-sm md:text-md lg:text-lg"
+                  >
+                    Product Name
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg"
+                  >
+                    Quantity
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-2 py-2 md:px-6 md:py-3 sm:text-sm md:text-md lg:text-lg"
+                  >
+                    Action
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {cart.map((item) => (
+                  <tr
+                    key={item.id}
+                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  >
+                    <td className="p-2 md:p-0 lg:p-0 md:w-52 lg:w-52">
+                      <Link to={`/product/${item.id}`}>
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="max-w-full h-auto"
+                        />
+                      </Link>
+                    </td>
+                    <td className="px-2 py-2 md:px-6 md:py-4 font-semibold text-center text-gray-900 dark:text-white sm:text-sm md:text-md lg:text-lg">
+                      {item.name}
+                    </td>
+                    <td className="px-2 py-2 md:px-6 md:py-4">
+                      <div className="flex items-center space-x-3">
+                        <button
+                          className="inline-flex items-center justify-center p-1 sm:text-sm md:text-md lg:text-lg font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                          type="button"
+                          onClick={() => handleQuantityChangeClick(item.id, -1)}
+                        >
+                          <span className="sr-only">Quantity button</span>
+                          <FaMinus />
+                        </button>
+                        <div className="bg-gray-50 w-12 md:w-14 border border-gray-300 text-gray-900 sm:text-sm md:text-md lg:text-lg text-center rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                          {itemQuantities[item.id]}
+                        </div>
+                        <button
+                          className="inline-flex items-center justify-center h-6 w-6 p-1 sm:text-sm md:text-md lg:text-lg font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                          type="button"
+                          onClick={() => handleQuantityChangeClick(item.id, 1)}
+                        >
+                          <span className="sr-only">Quantity button</span>
+                          <FaPlus />
+                        </button>
+                      </div>
+                    </td>
+                    <td className="px-2 py-2 md:px-6 md:py-4">
+                      <button
+                        className="font-medium text-red-600 dark:text-red-500 hover:underline sm:text-sm md:text-md lg:text-lg"
+                        onClick={() => deleteItem(item.id)}
+                      >
+                        Remove
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           <button
             className="font-medium bg-blue-200 p-4 m-4 text-red-600 dark:text-red-500 hover:underline"
             onClick={clearCart}
@@ -196,10 +192,6 @@ const CartComponent = ({
       )}
     </div>
   );
-
-  
-
-  
 };
 
 export default CartComponent;
