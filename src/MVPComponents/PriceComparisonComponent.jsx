@@ -5,7 +5,6 @@ import FadeLoader from "react-spinners/FadeLoader";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
-
 const PriceComparisonComponent = ({ cart }) => {
   const [comparison, setComparison] = useState({});
   const [stores, setStores] = useState([]);
@@ -13,7 +12,7 @@ const PriceComparisonComponent = ({ cart }) => {
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
 
-  const {id} = useParams
+  const { id } = useParams;
 
   useEffect(() => {
     axios
@@ -35,10 +34,9 @@ const PriceComparisonComponent = ({ cart }) => {
       .get(backendEndPoint)
       .then((response) => {
         setComparison(response.data.stores);
-
         setTimeout(() => {
           setLoading("Calculating Your Savings");
-        }, 2500);
+        }, 1500);
 
         setTimeout(() => {
           setLoading("Drum Roll !!!!");
@@ -56,9 +54,9 @@ const PriceComparisonComponent = ({ cart }) => {
   }, [cart]);
 
   //This will have to be move to app.js to find out where the user shopped in order to calculate savings
+
   useEffect(() => {
     const newStoreTotalPrices = {};
-
     stores.forEach((store) => {
       if (comparison.hasOwnProperty(store.store_id)) {
         const storeTotalPrice = cart.reduce((total, item) => {
@@ -129,29 +127,36 @@ const PriceComparisonComponent = ({ cart }) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center h-screen">
       {loading !== false ? (
-        <div>
-          <p>{loading}</p>
+        <div className="flex flex-col items-center">
+          <p className="text-xl font-bold mb-8">{loading}</p>
           {showDrumRoll ? (
             <img
               src="https://media0.giphy.com/media/YqWtkg0PflgGdwjrtc/giphy.gif?cid=6c09b952ugqlrnk8zvzvjkowgp2y63wn21s6466w6khi0ggr&ep=v1_stickers_related&rid=giphy.gif&ct=s"
               alt="Drum Roll"
+              className="w-full max-h-full"
             />
           ) : (
             <FadeLoader
               color={"#de8613"}
               loading={true}
-              size={10000}
+              size={100}
               aria-label="Loading Spinner"
               data-testid="loader"
             />
           )}
         </div>
       ) : (
-        <div>{sortedStores.map((store) => renderStoreInfo(store))}</div>
+        <div className="w-full">
+          {sortedStores.map((store) => renderStoreInfo(store))}
+        </div>
       )}
-      <Link to={`/user/${id}/where-did-you-shop`}><button>See Your Savings</button></Link>
+      {/* <Link to={`/user/${id}/where-did-you-shop`}>
+        <button className="mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          See Your Savings
+        </button>
+      </Link> */}
     </div>
   );
 };
