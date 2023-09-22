@@ -1,10 +1,10 @@
 //This Component Will Compare Your Entire Cart Across Stores
 
+
 import React, { useState, useEffect } from "react";
 import FadeLoader from "react-spinners/FadeLoader";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-
 
 const PriceComparisonComponent = ({ cart }) => {
   const [comparison, setComparison] = useState({});
@@ -12,8 +12,9 @@ const PriceComparisonComponent = ({ cart }) => {
   const [loading, setLoading] = useState("Finding Shops In Your Area");
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
+  const [storeDetails, setStoreDetails] = useState({}); // Store details visibility state
 
-  const {id} = useParams
+  const { id } = useParams;
 
   useEffect(() => {
     axios
@@ -54,7 +55,6 @@ const PriceComparisonComponent = ({ cart }) => {
       });
   }, [cart]);
 
-  //This will have to be move to app.js to find out where the user shopped in order to calculate savings
   useEffect(() => {
     const newStoreTotalPrices = {};
 
@@ -84,47 +84,12 @@ const PriceComparisonComponent = ({ cart }) => {
       (a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
     );
 
-  const renderStoreInfo = (store) => {
-    const storeItems = cart.filter((item) =>
-      comparison[store.store_id]?.hasOwnProperty(item.id)
-    );
-
-    return (
-      <div key={store.store_id}>
-        <img
-          src={store.store_image}
-          alt={`${store.store_name}`}
-          width="200px"
-        />
-        <h3>Store Name: {store.store_name}</h3>
-        <p>Address: {store.store_address}</p>
-        <p>City: {store.store_city}</p>
-        <p>State: {store.store_state}</p>
-        <p>Zipcode: {store.store_zipcode}</p>
-        <p>Phone Number: {store.store_phone_number}</p>
-        <ul>
-          {storeItems.map((item) => (
-            <li key={item.id}>
-              <img src={item.image} alt={item.name} width="100px" />
-              Item: {item.name}
-              <br />
-              Price per item: ${comparison[store.store_id][item.id]}
-              <br />
-              Quantity in cart: {item.length || 0}
-              <br />
-              Total cost for this item: $
-              {(
-                comparison[store.store_id][item.id] * (item.length || 0)
-              ).toFixed(2)}
-            </li>
-          ))}
-          <li>
-            Total Cart Price: ${storeTotalPrices[store.store_id]?.toFixed(2)}
-          </li>
-          <br /> <br />
-        </ul>
-      </div>
-    );
+  // Function to toggle store details visibility
+  const toggleDetails = (storeId) => {
+    setStoreDetails((prevDetails) => ({
+      ...prevDetails,
+      [storeId]: !prevDetails[storeId],
+    }));
   };
 
   return (
@@ -148,11 +113,62 @@ const PriceComparisonComponent = ({ cart }) => {
           )}
         </div>
       ) : (
-        <div>{sortedStores.map((store) => renderStoreInfo(store))}</div>
+        <div>
+          {sortedStores.map((store, index) => (
+            <div key={store.store_id}>
+              {index === 0 && (
+                <div>
+                  <h1>
+                    Best Value
+                  </h1>
+                </div>
+              )}
+              <img
+                src={store.store_image}
+                alt={`${store.store_name}`}
+                width="200px"
+              />
+              <h3>Store Name: {store.store_name}</h3>
+              <p>Address: {store.store_address}</p>
+              <p>City: {store.store_city}</p>
+              <p>State: {store.store_state}</p>
+              <p>Zipcode: {store.store_zipcode}</p>
+              <p>Phone Number: {store.store_phone_number}</p>
+              <button onClick={() => toggleDetails(store.store_id)}>
+                {storeDetails[store.store_id] ? "Show Less" : "Show More"}
+              </button>
+              {storeDetails[store.store_id] && (
+                <ul>
+                  {cart.map((item) => (
+                    <div key={item.id}>
+                      <li>
+                        <img src={item.image} alt={item.name} width="100px" />
+                        Item: {item.name}
+                        <br />
+                        Price per item: ${comparison[store.store_id][item.id]}
+                        <br />
+                        Quantity in cart: {item.length || 0}
+                        <br />
+                        Total cost for this item: $
+                        {(
+                          comparison[store.store_id][item.id] * (item.length || 0)
+                        ).toFixed(2)}
+                      </li>
+                    </div>
+                  ))}
+                  <li>
+                    Total Cart Price: ${storeTotalPrices[store.store_id]?.toFixed(2)}
+                  </li>
+                  <br /> <br />
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
       )}
-      {/* <Link to={`/user/${id}/where-did-you-shop`}><button>See Your Savings</button></Link> */}
     </div>
   );
 };
 
 export default PriceComparisonComponent;
+
