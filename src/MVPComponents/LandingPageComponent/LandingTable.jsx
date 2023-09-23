@@ -11,7 +11,7 @@ const LandingTable = () => {
             Discover the Benefits of SmartCART
           </h2>
           <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
-            At SmartCART, we're committed to enhancing your shopping experience.
+            At SmartCART, we're committed to enhance your shopping experience.
           </p>
         </div>
 
@@ -24,24 +24,58 @@ const LandingTable = () => {
 
               <ul className="mb-8 space-y-4 text-left">
                 <li className="flex items-center space-x-3">
-                  <AiOutlineCheck color="green" />
+                  <AiOutlineCheck
+                    style={{
+                      fontWeight: "bold",
+                      color: "darkgreen",
+                      fontSize: "30px",
+                    }}
+                  />
                   <span>No need to collect flyers</span>
                 </li>
 
                 <li className="flex items-center space-x-3">
-                  <AiOutlineCheck color="green" />
+                  <AiOutlineCheck
+                    style={{
+                      fontWeight: "bold",
+                      color: "darkgreen",
+                      fontSize: "30px",
+                    }}
+                  />
+
                   <span>Compare prices hassle-free</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <AiOutlineCheck color="green" />
+                  <AiOutlineCheck
+                    style={{
+                      fontWeight: "bold",
+                      color: "darkgreen",
+                      fontSize: "30px",
+                    }}
+                  />
+
                   <span>Save your favorite items</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <AiOutlineCheck color="green" />
+                  <AiOutlineCheck
+                    style={{
+                      fontWeight: "bold",
+                      color: "darkgreen",
+                      fontSize: "30px",
+                    }}
+                  />
+
                   <span>Track your earnings</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <AiOutlineCheck color="green" />
+                  <AiOutlineCheck
+                    style={{
+                      fontWeight: "bold",
+                      color: "darkgreen",
+                      fontSize: "30px",
+                    }}
+                  />
+
                   <span>No commitment required</span>
                 </li>
               </ul>

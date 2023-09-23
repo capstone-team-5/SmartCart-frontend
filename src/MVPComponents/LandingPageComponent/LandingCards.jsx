@@ -12,15 +12,15 @@ const LandingCards = () => {
         {/* <!-- Remove className [ border-gray-300  dark:border-gray-700 border-dashed border-2 ] to remove dotted border --> */}
         <div className="rounded border-gray-300 dark:border-gray-700 border-2 h-24">
           <h2 className="text-xl font-semibold mb-2">More Flexibility</h2>
-          <p>Sign up with no commitment.</p>
+          <p>Sign up without any commitments</p>
         </div>
         <div className="rounded border-gray-300 dark:border-gray-700 border-2 h-24">
           <h2 className="text-xl font-semibold mb-2">More Satisfaction</h2>
-          <p>Save time and money!</p>
+          <p>Save both time and money!</p>
         </div>
         <div className="rounded border-gray-300 dark:border-gray-700 border-2 h-24">
           <h2 className="text-xl font-semibold mb-2">More Choices</h2>
-          <p>Watch your earnings and shop from the nearest stores.</p>
+          <p>Track your earnings and shop from nearby stores.</p>
         </div>
       </div>
       <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 mt-10">
