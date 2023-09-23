@@ -1,16 +1,16 @@
-import LandingPageComponent from "../MVPComponents/LandingPageComponent";
+// import LandingPageComponent from "../MVPComponents/LandingPageComponent";
 
 import LandingBanner from "../MVPComponents/LandingPageComponent/LandingBanner";
 import LandingCards from "../MVPComponents/LandingPageComponent/LandingCards";
+import LandingTable from "../MVPComponents/LandingPageComponent/LandingTable";
 
 const LandingPage = () => {
   return (
     <div>
-      <h3>
         {/* <LandingPageComponent /> */}
         <LandingBanner />
         <LandingCards />
-      </h3>
+        <LandingTable />
     </div>
   );
 };
