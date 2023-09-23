@@ -1,13 +1,36 @@
 //This component will be used for the user to answer which store they shopped at
 
-import { useState, useEffect } from "react"
+import React, { useState } from "react";
 
-const WhereDidYouShopComponent = () => {
-    return (
-        <div>
-            <h3>This component will ask the user where did they shop</h3>
+const WhereDidYouShopComponent = ({ comparison, sortedStores }) => {
+  const [selectedStores, setSelectedStores] = useState({});
+
+  const handleStoreCheckboxChange = (event) => {
+    const storeName = event.target.value;
+    setSelectedStores((prevSelectedStores) => ({
+      ...prevSelectedStores,
+      [storeName]: !prevSelectedStores[storeName],
+    }));
+  };
+
+  return (
+    <div>
+      {sortedStores.map((store, index) => (
+        <div key={index}>
+          <label>
+            <input
+              type="checkbox"
+              value={store.store_name}
+              checked={selectedStores[store.store_name] || false}
+              onChange={handleStoreCheckboxChange}
+            />
+            {store.store_name}
+          </label>
+          <br />
         </div>
-    )
+      ))}
+    </div>
+  );
 };
 
 export default WhereDidYouShopComponent;

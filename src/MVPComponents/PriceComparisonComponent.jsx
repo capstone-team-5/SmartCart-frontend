@@ -3,57 +3,12 @@
 
 import React, { useState, useEffect } from "react";
 import FadeLoader from "react-spinners/FadeLoader";
-import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
-const PriceComparisonComponent = ({ cart }) => {
-  const [comparison, setComparison] = useState({});
-  const [stores, setStores] = useState([]);
-  const [loading, setLoading] = useState("Finding Shops In Your Area");
+const PriceComparisonComponent = ({ cart, stores, comparison, sortedStores }) => {
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
-  const [showDrumRoll, setShowDrumRoll] = useState(false);
   const [storeDetails, setStoreDetails] = useState({});
-
-  const { id } = useParams;
-
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_API}/stores`)
-      .then((response) => {
-        setStores(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching stores:", error);
-      });
-  }, []);
-
-  useEffect(() => {
-    const cartIds = cart.map((food) => food.id);
-    const convertIdsToString = cartIds.join(",");
-    const backendEndPoint = `${process.env.REACT_APP_BACKEND_API}/compare-prices?productIds=${convertIdsToString}`;
-
-    axios
-      .get(backendEndPoint)
-      .then((response) => {
-        setComparison(response.data.stores);
-        setTimeout(() => {
-          setLoading("Calculating Your Savings");
-        }, 1500);
-
-        setTimeout(() => {
-          setLoading("Drum Roll !!!!");
-          setShowDrumRoll(true);
-        }, 5000);
-
-        setTimeout(() => {
-          setLoading(false);
-        }, 7500);
-      })
-      .catch((error) => {
-        console.error("Error fetching comparison data:", error);
-        setLoading(false);
-      });
-  }, [cart]);
+  const { id } = useParams();
 
   useEffect(() => {
     const newStoreTotalPrices = {};
@@ -78,13 +33,34 @@ const PriceComparisonComponent = ({ cart }) => {
     setStoreTotalPrices(newStoreTotalPrices);
   }, [cart, comparison, stores]);
 
-  const sortedStores = stores
-    .filter((store) => comparison.hasOwnProperty(store.store_id))
-    .sort(
-      (a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
-    );
 
-  // Function to toggle store details visibility
+  const [loadingMessages, setLoadingMessages] = useState([
+    "Finding Shops In Your Area",
+    "Calculating Your Savings",
+  ]);
+
+  const [loadingIndex, setLoadingIndex] = useState(0);
+  const [showDrumRoll, setShowDrumRoll] = useState(false);
+
+  useEffect(() => {
+    const loadingTimer = setInterval(() => {
+      setLoadingIndex((prevIndex) => prevIndex + 1);
+    }, 1500);
+
+    if (loadingIndex >= loadingMessages.length) {
+      clearInterval(loadingTimer);
+      setShowDrumRoll(true);
+
+      setTimeout(() => {
+        setLoadingMessages([]);
+      }, 5000);
+    }
+
+    return () => {
+      clearInterval(loadingTimer);
+    };
+  }, [loadingIndex, loadingMessages]);
+
   const toggleDetails = (storeId) => {
     setStoreDetails((prevDetails) => ({
       ...prevDetails,
@@ -94,14 +70,17 @@ const PriceComparisonComponent = ({ cart }) => {
 
   return (
     <div>
-      {loading !== false ? (
+      {loadingMessages.length > 0 ? (
         <div>
-          <p>{loading}</p>
-          {showDrumRoll ? (
-            <img
-              src="https://media0.giphy.com/media/YqWtkg0PflgGdwjrtc/giphy.gif?cid=6c09b952ugqlrnk8zvzvjkowgp2y63wn21s6466w6khi0ggr&ep=v1_stickers_related&rid=giphy.gif&ct=s"
-              alt="Drum Roll"
-            />
+          <p>{loadingMessages[loadingIndex]}</p>
+          {loadingIndex === 2 && showDrumRoll ? (
+            <div>
+              <p>Drum Roll !!!!</p>
+              <img
+                src="https://media0.giphy.com/media/YqWtkg0PflgGdwjrtc/giphy.gif?cid=6c09b952ugqlrnk8zvzvjkowgp2y63wn21s6466w6khi0ggr&ep=v1_stickers_related&rid=giphy.gif&ct=s"
+                alt="Drum Roll"
+              />
+            </div>
           ) : (
             <FadeLoader
               color={"#de8613"}
@@ -164,13 +143,13 @@ const PriceComparisonComponent = ({ cart }) => {
               )}
             </div>
           ))}
+          <Link to={`/user/${id}/where-did-you-shop`}>
+            <button>See Your Savings</button>
+          </Link>
         </div>
       )}
     </div>
   );
-  
-  
-  
 };
 
 export default PriceComparisonComponent;
