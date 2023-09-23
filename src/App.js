@@ -242,10 +242,7 @@ function App() {
         <Header addToCart={handleAddToCart} />
         <Routes>
           <Route element={<LandingPage />} path="/" />
-          <Route
-            element={<Home addToCart={handleAddToCart} />}
-            path="/home"
-          />
+          <Route element={<Home addToCart={handleAddToCart} />} path="/home" />
           <Route
             element={
               <TestComponent
@@ -286,14 +283,20 @@ function App() {
           <Route element={<SignUp />} path="/sign-up" />
           <Route element={<User />} path="/user/:id" />
           <Route
-            element={
-              <SearchResults addToCart={handleAddToCart} />
-            }
+            element={<SearchResults addToCart={handleAddToCart} />}
             path="/search-results/:query"
           />
           <Route
             element={
-              <PriceComparison cart={cart} stores={stores} comparison={comparison} loading={loading} showDrumRoll={showDrumRoll} sortedStores={filtedStores} />}
+              <PriceComparison
+                cart={cart}
+                stores={stores}
+                comparison={comparison}
+                loading={loading}
+                showDrumRoll={showDrumRoll}
+                sortedStores={filtedStores}
+              />
+            }
             path="/price-compare"
           />
           <Route element={<UserCart />} path="/user/:id/cart" />
@@ -305,10 +308,7 @@ function App() {
             element={<ConfirmSubscription />}
             path="/user/:id/subscription/confirmed"
           />
-          <Route
-            element={<MeetTheDevelopers />}
-            path="/meet-the-developers"
-          />
+          <Route element={<MeetTheDevelopers />} path="/meet-the-developers" />
           <Route
             element={<CustomerTestimonialsComponent />}
             path="/testimonials"
@@ -325,7 +325,11 @@ function App() {
           />
           <Route
             element={
-              <WhereDidYouShop comparison={comparison} sortedStores={filtedStores} />}
+              <WhereDidYouShop
+                comparison={comparison}
+                sortedStores={filtedStores}
+              />
+            }
             path="/user/:id/where-did-you-shop"
           />
           <Route element={<FourOFour />} path="/*" />
@@ -334,8 +338,6 @@ function App() {
       </BrowserRouter>
     </div>
   );
-  
 }
 
 export default App;
-
