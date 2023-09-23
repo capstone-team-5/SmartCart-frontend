@@ -6,9 +6,9 @@ import FadeLoader from "react-spinners/FadeLoader";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
-const PriceComparisonComponent = ({ cart }) => {
+const PriceComparisonComponent = ({ cart, stores }) => {
   const [comparison, setComparison] = useState({});
-  const [stores, setStores] = useState([]);
+  // const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState("Finding Shops In Your Area");
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
@@ -16,16 +16,16 @@ const PriceComparisonComponent = ({ cart }) => {
 
   const { id } = useParams;
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_API}/stores`)
-      .then((response) => {
-        setStores(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching stores:", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_BACKEND_API}/stores`)
+  //     .then((response) => {
+  //       setStores(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching stores:", error);
+  //     });
+  // }, []);
 
   useEffect(() => {
     const cartIds = cart.map((food) => food.id);
@@ -164,6 +164,7 @@ const PriceComparisonComponent = ({ cart }) => {
               )}
             </div>
           ))}
+            <Link to={`/user/${id}/where-did-you-shop`}><button>See Your Savings</button></Link>
         </div>
       )}
     </div>

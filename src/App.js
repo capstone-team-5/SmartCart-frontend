@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { applyTheme, setTheme } from "./Theme";
+import axios from "axios";
 
 //Commons
 import Header from "./Commons/Header";
@@ -60,6 +61,8 @@ function App() {
 
   const [loading, setLoading] = useState(true);
 
+  const [stores, setStores] = useState([]);
+
   useEffect(() => {
     window.localStorage.setItem("Testing_Cart_Length", cartLength.toString());
   }, [cartLength]);
@@ -79,6 +82,17 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("Testing_Cart_Length", cartLength.toString());
   }, [cartLength]);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_API}/stores`)
+      .then((response) => {
+        setStores(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching stores:", error);
+      });
+  }, []);
 
   const handleThemeChange = (theme) => {
     setTheme(theme);
@@ -221,7 +235,7 @@ function App() {
                 path="/search-results/:query"
               />
               <Route
-                element={<PriceComparison cart={cart} />}
+                element={<PriceComparison cart={cart} stores={stores} />}
                 path="/price-compare"
               />
               <Route element={<UserCart />} path="/user/:id/cart" />
