@@ -2,7 +2,8 @@
 
 import React from "react";
 import ChartComponent from "../MVPComponents/ChartComponent";
-// import MockSavingsChart from "../MVPComponents/MockSavingsChart";
+import ShoppingList from "../Assets/ShoppingList.png"
+import SeeYourSavings from "../Assets/SeeYourSavings.png"
 
 const AboutUsComponent = () => {
   return (
@@ -49,11 +50,7 @@ const AboutUsComponent = () => {
         <div className="w-full lg:w-8/12 lg:pt-8">
           <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 lg:gap-4 shadow-lg rounded-md">
             <div className="p-4 pb-6 flex justify-center flex-col items-center">
-              <img
-                className="w-full h-full"
-                src="https://i.ibb.co/FhgPJt8/Rectangle-116.png"
-                alt="A group of People"
-              />
+              <img src={ShoppingList} alt="user shopping list" />
               <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
                 Add to Cart
               </p>
@@ -85,6 +82,7 @@ const AboutUsComponent = () => {
                 alt="A group of People"
               /> */}
               {/* <MockSavingsChart /> */}
+              <img src={SeeYourSavings} alt="chart of your savings" />
               <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
                 See Savings
               </p>

@@ -27,7 +27,6 @@ import ContactUs from "./Pages/ContactUs";
 import SearchResults from "./Pages/SearchResults";
 import PriceComparison from "./Pages/PriceComparison";
 import LandingPage from "./Pages/LandingPage";
-// import CategoryPage from "./Pages/CategoryPage";
 import Favorites from "./Pages/Favorites";
 import Savings from "./Pages/Savings";
 import WhereDidYouShop from "./Pages/WhereDidYouShop";
