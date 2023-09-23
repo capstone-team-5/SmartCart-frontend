@@ -2,11 +2,11 @@
 
 import PriceComparisonComponent from "../MVPComponents/PriceComparisonComponent"
 
-const PriceComparison = ({cart}) => {
+const PriceComparison = ({cart, stores, comparison, loading, showDrumRoll}) => {
 
     return (
         <div>
-            <PriceComparisonComponent cart={cart} />
+            <PriceComparisonComponent cart={cart} stores={stores} comparison={comparison} loading={loading} showDrumRoll={showDrumRoll} />
         </div>
     )
 };

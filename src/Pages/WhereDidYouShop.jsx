@@ -1,10 +1,10 @@
 import WhereDidYouShopComponent from "../MVPComponents/WhereDidYouShopComponent"
 
-const WhereDidYouShop = () => {
+const WhereDidYouShop = ({comparison}) => {
 
     return (
         <div>
-            <WhereDidYouShopComponent />
+            <WhereDidYouShopComponent comparison={comparison} />
         </div>
     )
 };
