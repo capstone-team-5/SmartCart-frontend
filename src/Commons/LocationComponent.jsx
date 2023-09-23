@@ -50,7 +50,6 @@ const LocationComponent = () => {
 
   return (
     <div>
-      <h3>This is the location page</h3>
       {searched ? (
         !matchedZipCode ? (
           <div>
