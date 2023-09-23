@@ -33,7 +33,6 @@ import Savings from "./Pages/Savings";
 import WhereDidYouShop from "./Pages/WhereDidYouShop";
 
 // Components
-
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
 import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
 import FaqComponent from "./NonMVPComponents/FaqComponent";
@@ -63,6 +62,37 @@ function App() {
   const [stores, setStores] = useState([]);
   const [comparison, setComparison] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
+  const [storeTotalPrices, setStoreTotalPrices] = useState({});
+  const [sortedStores, setSortedStores] = useState([]);
+
+  useEffect(() => {
+    const newStoreTotalPrices = {};
+
+    stores.forEach((store) => {
+      if (comparison.hasOwnProperty(store.store_id)) {
+        const storeTotalPrice = cart.reduce((total, item) => {
+          const itemPrice = Number(comparison[store.store_id][item.id]);
+          const itemQuantity = item.length || 0;
+
+          if (Number(itemPrice) && Number(itemQuantity)) {
+            return total + itemPrice * itemQuantity;
+          }
+
+          return total;
+        }, 0);
+
+        newStoreTotalPrices[store.store_id] = storeTotalPrice;
+      }
+    });
+
+    setStoreTotalPrices(newStoreTotalPrices);
+  }, [cart, comparison, stores]);
+
+  const filtedStores = stores
+    .filter((store) => comparison.hasOwnProperty(store.store_id))
+    .sort(
+      (a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
+    );
 
   useEffect(() => {
     const cartIds = cart.map((food) => food.id);
@@ -122,7 +152,6 @@ function App() {
         console.error("Error fetching stores:", error);
       });
   }, []);
-
 
   const handleThemeChange = (theme) => {
     setTheme(theme);
@@ -210,103 +239,103 @@ function App() {
           updateCartLength={setCartLength}
         />
         <LocationComponent />
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <>
-            <Header addToCart={handleAddToCart} />
-            <Routes>
-              <Route element={<LandingPage />} path="/" />
-              <Route
-                element={<Home addToCart={handleAddToCart} />}
-                path="/home"
+        <Header addToCart={handleAddToCart} />
+        <Routes>
+          <Route element={<LandingPage />} path="/" />
+          <Route
+            element={<Home addToCart={handleAddToCart} />}
+            path="/home"
+          />
+          <Route
+            element={
+              <TestComponent
+                updateCartLength={setCartLength}
+                cartLength={cartLength}
+                cart={cart}
+                addToCart={handleAddToCart}
               />
-              <Route
-                element={
-                  <TestComponent
-                    updateCartLength={setCartLength}
-                    cartLength={cartLength}
-                    cart={cart}
-                    addToCart={handleAddToCart}
-                  />
-                }
-                path="/test"
+            }
+            path="/test"
+          />
+          <Route element={<Savings />} path="/user/:id/savings" />
+          <Route element={<AboutUs />} path="/about-us" />
+          <Route element={<ContactUs />} path="/contact-us" />
+          <Route
+            element={
+              <IndividualProduct
+                handleAddToCart={handleAddToCart}
+                cartLength={cartLength}
               />
-              <Route element={<Savings />} path="/user/:id/savings" />
-              <Route element={<AboutUs />} path="/about-us" />
-              <Route element={<ContactUs />} path="/contact-us" />
-              <Route
-                element={
-                  <IndividualProduct
-                    handleAddToCart={handleAddToCart}
-                    cartLength={cartLength}
-                  />
-                }
-                path="/product/:id"
+            }
+            path="/product/:id"
+          />
+          <Route
+            element={
+              <Cart
+                deleteItem={handleDeleteItem}
+                clearCart={handleClearCart}
+                cart={cart}
+                cartLength={cartLength}
+                updateCartLength={updateCartLength}
+                handleQuantityChange={handleQuantityChange}
               />
-              <Route
-                element={
-                  <Cart
-                    deleteItem={handleDeleteItem}
-                    clearCart={handleClearCart}
-                    cart={cart}
-                    cartLength={cartLength}
-                    updateCartLength={updateCartLength}
-                    handleQuantityChange={handleQuantityChange}
-                  />
-                }
-                path="/cart"
-              />
-              <Route element={<Login />} path="/login" />
-              <Route element={<SignUp />} path="/sign-up" />
-              <Route element={<User />} path="/user/:id" />
-              <Route
-                element={<SearchResults addToCart={handleAddToCart} />}
-                path="/search-results/:query"
-              />
-              <Route
-                element={<PriceComparison cart={cart} stores={stores} comparison={comparison} loading={loading} showDrumRoll={showDrumRoll} />}
-                path="/price-compare"
-              />
-              <Route element={<UserCart />} path="/user/:id/cart" />
-              <Route element={<Favorites />} path="/favorites" />
-              {/* the route for favorites will become '/user/favorite/:id' */}
-              <Route element={<UserEdit />} path="/user/:id/edit" />
-              <Route element={<Subscription />} path="/user/:id/subscription" />
-              <Route
-                element={<ConfirmSubscription />}
-                path="/user/:id/subscription/confirmed"
-              />
-              <Route
-                element={<MeetTheDevelopers />}
-                path="/meet-the-developers"
-              />
-              <Route
-                element={<CustomerTestimonialsComponent />}
-                path="/testimonials"
-              />
-              <Route element={<FaqComponent />} path="/faq" />
-              <Route element={<FeedbackComponent />} path="/feedback" />
-              <Route
-                element={<ChangePasswordComponent />}
-                path="/change-password"
-              />
-              <Route
-                element={<ForgotPasswordComponent />}
-                path="/forgot-password"
-              />
-              <Route
-                element={<WhereDidYouShop comparison={comparison} />}
-                path="/user/:id/where-did-you-shop"
-              />
-              <Route element={<FourOFour />} path="/*" />
-            </Routes>
-            <Footer handleThemeChange={handleThemeChange} />
-          </>
-        )}
+            }
+            path="/cart"
+          />
+          <Route element={<Login />} path="/login" />
+          <Route element={<SignUp />} path="/sign-up" />
+          <Route element={<User />} path="/user/:id" />
+          <Route
+            element={
+              <SearchResults addToCart={handleAddToCart} />
+            }
+            path="/search-results/:query"
+          />
+          <Route
+            element={
+              <PriceComparison cart={cart} stores={stores} comparison={comparison} loading={loading} showDrumRoll={showDrumRoll} sortedStores={filtedStores} />}
+            path="/price-compare"
+          />
+          <Route element={<UserCart />} path="/user/:id/cart" />
+          <Route element={<Favorites />} path="/favorites" />
+          {/* the route for favorites will become '/user/favorite/:id' */}
+          <Route element={<UserEdit />} path="/user/:id/edit" />
+          <Route element={<Subscription />} path="/user/:id/subscription" />
+          <Route
+            element={<ConfirmSubscription />}
+            path="/user/:id/subscription/confirmed"
+          />
+          <Route
+            element={<MeetTheDevelopers />}
+            path="/meet-the-developers"
+          />
+          <Route
+            element={<CustomerTestimonialsComponent />}
+            path="/testimonials"
+          />
+          <Route element={<FaqComponent />} path="/faq" />
+          <Route element={<FeedbackComponent />} path="/feedback" />
+          <Route
+            element={<ChangePasswordComponent />}
+            path="/change-password"
+          />
+          <Route
+            element={<ForgotPasswordComponent />}
+            path="/forgot-password"
+          />
+          <Route
+            element={
+              <WhereDidYouShop comparison={comparison} sortedStores={filtedStores} />}
+            path="/user/:id/where-did-you-shop"
+          />
+          <Route element={<FourOFour />} path="/*" />
+        </Routes>
+        <Footer handleThemeChange={handleThemeChange} />
       </BrowserRouter>
     </div>
   );
+  
 }
 
 export default App;
+
