@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react"
 
-const WhereDidYouShopComponent = () => {
+const WhereDidYouShopComponent = ({comparison}) => {
     return (
         <div>
-            <h3>This component will ask the user where did they shop</h3>
+            {comparison.map((store) => {
+                return store.store_name
+            })}
         </div>
     )
 };

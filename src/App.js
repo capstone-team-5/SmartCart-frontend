@@ -59,9 +59,38 @@ function App() {
     return isNaN(storedCartLength) ? 0 : storedCartLength;
   });
 
-  const [loading, setLoading] = useState(true);
-
+  const [loading, setLoading] = useState("Finding Shops In Your Area");
   const [stores, setStores] = useState([]);
+  const [comparison, setComparison] = useState({});
+  const [showDrumRoll, setShowDrumRoll] = useState(false);
+
+  useEffect(() => {
+    const cartIds = cart.map((food) => food.id);
+    const convertIdsToString = cartIds.join(",");
+    const backendEndPoint = `${process.env.REACT_APP_BACKEND_API}/compare-prices?productIds=${convertIdsToString}`;
+
+    axios
+      .get(backendEndPoint)
+      .then((response) => {
+        setComparison(response.data.stores);
+        setTimeout(() => {
+          setLoading("Calculating Your Savings");
+        }, 1500);
+
+        setTimeout(() => {
+          setLoading("Drum Roll !!!!");
+          setShowDrumRoll(true);
+        }, 5000);
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 7500);
+      })
+      .catch((error) => {
+        console.error("Error fetching comparison data:", error);
+        setLoading(false);
+      });
+  }, [cart]);
 
   useEffect(() => {
     window.localStorage.setItem("Testing_Cart_Length", cartLength.toString());
@@ -93,6 +122,7 @@ function App() {
         console.error("Error fetching stores:", error);
       });
   }, []);
+
 
   const handleThemeChange = (theme) => {
     setTheme(theme);
@@ -235,7 +265,7 @@ function App() {
                 path="/search-results/:query"
               />
               <Route
-                element={<PriceComparison cart={cart} stores={stores} />}
+                element={<PriceComparison cart={cart} stores={stores} comparison={comparison} loading={loading} showDrumRoll={showDrumRoll} />}
                 path="/price-compare"
               />
               <Route element={<UserCart />} path="/user/:id/cart" />
@@ -266,7 +296,7 @@ function App() {
                 path="/forgot-password"
               />
               <Route
-                element={<WhereDidYouShop />}
+                element={<WhereDidYouShop comparison={comparison} />}
                 path="/user/:id/where-did-you-shop"
               />
               <Route element={<FourOFour />} path="/*" />
