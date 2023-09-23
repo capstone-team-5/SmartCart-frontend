@@ -12,7 +12,7 @@ const PriceComparisonComponent = ({ cart }) => {
   const [loading, setLoading] = useState("Finding Shops In Your Area");
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
-  const [storeDetails, setStoreDetails] = useState({}); // Store details visibility state
+  const [storeDetails, setStoreDetails] = useState({});
 
   const { id } = useParams;
 
@@ -116,13 +116,16 @@ const PriceComparisonComponent = ({ cart }) => {
         <div>
           {sortedStores.map((store, index) => (
             <div key={store.store_id}>
-              {index === 0 && (
+              {index === 0 ? (
                 <div>
-                  <h1>
-                    Best Value
-                  </h1>
+                  <h1>Best Value</h1>
+                </div>
+              ) : (
+                <div>
+                  <h1>Total Cart Price</h1>
                 </div>
               )}
+              <h1>${storeTotalPrices[store.store_id]?.toFixed(2)}</h1>
               <img
                 src={store.store_image}
                 alt={`${store.store_name}`}
@@ -156,9 +159,6 @@ const PriceComparisonComponent = ({ cart }) => {
                       </li>
                     </div>
                   ))}
-                  <li>
-                    Total Cart Price: ${storeTotalPrices[store.store_id]?.toFixed(2)}
-                  </li>
                   <br /> <br />
                 </ul>
               )}
@@ -168,6 +168,9 @@ const PriceComparisonComponent = ({ cart }) => {
       )}
     </div>
   );
+  
+  
+  
 };
 
 export default PriceComparisonComponent;
