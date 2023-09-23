@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { applyTheme, setTheme } from "./Theme";
+import axios from "axios";
 
 //Commons
 import Header from "./Commons/Header";
@@ -21,7 +22,7 @@ import UserEdit from "./Pages/UserEdit";
 import Subscription from "./Pages/Subscription";
 import ConfirmSubscription from "./Pages/ConfirmSubscription";
 import MeetTheDevelopers from "./Pages/MeetTheDevelopers";
-// import TestComponent from "./MVPComponents/TestComponent";
+import TestComponent from "./MVPComponents/TestComponent";
 import IndividualProduct from "./Pages/IndividualProduct";
 import ContactUs from "./Pages/ContactUs";
 import SearchResults from "./Pages/SearchResults";
@@ -32,7 +33,6 @@ import Savings from "./Pages/Savings";
 import WhereDidYouShop from "./Pages/WhereDidYouShop";
 
 // Components
-
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
 import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
 import FaqComponent from "./NonMVPComponents/FaqComponent";
@@ -58,7 +58,69 @@ function App() {
     return isNaN(storedCartLength) ? 0 : storedCartLength;
   });
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState("Finding Shops In Your Area");
+  const [stores, setStores] = useState([]);
+  const [comparison, setComparison] = useState({});
+  const [showDrumRoll, setShowDrumRoll] = useState(false);
+  const [storeTotalPrices, setStoreTotalPrices] = useState({});
+  const [sortedStores, setSortedStores] = useState([]);
+
+  useEffect(() => {
+    const newStoreTotalPrices = {};
+
+    stores.forEach((store) => {
+      if (comparison.hasOwnProperty(store.store_id)) {
+        const storeTotalPrice = cart.reduce((total, item) => {
+          const itemPrice = Number(comparison[store.store_id][item.id]);
+          const itemQuantity = item.length || 0;
+
+          if (Number(itemPrice) && Number(itemQuantity)) {
+            return total + itemPrice * itemQuantity;
+          }
+
+          return total;
+        }, 0);
+
+        newStoreTotalPrices[store.store_id] = storeTotalPrice;
+      }
+    });
+
+    setStoreTotalPrices(newStoreTotalPrices);
+  }, [cart, comparison, stores]);
+
+  const filtedStores = stores
+    .filter((store) => comparison.hasOwnProperty(store.store_id))
+    .sort(
+      (a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
+    );
+
+  useEffect(() => {
+    const cartIds = cart.map((food) => food.id);
+    const convertIdsToString = cartIds.join(",");
+    const backendEndPoint = `${process.env.REACT_APP_BACKEND_API}/compare-prices?productIds=${convertIdsToString}`;
+
+    axios
+      .get(backendEndPoint)
+      .then((response) => {
+        setComparison(response.data.stores);
+        setTimeout(() => {
+          setLoading("Calculating Your Savings");
+        }, 1500);
+
+        setTimeout(() => {
+          setLoading("Drum Roll !!!!");
+          setShowDrumRoll(true);
+        }, 5000);
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 7500);
+      })
+      .catch((error) => {
+        console.error("Error fetching comparison data:", error);
+        setLoading(false);
+      });
+  }, [cart]);
 
   useEffect(() => {
     window.localStorage.setItem("Testing_Cart_Length", cartLength.toString());
@@ -79,6 +141,17 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("Testing_Cart_Length", cartLength.toString());
   }, [cartLength]);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_API}/stores`)
+      .then((response) => {
+        setStores(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching stores:", error);
+      });
+  }, []);
 
   const handleThemeChange = (theme) => {
     setTheme(theme);
@@ -166,100 +239,102 @@ function App() {
           updateCartLength={setCartLength}
         />
         <LocationComponent />
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <>
-            <Header addToCart={handleAddToCart} />
-            <Routes>
-              <Route element={<LandingPage />} path="/" />
-              <Route
-                element={<Home addToCart={handleAddToCart} />}
-                path="/home"
+        <Header addToCart={handleAddToCart} />
+        <Routes>
+          <Route element={<LandingPage />} path="/" />
+          <Route element={<Home addToCart={handleAddToCart} />} path="/home" />
+          <Route
+            element={
+              <TestComponent
+                updateCartLength={setCartLength}
+                cartLength={cartLength}
+                cart={cart}
+                addToCart={handleAddToCart}
               />
-              {/* <Route
-                element={
-                  <TestComponent
-                    updateCartLength={setCartLength}
-                    cartLength={cartLength}
-                    cart={cart}
-                    addToCart={handleAddToCart}
-                  />
-                }
-                path="/test"
-              /> */}
-              <Route element={<Savings />} path="/user/:id/savings" />
-              <Route element={<AboutUs />} path="/about-us" />
-              <Route element={<ContactUs />} path="/contact-us" />
-              <Route
-                element={
-                  <IndividualProduct
-                    handleAddToCart={handleAddToCart}
-                    cartLength={cartLength}
-                  />
-                }
-                path="/product/:id"
+            }
+            path="/test"
+          />
+          <Route element={<Savings />} path="/user/:id/savings" />
+          <Route element={<AboutUs />} path="/about-us" />
+          <Route element={<ContactUs />} path="/contact-us" />
+          <Route
+            element={
+              <IndividualProduct
+                handleAddToCart={handleAddToCart}
+                cartLength={cartLength}
               />
-              <Route
-                element={
-                  <Cart
-                    deleteItem={handleDeleteItem}
-                    clearCart={handleClearCart}
-                    cart={cart}
-                    cartLength={cartLength}
-                    updateCartLength={updateCartLength}
-                    handleQuantityChange={handleQuantityChange}
-                  />
-                }
-                path="/cart"
+            }
+            path="/product/:id"
+          />
+          <Route
+            element={
+              <Cart
+                deleteItem={handleDeleteItem}
+                clearCart={handleClearCart}
+                cart={cart}
+                cartLength={cartLength}
+                updateCartLength={updateCartLength}
+                handleQuantityChange={handleQuantityChange}
               />
-              <Route element={<Login />} path="/login" />
-              <Route element={<SignUp />} path="/sign-up" />
-              <Route element={<User />} path="/user/:id" />
-              <Route
-                element={<SearchResults addToCart={handleAddToCart} />}
-                path="/search-results/:query"
+            }
+            path="/cart"
+          />
+          <Route element={<Login />} path="/login" />
+          <Route element={<SignUp />} path="/sign-up" />
+          <Route element={<User />} path="/user/:id" />
+          <Route
+            element={<SearchResults addToCart={handleAddToCart} />}
+            path="/search-results/:query"
+          />
+          <Route
+            element={
+              <PriceComparison
+                cart={cart}
+                stores={stores}
+                comparison={comparison}
+                loading={loading}
+                showDrumRoll={showDrumRoll}
+                sortedStores={filtedStores}
               />
-              <Route
-                element={<PriceComparison cart={cart} />}
-                path="/price-compare"
+            }
+            path="/price-compare"
+          />
+          <Route element={<UserCart />} path="/user/:id/cart" />
+          <Route element={<Favorites />} path="/favorites" />
+          {/* the route for favorites will become '/user/favorite/:id' */}
+          <Route element={<UserEdit />} path="/user/:id/edit" />
+          <Route element={<Subscription />} path="/user/:id/subscription" />
+          <Route
+            element={<ConfirmSubscription />}
+            path="/user/:id/subscription/confirmed"
+          />
+          <Route element={<MeetTheDevelopers />} path="/meet-the-developers" />
+          <Route
+            element={<CustomerTestimonialsComponent />}
+            path="/testimonials"
+          />
+          <Route element={<FaqComponent />} path="/faq" />
+          <Route element={<FeedbackComponent />} path="/feedback" />
+          <Route
+            element={<ChangePasswordComponent />}
+            path="/change-password"
+          />
+          <Route
+            element={<ForgotPasswordComponent />}
+            path="/forgot-password"
+          />
+          <Route
+            element={
+              <WhereDidYouShop
+                comparison={comparison}
+                sortedStores={filtedStores}
               />
-              <Route element={<UserCart />} path="/user/:id/cart" />
-              <Route element={<Favorites />} path="/favorites" />
-              {/* the route for favorites will become '/user/favorite/:id' */}
-              <Route element={<UserEdit />} path="/user/:id/edit" />
-              <Route element={<Subscription />} path="/user/:id/subscription" />
-              <Route
-                element={<ConfirmSubscription />}
-                path="/user/:id/subscription/confirmed"
-              />
-              <Route
-                element={<MeetTheDevelopers />}
-                path="/meet-the-developers"
-              />
-              <Route
-                element={<CustomerTestimonialsComponent />}
-                path="/testimonials"
-              />
-              <Route element={<FaqComponent />} path="/faq" />
-              <Route element={<FeedbackComponent />} path="/feedback" />
-              <Route
-                element={<ChangePasswordComponent />}
-                path="/change-password"
-              />
-              <Route
-                element={<ForgotPasswordComponent />}
-                path="/forgot-password"
-              />
-              <Route
-                element={<WhereDidYouShop />}
-                path="/user/:id/where-did-you-shop"
-              />
-              <Route element={<FourOFour />} path="/*" />
-            </Routes>
-            <Footer handleThemeChange={handleThemeChange} />
-          </>
-        )}
+            }
+            path="/user/:id/where-did-you-shop"
+          />
+          <Route element={<FourOFour />} path="/*" />
+        </Routes>
+        <Footer handleThemeChange={handleThemeChange} />
       </BrowserRouter>
     </div>
   );

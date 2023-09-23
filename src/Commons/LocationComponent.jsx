@@ -50,6 +50,7 @@ const LocationComponent = () => {
 
   return (
     <div>
+      <h3>This is the location page</h3>
       {searched ? (
         !matchedZipCode ? (
           <div>
@@ -66,9 +67,7 @@ const LocationComponent = () => {
           </div>
         ) : (
           <div>
-            <button onClick={handleChangeZipCode}>
-              Change Zip Code
-            </button>
+            <button onClick={handleChangeZipCode}>Change Zip Code</button>
             <p>Matched Zip Code: {matchedZipCode}</p>
           </div>
         )
