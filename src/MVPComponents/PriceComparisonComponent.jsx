@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import FadeLoader from "react-spinners/FadeLoader";
 import { Link, useParams } from "react-router-dom";
 
-const PriceComparisonComponent = ({ cart, stores, comparison }) => {
+const PriceComparisonComponent = ({ cart, stores, comparison, sortedStores }) => {
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
   const [storeDetails, setStoreDetails] = useState({});
   const { id } = useParams();
@@ -33,16 +33,12 @@ const PriceComparisonComponent = ({ cart, stores, comparison }) => {
     setStoreTotalPrices(newStoreTotalPrices);
   }, [cart, comparison, stores]);
 
-  const sortedStores = stores
-    .filter((store) => comparison.hasOwnProperty(store.store_id))
-    .sort(
-      (a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
-    );
 
   const [loadingMessages, setLoadingMessages] = useState([
     "Finding Shops In Your Area",
     "Calculating Your Savings",
   ]);
+
   const [loadingIndex, setLoadingIndex] = useState(0);
   const [showDrumRoll, setShowDrumRoll] = useState(false);
 
