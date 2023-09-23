@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaHeart, FaTimes } from "react-icons/fa";
-import { HiOutlineShoppingCart } from "react-icons/hi";
+import { HiOutlineShoppingCart, HiSearch } from "react-icons/hi";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { PiUserCircle } from "react-icons/pi";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -72,13 +72,14 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
   };
 
   // Function to close the drop-down menu when a link is clicked
+
   const closeMenu = () => {
     setOpen(false);
     setShowUserDropdown(false);
   };
 
   return (
-    <div className="bg-white relative">
+    <div className="bg-orange-200 relative">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           <div className="flex items-center">
@@ -105,9 +106,31 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
             </Link>
           </div>
 
+          {/* Search */}
+          <div className="mt-3 md:w-1/2 sm:w-full">
+            <div className="flex items-stretch">
+              <input
+                type="search"
+                className="flex-auto rounded-l border border-solid border-gray-300  bg-clip-padding px-3 py-2 text-base font-normal text-gray-700 outline-none transition duration-200 ease-in-out focus:ring-2 focus:border-primary focus:text-gray-700 focus:shadow-outline dark:border-gray-600 dark:text-gray-200 dark:placeholder-text-gray-200 dark:focus:border-primary"
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="button-addon1"
+              />
+              <button
+                className="flex items-center bg-black px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg ml-[-1px]"
+                type="button"
+                id="button-addon1"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+              >
+                <HiSearch size={20} />
+              </button>
+            </div>
+          </div>
+
           {/* Icons */}
-          <div className="flex items-center space-x-4 md:space-x-8 lg:space-x-16">
-            <div className="relative -mt-12 mr-16">
+          <div className="flex items-center md:space-x-8 lg:space-x-16">
+            <div className="relative -mt-12 mr-16 bg-orange-200">
               <div className="p-2 rounded-md group absolute transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
                 <div>
                   <FiMoon
@@ -191,8 +214,9 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
           </div>
         </div>
       </div>
+      {/* Dropdown menu */}
       {open && (
-        <div className="absolute top-16  bg-white left-0 w-72 z-50">
+        <div className="absolute top-16  bg-orange-200 left-0 w-72 z-50">
           <div className="px-4 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link, index) => (
               <Link
