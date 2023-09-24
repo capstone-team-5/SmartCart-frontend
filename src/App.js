@@ -38,7 +38,8 @@ import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
 import FaqComponent from "./NonMVPComponents/FaqComponent";
 import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent";
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
-import LocationComponent from "./Commons/LocationComponent";
+// import LocationComponent from "./Commons/LocationComponent";
+import HookComponent from "./MVPComponents/LocationHookComponent";
 
 // Styling
 import "./App.css";
@@ -63,7 +64,6 @@ function App() {
   const [comparison, setComparison] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
-  const [sortedStores, setSortedStores] = useState([]);
 
   useEffect(() => {
     const newStoreTotalPrices = {};
@@ -233,12 +233,13 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <HookComponent />
         <Navbar
           cartLength={cartLength}
           handleThemeChange={handleThemeChange}
           updateCartLength={setCartLength}
         />
-        <LocationComponent />
+        {/* <LocationComponent /> */}
         <Header addToCart={handleAddToCart} />
         <Routes>
           <Route element={<LandingPage />} path="/" />
@@ -300,8 +301,7 @@ function App() {
             path="/price-compare"
           />
           <Route element={<UserCart />} path="/user/:id/cart" />
-          <Route element={<Favorites />} path="/favorites" />
-          {/* the route for favorites will become '/user/favorite/:id' */}
+          <Route element={<Favorites />} path="/user/:id/favorites" />
           <Route element={<UserEdit />} path="/user/:id/edit" />
           <Route element={<Subscription />} path="/user/:id/subscription" />
           <Route
@@ -314,7 +314,7 @@ function App() {
             path="/testimonials"
           />
           <Route element={<FaqComponent />} path="/faq" />
-          <Route element={<FeedbackComponent />} path="/feedback" />
+          <Route element={<FeedbackComponent />} path="/user/:id/feedback" />
           <Route
             element={<ChangePasswordComponent />}
             path="/change-password"
