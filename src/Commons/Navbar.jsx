@@ -88,7 +88,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
 
   return (
     <header className="antialiased">
-      <nav className="bg-green-900 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+      <nav className="bg-gray-900 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
         <div className="flex flex-wrap justify-between items-center">
           <div className="flex justify-start items-center">
             <button
@@ -103,7 +103,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
             <button
               aria-expanded="true"
               aria-controls="sidebar"
-              className="p-2 mr-2 text-gray-600 rounded-lg cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              className="p-2 mr-2 text-white rounded-lg cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             >
               <HiMenuAlt2 size={24} /> {/* hamburger menu in small devices */}
               <span className="sr-only">Toggle sidebar</span>
@@ -112,7 +112,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               <img
                 src={logo_image}
                 alt="SmartCART Logo"
-                className="mr-3 h-16"
+                className="mr-3 h-16 object-contain"
               />
               <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
                 $mrt CART
@@ -124,13 +124,13 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               </label>
               <div className="relative mt-1 lg:w-96">
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                  <HiSearch size={20} />
+                  <HiSearch size={18} />
                 </div>
                 <input
                   type="text"
                   name="email"
                   id="topbar-search"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="bg-gray-50 border border-gray-300 text-white sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Search"
                 />
               </div>
@@ -139,10 +139,10 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
           <div className="flex items-center lg:order-2">
             <button
               type="button"
-              className="hidden sm:inline-flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-xs px-3 py-1.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+              className="p-2 mr-1 rounded-lg hover:bg-white dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
             >
               <FiMoon
-                className="text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer"
+                className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer"
                 onClick={() => handleThemeChange("light")}
               />
             </button>
@@ -161,36 +161,32 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               data-dropdown-toggle="notification-dropdown"
               className="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
             >
-              <span className="sr-only">View notifications</span>
-              {/* <!-- Bell icon --> */}
               <FaHeart className="text-orange-500 peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
             </button>
-            {/* <!-- Dropdown menu --> */}
-            <div
-              className="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700"
-              id="notification-dropdown"
+
+            <button
+              type="button"
+              data-dropdown-toggle="notification-dropdown"
+              className="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
             >
-              <div className="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                Notifications
-              </div>
-            </div>
+              <HiOutlineShoppingCart className="text-white peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
+            </button>
+
             {/* <!-- Apps --> */}
             <button
               type="button"
               data-dropdown-toggle="apps-dropdown"
-              className="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              className="p-2 text-white rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
             >
-              <span className="sr-only">View notifications</span>
-              {/* <!-- Icon --> */}
               <AiFillAppstore />
             </button>
-            {/* <!-- Dropdown menu --> */}
+
             <div
               className="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600"
               id="apps-dropdown"
             >
               <div className="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                Apps
+                $mrt CART Apps
               </div>
               <div className="grid grid-cols-3 gap-4 p-4">
                 <Link
@@ -199,7 +195,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                 >
                   <MdOutlineSavings />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Savings
+                    Track Savings
                   </div>
                 </Link>
                 <Link
@@ -208,7 +204,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                 >
                   <FiMoon />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Users
+                    Dark Mode
                   </div>
                 </Link>
                 <Link
@@ -217,7 +213,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                 >
                   <MdCategory />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Inbox
+                    Categories
                   </div>
                 </Link>
                 <Link
@@ -259,23 +255,9 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <svg
-                    className="mx-auto mb-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 11 20"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1.75 15.363a4.954 4.954 0 0 0 2.638 1.574c2.345.572 4.653-.434 5.155-2.247.502-1.813-1.313-3.79-3.657-4.364-2.344-.574-4.16-2.551-3.658-4.364.502-1.813 2.81-2.818 5.155-2.246A4.97 4.97 0 0 1 10 5.264M6 17.097v1.82m0-17.5v2.138"
-                    />
-                  </svg>
+                  <FiSun />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Pricing
+                    Light Mode
                   </div>
                 </Link>
                 <Link
@@ -284,7 +266,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                 >
                   <HiOutlineShoppingCart />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Billing
+                    Cart
                   </div>
                 </Link>
                 <Link
@@ -319,10 +301,10 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
             >
               <div className="py-3 px-4">
                 <span className="block text-sm font-semibold text-gray-900 dark:text-white">
-                  Neil sims
+                  VM
                 </span>
                 <span className="block text-sm text-gray-500 truncate dark:text-gray-400">
-                  name@flowbite.com
+                  vm@pursuit.org
                 </span>
               </div>
               <ul
