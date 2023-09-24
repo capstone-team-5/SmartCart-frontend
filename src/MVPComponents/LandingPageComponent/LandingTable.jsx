@@ -8,10 +8,10 @@ const LandingTable = () => {
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div className="mx-auto max-w-screen-md mb-8 lg:mb-12">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-            Discover the Benefits of SmartCART
+            Discover the Benefits of $mrtCART
           </h2>
           <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
-            At SmartCART, we're committed to enhance your shopping experience.
+            At $mrtCART, we're committed to enhancing your shopping experience.
           </p>
         </div>
 
@@ -24,65 +24,31 @@ const LandingTable = () => {
 
               <ul className="mb-8 space-y-4 text-left">
                 <li className="flex items-center space-x-3">
-                  <AiOutlineCheck
-                    style={{
-                      fontWeight: "bold",
-                      color: "darkgreen",
-                      fontSize: "30px",
-                    }}
-                  />
-                  <span>No need to collect flyers</span>
+                  <AiOutlineCheck color="green" />
+                  <span>View thousands of items</span>
                 </li>
 
                 <li className="flex items-center space-x-3">
-                  <AiOutlineCheck
-                    style={{
-                      fontWeight: "bold",
-                      color: "darkgreen",
-                      fontSize: "30px",
-                    }}
-                  />
-
-                  <span>Compare prices hassle-free</span>
+                  <AiOutlineCheck color="green" />
+                  <span>View your favorite items</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <AiOutlineCheck
-                    style={{
-                      fontWeight: "bold",
-                      color: "darkgreen",
-                      fontSize: "30px",
-                    }}
-                  />
-
-                  <span>Save your favorite items</span>
+                  <AiOutlineCheck color="green" />
+                  <span>Add items to your cart</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <AiOutlineCheck
-                    style={{
-                      fontWeight: "bold",
-                      color: "darkgreen",
-                      fontSize: "30px",
-                    }}
-                  />
-
-                  <span>Track your earnings</span>
+                  <AiOutlineCheck color="green" />
+                  <span>Compare your cart across all stores in your area</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <AiOutlineCheck
-                    style={{
-                      fontWeight: "bold",
-                      color: "darkgreen",
-                      fontSize: "30px",
-                    }}
-                  />
-
-                  <span>No commitment required</span>
+                  <AiOutlineCheck color="green" />
+                  <span>Track your savings</span>
                 </li>
               </ul>
 
               <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 mt-10">
                 <Link
-                  to="/home"
+                  to="/login"
                   className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
                 >
                   Start Saving Now!
