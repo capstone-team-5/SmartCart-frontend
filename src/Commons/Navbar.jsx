@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaHeart } from "react-icons/fa";
-import { HiOutlineShoppingCart, HiSearch, HiMenuAlt2 } from "react-icons/hi";
 import logo_image from "../Assets/SmrtCARTLogo4.png";
 import sana from "../Assets/sana.jpg";
+import { FaHeart, FaUserAlt } from "react-icons/fa";
+import { HiOutlineShoppingCart, HiSearch, HiMenuAlt2 } from "react-icons/hi";
 import { AiFillAppstore, AiFillHome } from "react-icons/ai";
-import { FaUserAlt } from "react-icons/fa";
 import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
 import {
   MdLogout,
@@ -237,7 +236,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               } overflow-hidden absolute top-20 right-5 w-72 z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600`}
               id="apps-dropdown"
             >
-              <div className="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <div className="block py-2 px-4 text-base font-medium text-center text-black bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 $mrtCART Apps
               </div>
               <div className="grid grid-cols-3 gap-4 p-4">
@@ -251,24 +250,6 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   </div>
                 </Link>
 
-                {/* <Link
-                  to="#"
-                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
-                >
-                  <svg
-                    className="mx-auto mb-2 w-5 h-5 text-black group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 16"
-                  >
-                    <path d="M19 0H1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1ZM2 6v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6H2Zm11 3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8a1 1 0 0 1 2 0h2a1 1 0 0 1 2 0v1Z" />
-                  </svg>
-                  <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Products
-                  </div>
-                </Link> */}
-
                 <Link
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
@@ -278,7 +259,22 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                     Categories
                   </div>
                 </Link>
-
+                <Link
+                  to="#"
+                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+                >
+                  <HiOutlineShoppingCart />
+                  <div className="text-sm font-medium text-gray-900 dark:text-white">
+                    Cart
+                  </div>
+                  {cartLength > 0 && (
+                    <div className="absolute top-14 right-12">
+                      <div className="rounded-full bg-orange-500 text-black w-5 h-5 text-xs font-bold flex items-center justify-center">
+                        {cartLength}
+                      </div>
+                    </div>
+                  )}
+                </Link>
                 <Link
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
@@ -309,22 +305,6 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   </div>
                 </Link>
 
-                <Link
-                  to="#"
-                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
-                >
-                  <HiOutlineShoppingCart />
-                  <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Cart
-                  </div>
-                  {cartLength > 0 && (
-                    <div className="absolute top-64 right-32">
-                      <div className="rounded-full bg-orange-500 text-black w-5 h-5 text-xs font-bold flex items-center justify-center">
-                        {cartLength}
-                      </div>
-                    </div>
-                  )}
-                </Link>
                 <Link
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
@@ -488,7 +468,22 @@ export default Navbar;
                   </p>
                 </div>
  
-          <Link to="/favorites">
-            <Link to="/cart" >
+          {/* <Link
+                  to="#"
+                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+                >
+                  <svg
+                    className="mx-auto mb-2 w-5 h-5 text-black group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 16"
+                  >
+                    <path d="M19 0H1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1ZM2 6v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6H2Zm11 3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8a1 1 0 0 1 2 0h2a1 1 0 0 1 2 0v1Z" />
+                  </svg>
+                  <div className="text-sm font-medium text-gray-900 dark:text-white">
+                    Products
+                  </div>
+                </Link> 
 
 */
