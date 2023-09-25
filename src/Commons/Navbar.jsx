@@ -77,7 +77,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                 className="mr-3 h-16 object-contain"
               />
               <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-                $mrt CART
+                $mrtCART
               </span>
             </Link>
             <form action="#" method="GET" className="hidden lg:block lg:pl-2">
@@ -151,7 +151,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               data-dropdown-toggle="apps-dropdown"
               className="p-2 text-white rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
             >
-              <AiFillAppstore />
+              <AiFillAppstore size={22} />
             </button>
 
             <div
@@ -159,7 +159,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               id="apps-dropdown"
             >
               <div className="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                $mrt CART Apps
+                $mrtCART Apps
               </div>
               <div className="grid grid-cols-3 gap-4 p-4">
                 <Link
