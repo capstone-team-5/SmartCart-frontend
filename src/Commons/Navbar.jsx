@@ -5,6 +5,7 @@ import { HiOutlineShoppingCart, HiSearch } from "react-icons/hi";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { HiMenuAlt2 } from "react-icons/hi";
 import logo_image from "../Assets/SmrtCARTLogo4.png";
+import sana from "../Assets/sana.jpg";
 import { AiFillAppstore } from "react-icons/ai";
 import { FaUserAlt } from "react-icons/fa";
 import {
@@ -46,46 +47,7 @@ const navLinks = [
   },
 ];
 
-const userDropDown = [
-  {
-    title: "Sign In",
-    link: "/sign-up",
-  },
-  {
-    title: "Create Account",
-    link: "/sign-up",
-  },
-  {
-    title: "Profile Settings",
-    link: "/user/:id",
-  },
-  {
-    title: "Sign Out",
-    link: "/signout",
-  },
-];
-
 const Navbar = ({ cartLength, handleThemeChange }) => {
-  const [open, setOpen] = useState(false);
-  const [showUserDropdown, setShowUserDropdown] = useState(false);
-
-  const handleMenu = () => {
-    setOpen((prev) => !prev);
-    setShowUserDropdown(false);
-  };
-
-  const toggleUserDropdown = () => {
-    setShowUserDropdown((prev) => !prev);
-    setOpen(false);
-  };
-
-  // Function to close the drop-down menu when a link is clicked
-
-  const closeMenu = () => {
-    setOpen(false);
-    setShowUserDropdown(false);
-  };
-
   return (
     <header className="antialiased">
       <nav className="bg-gray-900 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
@@ -147,15 +109,20 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               />
             </button>
             <button
+              type="button"
+              className="p-2 mr-1 rounded-lg hover:bg-white dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+            >
+              <MdLocationPin className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
+            </button>
+            <button
               id="toggleSidebarMobileSearch"
               type="button"
-              className="p-2 text-gray-500 rounded-lg lg:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              className="p-2 text-white rounded-lg lg:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             >
               <span className="sr-only">Search</span>
               {/* <!-- Search icon --> */}
               <HiSearch size={20} />
             </button>
-            {/* <!-- Notifications --> */}
             <button
               type="button"
               data-dropdown-toggle="notification-dropdown"
@@ -166,10 +133,16 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
 
             <button
               type="button"
-              data-dropdown-toggle="notification-dropdown"
-              className="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              className="p-2 mr-1 rounded-lg hover:bg-white dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
             >
-              <HiOutlineShoppingCart className="text-white peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
+              <HiOutlineShoppingCart className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
+              {cartLength > 0 && (
+                <div className="absolute top-3 right-28">
+                  <div className="rounded-full bg-orange-500 text-black w-5 h-5 text-xs font-bold flex items-center justify-center">
+                    {cartLength}
+                  </div>
+                </div>
+              )}
             </button>
 
             {/* <!-- Apps --> */}
@@ -202,7 +175,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <FiMoon />
+                  <FiMoon onClick={() => handleThemeChange("light")} />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
                     Dark Mode
                   </div>
@@ -255,7 +228,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <FiSun />
+                  <FiSun onClick={() => handleThemeChange("dark")} />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
                     Light Mode
                   </div>
@@ -268,6 +241,13 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
                     Cart
                   </div>
+                  {cartLength > 0 && (
+                    <div className="absolute -top-1 right-0 transform translate-x-2 -translate-y-2">
+                      <div className="rounded-full bg-orange-500 text-black w-5 h-5 text-xs font-bold flex items-center justify-center">
+                        {cartLength}
+                      </div>
+                    </div>
+                  )}
                 </Link>
                 <Link
                   to="#"
@@ -290,7 +270,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               <span className="sr-only">Open user menu</span>
               <img
                 className="w-8 h-8 rounded-full"
-                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                src={sana}
                 alt="user icon"
               />
             </button>
@@ -375,6 +355,26 @@ export default Navbar;
         Aprill@gmail.com
         </span>
 
+  const [open, setOpen] = useState(false);
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
+
+  const handleMenu = () => {
+    setOpen((prev) => !prev);
+    setShowUserDropdown(false);
+  };
+
+  const toggleUserDropdown = () => {
+    setShowUserDropdown((prev) => !prev);
+    setOpen(false);
+  };
+
+  // Function to close the drop-down menu when a link is clicked
+
+  const closeMenu = () => {
+    setOpen(false);
+    setShowUserDropdown(false);
+  };
+
             <div className="bg-orange-200 relative">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
@@ -400,28 +400,6 @@ export default Navbar;
                 className="object-contain w-20 h-20 lg:w-40 lg:h-40 rounded-full ml-4 md:ml-0"
               />
             </Link>
-          </div>
-
-          {/* Search 
-          <div className="mt-3 md:w-1/2 sm:w-full">
-            <div className="flex items-stretch">
-              <input
-                type="search"
-                className="flex-auto rounded-l border border-solid border-gray-300  bg-clip-padding px-3 py-2 text-base font-normal text-gray-700 outline-none transition duration-200 ease-in-out focus:ring-2 focus:border-primary focus:text-gray-700 focus:shadow-outline dark:border-gray-600 dark:text-gray-200 dark:placeholder-text-gray-200 dark:focus:border-primary"
-                placeholder="Search"
-                aria-label="Search"
-                aria-describedby="button-addon1"
-              />
-              <button
-                className="flex items-center bg-black px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg ml-[-1px]"
-                type="button"
-                id="button-addon1"
-                data-te-ripple-init
-                data-te-ripple-color="light"
-              >
-                <HiSearch size={20} />
-              </button>
-            </div>
           </div>
 
           {/* Icons 
@@ -461,7 +439,6 @@ export default Navbar;
 
             <Link
               to="/cart"
-              className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
             >
               <div className="p-2 rounded-md group relative transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
                 <HiOutlineShoppingCart className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
