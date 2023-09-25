@@ -1,46 +1,79 @@
-//This component will talk about Vandhana
+import React from "react";
 import { Link } from "react-router-dom";
+import sana from "../../Assets/sana.jpg";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
+
 const VandhanaComponent = () => {
   return (
-    <div>
-      <p>
-        Hi, I'm Vandhana, and I'm a front-end software developer with a passion
-        for coding, gardening, and traveling. Ever since I was introduced to
-        programming in college, I've been fascinated by how code can bring ideas
-        to life and make a positive impact on people's lives.
-        <br /> <br />
-        One of my favorite ways to practice coding is by solving CodeWars and
-        LeetCode problems, which challenge me to think creatively and improve my
-        problem-solving skills. I also love watching coding videos on YouTube,
-        which help me stay up-to-date on the latest tools and techniques in the
-        industry.
-        <br /> <br />
-        Currently, I'm a student at Pursuit, where I'm learning software
-        development and working with a talented group of peers. Outside of
-        coding, I'm a proud mom and love spending time with my kids, whether
-        we're exploring new places or just hanging out at home.
-        <br /> <br />
-        In my free time, I also enjoy tending to my garden and trying out new
-        recipes in the kitchen. I find that these hobbies help me unwind and
-        recharge my creativity, so that I can bring my best self to my work as a
-        software developer.
-        <br /> <br />
-        If you're looking for a developer who is dedicated, and passionate about
-        coding, I would love to work with you. Let's collaborate to bring your
-        software development project to life!
-        <br /> <br />
-        Check out my{" "}
-        <Link to="https://www.linkedin.com/in/vandhanamohan/" target="_blank">
-          {" "}
-          LinkedIn
-        </Link>{" "}
-        and{" "}
-        <Link to="https://github.com/Vandhana-Mohan" target="_blank">
-          {" "}
-          GitHub{" "}
-        </Link>{" "}
-        to see what I’ve been working on. to see what I've been working on.
-      </p>
+    <div className="bg-white min-h-screen flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center py-10">
+        {/* Central Image */}
+        <div className="relative">
+          <img
+            src={sana}
+            alt="Profile"
+            className="w-44 h-44 rounded-full transition transform hover:scale-110 animate-flyInUp"
+          />
+        </div>
+      </div>
+      <div className="flex flex-col items-center justify-center max-w-lg">
+        <div className="bg-purple-300 w-44 h-44 rounded-full m-2 p-4 flex items-center justify-center transition transform hover:scale-110 animate-flyInRight">
+          <p className="text-black text-center">
+            <strong>Hobbies</strong>
+            <br />
+            Gardening, Cooking
+          </p>
+        </div>
+        <div className="bg-yellow-300 w-44 h-44 rounded-full m-2 p-4 flex items-center justify-center transition transform hover:scale-110 animate-flyInLeft">
+          <p className="text-black text-center">
+            <strong>Passion</strong>
+            <br />
+            Coding and Traveling
+          </p>
+        </div>
+
+        <div className="bg-pink-300 w-44 h-44 rounded-full m-2 p-4 flex items-center justify-center transition transform hover:scale-110 animate-flyInRight">
+          <Link
+            to="https://github.com/Vandhana-Mohan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black text-center mb-3"
+          >
+            <strong>Education</strong>
+            <br />
+            Math &amp; Computer Science
+          </Link>
+        </div>
+        <div className="bg-green-300 w-44 h-44 rounded-full m-2 p-4 flex items-center justify-center transition transform hover:scale-110 animate-flyInLeft">
+          <p className="text-black text-center">
+            <strong>Ask me about</strong>
+            <br />
+            How pursuit changed my life
+          </p>
+        </div>
+        <div className="bg-orange-300 w-44 h-44 rounded-full m-2 p-4 flex flex-col items-center justify-center transition transform hover:scale-110 animate-flyInRight">
+          <Link
+            to="https://github.com/Vandhana-Mohan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black text-center mb-3"
+          >
+            <strong>GitHub</strong>
+          </Link>
+          <BsGithub size={18} />
+        </div>
+        <div className="bg-blue-300 w-44 h-44 rounded-full m-2 p-4 flex flex-col items-center justify-center transition transform hover:scale-110 animate-flyInLeft">
+          <Link
+            to="https://www.linkedin.com/in/vandhanamohan/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black text-center mb-3"
+          >
+            <strong>LinkedIn</strong>
+          </Link>
+          <BsLinkedin size={18} />
+        </div>
+      </div>
     </div>
   );
 };

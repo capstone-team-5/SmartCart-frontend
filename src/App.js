@@ -67,7 +67,6 @@ function App() {
     return Array.isArray(storedFavoritesData) ? storedFavoritesData : [];
   });
 
-  
   const [loading, setLoading] = useState("Finding Shops In Your Area");
   const [stores, setStores] = useState([]);
   const [comparison, setComparison] = useState({});
@@ -79,7 +78,7 @@ function App() {
     const existingItemIndex = updatedFavorites.findIndex(
       (item) => item.id === food.product_id
     );
-  
+
     if (existingItemIndex === -1) {
       updatedFavorites.push({
         name: food.product_name,
@@ -88,7 +87,10 @@ function App() {
       });
       console.log("updatedFavorites:", updatedFavorites);
       setFavorites(updatedFavorites);
-      window.localStorage.setItem("Testing_Favorites", JSON.stringify(updatedFavorites));
+      window.localStorage.setItem(
+        "Testing_Favorites",
+        JSON.stringify(updatedFavorites)
+      );
     }
   };
 
@@ -211,7 +213,6 @@ function App() {
     setCartLength((previousCartLength) => previousCartLength + 1);
     updateCartLength(updateCartLength);
   };
-
 
   const [itemQuantities, setItemQuantities] = useState(
     cart.reduce((quantities, item) => {
@@ -361,7 +362,10 @@ function App() {
             }
             path="/user/:id/where-did-you-shop"
           />
-          <Route element={<TermsAndConditions />} path="/terms-and-conditions" />
+          <Route
+            element={<TermsAndConditions />}
+            path="/terms-and-conditions"
+          />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
         <Footer handleThemeChange={handleThemeChange} />
