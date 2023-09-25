@@ -41,6 +41,7 @@ import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent"
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
 // import LocationComponent from "./Commons/LocationComponent";
 import HookComponent from "./MVPComponents/LocationHookComponent";
+import SearchComponent from "./MVPComponents/SearchComponent";
 
 // Styling
 import "./App.css";
@@ -268,6 +269,7 @@ function App() {
           handleThemeChange={handleThemeChange}
           updateCartLength={setCartLength}
         />
+        <SearchComponent />
         {/* <LocationComponent /> */}
         <Header addToCart={handleAddToCart} />
         <Routes>

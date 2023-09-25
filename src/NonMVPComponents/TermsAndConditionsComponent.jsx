@@ -42,7 +42,7 @@ const TermsAndConditionsComponent = () => {
 
         <div className="rounded border-gray-300 dark:border-gray-700 border-2 p-4">
           <h2 className="text-xl font-semibold mb-2">6. Intellectual Property</h2>
-          <p>All content, including text, graphics, logos, and software used in the application, is the intellectual property of [Your Company Name]. Users and vendors may not reproduce, modify, or distribute this content without explicit permission.</p>
+          <p>All content, including text, graphics, logos, and software used in the application, is the intellectual property of $mrtCART. Users and vendors may not reproduce, modify, or distribute this content without explicit permission.</p>
         </div>
 
         <div className="rounded border-gray-300 dark:border-gray-700 border-2 p-4">
@@ -57,7 +57,7 @@ const TermsAndConditionsComponent = () => {
 
         <div className="rounded border-gray-300 dark:border-gray-700 border-2 p-4">
           <h2 className="text-xl font-semibold mb-2">9. Contact Us</h2>
-          <p>If you have any questions or concerns about these Terms, please contact us at [Your Contact Information].</p>
+          <p>If you have any questions or concerns about these Terms, please contact us at officialsmrtcart@gmail.com.</p>
         </div>
       </div>
 
