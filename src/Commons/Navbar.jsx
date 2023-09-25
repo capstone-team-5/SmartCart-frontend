@@ -124,7 +124,6 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
   const closeMenu = () => {
     setOpen(false);
     setShowUserDropdown(false);
-    setShowAppsDropdown(false);
   };
 
   return (
@@ -287,23 +286,34 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   )}
                 </Link>
                 <Link
-                  to="#"
+                  to="/user/:id/favorites"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <BiSolidMoon onClick={toggleTheme} />
+                  <FaHeart />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Dark Mode
+                    My Favorites
                   </div>
                 </Link>
-
                 <Link
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+                  onClick={toggleTheme}
                 >
-                  <BiSolidSun onClick={toggleTheme} />
-                  <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Light Mode
-                  </div>
+                  {isDarkTheme ? (
+                    <>
+                      <BiSolidMoon />
+                      <div className="text-sm font-medium text-gray-900 dark:text-white">
+                        Dark Mode
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <BiSolidSun />
+                      <div className="text-sm font-medium text-gray-900 dark:text-white">
+                        Light Mode
+                      </div>
+                    </>
+                  )}
                 </Link>
 
                 <Link
