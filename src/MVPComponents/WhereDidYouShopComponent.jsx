@@ -1,6 +1,5 @@
 //This component will be used for the user to answer which store they shopped at
 
-
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
