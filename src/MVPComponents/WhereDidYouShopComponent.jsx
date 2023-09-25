@@ -20,7 +20,6 @@ const WhereDidYouShopComponent = ({ comparison, sortedStores }) => {
     event.preventDefault();
 
     if (selectedStore === null) {
-      // Check if no store is selected
       setErrorMessage("Please select an option"); 
     } else if (selectedStore === 'all_lowest_priced') {
       console.log('I am a super saver!');
