@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import logo_image from "../Assets/SmrtCARTLogo4.png";
 import sana from "../Assets/sana.jpg";
@@ -88,6 +89,9 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
   const [open, setOpen] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showAppsDropdown, setShowAppsDropdown] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [products, setProducts] = useState([]);
+  const [clickedProduct, setClickedProduct] = useState(false);
 
   const [isDarkTheme, setIsDarkTheme] = useState(
     localStorage.theme === "dark" ||
@@ -124,7 +128,49 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
   const closeMenu = () => {
     setOpen(false);
     setShowUserDropdown(false);
-    setShowAppsDropdown(false);
+  };
+
+  useEffect(() => {
+    if (searchQuery) {
+      axios
+        .get(`${process.env.REACT_APP_BACKEND_API}/products`)
+        .then((response) => {
+          const items = response.data;
+          const productNamesSet = new Set();
+          const foundItems = items.filter((item) => {
+            const lowerCaseProductName = item.product_name.toLowerCase();
+            if (!productNamesSet.has(lowerCaseProductName)) {
+              productNamesSet.add(lowerCaseProductName);
+              return (
+                lowerCaseProductName.includes(searchQuery.toLowerCase()) ||
+                item.product_category
+                  .toLowerCase()
+                  .includes(searchQuery.toLowerCase()) ||
+                item.product_brand
+                  .toLowerCase()
+                  .includes(searchQuery.toLowerCase())
+              );
+            }
+            return false;
+          });
+          setProducts(foundItems);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      setProducts([]);
+    }
+    setClickedProduct(false);
+  }, [searchQuery]);
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+    setClickedProduct(false);
+  };
+
+  const handleProductClicked = (productName) => {
+    setSearchQuery(productName);
+    setSearchQuery("");
+    setClickedProduct(true);
   };
 
   return (
@@ -160,12 +206,12 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                 alt="SmartCART Logo"
                 className="mr-3 h-16 object-contain"
               />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
+              {/* <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
                 $mrtCART
-              </span>
+              </span> */}
             </Link>
-            <form action="#" method="GET" className="hidden lg:block lg:pl-2">
-              <label for="topbar-search" className="sr-only">
+            <form className="hidden lg:block lg:pl-2">
+              <label htmlFor="topbar-search" className="sr-only">
                 Search
               </label>
               <div className="relative mt-1 lg:w-96">
@@ -173,11 +219,13 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   <HiSearch size={18} />
                 </div>
                 <input
-                  type="text"
-                  name="email"
+                  type="search"
+                  name="search"
                   id="topbar-search"
-                  className="bg-gray-50 border border-gray-300 text-white sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Search"
+                  className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder="Search for products, brands, categories..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
                 />
               </div>
             </form>
@@ -287,23 +335,34 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   )}
                 </Link>
                 <Link
-                  to="#"
+                  to="/user/:id/favorites"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <BiSolidMoon onClick={toggleTheme} />
+                  <FaHeart />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Dark Mode
+                    My Favorites
                   </div>
                 </Link>
-
                 <Link
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+                  onClick={toggleTheme}
                 >
-                  <BiSolidSun onClick={toggleTheme} />
-                  <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Light Mode
-                  </div>
+                  {isDarkTheme ? (
+                    <>
+                      <BiSolidMoon />
+                      <div className="text-sm font-medium text-gray-900 dark:text-white">
+                        Dark Mode
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <BiSolidSun />
+                      <div className="text-sm font-medium text-gray-900 dark:text-white">
+                        Light Mode
+                      </div>
+                    </>
+                  )}
                 </Link>
 
                 <Link
@@ -355,7 +414,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
             >
               <span className="sr-only">Open user menu</span>
               <img
-                className="w-8 h-8 rounded-full"
+                className="w-8 h-8 rounded-full object-contain"
                 src={sana}
                 alt="user icon"
               />
@@ -427,7 +486,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
 
         {/* User Dropdown menu */}
         {showUserDropdown && (
-          <div className="absolute mt-2 right-0 bg-white w-72 z-50">
+          <div className="absolute mt-2 right-0 bg-white w-52 z-50">
             <ul className="py-1">
               {userDropDown.map((item, index) => (
                 <li key={index} className="px-4 py-2 hover:bg-gray-100">
@@ -462,6 +521,28 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
             </div>
           </div>
         )}
+        {products.length > 0 ? (
+          <div className="absolute top-16 bg-white left-44 w-96 p-4 z-50">
+            {products.map((product) => (
+              <div key={product.product_id}>
+                <Link
+                  to={`/search-results/${product.product_name}`}
+                  onClick={() => handleProductClicked(product.product_name)}
+                >
+                  <strong>
+                    <h3>{product.product_name}</h3>
+                  </strong>
+                </Link>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div>
+            {searchQuery && !clickedProduct
+              ? "This product does not exist."
+              : null}
+          </div>
+        )}
       </nav>
     </header>
   );
@@ -469,32 +550,22 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
 
 export default Navbar;
 /* 
-                 <div>
-                  <BiSolidSun
-                    className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer rounded-full dark:text-white"
-                    onClick={() => handleThemeChange("dark")}
-                  />
-                  <p className="invisible text-black text-sm font-light peer-hover:visible absolute">
-                    Light Mode
-                  </p>
-                </div>
- 
-          {/* <Link
-                  to="#"
-                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
-                >
-                  <svg
-                    className="mx-auto mb-2 w-5 h-5 text-black group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 16"
-                  >
-                    <path d="M19 0H1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1ZM2 6v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6H2Zm11 3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8a1 1 0 0 1 2 0h2a1 1 0 0 1 2 0v1Z" />
-                  </svg>
-                  <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Products
-                  </div>
-                </Link> 
+  <Link
+    to="#"
+    className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+  >
+    <svg
+      className="mx-auto mb-2 w-5 h-5 text-black group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 20 16"
+    >
+      <path d="M19 0H1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1ZM2 6v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6H2Zm11 3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8a1 1 0 0 1 2 0h2a1 1 0 0 1 2 0v1Z" />
+    </svg>
+    <div className="text-sm font-medium text-gray-900 dark:text-white">
+      Products
+    </div>
+  </Link> 
 
 */
