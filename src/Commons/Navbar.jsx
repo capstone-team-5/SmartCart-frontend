@@ -23,10 +23,6 @@ const navLinks = [
     title: "About Us",
     link: "/about-us",
   },
-  // {
-  //   title: "Explore All Products",
-  //   link: "/user/:id/feedback",
-  // },
   {
     title: "Explore All Categories",
     link: "/categories",
@@ -93,6 +89,20 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showAppsDropdown, setShowAppsDropdown] = useState(false);
 
+  const [isDarkTheme, setIsDarkTheme] = useState(
+    localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+  );
+
+  const toggleTheme = () => {
+    const newTheme = isDarkTheme ? "light" : "dark";
+    setIsDarkTheme(!isDarkTheme);
+    handleThemeChange(newTheme);
+  };
+
+  // Function to close the drop-down menu when a link is clicked
+
   const toggleAppsDropdown = () => {
     setShowAppsDropdown((prev) => !prev);
     setOpen(false);
@@ -111,11 +121,10 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
     setShowAppsDropdown(false);
   };
 
-  // Function to close the drop-down menu when a link is clicked
-
   const closeMenu = () => {
     setOpen(false);
     setShowUserDropdown(false);
+    setShowAppsDropdown(false);
   };
 
   return (
@@ -177,11 +186,13 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
             <button
               type="button"
               className="p-2 mr-1 rounded-lg hover:bg-white dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              onClick={toggleTheme}
             >
-              <BiSolidMoon
-                className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer"
-                onClick={() => handleThemeChange("light")}
-              />
+              {isDarkTheme ? (
+                <BiSolidSun className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
+              ) : (
+                <BiSolidMoon className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
+              )}
             </button>
             <button
               type="button"
@@ -279,7 +290,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <BiSolidMoon onClick={() => handleThemeChange("light")} />
+                  <BiSolidMoon onClick={toggleTheme} />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
                     Dark Mode
                   </div>
@@ -289,7 +300,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <BiSolidSun onClick={() => handleThemeChange("dark")} />
+                  <BiSolidSun onClick={toggleTheme} />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
                     Light Mode
                   </div>

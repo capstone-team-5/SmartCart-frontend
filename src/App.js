@@ -233,7 +233,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* <HookComponent /> */}
+        <HookComponent />
         <Navbar
           cartLength={cartLength}
           handleThemeChange={handleThemeChange}
@@ -341,4 +341,3 @@ function App() {
 }
 
 export default App;
-
