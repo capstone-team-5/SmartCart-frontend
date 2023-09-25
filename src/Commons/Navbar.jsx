@@ -57,7 +57,19 @@ const navLinks = [
     title: "Track Savings",
     link: "/user/:id/feedback",
   },
- 
+  {
+    title: "Our Testimonials",
+    link: "/user/:id/feedback",
+  },
+  {
+    title: "Sign in",
+    link: "/user/:id/feedback",
+  },
+  {
+    title: "FAQ",
+    link: "/user/:id/feedback",
+  },
+
 ];
 
 const userDropDown = [
