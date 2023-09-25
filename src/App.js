@@ -31,6 +31,7 @@ import LandingPage from "./Pages/LandingPage";
 import Favorites from "./Pages/Favorites";
 import Savings from "./Pages/Savings";
 import WhereDidYouShop from "./Pages/WhereDidYouShop";
+import TermsAndConditions from "./Pages/TermAndConditions";
 
 // Components
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
@@ -114,7 +115,7 @@ function App() {
     setStoreTotalPrices(newStoreTotalPrices);
   }, [cart, comparison, stores]);
 
-  const filtedStores = stores
+  const filteredStores = stores
     .filter((store) => comparison.hasOwnProperty(store.store_id))
     .sort(
       (a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
@@ -323,7 +324,7 @@ function App() {
                 comparison={comparison}
                 loading={loading}
                 showDrumRoll={showDrumRoll}
-                sortedStores={filtedStores}
+                sortedStores={filteredStores}
               />
             }
             path="/price-compare"
@@ -355,11 +356,12 @@ function App() {
             element={
               <WhereDidYouShop
                 comparison={comparison}
-                sortedStores={filtedStores}
+                sortedStores={filteredStores}
               />
             }
             path="/user/:id/where-did-you-shop"
           />
+          <Route element={<TermsAndConditions />} path="/terms-and-conditions" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
         <Footer handleThemeChange={handleThemeChange} />

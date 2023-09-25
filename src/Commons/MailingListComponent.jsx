@@ -83,7 +83,7 @@ const MailingListComponent = () => {
                 <div className="mx-auto max-w-screen-sm text-sm text-center text-gray-500 newsletter-form-footer dark:text-gray-300">
                   We care about the protection of your data.{" "}
                   <Link
-                    to="#"
+                    to="/terms-and-conditions"
                     className="font-medium text-primary-600 dark:text-primary-500 hover:underline"
                   >
                     Read our Privacy Policy
