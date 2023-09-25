@@ -5,7 +5,7 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 const VandhanaComponent = () => {
   return (
-    <div className="bg-gray-50 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div className="bg-white min-h-screen flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center py-10">
         {/* Central Image */}
         <div className="relative">
@@ -16,7 +16,7 @@ const VandhanaComponent = () => {
           />
         </div>
       </div>
-      <div className="flex flex-wrap justify-center max-w-lg">
+      <div className="flex flex-col items-center justify-center max-w-lg">
         <div className="bg-purple-300 w-44 h-44 rounded-full m-2 p-4 flex items-center justify-center transition transform hover:scale-110 animate-flyInRight">
           <p className="text-black text-center">
             <strong>Hobbies</strong>
@@ -29,6 +29,26 @@ const VandhanaComponent = () => {
             <strong>Passion</strong>
             <br />
             Coding and Traveling
+          </p>
+        </div>
+
+        <div className="bg-pink-300 w-44 h-44 rounded-full m-2 p-4 flex items-center justify-center transition transform hover:scale-110 animate-flyInRight">
+          <Link
+            to="https://github.com/Vandhana-Mohan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black text-center mb-3"
+          >
+            <strong>Education</strong>
+            <br />
+            Math &amp; Computer Science
+          </Link>
+        </div>
+        <div className="bg-green-300 w-44 h-44 rounded-full m-2 p-4 flex items-center justify-center transition transform hover:scale-110 animate-flyInLeft">
+          <p className="text-black text-center">
+            <strong>Ask me about</strong>
+            <br />
+            How pursuit changed my life
           </p>
         </div>
         <div className="bg-orange-300 w-44 h-44 rounded-full m-2 p-4 flex flex-col items-center justify-center transition transform hover:scale-110 animate-flyInRight">
@@ -52,25 +72,6 @@ const VandhanaComponent = () => {
             <strong>LinkedIn</strong>
           </Link>
           <BsLinkedin size={18} />
-        </div>
-        <div className="bg-pink-300 w-44 h-44 rounded-full m-2 p-4 flex items-center justify-center transition transform hover:scale-110 animate-flyInRight">
-          <Link
-            to="https://github.com/Vandhana-Mohan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black text-center mb-3"
-          >
-            <strong>Education</strong>
-            <br />
-            Math &amp; Computer Science
-          </Link>
-        </div>
-        <div className="bg-green-300 w-44 h-44 rounded-full m-2 p-4 flex items-center justify-center transition transform hover:scale-110 animate-flyInLeft">
-          <p className="text-black text-center">
-            <strong>Ask me about</strong>
-            <br />
-            How pursuit changed my life
-          </p>
         </div>
       </div>
     </div>
