@@ -31,6 +31,7 @@ import LandingPage from "./Pages/LandingPage";
 import Favorites from "./Pages/Favorites";
 import Savings from "./Pages/Savings";
 import WhereDidYouShop from "./Pages/WhereDidYouShop";
+import TermsAndConditions from "./Pages/TermAndConditions";
 
 // Components
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
@@ -59,11 +60,37 @@ function App() {
     return isNaN(storedCartLength) ? 0 : storedCartLength;
   });
 
+  const [favorites, setFavorites] = useState(() => {
+    const storedFavoritesData = JSON.parse(
+      window.localStorage.getItem("Testing_Favorites")
+    );
+    return Array.isArray(storedFavoritesData) ? storedFavoritesData : [];
+  });
+
+  
   const [loading, setLoading] = useState("Finding Shops In Your Area");
   const [stores, setStores] = useState([]);
   const [comparison, setComparison] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
+
+  const handleAddToFavorites = (food) => {
+    const updatedFavorites = [...favorites];
+    const existingItemIndex = updatedFavorites.findIndex(
+      (item) => item.id === food.product_id
+    );
+  
+    if (existingItemIndex === -1) {
+      updatedFavorites.push({
+        name: food.product_name,
+        image: food.product_image,
+        id: food.product_id,
+      });
+      console.log("updatedFavorites:", updatedFavorites);
+      setFavorites(updatedFavorites);
+      window.localStorage.setItem("Testing_Favorites", JSON.stringify(updatedFavorites));
+    }
+  };
 
   useEffect(() => {
     const newStoreTotalPrices = {};
@@ -88,7 +115,7 @@ function App() {
     setStoreTotalPrices(newStoreTotalPrices);
   }, [cart, comparison, stores]);
 
-  const filtedStores = stores
+  const filteredStores = stores
     .filter((store) => comparison.hasOwnProperty(store.store_id))
     .sort(
       (a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
@@ -185,6 +212,7 @@ function App() {
     updateCartLength(updateCartLength);
   };
 
+
   const [itemQuantities, setItemQuantities] = useState(
     cart.reduce((quantities, item) => {
       quantities[item.id] = item.length;
@@ -263,6 +291,7 @@ function App() {
               <IndividualProduct
                 handleAddToCart={handleAddToCart}
                 cartLength={cartLength}
+                addToFavorites={handleAddToFavorites}
               />
             }
             path="/product/:id"
@@ -295,7 +324,7 @@ function App() {
                 comparison={comparison}
                 loading={loading}
                 showDrumRoll={showDrumRoll}
-                sortedStores={filtedStores}
+                sortedStores={filteredStores}
               />
             }
             path="/price-compare"
@@ -327,11 +356,12 @@ function App() {
             element={
               <WhereDidYouShop
                 comparison={comparison}
-                sortedStores={filtedStores}
+                sortedStores={filteredStores}
               />
             }
             path="/user/:id/where-did-you-shop"
           />
+          <Route element={<TermsAndConditions />} path="/terms-and-conditions" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
         <Footer handleThemeChange={handleThemeChange} />
