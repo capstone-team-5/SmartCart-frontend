@@ -127,11 +127,13 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               <HiMenuAlt2 size={30} />{" "}
               {/* hamburger menu in medium or large devices */}
             </button>
+
             <button
               aria-label={open ? "Close Main Menu" : "Open Main Menu"}
               aria-expanded={open}
               aria-controls="sidebar"
               className="p-2 mr-2 text-white rounded-lg cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              onClick={handleMenu}
             >
               <HiMenuAlt2 size={24} /> {/* hamburger menu in small devices */}
               <span className="sr-only">Toggle sidebar</span>
