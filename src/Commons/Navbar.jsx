@@ -26,6 +26,14 @@ const navLinks = [
     link: "/about-us",
   },
   {
+    title: "Explore All Products",
+    link: "/user/:id/feedback",
+  },
+  {
+    title: "Explore All Categories",
+    link: "/user/:id/feedback",
+  },
+  {
     title: "My Favorites ♥️",
     link: "/user/:id/favorites",
   },
@@ -44,6 +52,30 @@ const navLinks = [
   {
     title: "Review A Store",
     link: "/user/:id/feedback",
+  },
+  {
+    title: "Track Savings",
+    link: "/user/:id/feedback",
+  },
+ 
+];
+
+const userDropDown = [
+  {
+    title: "Sign In",
+    link: "/sign-up",
+  },
+  {
+    title: "Create Account",
+    link: "/signup",
+  },
+  {
+    title: "Profile Settings",
+    link: "/user/:id",
+  },
+  {
+    title: "Sign Out",
+    link: "/signout",
   },
 ];
 
@@ -382,7 +414,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
         )}
         {/* Dropdown menu */}
         {open && (
-          <div className="absolute top-16  bg-orange-200 left-0 w-72 z-50">
+          <div className="absolute top-20 bg-white left-0 w-72 z-50">
             <div className="px-4 pt-2 pb-3 space-y-1 sm:px-3">
               {navLinks.map((link, index) => (
                 <Link
@@ -418,46 +450,5 @@ export default Navbar;
  
           <Link to="/favorites">
             <Link to="/cart" >
-                         
-              {showUserDropdown && (
-                <div className="absolute mt-2 right-0">
-                  <ul className="py-1">
-                    {userDropDown.map((item, index) => (
-                      <li key={index} className="px-4 py-2 hover:bg-gray-100">
-                        <Link
-                          to={item.link}
-                          className="text-black block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap cursor-pointer"
-                          onClick={closeMenu}
-                        >
-                          {item.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* Dropdown menu 
-      {open && (
-        <div className="absolute top-16  bg-orange-200 left-0 w-72 z-50">
-          <div className="px-4 pt-2 pb-3 space-y-1 sm:px-3">
-            {navLinks.map((link, index) => (
-              <Link
-                key={index}
-                className="text-black block px-3 py-2 rounded-md text-base whitespace-nowrap font-medium cursor-pointer"
-                to={link.link}
-                onClick={closeMenu}
-              >
-                <span className="hover:bg-gray-100 px-4 py-4">
-                  {link.title}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
 
 */
