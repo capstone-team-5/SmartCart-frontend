@@ -122,7 +122,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               aria-expanded="true"
               aria-controls="sidebar"
               className="hidden p-2 mr-3 text-white rounded cursor-pointer lg:inline hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700"
-              onClick={handleMenu}
+              onClick={handleMenu} 
             >
               <HiMenuAlt2 size={30} />{" "}
               {/* hamburger menu in medium or large devices */}
@@ -335,6 +335,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               id="user-menu-button"
               aria-expanded="false"
               data-dropdown-toggle="dropdown"
+              onClick={toggleUserDropdown} 
             >
               <span className="sr-only">Open user menu</span>
               <img
@@ -347,7 +348,6 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
             <div
               className="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
               id="dropdown"
-              onClick={toggleUserDropdown}
             >
               <div className="py-3 px-4">
                 <span className="block text-sm font-semibold text-gray-900 dark:text-white">
@@ -410,7 +410,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
         </div>
 
         {showUserDropdown && (
-          <div className="absolute mt-2 right-0">
+          <div className="absolute mt-2 right-0 bg-white w-72 z-50">
             <ul className="py-1">
               {userDropDown.map((item, index) => (
                 <li key={index} className="px-4 py-2 hover:bg-gray-100">
