@@ -57,3 +57,4 @@ const SearchResultsComponent = ({ addToCart }) => {
 };
 
 export default SearchResultsComponent;
+
