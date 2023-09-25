@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaHeart, FaTimes } from "react-icons/fa";
-import { HiOutlineShoppingCart, HiSearch } from "react-icons/hi";
-import { FiSun, FiMoon } from "react-icons/fi";
-import { HiMenuAlt2 } from "react-icons/hi";
+import { FaHeart } from "react-icons/fa";
+import { HiOutlineShoppingCart, HiSearch, HiMenuAlt2 } from "react-icons/hi";
 import logo_image from "../Assets/SmrtCARTLogo4.png";
 import sana from "../Assets/sana.jpg";
-import { AiFillAppstore } from "react-icons/ai";
+import { AiFillAppstore, AiFillHome } from "react-icons/ai";
 import { FaUserAlt } from "react-icons/fa";
+import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
 import {
   MdLogout,
-  MdOutlineSavings,
+  MdSavings,
   MdCategory,
   MdSettings,
   MdLocationPin,
@@ -25,13 +24,13 @@ const navLinks = [
     title: "About Us",
     link: "/about-us",
   },
-  {
-    title: "Explore All Products",
-    link: "/user/:id/feedback",
-  },
+  // {
+  //   title: "Explore All Products",
+  //   link: "/user/:id/feedback",
+  // },
   {
     title: "Explore All Categories",
-    link: "/user/:id/feedback",
+    link: "/categories",
   },
   {
     title: "My Favorites ♥️",
@@ -59,7 +58,7 @@ const navLinks = [
   },
   {
     title: "Our Testimonials",
-    link: "/user/:id/feedback",
+    link: "/testimonials",
   },
   {
     title: "Sign in",
@@ -67,9 +66,8 @@ const navLinks = [
   },
   {
     title: "FAQ",
-    link: "/user/:id/feedback",
+    link: "/faq",
   },
-
 ];
 
 const userDropDown = [
@@ -94,15 +92,24 @@ const userDropDown = [
 const Navbar = ({ cartLength, handleThemeChange }) => {
   const [open, setOpen] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const [showAppsDropdown, setShowAppsDropdown] = useState(false);
+
+  const toggleAppsDropdown = () => {
+    setShowAppsDropdown((prev) => !prev);
+    setOpen(false);
+    setShowUserDropdown(false);
+  };
 
   const handleMenu = () => {
     setOpen((prev) => !prev);
     setShowUserDropdown(false);
+    setShowAppsDropdown(false);
   };
 
   const toggleUserDropdown = () => {
     setShowUserDropdown((prev) => !prev);
     setOpen(false);
+    setShowAppsDropdown(false);
   };
 
   // Function to close the drop-down menu when a link is clicked
@@ -122,7 +129,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               aria-expanded="true"
               aria-controls="sidebar"
               className="hidden p-2 mr-3 text-white rounded cursor-pointer lg:inline hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700"
-              onClick={handleMenu} 
+              onClick={handleMenu}
             >
               <HiMenuAlt2 size={30} />{" "}
               {/* hamburger menu in medium or large devices */}
@@ -172,7 +179,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               type="button"
               className="p-2 mr-1 rounded-lg hover:bg-white dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
             >
-              <FiMoon
+              <BiSolidMoon
                 className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer"
                 onClick={() => handleThemeChange("light")}
               />
@@ -200,8 +207,8 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               <FaHeart className="text-orange-500 peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
             </button>
 
-            <button
-              type="button"
+            <Link
+              to="/cart"
               className="p-2 mr-1 rounded-lg hover:bg-white dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
             >
               <HiOutlineShoppingCart className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
@@ -212,19 +219,22 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   </div>
                 </div>
               )}
-            </button>
+            </Link>
 
             {/* <!-- Apps --> */}
             <button
               type="button"
               data-dropdown-toggle="apps-dropdown"
               className="p-2 text-white rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              onClick={toggleAppsDropdown}
             >
               <AiFillAppstore size={22} />
             </button>
 
             <div
-              className="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600"
+              className={`${
+                showAppsDropdown ? "block" : "hidden"
+              } overflow-hidden absolute top-20 right-5 w-72 z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600`}
               id="apps-dropdown"
             >
               <div className="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -232,23 +242,33 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               </div>
               <div className="grid grid-cols-3 gap-4 p-4">
                 <Link
+                  to="/home"
+                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+                >
+                  <AiFillHome />
+                  <div className="text-sm font-medium text-gray-900 dark:text-white">
+                    Home
+                  </div>
+                </Link>
+
+                {/* <Link
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <MdOutlineSavings />
+                  <svg
+                    className="mx-auto mb-2 w-5 h-5 text-black group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 16"
+                  >
+                    <path d="M19 0H1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1ZM2 6v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6H2Zm11 3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8a1 1 0 0 1 2 0h2a1 1 0 0 1 2 0v1Z" />
+                  </svg>
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Track Savings
+                    Products
                   </div>
-                </Link>
-                <Link
-                  to="#"
-                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
-                >
-                  <FiMoon onClick={() => handleThemeChange("light")} />
-                  <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Dark Mode
-                  </div>
-                </Link>
+                </Link> */}
+
                 <Link
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
@@ -257,6 +277,53 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
                     Categories
                   </div>
+                </Link>
+
+                <Link
+                  to="#"
+                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+                >
+                  <BiSolidMoon onClick={() => handleThemeChange("light")} />
+                  <div className="text-sm font-medium text-gray-900 dark:text-white">
+                    Dark Mode
+                  </div>
+                </Link>
+
+                <Link
+                  to="#"
+                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+                >
+                  <BiSolidSun onClick={() => handleThemeChange("dark")} />
+                  <div className="text-sm font-medium text-gray-900 dark:text-white">
+                    Light Mode
+                  </div>
+                </Link>
+
+                <Link
+                  to="#"
+                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+                >
+                  <MdSavings />
+                  <div className="text-sm font-medium text-gray-900 dark:text-white">
+                    Track Savings
+                  </div>
+                </Link>
+
+                <Link
+                  to="#"
+                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+                >
+                  <HiOutlineShoppingCart />
+                  <div className="text-sm font-medium text-gray-900 dark:text-white">
+                    Cart
+                  </div>
+                  {cartLength > 0 && (
+                    <div className="absolute top-64 right-32">
+                      <div className="rounded-full bg-orange-500 text-black w-5 h-5 text-xs font-bold flex items-center justify-center">
+                        {cartLength}
+                      </div>
+                    </div>
+                  )}
                 </Link>
                 <Link
                   to="#"
@@ -280,48 +347,6 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <svg
-                    className="mx-auto mb-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 16"
-                  >
-                    <path d="M19 0H1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1ZM2 6v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6H2Zm11 3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8a1 1 0 0 1 2 0h2a1 1 0 0 1 2 0v1Z" />
-                  </svg>
-                  <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Products
-                  </div>
-                </Link>
-                <Link
-                  to="#"
-                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
-                >
-                  <FiSun onClick={() => handleThemeChange("dark")} />
-                  <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Light Mode
-                  </div>
-                </Link>
-                <Link
-                  to="#"
-                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
-                >
-                  <HiOutlineShoppingCart />
-                  <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Cart
-                  </div>
-                  {cartLength > 0 && (
-                    <div className="absolute -top-1 right-0 transform translate-x-2 -translate-y-2">
-                      <div className="rounded-full bg-orange-500 text-black w-5 h-5 text-xs font-bold flex items-center justify-center">
-                        {cartLength}
-                      </div>
-                    </div>
-                  )}
-                </Link>
-                <Link
-                  to="#"
-                  className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
-                >
                   <MdLogout />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
                     Logout
@@ -335,7 +360,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               id="user-menu-button"
               aria-expanded="false"
               data-dropdown-toggle="dropdown"
-              onClick={toggleUserDropdown} 
+              onClick={toggleUserDropdown}
             >
               <span className="sr-only">Open user menu</span>
               <img
@@ -409,6 +434,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
           </div>
         </div>
 
+        {/* User Dropdown menu */}
         {showUserDropdown && (
           <div className="absolute mt-2 right-0 bg-white w-72 z-50">
             <ul className="py-1">
@@ -453,7 +479,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
 export default Navbar;
 /* 
                  <div>
-                  <FiSun
+                  <BiSolidSun
                     className="text-black peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer rounded-full dark:text-white"
                     onClick={() => handleThemeChange("dark")}
                   />
