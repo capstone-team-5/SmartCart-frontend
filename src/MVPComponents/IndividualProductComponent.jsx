@@ -6,7 +6,7 @@ import { AiFillStar } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 import axios from "axios";
 
-const IndividualProductComponent = ({ handleAddToCart }) => {
+const IndividualProductComponent = ({ handleAddToCart, addToFavorites }) => {
   const [showOneItem, setShowOneItem] = useState({});
   const [showRestOfCard, setShowRestOfCard] = useState(false);
   const { id } = useParams();
@@ -68,7 +68,7 @@ const IndividualProductComponent = ({ handleAddToCart }) => {
                     className="text-gray-300 dark:text-gray-600"
                   />
                 </div>
-                <button>
+                <button onClick={addToFavorites}>
                   <FaHeart className="text-orange-500 peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
                 </button>
 
