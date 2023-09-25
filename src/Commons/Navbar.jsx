@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import logo_image from "../Assets/SmrtCARTLogo4.png";
 import sana from "../Assets/sana.jpg";
@@ -88,6 +89,9 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
   const [open, setOpen] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showAppsDropdown, setShowAppsDropdown] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [products, setProducts] = useState([]);
+  const [clickedProduct, setClickedProduct] = useState(false);
 
   const [isDarkTheme, setIsDarkTheme] = useState(
     localStorage.theme === "dark" ||
@@ -124,6 +128,49 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
   const closeMenu = () => {
     setOpen(false);
     setShowUserDropdown(false);
+  };
+
+  useEffect(() => {
+    if (searchQuery) {
+      axios
+        .get(`${process.env.REACT_APP_BACKEND_API}/products`)
+        .then((response) => {
+          const items = response.data;
+          const productNamesSet = new Set();
+          const foundItems = items.filter((item) => {
+            const lowerCaseProductName = item.product_name.toLowerCase();
+            if (!productNamesSet.has(lowerCaseProductName)) {
+              productNamesSet.add(lowerCaseProductName);
+              return (
+                lowerCaseProductName.includes(searchQuery.toLowerCase()) ||
+                item.product_category
+                  .toLowerCase()
+                  .includes(searchQuery.toLowerCase()) ||
+                item.product_brand
+                  .toLowerCase()
+                  .includes(searchQuery.toLowerCase())
+              );
+            }
+            return false;
+          });
+          setProducts(foundItems);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      setProducts([]);
+    }
+    setClickedProduct(false);
+  }, [searchQuery]);
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+    setClickedProduct(false);
+  };
+
+  const handleProductClicked = (productName) => {
+    setSearchQuery(productName);
+    setSearchQuery("");
+    setClickedProduct(true);
   };
 
   return (
@@ -172,11 +219,13 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   <HiSearch size={18} />
                 </div>
                 <input
-                  type="text"
+                  type="search"
                   name="search"
                   id="topbar-search"
                   className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Search for products, brands, categories..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
                 />
               </div>
             </form>
@@ -470,6 +519,28 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                 </Link>
               ))}
             </div>
+          </div>
+        )}
+        {products.length > 0 ? (
+          <div className="absolute top-16 bg-white left-44 w-96 p-4 z-50">
+            {products.map((product) => (
+              <div key={product.product_id}>
+                <Link
+                  to={`/search-results/${product.product_name}`}
+                  onClick={() => handleProductClicked(product.product_name)}
+                >
+                  <strong>
+                    <h3>{product.product_name}</h3>
+                  </strong>
+                </Link>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div>
+            {searchQuery && !clickedProduct
+              ? "This product does not exist."
+              : null}
           </div>
         )}
       </nav>
