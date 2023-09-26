@@ -6,6 +6,10 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 const VandhanaComponent = () => {
   return (
     <div className="bg-white min-h-screen flex flex-col items-center justify-center">
+      <h1 className="mb-4 pb-4 p-4 text-center text-3xl font-bold dark:text-white">
+        {" "}
+        Vandhana Mohan
+      </h1>
       <div className="flex flex-col items-center justify-center py-10">
         {/* Central Image */}
         <div className="relative">
