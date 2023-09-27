@@ -4,6 +4,7 @@ import React from "react";
 import ChartComponent from "../MVPComponents/ChartComponent";
 import ShoppingList from "../Assets/ShoppingList.png"
 import SeeYourSavings from "../Assets/SeeYourSavings.png"
+import FullPriceComparison from "../Assets/FullPriceComparison.jpeg"
 
 const AboutUsComponent = () => {
   return (
@@ -66,11 +67,12 @@ const AboutUsComponent = () => {
               </p>
             </div>
             <div className="p-4 pb-6 flex justify-center flex-col items-center">
-              <img
+              {/* <img
                 className="w-full h-full"
                 src="https://i.ibb.co/FhgPJt8/Rectangle-116.png"
                 alt="A group of People"
-              />
+              /> */}
+              <img className="w-full h-full" src={FullPriceComparison} alt="price comparison" />
               <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
                 Compare Carts
               </p>
