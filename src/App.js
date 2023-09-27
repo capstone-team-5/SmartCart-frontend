@@ -507,9 +507,11 @@ export default App;
 //     }
 //   });
 
+
 //   // Update the cart state
 //   setCart(updatedCart);
 //   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
 //   setCartLength(updatedCart.length); // Update cart length
 // };
+
   
