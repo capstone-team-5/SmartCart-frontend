@@ -1,6 +1,6 @@
-//This is the recipes page
+//This is the recipes page it will link to other recipes
 
-import RecipesComponent from "../NonMVPComponents/RecipesComponent"
+import RecipesComponent from "../../NonMVPComponents/RecipesComponent"
 
 const Recipes = () => {
 
