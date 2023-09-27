@@ -350,9 +350,9 @@ useEffect(() => {
           handleThemeChange={handleThemeChange}
           updateCartLength={setCartLength}
         />
-        <SearchComponent />
+        {/* <SearchComponent /> */}
         {/* <LocationComponent /> */}
-        <Header addToCart={handleAddToCart} />
+        {/* <Header addToCart={handleAddToCart} /> */}
         <Routes>
           <Route element={<LandingPage />} path="/" />
           <Route element={<Home addToCart={handleAddToCart} />} path="/home" />
