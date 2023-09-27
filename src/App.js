@@ -344,7 +344,7 @@ useEffect(() => {
   return (
     <div className="App">
       <BrowserRouter>
-        <HookComponent />
+        {/* <HookComponent /> */}
         <Navbar
           cartLength={cartLength}
           handleThemeChange={handleThemeChange}

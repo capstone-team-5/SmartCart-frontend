@@ -38,7 +38,7 @@ const DiandreComponent = () => {
 
         <div className="bg-pink-300 w-44 h-44 rounded-full m-2 p-4 flex items-center justify-center transition transform hover:scale-110 animate-flyInRight">
           <Link
-            to="https://github.com/Vandhana-Mohan"
+            to="https://github.com/DiandreMiller"
             target="_blank"
             rel="noopener noreferrer"
             className="text-black text-center mb-3"
@@ -57,7 +57,7 @@ const DiandreComponent = () => {
         </div>
         <div className="bg-orange-300 w-44 h-44 rounded-full m-2 p-4 flex flex-col items-center justify-center transition transform hover:scale-110 animate-flyInRight">
           <Link
-            to="https://github.com/Vandhana-Mohan"
+            to="https://github.com/DiandreMiller"
             target="_blank"
             rel="noopener noreferrer"
             className="text-black text-center mb-3"
@@ -68,7 +68,7 @@ const DiandreComponent = () => {
         </div>
         <div className="bg-blue-300 w-44 h-44 rounded-full m-2 p-4 flex flex-col items-center justify-center transition transform hover:scale-110 animate-flyInLeft">
           <Link
-            to="https://www.linkedin.com/in/vandhanamohan/"
+            to="https://www.linkedin.com/in/diandre-miller/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-black text-center mb-3"
