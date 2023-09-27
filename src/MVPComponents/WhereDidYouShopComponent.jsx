@@ -5,23 +5,23 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const WhereDidYouShopComponent = ({ comparison, sortedStores }) => {
   const [selectedStore, setSelectedStore] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(""); 
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
   const { id } = useParams();
 
   const handleStoreRadioChange = (event) => {
     setSelectedStore(event.target.value);
-    setErrorMessage(""); 
+    setErrorMessage("");
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (selectedStore === null) {
-      setErrorMessage("Please select an option"); 
-    } else if (selectedStore === 'all_lowest_priced') {
-      console.log('I am a super saver!');
+      setErrorMessage("Please select an option");
+    } else if (selectedStore === "all_lowest_priced") {
+      console.log("I am a super saver!");
       navigate(`/user/${id}/savings`);
     } else {
       console.log(`I shopped at ${selectedStore}`);
@@ -30,34 +30,43 @@ const WhereDidYouShopComponent = ({ comparison, sortedStores }) => {
   };
 
   return (
-    <div>
+    <div className="p-4 space-y-4">
+      <h2 className="text-2xl font-semibold">Where did you shop?</h2>
       {sortedStores.map((store, index) => (
-        <div key={index}>
-          <label>
-            {store.store_name}
+        <div key={index} className="flex items-center space-x-2">
+          <label className="flex items-center">
             <input
               type="radio"
               value={store.store_name}
               checked={selectedStore === store.store_name}
               onChange={handleStoreRadioChange}
+              className="mr-2"
             />
+            {store.store_name}
           </label>
-          <br />
         </div>
       ))}
-      <div>
-        <label>
-          I got all the lowest priced items
+      <div className="flex items-center space-x-2">
+        <label className="flex items-center">
           <input
             type="radio"
             value="all_lowest_priced"
             checked={selectedStore === "all_lowest_priced"}
             onChange={handleStoreRadioChange}
+            className="mr-2"
           />
+          I got all the lowest priced items
         </label>
       </div>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} 
-      <button onClick={handleSubmit}>Continue</button>
+      {errorMessage && (
+        <p className="text-red-500">{errorMessage}</p>
+      )}
+      <button
+        onClick={handleSubmit}
+        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full"
+      >
+        Continue
+      </button>
     </div>
   );
 };
