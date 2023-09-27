@@ -5,7 +5,7 @@ import { applyTheme, setTheme } from "./Theme";
 import axios from "axios";
 
 //Commons
-import Header from "./Commons/Header";
+// import Header from "./Commons/Header";
 import Navbar from "./Commons/Navbar";
 import Footer from "./Commons/Footer";
 
@@ -42,7 +42,7 @@ import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent"
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
 // import LocationComponent from "./Commons/LocationComponent";
 import HookComponent from "./MVPComponents/LocationHookComponent";
-import SearchComponent from "./MVPComponents/SearchComponent";
+// import SearchComponent from "./MVPComponents/SearchComponent";
 
 // Styling
 import "./App.css";
