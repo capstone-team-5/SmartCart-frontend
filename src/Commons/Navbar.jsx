@@ -7,7 +7,7 @@ import { FaHeart, FaUserAlt } from "react-icons/fa";
 import { HiOutlineShoppingCart, HiSearch, HiMenuAlt2 } from "react-icons/hi";
 import { AiFillAppstore, AiFillHome } from "react-icons/ai";
 import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
-import {
+import { 
   MdLogout,
   MdSavings,
   MdCategory,
