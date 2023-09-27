@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ShoppingList from "../../Assets/ShoppingList.png"
-import SeeYourSavings from "../../Assets/SeeYourSavings.png"
+import ShoppingList from "../../Assets/ShoppingList.png";
+import SeeYourSavings from "../../Assets/SeeYourSavings.png";
 
 const LandingCards = () => {
   return (
@@ -10,30 +10,31 @@ const LandingCards = () => {
         Why $mrtCART?
       </h1>
 
-      <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-6 gap-8">
-        {/* <!-- Remove className [ h-24 ] when adding a card block --> */}
-        {/* <!-- Remove className [ border-gray-300  dark:border-gray-700 border-dashed border-2 ] to remove dotted border --> */}
-        <div className="rounded border-gray-300 dark:border-gray-700 border-2 h-24">
-        <img src={ShoppingList} alt="your shopping list" />
-          <h2 className="text-xl font-semibold mb-2">Add Items to Your Cart</h2>
-          {/* <p>Sign up with no commitment.</p> */}
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="rounded overflow-hidden bg-white p-4 shadow-lg">
+          <img src={ShoppingList} alt="your shopping list" className="w-full" />
+          <h2 className="text-xl font-semibold my-2">Add Items to Your Cart</h2>
         </div>
-        <div className="rounded border-gray-300 dark:border-gray-700 border-2 h-24">
-          {/* this image will become the cart comparison page */}
-        <img src={ShoppingList} alt="your shopping list" />
-          <h2 className="text-xl font-semibold mb-2">Compare Prices Across Store</h2>
-          {/* <p>Save time and money!</p> */}
+        <div className="rounded overflow-hidden bg-white p-4 shadow-lg">
+          <img src={ShoppingList} alt="your shopping list" className="w-full" />
+          <h2 className="text-xl font-semibold my-2">
+            Compare Prices Across Stores
+          </h2>
         </div>
-        <div className="rounded border-gray-300 dark:border-gray-700 border-2 h-24">
-          <img src={SeeYourSavings} alt="See Your Savings Chart" />
-          <h2 className="text-xl font-semibold mb-2">See Your Savings</h2>
-          {/* <p>Watch your earnings and shop from the nearest stores.</p> */}
+        <div className="rounded overflow-hidden bg-white p-4 shadow-lg">
+          <img
+            src={SeeYourSavings}
+            alt="See Your Savings Chart"
+            className="w-full"
+          />
+          <h2 className="text-xl font-semibold my-2">See Your Savings</h2>
         </div>
       </div>
+
       <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 mt-10">
         <Link
           to="/login"
-          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+          className="bg-blue-700 hover:bg-blue-800 text-white font-medium py-3 px-5 rounded-lg"
         >
           Shop now and save!
         </Link>
