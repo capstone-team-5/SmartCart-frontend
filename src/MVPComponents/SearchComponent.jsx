@@ -34,14 +34,20 @@ const SearchComponent = () => {
               return false;
             })
             .sort((a, b) => {
-              const aExactMatch = a.product_name.toLowerCase() === searchQuery.toLowerCase();
-              const bExactMatch = b.product_name.toLowerCase() === searchQuery.toLowerCase();
+              const aExactMatch =
+                a.product_name.toLowerCase() === searchQuery.toLowerCase();
+              const bExactMatch =
+                b.product_name.toLowerCase() === searchQuery.toLowerCase();
 
               if (aExactMatch && !bExactMatch) return -1;
               if (!aExactMatch && bExactMatch) return 1;
 
-              const aStartsWithQuery = a.product_name.toLowerCase().startsWith(searchQuery.toLowerCase());
-              const bStartsWithQuery = b.product_name.toLowerCase().startsWith(searchQuery.toLowerCase());
+              const aStartsWithQuery = a.product_name
+                .toLowerCase()
+                .startsWith(searchQuery.toLowerCase());
+              const bStartsWithQuery = b.product_name
+                .toLowerCase()
+                .startsWith(searchQuery.toLowerCase());
 
               if (aStartsWithQuery && !bStartsWithQuery) return -1;
               if (!aStartsWithQuery && bStartsWithQuery) return 1;
@@ -104,4 +110,3 @@ const SearchComponent = () => {
 };
 
 export default SearchComponent;
-
