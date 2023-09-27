@@ -1,4 +1,4 @@
-import HomeComponent from "../MVPComponents/HomeComponent";
+import HomeComponent from "../MVPComponents/oldHomeComponent";
 
 const Home = ({ addToCart }) => {
   return (

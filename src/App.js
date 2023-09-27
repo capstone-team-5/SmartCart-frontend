@@ -461,6 +461,7 @@ useEffect(() => {
 export default App;
 
 
+
   // const handleAddToCart = (food, specificIds) => {
   //   const updatedCart = [...cart];
   //   const existingItemIndex = updatedCart.findIndex(
@@ -515,3 +516,4 @@ export default App;
 // };
 
   
+
