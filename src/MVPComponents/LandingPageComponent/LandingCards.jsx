@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ShoppingList from "../../Assets/ShoppingList.png";
 import SeeYourSavings from "../../Assets/SeeYourSavings.png";
+import FullPriceComparison from "../../Assets/FullPriceComparison.jpeg"
 
 const LandingCards = () => {
   return (
@@ -16,7 +17,7 @@ const LandingCards = () => {
           <h2 className="text-xl font-semibold my-2">Add Items to Your Cart</h2>
         </div>
         <div className="rounded overflow-hidden bg-white p-4 shadow-lg">
-          <img src={ShoppingList} alt="your shopping list" className="w-full" />
+          <img src={FullPriceComparison} alt="your shopping list" className="w-full" />
           <h2 className="text-xl font-semibold my-2">
             Compare Prices Across Stores
           </h2>

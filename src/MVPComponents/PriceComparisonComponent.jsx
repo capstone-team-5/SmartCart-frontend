@@ -33,7 +33,6 @@ const PriceComparisonComponent = ({ cart, stores, comparison, sortedStores }) =>
     setStoreTotalPrices(newStoreTotalPrices);
   }, [cart, comparison, stores]);
 
-
   const [loadingMessages, setLoadingMessages] = useState([
     "Finding Shops In Your Area",
     "Calculating Your Savings",
@@ -69,54 +68,60 @@ const PriceComparisonComponent = ({ cart, stores, comparison, sortedStores }) =>
   };
 
   return (
-    <div>
+    <div className="bg-gray-100 min-h-screen p-4">
       {loadingMessages.length > 0 ? (
-        <div>
-          <p>{loadingMessages[loadingIndex]}</p>
+        <div className="text-center">
+          <p className="text-xl">{loadingMessages[loadingIndex]}</p>
           {loadingIndex === 2 && showDrumRoll ? (
             <div>
-              <p>Drum Roll !!!!</p>
+              <p className="text-2xl font-bold">Drum Roll !!!!</p>
               <img
                 src="https://media0.giphy.com/media/YqWtkg0PflgGdwjrtc/giphy.gif?cid=6c09b952ugqlrnk8zvzvjkowgp2y63wn21s6466w6khi0ggr&ep=v1_stickers_related&rid=giphy.gif&ct=s"
                 alt="Drum Roll"
+                className="mx-auto mt-4"
               />
             </div>
           ) : (
             <FadeLoader
               color={"#de8613"}
               loading={true}
-              size={10000}
+              size={100}
               aria-label="Loading Spinner"
               data-testid="loader"
+              className="mx-auto my-4"
             />
           )}
         </div>
       ) : (
         <div>
           {sortedStores.map((store, index) => (
-            <div key={store.store_id}>
+            <div key={store.store_id} className="border p-4 my-4">
               {index === 0 ? (
                 <div>
-                  <h1>Best Value</h1>
+                  <h1 className="text-2xl font-bold">Best Value</h1>
                 </div>
               ) : (
                 <div>
-                  <h1>Total Cart Price</h1>
+                  <h1 className="text-2xl font-bold">Total Cart Price</h1>
                 </div>
               )}
-              <h1>${storeTotalPrices[store.store_id]?.toFixed(2)}</h1>
+              <h1 className="text-3xl font-bold">${storeTotalPrices[store.store_id]?.toFixed(2)}</h1>
               <img
                 src={store.store_image}
                 alt={`${store.store_name}`}
                 width="200px"
+                className="my-2"
               />
-              <h3>Store Name: {store.store_name}</h3>
+              <h3 className="text-xl">Store Name: {store.store_name}</h3>
               <p>Address: {store.store_address}</p>
               <p>City: {store.store_city}</p>
               <p>State: {store.store_state}</p>
               <p>Zipcode: {store.store_zipcode}</p>
               <p>Phone Number: {store.store_phone_number}</p>
-              <button onClick={() => toggleDetails(store.store_id)}>
+              <button
+                onClick={() => toggleDetails(store.store_id)}
+                className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+              >
                 {storeDetails[store.store_id] ? "Show Less" : "Show More"}
               </button>
               {storeDetails[store.store_id] && (
@@ -144,7 +149,9 @@ const PriceComparisonComponent = ({ cart, stores, comparison, sortedStores }) =>
             </div>
           ))}
           <Link to={`/user/${id}/where-did-you-shop`}>
-            <button>See Your Savings</button>
+            <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700">
+              See Your Savings
+            </button>
           </Link>
         </div>
       )}
@@ -153,4 +160,3 @@ const PriceComparisonComponent = ({ cart, stores, comparison, sortedStores }) =>
 };
 
 export default PriceComparisonComponent;
-

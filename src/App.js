@@ -5,7 +5,7 @@ import { applyTheme, setTheme } from "./Theme";
 import axios from "axios";
 
 //Commons
-import Header from "./Commons/Header";
+// import Header from "./Commons/Header";
 import Navbar from "./Commons/Navbar";
 import Footer from "./Commons/Footer";
 
@@ -32,6 +32,7 @@ import Favorites from "./Pages/Favorites";
 import Savings from "./Pages/Savings";
 import WhereDidYouShop from "./Pages/WhereDidYouShop";
 import TermsAndConditions from "./Pages/TermAndConditions";
+import CheeseOmeletteRecipe from "./Pages/Recipes/CheeseOmeletteRecipe";
 
 // Components
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
@@ -41,7 +42,7 @@ import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent"
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
 // import LocationComponent from "./Commons/LocationComponent";
 import HookComponent from "./MVPComponents/LocationHookComponent";
-import SearchComponent from "./MVPComponents/SearchComponent";
+// import SearchComponent from "./MVPComponents/SearchComponent";
 
 // Styling
 import "./App.css";
@@ -73,6 +74,7 @@ function App() {
   const [comparison, setComparison] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
+  
 
   const handleAddToFavorites = (food) => {
     const updatedFavorites = [...favorites];
@@ -192,28 +194,107 @@ function App() {
     setCartLength(length);
   };
 
-  const handleAddToCart = (food) => {
-    const updatedCart = [...cart];
-    const existingItemIndex = updatedCart.findIndex(
-      (item) => item.id === food.product_id
-    );
+const updateCartWithSpecificIds = (specificIds) => {
+  const updatedCart = [...cart];
+
+  specificIds.forEach((id) => {
+    const existingItemIndex = updatedCart.findIndex((item) => item.id === id);
 
     if (existingItemIndex !== -1) {
       updatedCart[existingItemIndex].length += 1;
     } else {
       updatedCart.push({
-        name: food.product_name,
-        image: food.product_image,
-        id: food.product_id,
+        name: "Item Name",
+        image: "item_image_url",
+        id: id,
         length: 1,
       });
     }
-    console.log("updatedCart:", updatedCart);
-    setCart(updatedCart);
-    window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-    setCartLength((previousCartLength) => previousCartLength + 1);
-    updateCartLength(updateCartLength);
-  };
+  });
+
+  setCart(updatedCart); // Update the cart state
+  window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+  setCartLength(updatedCart.length); // Update cart length
+};
+
+
+
+// const handleAddToCart = (food) => {
+//   console.log("handleAddToCart function is called");
+//   console.log("food:", food);
+//   const updatedCart = [...cart];
+//   const existingItemIndex = updatedCart.findIndex(
+//     (item) => item.id === food.product_id
+//   );
+
+//   if (existingItemIndex !== -1) {
+//     updatedCart[existingItemIndex].length += 1;
+//   } else {
+//     updatedCart.push({
+//       name: food.product_name,
+//       image: food.product_image,
+//       id: food.product_id,
+//       length: 1,
+//     });
+//   }
+
+//   console.log("Updated Cart App.js:", updatedCart);
+
+//   // Update the cart state
+//   setCart(updatedCart);
+//   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+
+//   // Update the cart length by calculating the total quantity in the cart
+//   const cartAdjustedLength = updatedCart.reduce(
+//     (total, item) => total + item.length,
+//     0
+//   );
+//   setCartLength(cartAdjustedLength);
+//   // console.log("Updated Cart App.js2:", updatedCart);
+// };
+  
+const handleAddToCart = (food) => {
+  console.log("handleAddToCart function is called");
+  console.log("food:", food);
+  const updatedCart = [...cart];
+  const existingItemIndex = updatedCart.findIndex(
+    (item) => item.id === food.product_id
+  );
+
+  if (existingItemIndex !== -1) {
+    updatedCart[existingItemIndex].length += 1;
+  } else {
+    updatedCart.push({
+      name: food.product_name,
+      image: food.product_image,
+      id: food.product_id,
+      length: 1,
+    });
+  }
+
+  console.log("Updated Cart App.js:", updatedCart);
+
+  // Update the cart state
+  setCart(updatedCart);
+  window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+
+  // Update the cart length by calculating the total quantity in the cart
+  const cartAdjustedLength = updatedCart.reduce(
+    (total, item) => total + item.length,
+    0
+  );
+  setCartLength(cartAdjustedLength);
+
+  // Return the updated cart
+  return updatedCart;
+};
+
+
+useEffect(() => {
+  // Log the updated cart value
+  console.log("Updated Cart App.js2:", cart);
+}, [cart]); // This useEffect runs whenever cart changes
+
 
   const [itemQuantities, setItemQuantities] = useState(
     cart.reduce((quantities, item) => {
@@ -269,9 +350,9 @@ function App() {
           handleThemeChange={handleThemeChange}
           updateCartLength={setCartLength}
         />
-        <SearchComponent />
+        {/* <SearchComponent /> */}
         {/* <LocationComponent /> */}
-        <Header addToCart={handleAddToCart} />
+        {/* <Header addToCart={handleAddToCart} /> */}
         <Routes>
           <Route element={<LandingPage />} path="/" />
           <Route element={<Home addToCart={handleAddToCart} />} path="/home" />
@@ -368,6 +449,7 @@ function App() {
             element={<TermsAndConditions />}
             path="/terms-and-conditions"
           />
+          <Route element={<CheeseOmeletteRecipe addToCart={handleAddToCart} cart={cart} setCart={setCart} updateCartWithSpecificIds={updateCartWithSpecificIds} />} path="/recipes/cheese-omelette" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
         <Footer handleThemeChange={handleThemeChange} />
@@ -377,3 +459,61 @@ function App() {
 }
 
 export default App;
+
+
+
+  // const handleAddToCart = (food, specificIds) => {
+  //   const updatedCart = [...cart];
+  //   const existingItemIndex = updatedCart.findIndex(
+  //     (item) => item.id === food.product_id
+  //   );
+
+  //   if (existingItemIndex !== -1) {
+  //     updatedCart[existingItemIndex].length += 1;
+  //   } else {
+  //     updatedCart.push({
+  //       name: food.product_name,
+  //       image: food.product_image,
+  //       id: food.product_id,
+  //       length: 1,
+  //     });
+  //   }
+  //   console.log("updatedCart:", updatedCart);
+  //   setCart(updatedCart);
+  //   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+  //   setCartLength((previousCartLength) => previousCartLength + 1);
+  //   updateCartLength(updateCartLength);
+
+  // };
+
+  // Define a function to add specific IDs to the cart
+//   const updateCartWithSpecificIds = (specificIds) => {
+//   const updatedCart = [...cart];
+
+//   specificIds.forEach((id) => {
+//     const existingItemIndex = updatedCart.findIndex((item) => item.id === id);
+
+//     if (existingItemIndex !== -1) {
+//       // If the item already exists, increment its length
+//       updatedCart[existingItemIndex].length += 1;
+//     } else {
+//       // If the item doesn't exist, add it to the cart
+//       // You can provide default values for the name, image, etc.
+//       updatedCart.push({
+//         name: "Item Name",
+//         image: "item_image_url",
+//         id: id,
+//         length: 1,
+//       });
+//     }
+//   });
+
+
+//   // Update the cart state
+//   setCart(updatedCart);
+//   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+//   setCartLength(updatedCart.length); // Update cart length
+// };
+
+  
+

@@ -2,6 +2,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Libby from "../Assets/libby.jpeg"
+import Randy from "../Assets/Randy.jpeg"
 
 const CustomerTestimonialsComponent = () => {
   const settings = {
@@ -52,7 +54,7 @@ const CustomerTestimonialsComponent = () => {
       name: "Libby",
       job: "Biochemist",
       text: "I can't get enough of this site.",
-      image: "https://scontent.fewr1-6.fna.fbcdn.net/v/t39.30808-6/353015040_9354404461300906_881520499292897343_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a2f6c7&_nc_ohc=r67FX0_wUUEAX8Nk8O_&_nc_ht=scontent.fewr1-6.fna&oh=00_AfC8XU1qMaPPtVMSt8IJ1L7AghLH_TrEnCMTKslLjpwK1g&oe=651149A2",
+      image: Libby,
     },
     {
       id: 3,
@@ -82,7 +84,15 @@ const CustomerTestimonialsComponent = () => {
       text: "As a person who has no time for anything, this is the perfect app for me",
       image: "https://media.istockphoto.com/id/1286810719/photo/smiling-cheerful-young-adult-african-american-ethnicity-man-looking-at-camera-standing-at.jpg?s=170667a&w=0&k=20&c=oObedgGxhaFI3532xf26RVTNJ401IP85neHSOLe2CTk=",
     },
-    // Add more testimonials here
+
+    {
+      id: 6,
+      name: "Anna",
+      job: "Web Developer",
+      text: "All Smiles",
+      image: Randy,
+    },
+    
   ];
 
   return (

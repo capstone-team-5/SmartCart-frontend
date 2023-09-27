@@ -16,6 +16,10 @@ const CartComponent = ({
   const [itemQuantities, setItemQuantities] = useState({});
   const [comparison, setComparison] = useState({});
 
+  // Log the JSON representation of itemQuantities
+console.log("itemQuantities:", JSON.stringify(itemQuantities, null, 2));
+
+
   useEffect(() => {
     const quantities = cart.reduce((quantities, item) => {
       quantities[item.id] = item.length;
