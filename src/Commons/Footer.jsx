@@ -48,7 +48,7 @@ const Footer = ({ handleThemeChange }) => {
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
                     <Link to="/about-us" className="hover:underline">
-                      About SmrtCART
+                      About $mrtCART
                     </Link>
                   </li>
                   <li className="mb-4">
@@ -149,7 +149,7 @@ const Footer = ({ handleThemeChange }) => {
             <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
               © 2023{" "}
               <Link to="/" className="hover:underline">
-                SmrtCART™
+                $mrtCART™
               </Link>
               . All Rights Reserved.
             </span>
