@@ -71,9 +71,9 @@ const CategoryHome = () => {
           {renderImages(sections.fruits)}
         </div>
         <div className="bg-pink-200 p-4 text-center mt-4 dark:bg-gray-900">
-          <p className="mb-4 text-xl tracking-tight font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+          <h1 className="mb-4 text-xl tracking-tight font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
             Shop All Fruits
-          </p>
+          </h1>
         </div>
       </div>
 
@@ -86,9 +86,9 @@ const CategoryHome = () => {
           {renderImages(sections.spices)}
         </div>
         <div className="bg-pink-200 p-4 text-center mt-4 dark:bg-gray-900">
-          <p className="mb-4 text-xl tracking-tight font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+          <h1 className="mb-4 text-xl tracking-tight font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
             Shop All Grains, Bread, Snacks
-          </p>
+          </h1>
         </div>
       </div>
 
@@ -101,9 +101,9 @@ const CategoryHome = () => {
           {renderImages(sections.vegetables)}
         </div>
         <div className="bg-pink-200 p-4 text-center mt-4 dark:bg-gray-900 dark:text-white">
-          <p className="mb-4 text-xl tracking-tight font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+          <h1 className="mb-4 text-xl tracking-tight font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
             Shop All Spices, Meat, Nuts
-          </p>
+          </h1>
         </div>
       </div>
 
@@ -116,9 +116,9 @@ const CategoryHome = () => {
           {renderImages(sections.dairy)}
         </div>
         <div className="bg-pink-200 p-4 text-center mt-4 dark:bg-gray-900 dark:text-white">
-          <p className="mb-4 text-xl tracking-tight font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+          <h1 className="mb-4 text-xl tracking-tight font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
             Shop All Vegetables
-          </p>
+          </h1>
         </div>
       </div>
     </div>
