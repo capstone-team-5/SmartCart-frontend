@@ -50,10 +50,11 @@ const Fruits = ({ addToCart }) => {
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 p-6 dark:bg-gray-900 gap-8">
           <div class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 p-6 flex flex-col justify-center items-center">
             <div class="flex justify-center mb-4">
+            {products.map((product, index) => (
               <img
                 class="group-hover:opacity-60 transition duration-500"
-                src="https://i.ibb.co/q79KfQr/pexels-pixabay-276583-removebg-preview-1.png"
-                alt="sofa-2"
+                src={product.product_image}
+                alt={product.product_name}
               />
             </div>
 
