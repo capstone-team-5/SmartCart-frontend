@@ -70,11 +70,8 @@ const LocationHookComponent = () => {
     <div>
       <button
         onClick={handleGetLocationClick}
-        className={`p-2 mr-1 rounded-lg hover:bg-white dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 ${
-          displayLocation ? "bg-white" : ""
-        }`}
       >
-        <MdLocationPin />
+        <MdLocationPin className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
       </button>
       {location.loaded && displayLocation && (
         <div>
