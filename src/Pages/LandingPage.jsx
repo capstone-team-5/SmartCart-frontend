@@ -1,13 +1,22 @@
-import LandingPageComponent from "../MVPComponents/LandingPageComponent"
+// import LandingPageComponent from "../MVPComponents/LandingPageComponent";
+
+import LandingBanner from "../MVPComponents/LandingPageComponent/LandingBanner";
+import LandingCards from "../MVPComponents/LandingPageComponent/LandingCards";
+import LandingTable from "../MVPComponents/LandingPageComponent/LandingTable";
+import CustomerTestimonialsComponent from "../NonMVPComponents/CustomerTestimonialsComponent";
+import LandingPartner from "../MVPComponents/LandingPageComponent/LandingPartner";
 
 const LandingPage = () => {
-    return (
-        <div>
-            <h3>
-                <LandingPageComponent />
-            </h3>
-        </div>
-    )
-}
+  return (
+    <div>
+      {/* <LandingPageComponent /> */}
+      <LandingBanner />
+      <LandingCards />
+      <LandingTable />
+      <LandingPartner />
+      <CustomerTestimonialsComponent />
+    </div>
+  );
+};
 
 export default LandingPage;

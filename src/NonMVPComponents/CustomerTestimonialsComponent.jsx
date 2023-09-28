@@ -2,6 +2,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Libby from "../Assets/libby.jpeg"
+import Randy from "../Assets/Randy.jpeg"
 
 const CustomerTestimonialsComponent = () => {
   const settings = {
@@ -43,45 +45,54 @@ const CustomerTestimonialsComponent = () => {
       id: 1,
       name: "Aprill Doe",
       job: "Lawyer",
-      text: "I am very impressed with this website! The design and functionality are top-notch. It made my work much easier.",
+      text: "With my large caseload, I love that this saves me time and money.",
       image:
         "https://m.media-amazon.com/images/M/MV5BMWVjOTAzMmItOGM1NS00MTdkLWE0YzAtZDE5ZDJlNDcxZjk5XkEyXkFqcGdeQXVyNDg3NTIyODU@._V1_.jpg",
     },
     {
       id: 2,
-      name: "Jane Smith",
-      job: "Graphic Designer",
-      text: "Your website is a designer’s dream. The clean layout and beautiful visuals are truly inspiring. Love the concept.",
-      image: "URL_TO_IMAGE",
+      name: "Libby",
+      job: "Biochemist",
+      text: "I can't get enough of this site.",
+      image: Libby,
     },
     {
       id: 3,
       name: "Alice Johnson",
       job: "Marketing Manager",
-      text: "I love how user-friendly your website is. It has significantly improved our online presence.",
-      image: "URL_TO_IMAGE",
+      text: "I love how user-friendly your website is.",
+      image: "https://media.istockphoto.com/id/858979828/photo/creepy-clown-face.jpg?s=612x612&w=0&k=20&c=Po9cGmqC8oQGPqnxmLFypK6vG9-FeBm3Z_fPK6vxHy8=",
     },
     {
       id: 4,
       name: "Jese Leos",
       job: "Design Lead",
-      text: "Mindblowing workflow, Aesthetically, the well designed components are beautiful.",
+      text: "The amount I've saved using this app is mind blowing.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80"
     },
     {
       id: 5,
-      name: "John Doe",
-      job: "Web Developer",
-      text: "Lorem ipsum dolor sit amet, csce nec ultrices risus, ac bibendum felis. Sed ut facilisis sapien.",
-      image: "URL_TO_IMAGE",
+      name: "John Odee",
+      job: "Neighborhood Terror",
+      text: "hiiiiiissssssssss",
+      image: "https://i.scdn.co/image/ab6761610000e5ebd5100eebd11d8d4aa8b13da6",
     },
     {
       id: 6,
-      name: "John Doe",
-      job: "Web Developer",
-      text: "Lorem ipsum dolor sit amet, csce nec ultrices risus, ac bibendum felis. Sed ut facilisis sapien.",
-      image: "URL_TO_IMAGE",
+      name: "John",
+      job: "Truck Driver",
+      text: "As a person who has no time for anything, this is the perfect app for me",
+      image: "https://media.istockphoto.com/id/1286810719/photo/smiling-cheerful-young-adult-african-american-ethnicity-man-looking-at-camera-standing-at.jpg?s=170667a&w=0&k=20&c=oObedgGxhaFI3532xf26RVTNJ401IP85neHSOLe2CTk=",
     },
-    // Add more testimonials here
+
+    {
+      id: 6,
+      name: "Anna",
+      job: "Web Developer",
+      text: "All Smiles",
+      image: Randy,
+    },
+    
   ];
 
   return (

@@ -1,11 +1,11 @@
-import HomeComponent from "../MVPComponents/HomeComponent";
+import HomeComponent from "../MVPComponents/oldHomeComponent";
 
 const Home = ({ addToCart }) => {
-    return (
-        <div>
-            <HomeComponent addToCart={addToCart} />
-        </div>
-    )
+  return (
+    <div className="page-container">
+      <HomeComponent addToCart={addToCart} />
+    </div>
+  );
 };
 
 export default Home;

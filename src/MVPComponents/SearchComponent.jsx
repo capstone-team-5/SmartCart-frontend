@@ -16,22 +16,45 @@ const SearchComponent = () => {
         .then((response) => {
           const items = response.data;
           const productNamesSet = new Set();
-          const foundItems = items.filter((item) => {
-            const lowerCaseProductName = item.product_name.toLowerCase();
-            if (!productNamesSet.has(lowerCaseProductName)) {
-              productNamesSet.add(lowerCaseProductName);
-              return (
-                lowerCaseProductName.includes(searchQuery.toLowerCase()) ||
-                item.product_category
-                  .toLowerCase()
-                  .includes(searchQuery.toLowerCase()) ||
-                item.product_brand
-                  .toLowerCase()
-                  .includes(searchQuery.toLowerCase())
-              );
-            }
-            return false;
-          });
+          const foundItems = items
+            .filter((item) => {
+              const lowerCaseProductName = item.product_name.toLowerCase();
+              if (!productNamesSet.has(lowerCaseProductName)) {
+                productNamesSet.add(lowerCaseProductName);
+                return (
+                  lowerCaseProductName.includes(searchQuery.toLowerCase()) ||
+                  item.product_category
+                    .toLowerCase()
+                    .includes(searchQuery.toLowerCase()) ||
+                  item.product_brand
+                    .toLowerCase()
+                    .includes(searchQuery.toLowerCase())
+                );
+              }
+              return false;
+            })
+            .sort((a, b) => {
+              const aExactMatch =
+                a.product_name.toLowerCase() === searchQuery.toLowerCase();
+              const bExactMatch =
+                b.product_name.toLowerCase() === searchQuery.toLowerCase();
+
+              if (aExactMatch && !bExactMatch) return -1;
+              if (!aExactMatch && bExactMatch) return 1;
+
+              const aStartsWithQuery = a.product_name
+                .toLowerCase()
+                .startsWith(searchQuery.toLowerCase());
+              const bStartsWithQuery = b.product_name
+                .toLowerCase()
+                .startsWith(searchQuery.toLowerCase());
+
+              if (aStartsWithQuery && !bStartsWithQuery) return -1;
+              if (!aStartsWithQuery && bStartsWithQuery) return 1;
+
+              return a.product_name.localeCompare(b.product_name);
+            });
+
           setProducts(foundItems);
         })
         .catch((error) => console.log(error));

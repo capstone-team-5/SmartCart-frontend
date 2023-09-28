@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const SearchResultsComponent = ({ addToCart }) => {
   const [filteredResults, setFilteredResults] = useState([]);
@@ -32,23 +31,38 @@ const SearchResultsComponent = ({ addToCart }) => {
   }, [query]);
 
   return (
-    <div>
-      <h2>Search Results:</h2>
-      <ul>
+    <div className="container mx-auto px-4 py-8">
+      <h2 className="text-3xl font-semibold mb-4">Search Results:</h2>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filteredResults.map((product) => (
-          <li key={product.product_id}>
-            <div>
-              <Link to={`/product/${product.product_id}`}>
+          <li
+            key={product.product_id}
+            className="bg-white shadow-lg rounded-lg overflow-hidden"
+          >
+            <Link to={`/product/${product.product_id}`}>
+              {/* Wrap the card with a Link */}
+              <div>
                 <img
                   src={product.product_image}
                   alt={product.product_name}
-                  width="200px"
+                  className="w-full h-40 object-cover"
                 />
-                <p>{product.product_name}</p>
-              </Link>
-              <p>{product.product_description}</p>
-              <button onClick={() => addToCart(product)}>Add To Cart</button>
-            </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold mb-2">
+                    {product.product_name}
+                  </h3>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault(); 
+                      addToCart(product);
+                    }}
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-300"
+                  >
+                    Add To Cart
+                  </button>
+                </div>
+              </div>
+            </Link>
           </li>
         ))}
       </ul>
@@ -57,3 +71,5 @@ const SearchResultsComponent = ({ addToCart }) => {
 };
 
 export default SearchResultsComponent;
+
+

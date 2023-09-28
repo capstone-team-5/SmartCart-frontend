@@ -1,9 +1,9 @@
 import IndividualProductComponent from "../MVPComponents/IndividualProductComponent";
 
-const IndividualProduct = ({handleAddToCart, cartLength}) => {
+const IndividualProduct = ({handleAddToCart, cartLength, addToFavorites}) => {
   return (
     <div>
-      <IndividualProductComponent handleAddToCart={handleAddToCart} cartLength={cartLength} />
+      <IndividualProductComponent handleAddToCart={handleAddToCart} cartLength={cartLength} addToFavorites={addToFavorites} />
     </div>
   );
 };

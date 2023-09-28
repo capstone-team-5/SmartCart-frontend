@@ -1,6 +1,7 @@
 //This will be for the landing page
 
 import { Link } from "react-router-dom";
+import CustomerTestimonialsComponent from "../NonMVPComponents/CustomerTestimonialsComponent";
 
 const LandingPageComponent = () => {
   return (
@@ -17,6 +18,7 @@ const LandingPageComponent = () => {
       <Link to="/login">
         <button>Get Started</button>
       </Link>
+      <CustomerTestimonialsComponent />
     </div>
   );
 };

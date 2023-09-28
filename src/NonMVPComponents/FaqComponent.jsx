@@ -53,7 +53,7 @@ const FaqComponent = () => {
               }
             >
               Our price comparison tool collects pricing information from
-              various stores in your selected location based on your zip code.
+              various stores in your selected location based on your location.
               It then displays a list of products and their prices so you can
               easily find the lowest-priced items.
             </p>

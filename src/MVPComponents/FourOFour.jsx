@@ -25,7 +25,7 @@ const FourOFourComponent = () => {
           </button>
 
           <Link to='/home'>
-          <button className="inline-flex text-black dark:text-white bg-blue-300 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4"
+          <button className="ml-10 inline-flex text-black dark:text-white bg-blue-300 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4"
             aria-label="Home">
             Return To Home Page
             </button>
