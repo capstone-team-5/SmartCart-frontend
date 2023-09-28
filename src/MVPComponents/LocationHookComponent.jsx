@@ -1,4 +1,5 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
+import { MdLocationPin } from "react-icons/md"
 
 const LocationHookComponent = () => {
   const [location, setLocation] = useState(() => {
@@ -53,7 +54,7 @@ const LocationHookComponent = () => {
 
   return (
     <div>
-      <button onClick={handleGetLocationClick}>Get My Location</button>
+      <button onClick={handleGetLocationClick}>{MdLocationPin}</button>
       {location.loaded ? (
         <div>
           <p>Latitude: {location.coordinates.lat}</p>

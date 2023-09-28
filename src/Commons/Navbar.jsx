@@ -14,6 +14,8 @@ import {
   MdSettings,
   MdLocationPin,
 } from "react-icons/md";
+import LocationHookComponent from "../MVPComponents/LocationHookComponent";
+
 
 const navLinks = [
   {
@@ -270,6 +272,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               className="p-2 mr-1 rounded-lg hover:bg-white dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
             >
               <MdLocationPin className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
+              {/* <LocationHookComponent className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer" /> */}
             </button>
             <button
               id="toggleSidebarMobileSearch"
