@@ -52,7 +52,7 @@ const PriceComparisonComponent = ({ cart, stores, comparison, sortedStores }) =>
 
       setTimeout(() => {
         setLoadingMessages([]);
-      }, 5000);
+      }, 0);
     }
 
     return () => {
