@@ -68,7 +68,7 @@ const IndividualProductComponent = ({ handleAddToCart, addToFavorites }) => {
                     className="text-gray-300 dark:text-gray-600"
                   />
                 </div>
-                <button onClick={addToFavorites}>
+                <button onClick={() => addToFavorites(showOneItem)}>
                   <FaHeart className="text-orange-500 peer text-2xl lg:text-4xl md:text-2xl sm:text-lg cursor-pointer" />
                 </button>
 

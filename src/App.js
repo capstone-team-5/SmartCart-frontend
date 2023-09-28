@@ -76,26 +76,67 @@ function App() {
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
   
 
-  const handleAddToFavorites = (food) => {
-    const updatedFavorites = [...favorites];
-    const existingItemIndex = updatedFavorites.findIndex(
+  // const handleAddToFavorites = (food) => {
+  //   const updatedFavorites = [...favorites];
+  //   const existingItemIndex = updatedFavorites.findIndex(
+  //     (item) => item.id === food.product_id
+  //   );
+
+  //   if (existingItemIndex === -1) {
+  //     updatedFavorites.push({
+  //       name: food.product_name,
+  //       image: food.product_image,
+  //       id: food.product_id,
+  //     });
+  //     console.log("updatedFavorites:", updatedFavorites);
+  //     setFavorites(updatedFavorites);
+  //     window.localStorage.setItem(
+  //       "Testing_Favorites",
+  //       JSON.stringify(updatedFavorites)
+  //     );
+  //   }
+  // };
+
+  const handleAddToFavorites = async (food) => {
+    // Check if the item is already in favorites
+    const existingItemIndex = favorites.findIndex(
       (item) => item.id === food.product_id
     );
-
+  
     if (existingItemIndex === -1) {
-      updatedFavorites.push({
-        name: food.product_name,
-        image: food.product_image,
-        id: food.product_id,
-      });
-      console.log("updatedFavorites:", updatedFavorites);
-      setFavorites(updatedFavorites);
-      window.localStorage.setItem(
-        "Testing_Favorites",
-        JSON.stringify(updatedFavorites)
-      );
+      // If not in local favorites, add it to the backend
+      try {
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_API}/favorites`, {
+          shopper_firebase_uid: "YOUR_USER_ID", // Replace with the user's ID
+          product_id: food.product_id, // Pass the product ID to add
+        });
+  
+        if (response.status === 201) {
+          // Item added to backend successfully, update frontend state
+          const updatedFavorites = [...favorites, {
+            name: food.product_name,
+            image: food.product_image,
+            id: food.product_id,
+          }];
+          
+          console.log("updatedFavorites:", updatedFavorites);
+          setFavorites(updatedFavorites);
+          window.localStorage.setItem(
+            "Testing_Favorites",
+            JSON.stringify(updatedFavorites)
+          );
+        } else {
+          // Handle other status codes or errors as needed
+          console.error("Failed to add item to favorites.");
+        }
+      } catch (error) {
+        console.error("Error adding item to favorites:", error);
+      }
+    } else {
+      console.log("Item is already in favorites.");
     }
   };
+  
 
   useEffect(() => {
     const newStoreTotalPrices = {};

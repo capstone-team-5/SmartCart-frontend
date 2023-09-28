@@ -7,11 +7,12 @@ const FavoritesComponent = () => {
     const [favorites, setFavorites] = useState([]);
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_API}/favorites`)
+        axios.get(`${process.env.REACT_APP_BACKEND_API}/products`)
             .then((response) => {
-                console.log(response.data);
+                console.log('all products in favorites',response.data);
                 const items = response.data;
                 const favoriteItems = items.filter((item) => item.isFavorite === true);
+                console.log('favorite items:', favoriteItems)
                 setFavorites(favoriteItems);
             })
             .catch((error) => console.log(error));
