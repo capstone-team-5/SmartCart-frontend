@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 const LandingBanner = () => {
   return (
-    <section className="bg-center ml-2 mr-2 bg-transparent bg-[url(https://www.bankrate.com/2020/08/01170557/How-to-save-money-on-groceries.jpeg)] bg-gray-700 bg-blend-multiply">
-      <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56 bg-black bg-opacity-50">
+    <section className="bg-center  bg-transparent bg-[url(https://www.bankrate.com/2020/08/01170557/How-to-save-money-on-groceries.jpeg)] bg-gray-700 bg-blend-multiply bg-contain">
+      <div className="px-4 w-full mx-auto text-center py-24 lg:py-56 bg-black bg-opacity-50">
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
           Find the lowest prices and best deals on groceries across hundreds of
           stores in your area with $mrtCART.
