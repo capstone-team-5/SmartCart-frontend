@@ -451,10 +451,10 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
             >
               <div className="py-3 px-4">
                 <span className="block text-sm font-semibold text-gray-900 dark:text-white">
-                  VM
+                  DV
                 </span>
                 <span className="block text-sm text-gray-500 truncate dark:text-gray-400">
-                  vm@pursuit.org
+                  officialsmrtcart@gmail.com
                 </span>
               </div>
               <ul
