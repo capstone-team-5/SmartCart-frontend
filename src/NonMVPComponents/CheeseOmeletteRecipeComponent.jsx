@@ -62,15 +62,16 @@ const CheeseOmeletteRecipeComponent = ({
   const handleAddToCartClick = () => {
     try {
       if (addToCart && filteredItems.length > 0) {
-        console.log("Filtered Items:", filteredItems);
+        // console.log("Filtered Items:", filteredItems);
   
         filteredItems.map((product) => {
           // Add the product to the cart with the desired properties
 
-          console.log("Adding to cart:", product);
-          console.log('name of food:', product.product_name)
-          console.log('image of food:', product.product_image)
-          console.log('id:', product.product_id)
+          // console.log("Adding to cart:", product);
+          // console.log('name of food:', product.product_name)
+          // console.log('image of food:', product.product_image)
+          // console.log('id:', product.product_id)
+
           const result = addToCart({
             name: product.product_name,
             image: product.product_image,
@@ -78,9 +79,10 @@ const CheeseOmeletteRecipeComponent = ({
             length: 1, // Set the initial quantity to 1 for each item
           });
 
+          console.log("Result of addToCart:", result);
           return result
   
-          console.log("Result of addToCart:", result);
+          
         });
   
         setMessage("Ingredients have been added to your cart.");
