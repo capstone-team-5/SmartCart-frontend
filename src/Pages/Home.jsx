@@ -1,9 +1,10 @@
-import HomeComponent from "../MVPComponents/oldHomeComponent";
-
-const Home = ({ addToCart }) => {
+import CategoryHome from "../MVPComponents/HomeComponent/CategoryHome";
+import InternationalSlider from "../MVPComponents/HomeComponent/InternationalSlider";
+const Home = () => {
   return (
-    <div className="page-container">
-      <HomeComponent addToCart={addToCart} />
+    <div>
+      <CategoryHome />
+      <InternationalSlider />
     </div>
   );
 };
