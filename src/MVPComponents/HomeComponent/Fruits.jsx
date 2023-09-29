@@ -1,11 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { AiOutlineHeart } from "react-icons/ai";
-import { MdNavigateNext } from "react-icons/md";
 
 const API = process.env.REACT_APP_BACKEND_API;
 
@@ -38,31 +34,7 @@ const Fruits = ({ addToCart }) => {
   }, [currentPage]);
 
   const handlePageChange = (page) => {
-    console.log("Changing to page:", page); // Log the page number before change
     setCurrentPage(page);
-    console.log("Current page set to:", page); // Log the updated page number
-    console.log("Button clicked:", page);
-  };
-
-  const renderPaginationButtons = () => {
-    const totalPages = Math.ceil(products.length / productsPerPage);
-    const buttons = [];
-    for (let i = 1; i <= totalPages; i++) {
-      buttons.push(
-        <button
-          key={i}
-          className={`text-base leading-none ${
-            currentPage === i
-              ? "text-blue-700 font-bold"
-              : "text-gray-800 dark:text-white"
-          } border-b-2 border-transparent focus:outline-none focus:border-gray-800`}
-          onClick={() => handlePageChange(i)}
-        >
-          <p>{i}</p>
-        </button>
-      );
-    }
-    return buttons;
   };
 
   if (loading) {
@@ -123,23 +95,22 @@ const Fruits = ({ addToCart }) => {
             </div>
           ))}
         </div>
-
+        {/* Pagination */}
         <div className="flex justify-end items-end mt-12">
           <div className="flex flex-row items-center justify-center space-x-8">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
-              className="flex justify-center items-center"
+              className="flex justify-center items-center cursor-pointer"
               disabled={currentPage === 1}
             >
               Previous
             </button>
-            {renderPaginationButtons()}
             <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              className="flex justify-center items-center"
-              disabled={
-                currentPage === Math.ceil(products.length / productsPerPage)
-              }
+              onClick={() => {
+                handlePageChange(currentPage + 1);
+              }}
+              className="flex justify-center items-center cursor-pointer"
+              disabled={products.length < productsPerPage}
             >
               Next
             </button>
