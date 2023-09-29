@@ -1,188 +1,131 @@
-// This is the home component
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Fruits from "./Fruits";
 
 const API = process.env.REACT_APP_BACKEND_API;
 
-const CategoryHome = ({ addToCart }) => {
-  const [products, setProducts] = useState([]);
+const CategoryHome = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [sections, setSections] = useState({
+    fruits: [],
+    vegetables: [],
+    spices: [],
+    dairy: [],
+  });
 
   useEffect(() => {
-    axios
-      .get(`${API}/products`)
-      .then((response) => {
-        setProducts(response.data);
+    const fetchData = async () => {
+      try {
+        const fruitsResponse = await axios.get(`${API}/products/fourFruits`);
+        const vegetablesResponse = await axios.get(`${API}/products/fourCart`);
+        const spicesResponse = await axios.get(`${API}/products/fourMRT`);
+        const dairyResponse = await axios.get(`${API}/products/fourGreens`);
+
+        setSections({
+          fruits: fruitsResponse.data,
+          vegetables: vegetablesResponse.data,
+          spices: spicesResponse.data,
+          dairy: dairyResponse.data,
+        });
+
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching data:", error);
         setError("An error occurred while fetching data.");
         setLoading(false);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
+
+  const renderImages = (section) => {
+    return section.map((image, index) => (
+      <div key={index}>
+        <img
+          className="h-48 max-w-full rounded-lg"
+          src={image.product_image}
+          alt={`Art of ${index + 1}`}
+        />
+      </div>
+    ));
+  };
 
   if (loading) {
     return <p>Loading...</p>;
   }
+
   if (error) {
     return <p>Error: {error}</p>;
   }
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10 p-6">
-      {/* Fruits Section */}
-      <div className="bg-pink-200 p-4">
-        <div className="text-xl font-bold text-center mb-4">Fruits</div>
-        <div className="bg-blue-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div className="bg-pink-200 p-4 text-center mt-4">
-          <p className="font-bold">Shop More Fruits</p>
-        </div>
-      </div>
 
-      {/* Vegetables Section */}
-      <div className="bg-pink-200 p-4">
-        <div className="text-xl font-bold text-center mb-4">Vegetables</div>
-        <div className="bg-blue-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
+  return (
+    <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 p-6 dark:bg-gray-900">
+      {/* Fruits Section */}
+      <div className="bg-green-200 dark:bg-gray-900 p-4 dark:text-white">
+        <div className="mb-4 text-3xl tracking-wide font-extrabold text-gray-900 sm:text-4xl dark:text-white text-center">
+          Shop Our
         </div>
-        <div className="bg-pink-200 p-4 text-center mt-4">
-          <p className="font-bold">Shop More Vegetables</p>
+        <div className="bg-orange-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2 dark:bg-gray-900">
+          {renderImages(sections.fruits)}
+        </div>
+        <div className="bg-green-200 p-4 text-center mt-4 dark:bg-gray-900">
+          <Link to="/fruits" className="hover:underline">
+            <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+              Shop All Fruits
+            </h1>
+          </Link>
         </div>
       </div>
 
       {/* Spices Section */}
-      <div className="bg-pink-200 p-4">
-        <div className="text-xl font-bold text-center mb-4">Spices</div>
-        <div className="bg-blue-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
+      <div className="bg-green-200 p-4 dark:bg-gray-900 dark:text-white">
+        <div className="mb-4 text-3xl tracking-wide font-extrabold text-gray-900 sm:text-4xl dark:text-white text-center">
+          Exclusively
         </div>
-        <div className="bg-pink-200 p-4 text-center mt-4">
-          <p className="font-bold">Shop More Spices</p>
+        <div className="bg-orange-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2 dark:bg-gray-900">
+          {renderImages(sections.spices)}
+        </div>
+        <div className="bg-green-200 p-4 text-center mt-4 dark:bg-gray-900">
+          <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+            Shop All Grains, Bread, Snacks
+          </h1>
         </div>
       </div>
-            {/* Fruits Section */}
-            <div className="bg-pink-200 p-4">
-        <div className="text-xl font-bold text-center mb-4">Fruits</div>
-        <div className="bg-blue-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-              alt=""
-            />
-          </div>
+
+      {/* Vegetables Section */}
+      <div className="bg-green-200 p-4 dark:bg-gray-900 dark:text-white">
+        <div className="mb-4 text-3xl tracking-wide font-extrabold text-gray-900 sm:text-4xl dark:text-white text-center">
+          Assorted
         </div>
-        <div className="bg-pink-200 p-4 text-center mt-4">
-          <p className="font-bold">Shop More Fruits</p>
+        <div className="bg-orange-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2 dark:bg-gray-900">
+          {renderImages(sections.vegetables)}
+        </div>
+        <div className="bg-green-200 p-4 text-center mt-4 dark:bg-gray-900 dark:text-white">
+          <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+            Shop All Spices, Meat, Nuts
+          </h1>
+        </div>
+      </div>
+
+      {/* Dairy Section */}
+      <div className="bg-green-200 p-4 dark:bg-gray-900 dark:text-white">
+        <div className="mb-4 text-3xl tracking-wide font-extrabold text-gray-900 sm:text-4xl dark:text-white text-center">
+          Collections
+        </div>
+        <div className="bg-orange-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2 dark:bg-gray-900">
+          {renderImages(sections.dairy)}
+        </div>
+        <div className="bg-green-200 p-4 text-center mt-4 dark:bg-gray-900 dark:text-white">
+          <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+            Shop All Vegetables
+          </h1>
         </div>
       </div>
     </div>
   );
 };
+
 export default CategoryHome;
