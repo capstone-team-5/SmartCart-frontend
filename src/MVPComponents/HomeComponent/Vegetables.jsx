@@ -59,7 +59,7 @@ const Vegetables = ({ addToCart }) => {
           {products.map((product) => (
             <div
               key={product.product_id}
-              className="group group-hover:bg-opacity-60 rounded-2xl shadow-orange-500/70 shadow-md transition duration-500 relative bg-white p-4 md:p-6 flex flex-col justify-center items-center"
+              className="group group-hover:bg-opacity-60 rounded-2xl drop-shadow-md transition duration-500 relative bg-white p-4 md:p-6 flex flex-col justify-center items-center"
             >
               <div className="flex justify-center mb-2">
                 <div
