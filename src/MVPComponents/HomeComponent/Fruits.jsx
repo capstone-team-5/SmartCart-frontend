@@ -40,39 +40,51 @@ const Fruits = ({ addToCart }) => {
     <div className="mx-auto px-6 xl:px-0 py-12 dark:bg-gray-900">
       <div className="flex flex-col dark:bg-gray-900">
         <div className="bg-transparent bg-cover bg-[url(https://www.tastingtable.com/img/gallery/11-fruits-you-can-still-enjoy-on-a-keto-diet/intro-1657125016.webp)] bg-gray-700 bg-blend-multiply ">
-          <div className="px-4 w-full mx-auto text-center py-24 lg:py-56 bg-black bg-opacity-50">
-            <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
-              Fruits
+          <div className="px-4 w-full mx-auto text-center py-20 md:py-32 lg:py-40 bg-black bg-opacity-50">
+            <h1 className="mb-2 text-3xl md:text-4xl lg:text-5xl text-white font-extrabold tracking-wide leading-none">
+              All Fruits
             </h1>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 p-6 dark:bg-gray-900 gap-8">
-          <div class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 p-6 flex flex-col justify-center items-center">
-            <div class="flex justify-center mb-4">
-            {products.map((product, index) => (
-              <img
-                class="group-hover:opacity-60 transition duration-500"
-                src={product.product_image}
-                alt={product.product_name}
-              />
-            </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4 p-4 md:p-6 dark:bg-gray-900 gap-4 md:gap-6">
+          {products.map((product) => (
+            <div
+              key={product.product_id}
+              className="group group-hover:bg-opacity-60 rounded-2xl transition duration-500 relative bg-white p-4 md:p-6 flex flex-col justify-center items-center"
+            >
+              <div className="flex justify-center mb-2">
+                <div
+                  className="duration-700 ease-in-out dark:bg-gray-900"
+                  data-carousel-item
+                >
+                  <img
+                    className="group-hover:opacity-60 transition duration-500 w-full h-full object-contain"
+                    src={product.product_image}
+                    alt={product.product_name}
+                  />
+                </div>
+              </div>
 
-            <div class="flex flex-row justify-between w-full mt-10">
-              <p class="group-hover:opacity-60 transition duration-500 text-2xl leading-5 text-gray-600">
-                Sectional Sofa
-              </p>
-              <button>
-                <AiOutlineHeart size={24} />
-              </button>
-            </div>
+              <div className="flex flex-row justify-between w-full mt-4">
+                <p className="group-hover:opacity-60 transition duration-500 text-lg md:text-xl text-black">
+                  {product.product_name}
+                </p>
+                <button>
+                  <AiOutlineHeart size={20} />
+                </button>
+              </div>
 
-            <div class="flex justify-center mt-10">
-              <button class="bg-blue-500 text-white py-2 px-4 rounded-full">
-                Add To Cart
-              </button>
+              <div className="flex justify-center mt-4">
+                <button
+                  onClick={() => addToCart(product)}
+                  className="justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+                >
+                  Add To Cart
+                </button>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
 
         <div className="flex justify-end items-end mt-12">
