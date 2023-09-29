@@ -10,7 +10,7 @@ const Fruits = ({ addToCart }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 12;
+  const productsPerPage = 15;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,7 +56,7 @@ const Fruits = ({ addToCart }) => {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-4 p-4 md:p-6 dark:bg-gray-900 gap-4 md:gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-4 p-4 md:p-6 dark:bg-gray-900 gap-4 md:gap-6">
           {products.map((product) => (
             <div
               key={product.product_id}
@@ -100,8 +100,11 @@ const Fruits = ({ addToCart }) => {
           <div className="flex flex-row items-center justify-center space-x-8">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
-              className="flex justify-center items-center cursor-pointer"
-              disabled={currentPage === 1}
+              className={`justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg ${
+                currentPage === 1
+                  ? "bg-gray-500 cursor-not-allowed"
+                  : "bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 cursor-pointer"
+              }`}
             >
               Previous
             </button>
@@ -109,7 +112,11 @@ const Fruits = ({ addToCart }) => {
               onClick={() => {
                 handlePageChange(currentPage + 1);
               }}
-              className="flex justify-center items-center cursor-pointer"
+              className={`justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg ${
+                products.length < productsPerPage
+                  ? "bg-gray-500 cursor-not-allowed"
+                  : "bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 cursor-pointer"
+              }`}
               disabled={products.length < productsPerPage}
             >
               Next

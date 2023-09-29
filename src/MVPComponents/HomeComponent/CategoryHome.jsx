@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Fruits from "./Fruits";
 
 const API = process.env.REACT_APP_BACKEND_API;
 
@@ -71,9 +72,11 @@ const CategoryHome = () => {
           {renderImages(sections.fruits)}
         </div>
         <div className="bg-green-200 p-4 text-center mt-4 dark:bg-gray-900">
-          <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
-            Shop All Fruits
-          </h1>
+          <Link to="/fruits" className="hover:underline">
+            <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+              Shop All Fruits
+            </h1>
+          </Link>
         </div>
       </div>
 
