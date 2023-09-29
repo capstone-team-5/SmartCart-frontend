@@ -1,5 +1,7 @@
+// this will display the user location
+
 import React, { useState } from "react";
-import { MdLocationPin } from "react-icons/md"
+import { MdLocationPin } from "react-icons/md";
 
 const LocationHookComponent = () => {
   const [location, setLocation] = useState(() => {
@@ -13,37 +15,49 @@ const LocationHookComponent = () => {
     };
   });
 
+  const [displayLocation, setDisplayLocation] = useState(false);
+
   const handleGetLocationClick = () => {
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const newLocation = {
-            loaded: true,
-            coordinates: {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            },
-            error: null,
-          };
+      if (displayLocation) {
+        setDisplayLocation(false);
+      } else {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const newLocation = {
+              loaded: true,
+              coordinates: {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              },
+              error: null,
+            };
 
-          // Store the location data in local storage
-          window.localStorage.setItem("User_Location", JSON.stringify(newLocation));
+            window.localStorage.setItem(
+              "User_Location",
+              JSON.stringify(newLocation)
+            );
 
-          setLocation(newLocation);
-        },
-        (error) => {
-          const newLocation = {
-            loaded: true,
-            coordinates: { lat: "", lng: "" },
-            error: error.message,
-          };
-          
-          // Store the error message in local storage
-          window.localStorage.setItem("User_Location", JSON.stringify(newLocation));
+            setLocation(newLocation);
+            setDisplayLocation(true);
+          },
+          (error) => {
+            const newLocation = {
+              loaded: true,
+              coordinates: { lat: "", lng: "" },
+              error: error.message,
+            };
 
-          setLocation(newLocation);
-        }
-      );
+            
+            window.localStorage.setItem(
+              "User_Location",
+              JSON.stringify(newLocation)
+            );
+
+            setLocation(newLocation);
+          }
+        );
+      }
     } else {
       setLocation((prevState) => ({
         ...prevState,
@@ -54,14 +68,16 @@ const LocationHookComponent = () => {
 
   return (
     <div>
-      <button onClick={handleGetLocationClick}>{MdLocationPin}</button>
-      {location.loaded ? (
+      <button
+        onClick={handleGetLocationClick}
+      >
+        <MdLocationPin className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
+      </button>
+      {location.loaded && displayLocation && (
         <div>
           <p>Latitude: {location.coordinates.lat}</p>
           <p>Longitude: {location.coordinates.lng}</p>
         </div>
-      ) : (
-        <p>{location.error || "Location data not available"}</p>
       )}
     </div>
   );
