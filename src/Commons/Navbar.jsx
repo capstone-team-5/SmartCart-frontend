@@ -16,7 +16,6 @@ import {
 } from "react-icons/md";
 import LocationHookComponent from "../MVPComponents/LocationHookComponent";
 
-
 const navLinks = [
   {
     title: "Home",
@@ -318,10 +317,10 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
             <div
               className={`${
                 showAppsDropdown ? "block" : "hidden"
-              } overflow-hidden absolute top-20 right-5 w-72 z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600`}
+              } overflow-hidden absolute top-20 right-5 w-72 z-50 my-4 max-w-sm text-base list-none bg-gray-200 rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600`}
               id="apps-dropdown"
             >
-              <div className="block py-2 px-4 text-base font-medium text-center text-black bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <div className="block py-2 px-4 text-base font-medium text-center text-black bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                 $mrtCART Apps
               </div>
               <div className="grid grid-cols-3 gap-4 p-4">
@@ -512,7 +511,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
 
         {/* User Dropdown menu */}
         {showUserDropdown && (
-          <div className="absolute mt-2 right-0 bg-white w-52 z-50">
+          <div className="absolute mt-2 right-0 bg-gray-200 w-52 z-50">
             <ul className="py-1">
               {userDropDown.map((item, index) => (
                 <li key={index} className="px-4 py-2 hover:bg-gray-100">
@@ -530,7 +529,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
         )}
         {/* Dropdown menu */}
         {open && (
-          <div className="absolute top-20 bg-white left-0 w-72 z-50">
+          <div className="absolute top-20 bg-gray-200 left-0 w-72 z-50">
             <div className="px-4 pt-2 pb-3 space-y-1 sm:px-3">
               {navLinks.map((link, index) => (
                 <Link
@@ -575,7 +574,8 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
 };
 
 export default Navbar;
-/* 
+
+/*  View All Products
   <Link
     to="#"
     className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
