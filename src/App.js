@@ -295,8 +295,8 @@ const updateCartWithSpecificIds = (specificIds) => {
 // };
   
 const handleAddToCart = (food) => {
-  console.log("handleAddToCart function is called");
-  console.log("food:", food);
+  // console.log("handleAddToCart function is called");
+  // console.log("food:", food);
   const updatedCart = [...cart];
   const existingItemIndex = updatedCart.findIndex(
     (item) => item.id === food.product_id
@@ -305,6 +305,9 @@ const handleAddToCart = (food) => {
   if (existingItemIndex !== -1) {
     updatedCart[existingItemIndex].length += 1;
   } else {
+    console.log('name app.js:', food.product_name)
+    console.log('image:', food.product_image)
+    console.log('id:', food.product_id )
     updatedCart.push({
       name: food.product_name,
       image: food.product_image,
@@ -313,7 +316,7 @@ const handleAddToCart = (food) => {
     });
   }
 
-  console.log("Updated Cart App.js:", updatedCart);
+  // console.log("Updated Cart App.js:", updatedCart);
 
   // Update the cart state
   setCart(updatedCart);

@@ -64,7 +64,7 @@ const CheeseOmeletteRecipeComponent = ({
       if (addToCart && filteredItems.length > 0) {
         console.log("Filtered Items:", filteredItems);
   
-        filteredItems.forEach((product) => {
+        filteredItems.map((product) => {
           // Add the product to the cart with the desired properties
 
           console.log("Adding to cart:", product);
@@ -77,6 +77,8 @@ const CheeseOmeletteRecipeComponent = ({
             id: product.product_id,
             length: 1, // Set the initial quantity to 1 for each item
           });
+
+          return result
   
           console.log("Result of addToCart:", result);
         });

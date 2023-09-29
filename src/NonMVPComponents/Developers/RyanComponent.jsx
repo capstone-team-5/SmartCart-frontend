@@ -26,52 +26,39 @@ const RyanComponent = () => {
           <p className="text-black text-center">
             <strong>Hobbies</strong>
             <br />
-            TBD, TBD
+            Watching Soccer, Softball, and Baseball, Playing Video Games
           </p>
         </div>
         <div className="bg-yellow-300 w-44 h-44 rounded-full m-2 p-4 flex items-center justify-center transition transform hover:scale-110 animate-flyInLeft">
           <p className="text-black text-center">
             <strong>Passion</strong>
             <br />
-            TBD
+            Baseball Stats and Facts
           </p>
         </div>
 
         <div className="bg-pink-300 w-44 h-44 rounded-full m-2 p-4 flex items-center justify-center transition transform hover:scale-110 animate-flyInRight">
-          <Link
-            to="https://github.com/DiandreMiller"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black text-center mb-3"
-          >
+        <p className="text-black text-center">
             <strong>Education</strong>
             <br />
-            TBD
-          </Link>
+            Sociology & Urban Planning
+            </p>
         </div>
         <div className="bg-green-300 w-44 h-44 rounded-full m-2 p-4 flex items-center justify-center transition transform hover:scale-110 animate-flyInLeft">
           <p className="text-black text-center">
             <strong>Ask me about</strong>
             <br />
-            TBD
+            Baseball 
           </p>
         </div>
         <div className="bg-orange-300 w-44 h-44 rounded-full m-2 p-4 flex flex-col items-center justify-center transition transform hover:scale-110 animate-flyInRight">
-          <Link
-            //Needs to send github link
-            to="https://github.com/touhami-ben"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black text-center mb-3"
-          >
             <strong>GitHub</strong>
-          </Link>
           <BsGithub size={18} />
         </div>
         <div className="bg-blue-300 w-44 h-44 rounded-full m-2 p-4 flex flex-col items-center justify-center transition transform hover:scale-110 animate-flyInLeft">
           <Link
             //Needs to send linkedin link
-            to="https://www.linkedin.com/in/touhami-benmessaoud-aaa072259"
+            to="https://www.linkedin.com/in/ryan-fodera/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-black text-center mb-3"
