@@ -2,8 +2,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Libby from "../Assets/libby.jpeg"
-import Randy from "../Assets/Randy.jpeg"
+import Libby from "../Assets/libby.jpeg";
+import Randy from "../Assets/Randy.jpeg";
 
 const CustomerTestimonialsComponent = () => {
   const settings = {
@@ -61,14 +61,16 @@ const CustomerTestimonialsComponent = () => {
       name: "Alice Johnson",
       job: "Marketing Manager",
       text: "I love how user-friendly your website is.",
-      image: "https://media.istockphoto.com/id/858979828/photo/creepy-clown-face.jpg?s=612x612&w=0&k=20&c=Po9cGmqC8oQGPqnxmLFypK6vG9-FeBm3Z_fPK6vxHy8=",
+      image:
+        "https://media.istockphoto.com/id/858979828/photo/creepy-clown-face.jpg?s=612x612&w=0&k=20&c=Po9cGmqC8oQGPqnxmLFypK6vG9-FeBm3Z_fPK6vxHy8=",
     },
     {
       id: 4,
       name: "Jese Leos",
       job: "Design Lead",
       text: "The amount I've saved using this app is mind blowing.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80"
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80",
     },
     {
       id: 5,
@@ -82,17 +84,17 @@ const CustomerTestimonialsComponent = () => {
       name: "John",
       job: "Truck Driver",
       text: "As a person who has no time for anything, this is the perfect app for me",
-      image: "https://media.istockphoto.com/id/1286810719/photo/smiling-cheerful-young-adult-african-american-ethnicity-man-looking-at-camera-standing-at.jpg?s=170667a&w=0&k=20&c=oObedgGxhaFI3532xf26RVTNJ401IP85neHSOLe2CTk=",
+      image:
+        "https://media.istockphoto.com/id/1286810719/photo/smiling-cheerful-young-adult-african-american-ethnicity-man-looking-at-camera-standing-at.jpg?s=170667a&w=0&k=20&c=oObedgGxhaFI3532xf26RVTNJ401IP85neHSOLe2CTk=",
     },
 
     {
       id: 6,
-      name: "Anna",
+      name: "Ana",
       job: "Web Developer",
       text: "All Smiles",
       image: Randy,
     },
-    
   ];
 
   return (
@@ -109,7 +111,6 @@ const CustomerTestimonialsComponent = () => {
                   <div className="text-center">
                     <div className="flex items-center flex-wrap">
                       {" "}
-                      {/* Change to flex-wrap */}
                       <div className="relative inline-block rounded-full overflow-hidden w-24 h-24 shadow-md mb-2">
                         <img
                           src={testimonial.image}
@@ -119,7 +120,6 @@ const CustomerTestimonialsComponent = () => {
                       </div>
                       <div className="flex flex-col justify-center ml-2 sm:ml-4 md:ml-6 lg:ml-8">
                         {" "}
-                        {/* Adjust spacing */}
                         <h5 className="mb-1 text-lg font-bold">
                           {testimonial.name}
                         </h5>
