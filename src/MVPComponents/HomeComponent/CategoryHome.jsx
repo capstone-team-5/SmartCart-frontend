@@ -61,62 +61,62 @@ const CategoryHome = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10 p-6 dark:bg-gray-900">
+    <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 p-6 dark:bg-gray-900">
       {/* Fruits Section */}
-      <div className="bg-pink-200 dark:bg-gray-900 p-4 dark:text-white">
-        <div className="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl dark:text-white text-center">
+      <div className="bg-green-200 dark:bg-gray-900 p-4 dark:text-white">
+        <div className="mb-4 text-3xl tracking-wide font-extrabold text-gray-900 sm:text-4xl dark:text-white text-center">
           Shop Our
         </div>
-        <div className="bg-blue-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2 dark:bg-gray-900">
+        <div className="bg-orange-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2 dark:bg-gray-900">
           {renderImages(sections.fruits)}
         </div>
-        <div className="bg-pink-200 p-4 text-center mt-4 dark:bg-gray-900">
-          <h1 className="mb-4 text-xl tracking-tight font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+        <div className="bg-green-200 p-4 text-center mt-4 dark:bg-gray-900">
+          <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
             Shop All Fruits
           </h1>
         </div>
       </div>
 
       {/* Spices Section */}
-      <div className="bg-pink-200 p-4 dark:bg-gray-900 dark:text-white">
-        <div className="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl dark:text-white text-center">
+      <div className="bg-green-200 p-4 dark:bg-gray-900 dark:text-white">
+        <div className="mb-4 text-3xl tracking-wide font-extrabold text-gray-900 sm:text-4xl dark:text-white text-center">
           Exclusively
         </div>
-        <div className="bg-blue-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2 dark:bg-gray-900">
+        <div className="bg-orange-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2 dark:bg-gray-900">
           {renderImages(sections.spices)}
         </div>
-        <div className="bg-pink-200 p-4 text-center mt-4 dark:bg-gray-900">
-          <h1 className="mb-4 text-xl tracking-tight font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+        <div className="bg-green-200 p-4 text-center mt-4 dark:bg-gray-900">
+          <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
             Shop All Grains, Bread, Snacks
           </h1>
         </div>
       </div>
 
       {/* Vegetables Section */}
-      <div className="bg-pink-200 p-4 dark:bg-gray-900 dark:text-white">
-        <div className="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl dark:text-white text-center">
+      <div className="bg-green-200 p-4 dark:bg-gray-900 dark:text-white">
+        <div className="mb-4 text-3xl tracking-wide font-extrabold text-gray-900 sm:text-4xl dark:text-white text-center">
           Assorted
         </div>
-        <div className="bg-blue-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2 dark:bg-gray-900">
+        <div className="bg-orange-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2 dark:bg-gray-900">
           {renderImages(sections.vegetables)}
         </div>
-        <div className="bg-pink-200 p-4 text-center mt-4 dark:bg-gray-900 dark:text-white">
-          <h1 className="mb-4 text-xl tracking-tight font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+        <div className="bg-green-200 p-4 text-center mt-4 dark:bg-gray-900 dark:text-white">
+          <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
             Shop All Spices, Meat, Nuts
           </h1>
         </div>
       </div>
 
       {/* Dairy Section */}
-      <div className="bg-pink-200 p-4 dark:bg-gray-900 dark:text-white">
-        <div className="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl dark:text-white text-center">
+      <div className="bg-green-200 p-4 dark:bg-gray-900 dark:text-white">
+        <div className="mb-4 text-3xl tracking-wide font-extrabold text-gray-900 sm:text-4xl dark:text-white text-center">
           Collections
         </div>
-        <div className="bg-blue-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2 dark:bg-gray-900">
+        <div className="bg-orange-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-2 dark:bg-gray-900">
           {renderImages(sections.dairy)}
         </div>
-        <div className="bg-pink-200 p-4 text-center mt-4 dark:bg-gray-900 dark:text-white">
-          <h1 className="mb-4 text-xl tracking-tight font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+        <div className="bg-green-200 p-4 text-center mt-4 dark:bg-gray-900 dark:text-white">
+          <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
             Shop All Vegetables
           </h1>
         </div>

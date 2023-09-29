@@ -13,20 +13,57 @@ const Fruits = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 12;
 
   useEffect(() => {
-    axios
-      .get(`${API}/products/fruits`)
-      .then((response) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${API}/products/fruits`, {
+          params: {
+            page: currentPage, // Send the current page
+            pageSize: productsPerPage, // Send the products per page
+          },
+        });
         setProducts(response.data);
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching data:", error);
         setError("An error occurred while fetching data.");
         setLoading(false);
-      });
-  }, []);
+      }
+    };
+
+    fetchData();
+  }, [currentPage]);
+
+  const handlePageChange = (page) => {
+    console.log("Changing to page:", page); // Log the page number before change
+    setCurrentPage(page);
+    console.log("Current page set to:", page); // Log the updated page number
+    console.log("Button clicked:", page);
+  };
+
+  const renderPaginationButtons = () => {
+    const totalPages = Math.ceil(products.length / productsPerPage);
+    const buttons = [];
+    for (let i = 1; i <= totalPages; i++) {
+      buttons.push(
+        <button
+          key={i}
+          className={`text-base leading-none ${
+            currentPage === i
+              ? "text-blue-700 font-bold"
+              : "text-gray-800 dark:text-white"
+          } border-b-2 border-transparent focus:outline-none focus:border-gray-800`}
+          onClick={() => handlePageChange(i)}
+        >
+          <p>{i}</p>
+        </button>
+      );
+    }
+    return buttons;
+  };
 
   if (loading) {
     return <p>Loading...</p>;
@@ -37,21 +74,21 @@ const Fruits = ({ addToCart }) => {
   }
 
   return (
-    <div className="mx-auto px-6 xl:px-0 py-12 dark:bg-gray-900">
+    <div className="sm:px-8 md:px-24 py-12 dark:bg-gray-900">
       <div className="flex flex-col dark:bg-gray-900">
         <div className="bg-transparent bg-cover bg-[url(https://www.tastingtable.com/img/gallery/11-fruits-you-can-still-enjoy-on-a-keto-diet/intro-1657125016.webp)] bg-gray-700 bg-blend-multiply ">
-          <div className="px-4 w-full mx-auto text-center py-20 md:py-32 lg:py-40 bg-black bg-opacity-50">
+          <div className="px-4 w-full mx-auto text-center py-8 md:py-32 lg:py-40 bg-black bg-opacity-50">
             <h1 className="mb-2 text-3xl md:text-4xl lg:text-5xl text-white font-extrabold tracking-wide leading-none">
               All Fruits
             </h1>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4 p-4 md:p-6 dark:bg-gray-900 gap-4 md:gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-4 p-4 md:p-6 dark:bg-gray-900 gap-4 md:gap-6">
           {products.map((product) => (
             <div
               key={product.product_id}
-              className="group group-hover:bg-opacity-60 rounded-2xl transition duration-500 relative bg-white p-4 md:p-6 flex flex-col justify-center items-center"
+              className="group group-hover:bg-opacity-60 rounded-2xl shadow-orange-500/70 shadow-md transition duration-500 relative bg-white p-4 md:p-6 flex flex-col justify-center items-center"
             >
               <div className="flex justify-center mb-2">
                 <div
@@ -59,7 +96,7 @@ const Fruits = ({ addToCart }) => {
                   data-carousel-item
                 >
                   <img
-                    className="group-hover:opacity-60 transition duration-500 w-full h-full object-contain"
+                    className="group-hover:opacity-60 transition duration-500 w-full h-48 object-contain"
                     src={product.product_image}
                     alt={product.product_name}
                   />
@@ -71,11 +108,11 @@ const Fruits = ({ addToCart }) => {
                   {product.product_name}
                 </p>
                 <button>
-                  <AiOutlineHeart size={20} />
+                  <AiOutlineHeart size={30} />
                 </button>
               </div>
 
-              <div className="flex justify-center mt-4">
+              <div className="flex justify-center mt-4 mb-4">
                 <button
                   onClick={() => addToCart(product)}
                   className="justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
@@ -89,17 +126,22 @@ const Fruits = ({ addToCart }) => {
 
         <div className="flex justify-end items-end mt-12">
           <div className="flex flex-row items-center justify-center space-x-8">
-            <button className="text-base leading-none text-gray-800 border-b-2 border-transparent focus:outline-none focus:border-gray-800">
-              <p>1</p>
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              className="flex justify-center items-center"
+              disabled={currentPage === 1}
+            >
+              Previous
             </button>
-            <button className="text-base leading-none text-gray-800 border-b-2 border-transparent focus:outline-none focus:border-gray-800">
-              <p>2</p>
-            </button>
-            <button className="text-base leading-none text-gray-800 border-b-2 border-transparent focus:outline-none focus:border-gray-800">
-              <p>3</p>
-            </button>
-            <button className="flex justify-center items-center">
-              <MdNavigateNext size={24} />
+            {renderPaginationButtons()}
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              className="flex justify-center items-center"
+              disabled={
+                currentPage === Math.ceil(products.length / productsPerPage)
+              }
+            >
+              Next
             </button>
           </div>
         </div>
