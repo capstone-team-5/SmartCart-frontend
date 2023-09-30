@@ -1,9 +1,18 @@
 // This is the sign-up page
-import { createUserWithEmailAndPassword } from "firebase/auth";
+
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithRedirect,
+} from "firebase/auth";
 import { useState } from "react";
-import { auth } from "../../firebase";
+// import { auth } from "../../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import logo_image from "../../Assets/SmrtCARTLogo4.png";
+
+import { auth, provider } from "../../firebase";
+
+import { FaGoogle, FaFacebookF } from "react-icons/fa6";
 
 const SignUpComponent = () => {
   const [email, setEmail] = useState("");
@@ -21,11 +30,15 @@ const SignUpComponent = () => {
     }
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        navigate("/");
+        navigate("/home");
       })
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  function google() {
+    signInWithRedirect(auth, provider);
   }
 
   return (
@@ -47,6 +60,30 @@ const SignUpComponent = () => {
             <h1 className="text-xl font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Welcome
             </h1>
+            <div className="flex flex-row">
+              <button
+                type="button"
+                onClick={google}
+                className="flex items-center justify-center w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 whitespace-nowrap mr-2"
+              >
+                Sign In With Google <FaGoogle size={18} className="ml-2" />
+              </button>
+              <button
+                type="button"
+                onClick={google}
+                className="flex items-center justify-center w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 whitespace-nowrap mr-2"
+              >
+                Sign In With Facebook <FaFacebookF size={18} className="ml-2" />
+              </button>
+            </div>
+
+            <div className="w-full flex items-center justify-between py-5">
+              <hr className="w-full bg-gray-400" />
+              <p className="text-base font-medium leading-4 px-2.5 text-gray-400">
+                or
+              </p>
+              <hr className="w-full bg-gray-400  " />
+            </div>
             <form onSubmit={signUp} className="space-y-4 md:space-y-6">
               <div className="mb-2">
                 <label
@@ -83,7 +120,7 @@ const SignUpComponent = () => {
                   id="last_name"
                   placeholder="Enter your Last Name"
                   value={lastName}
-                  onChange={(eßvent) => setLastName(event.target.value)}
+                  onChange={(event) => setLastName(event.target.value)}
                   required
                   title="Enter your Last Name"
                 />
@@ -92,13 +129,13 @@ const SignUpComponent = () => {
               <div className="mb-2">
                 <label
                   htmlFor="email"
-                  className="flex items-center text-sm font-semibold text-gray-800"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  <span className="text-xl tracking-wide font-bold">Email</span>
+                  Email
                 </label>
                 <input
                   type="email"
-                  className="block w-full px-4 py-2 mt-2 bg-white border rounded-md focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   id="email"
                   placeholder="Enter your Email"
                   value={email}
@@ -110,24 +147,23 @@ const SignUpComponent = () => {
               <div className="mb-2">
                 <label
                   htmlFor="password"
-                  className="flex items-center text-sm font-semibold text-gray-800"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  <span className="text-xl tracking-wide font-bold">
-                    Password
-                  </span>
+                  Password
                 </label>
 
                 <input
                   type="password"
-                  className="block w-full px-4 py-2 mt-2 bg-white border rounded-md focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   id="password"
-                  placeholder="Enter your Password"
+                  placeholder="*******************"
+                  pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
                   value={password}
                   required
                   onChange={(event) => setPassword(event.target.value)}
                   title="Enter your password"
                 />
-                <p className="text-xs">
+                <p className="text-xs mt-2 dark:text-white">
                   {" "}
                   Use 8 or more characters with a mix of letters, numbers &
                   symbols{" "}
@@ -137,18 +173,17 @@ const SignUpComponent = () => {
               <div className="mb-2">
                 <label
                   htmlFor="confirm_password"
-                  className="flex items-center text-sm font-semibold text-gray-800"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  <span className="text-xl tracking-wide font-bold">
-                    Confirm Password
-                  </span>
+                  Confirm Password
                 </label>
 
                 <input
                   type="password"
-                  className="block w-full px-4 py-2 mt-2 bg-white border rounded-md focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   id="confirm_password"
                   placeholder="Confirm your Password"
+                  pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
                   value={confirmPassword}
                   required
                   onChange={(event) => setConfirmPassword(event.target.value)}
@@ -156,14 +191,12 @@ const SignUpComponent = () => {
                 />
               </div>
 
-              <div className="mt-6">
-                <button
-                  type="submit"
-                  className="w-full bg-gray-300 tracking-wide transition-colors duration-200 transform mt-6 px-8 py-4 font-bold text-center text-black text-2xl sm:text-lg md:text-xl hover:text-white rounded focus:outline-none focus:shadow-outline"
-                >
-                  Sign Up
-                </button>
-              </div>
+              <button
+                type="submit"
+                className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Sign Up
+              </button>
             </form>
           </div>
         </div>
