@@ -6,15 +6,14 @@ import {
   AiFillLinkedin,
 } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa6";
-import logo_image from "../Assets/SmrtCARTLogo3.png";
-import logo from "../Assets/SmrtCARTLogo4.png"
+import logo_image from "../Assets/SmrtCARTLogo4.png";
 import { Link } from "react-router-dom";
 import MailingListComponent from "./MailingListComponent";
 import { useParams } from "react-router-dom";
 
-const {id} = useParams
+const { id } = useParams;
 
-const Footer = ({ handleThemeChange }) => {
+const Footer = () => {
   return (
     <div>
       <footer className="bg-gray-50 dark:bg-gray-900">
@@ -22,24 +21,25 @@ const Footer = ({ handleThemeChange }) => {
           <MailingListComponent />
           <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <div className="md:flex md:justify-between">
-          <div className="mb-6 md:mb-0">
-            {/* <Link to="/home" className="flex items-center">
-              {appTheme === 'light' ? (
+            <div className="mb-6 md:mb-0 drop-shadow-lg">
+              <Link
+                to="/home"
+                className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
+              >
                 <img
+                  className="object-contain w-24 h-24 drop-shadow-lg mr-3 lg:w-40 lg:h-40 rounded ml-4 md:ml-0"
                   src={logo_image}
-                  alt="SmartCART Logo"
-                  className="object-contain w-40 h-40 mr-3 lg:w-56 lg:h-56 rounded-full ml-4 md:ml-0"
-                 />
-                ) : (
-               <img
-                 src={logo}
-                  alt="SmartCART Logo"
-                  className="object-contain w-40 h-40 mr-3 lg:w-56 lg:h-56 rounded-full ml-4 md:ml-0"
-                 />
-              )}
-             </Link> */}
+                  alt="SmrtCART Logo"
+                />
+                <h1 className="mb-2 sm: text-3xl md:text-6xl font-semibold text-gray-900 dark:text-white">
+                  $mrtCART
+                </h1>
+              </Link>
+              <p className="mb-2 sm:text-sm md:text-lg font-semibold text-gray-900 dark:text-white">
+                Comparison of Available Retailers and Their Prices
+              </p>
             </div>
-            
+
             <div className="grid lg:grid-cols-3 md:grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-1">
               <div className="mb-6">
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
@@ -103,7 +103,10 @@ const Footer = ({ handleThemeChange }) => {
                     </Link>
                   </li>
                   <li className="mb-4">
-                    <Link to={`/user/${id}/subscription`} className="hover:underline ">
+                    <Link
+                      to={`/user/${id}/subscription`}
+                      className="hover:underline "
+                    >
                       Make a Donation
                     </Link>
                   </li>
