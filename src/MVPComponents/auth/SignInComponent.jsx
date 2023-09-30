@@ -3,9 +3,8 @@
 import { signInWithEmailAndPassword, signInWithRedirect } from "firebase/auth";
 import { useState } from "react";
 import { auth, provider } from "../../firebase";
-import { FaEnvelope, FaLock } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
+import { FaGoogle, FaFacebookF } from "react-icons/fa6";
 import logo_image from "../../Assets/SmrtCARTLogo4.png";
 
 const SignInComponent = () => {
@@ -38,23 +37,46 @@ const SignInComponent = () => {
           <img
             className="w-full mr-3 h-16 object-contain"
             src={logo_image}
-            alt="SmartCART Logo"
+            alt="SmrtCART Logo"
           />
           $mrtCART
         </Link>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full bg-white rounded-lg drop-shadow-md dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Sign in to your account
+              Welcome Back
             </h1>
+            <div className="flex flex-row">
+              <button
+                type="button"
+                onClick={google}
+                className="flex items-center justify-center w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 whitespace-nowrap mr-2"
+              >
+                Sign In With Google <FaGoogle size={18} className="ml-2" />
+              </button>
+              <button
+                type="button"
+                onClick={google}
+                className="flex items-center justify-center w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 whitespace-nowrap mr-2"
+              >
+                Sign In With Facebook <FaFacebookF size={18} className="ml-2" />
+              </button>
+            </div>
+
+            <div className="w-full flex items-center justify-between py-5">
+              <hr className="w-full bg-gray-400" />
+              <p className="text-base font-medium leading-4 px-2.5 text-gray-400">
+                or
+              </p>
+              <hr className="w-full bg-gray-400  " />
+            </div>
             <form className="space-y-4 md:space-y-6" onSubmit={signIn}>
               <div className="mb-2">
                 <label
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  <FaEnvelope className="mr-2" />
-                  Your Email
+                  Email
                 </label>
                 <input
                   type="email"
@@ -75,7 +97,6 @@ const SignInComponent = () => {
                   htmlFor="password"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  <FaLock className="mr-2" />
                   Password
                 </label>
 
@@ -96,8 +117,27 @@ const SignInComponent = () => {
                   symbols{" "}
                 </p>
               </div>
+
               <div className="flex items-center justify-between">
-                <div className="flex items-start"></div>
+                <div className="flex items-start">
+                  <div className="flex items-center h-5">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="remember"
+                      className="text-gray-500 dark:text-gray-300"
+                    >
+                      Remember me
+                    </label>
+                  </div>
+                </div>
                 <Link
                   to="/forgot-password"
                   className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
@@ -105,22 +145,14 @@ const SignInComponent = () => {
                   Forgot password?
                 </Link>
               </div>
-              <div className="flex flex-row mr-4">
-                <button
-                  type="submit"
-                  className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Sign in
-                </button>
 
-                <button
-                  type="button"
-                  onClick={google}
-                  className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Sign In With Google <FcGoogle />
-                </button>
-              </div>
+              <button
+                type="submit"
+                className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Sign in
+              </button>
+
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{" "}
                 <Link
