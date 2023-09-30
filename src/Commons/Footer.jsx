@@ -4,6 +4,7 @@ import {
   AiFillYoutube,
   AiFillGithub,
   AiFillLinkedin,
+  AiFillGoogleCircle,
 } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa6";
 import logo_image from "../Assets/SmrtCARTLogo4.png";
@@ -175,7 +176,7 @@ const Footer = () => {
                 <span className="sr-only">Instagram page</span>
               </Link>
               <Link
-                to="https://www.youtube.com/@Keepit100Dre"
+                to="https://www.youtube.com/@TheArtsyGirl4578"
                 target="_blank"
                 className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
               >
@@ -205,6 +206,14 @@ const Footer = () => {
               >
                 <AiFillLinkedin size={18} color="gray" />
                 <span className="sr-only">LinkedIn</span>
+              </Link>
+              <Link
+                to="https://mail.google.com/mail/u/0/#inbox?compose=new"
+                target="_blank"
+                className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              >
+                <AiFillGoogleCircle size={18} color="gray" />
+                <span className="sr-only">Gmail</span>
               </Link>
             </div>
           </div>
