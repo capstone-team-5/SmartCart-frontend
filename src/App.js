@@ -32,7 +32,13 @@ import Favorites from "./Pages/Favorites";
 import Savings from "./Pages/Savings";
 import WhereDidYouShop from "./Pages/WhereDidYouShop";
 import TermsAndConditions from "./Pages/TermAndConditions";
+import Recipes from "./Pages/Recipes/Recipes"
+import BreakfastFoods from "./Pages/BreakfastFoods";
+import LunchFoods from "./Pages/LunchFoods";
 import CheeseOmeletteRecipe from "./Pages/Recipes/CheeseOmeletteRecipe";
+import DinnerFoods from "./Pages/DinnerFoods";
+import SnackFoods from "./Pages/SnackFoods";
+import DessertFoods from "./Pages/DessertFoods";
 
 // Components
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
@@ -40,6 +46,7 @@ import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
 import FaqComponent from "./NonMVPComponents/FaqComponent";
 import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent";
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
+import Fruits from "./MVPComponents/HomeComponent/Fruits"
 // import LocationComponent from "./Commons/LocationComponent";
 import HookComponent from "./MVPComponents/LocationHookComponent";
 // import SearchComponent from "./MVPComponents/SearchComponent";
@@ -287,28 +294,12 @@ const updateCartWithSpecificIds = (specificIds) => {
   
 
   
-  const handleAddIngredientsToCart = (newItemAddedToFood) => { // [ {1:milk}, {2:egg} ]
-    /**
-     * overall strategy
-     * 
-    // we have as input 'foods' which is an array of food items
+  const handleAddIngredientsToCart = (newItemAddedToFood) => {
+    
     const updatedCart = [...cart];
-    // do something here that updates updatedCart to include foods
-      // we have to consider when updatedCart already includes an item from foods - edit updatedCart as needed
-      // and we also have to consider when it doesn't - edit updatedCart as needed
-    // setCart(updatedCart)
-     */
-    // food.id
-    // console.log("handleAddToCart function is called");
-    // console.log("food:", newItemAddedToFood);
-    const updatedCart = [...cart];
-
-    // console.log("updatedCart 1:", updatedCart);
-    // console.log("food.product_id:", newItemAddedToFood.product_id);
-    // console.log("food.id:", newItemAddedToFood.id);
     
     newItemAddedToFood.forEach((food) => {
-      const existingItemIndex = updatedCart.findIndex( //[ {1:milk}, {2:egg}]
+      const existingItemIndex = updatedCart.findIndex( 
         (item) => item.id === food.id
       );
       if (existingItemIndex !== -1) {
@@ -506,7 +497,14 @@ const updateCartWithSpecificIds = (specificIds) => {
             element={<TermsAndConditions />}
             path="/terms-and-conditions"
           />
-          <Route element={<CheeseOmeletteRecipe addToCart={handleAddIngredientsToCart} cart={cart} setCart={setCart} updateCartWithSpecificIds={updateCartWithSpecificIds} />} path="/recipes/cheese-omelette" />
+          <Route element={<Recipes />} path="/recipes" />
+          <Route element={<BreakfastFoods />} path="/breakfast-foods" />
+          <Route element={<CheeseOmeletteRecipe addToCart={handleAddIngredientsToCart} cart={cart} setCart={setCart} updateCartWithSpecificIds={updateCartWithSpecificIds} />} path="/recipes/breakfast-food-cheese-omelette" />
+          <Route element={<LunchFoods />} path="lunch-foods" />
+          <Route element={<DinnerFoods />} path="/dinner-foods" />
+          <Route element={<SnackFoods />} path="/snack-foods" />
+          <Route element={<DessertFoods />} path="/dessert-foods" />
+          <Route element={<Fruits />} path="/fruits" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
         <Footer handleThemeChange={handleThemeChange} />
@@ -516,160 +514,3 @@ const updateCartWithSpecificIds = (specificIds) => {
 }
 
 export default App;
-
-
-
-// const handleAddToCart = (food, specificIds) => {
-//   const updatedCart = [...cart];
-//   const existingItemIndex = updatedCart.findIndex(
-//     (item) => item.id === food.product_id
-//   );
-
-//   if (existingItemIndex !== -1) {
-//     updatedCart[existingItemIndex].length += 1;
-//   } else {
-//     updatedCart.push({
-//       name: food.product_name,
-//       image: food.product_image,
-//       id: food.product_id,
-//       length: 1,
-//     });
-//   }
-//   console.log("updatedCart:", updatedCart);
-//   setCart(updatedCart);
-//   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-//   setCartLength((previousCartLength) => previousCartLength + 1);
-//   updateCartLength(updateCartLength);
-
-// };
-
-
-
-
-
-// Define a function to add specific IDs to the cart
-// const updateCartWithSpecificIds = (specificIds) => {
-// const updatedCart = [...cart];
-
-// specificIds.forEach((id) => {
-//   const existingItemIndex = updatedCart.findIndex((item) => item.id === id);
-
-//   if (existingItemIndex !== -1) {
-//     // If the item already exists, increment its length
-//     updatedCart[existingItemIndex].length += 1;
-//   } else {
-//     // If the item doesn't exist, add it to the cart
-//     // You can provide default values for the name, image, etc.
-//     updatedCart.push({
-//       name: "Item Name",
-//       image: "item_image_url",
-//       id: id,
-//       length: 1,
-//     });
-//   }
-// });
-
-
-//   // Update the cart state
-//   setCart(updatedCart);
-//   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-//   setCartLength(updatedCart.length); // Update cart length
-// };
-
-
-
-
-
-
-
-
-// const handleAddToCart = (food) => {
-//   console.log("handleAddToCart function is called");
-//   console.log("food:", food);
-//   const updatedCart = [...cart];
-//   const existingItemIndex = updatedCart.findIndex(
-//     (item) => item.id === food.product_id
-//   );
-
-//   if (existingItemIndex !== -1) {
-//     updatedCart[existingItemIndex].length += 1;
-//   } else {
-//     updatedCart.push({
-//       name: food.product_name,
-//       image: food.product_image,
-//       id: food.product_id,
-//       length: 1,
-//     });
-//   }
-
-//   console.log("Updated Cart App.js:", updatedCart);
-
-//   // Update the cart state
-//   setCart(updatedCart);
-//   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-
-//   // Update the cart length by calculating the total quantity in the cart
-//   const cartAdjustedLength = updatedCart.reduce(
-//     (total, item) => total + item.length,
-//     0
-//   );
-//   setCartLength(cartAdjustedLength);
-//   // console.log("Updated Cart App.js2:", updatedCart);
-// };
-  
-// const handleAddToCart = (food) => {
-//   // console.log("handleAddToCart function is called");
-//   // console.log("food:", food);
-//   const updatedCart = [...cart];
-//   console.log('updatedCart', updatedCart);
-//   const existingItemIndex = updatedCart.findIndex(
-//     (item) => item.id === food.id
-//   );
-
-//   if (existingItemIndex !== -1) {
-//     updatedCart[existingItemIndex].length += 1;
-//   } else {
-//     // console.log('name app.js:', food.product_name)
-//     // console.log('image:', food.product_image)
-//     // console.log('id:', food.product_id )
-//     updatedCart.push({
-//       name: food.product_name,
-//       image: food.product_image,
-//       id: food.product_id,
-//       length: 1,
-//     });
-//   }
-
-//   // console.log("Updated Cart App.js:", updatedCart);
-
-//   // Update the cart state
-//   setCart(updatedCart);
-//   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-
-//   // Update the cart length by calculating the total quantity in the cart
-//   const cartAdjustedLength = updatedCart.reduce(
-//     (total, item) => total + item.length,
-//     0
-//   );
-//   setCartLength(cartAdjustedLength);
-
-//   // Return the updated cart
-//   return updatedCart;
-// };
-
-
-// useEffect(() => {
-//   // Log the updated cart value
-//   console.log("Updated Cart App.js2:", cart);
-// }, [cart]); // This useEffect runs whenever cart changes
-
-
-//   const [itemQuantities, setItemQuantities] = useState(
-//     cart.reduce((quantities, item) => {
-//       quantities[item.id] = item.length;
-//       return quantities;
-//     }, {})
-  //   );
-
-  
-
