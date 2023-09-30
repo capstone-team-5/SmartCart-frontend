@@ -39,21 +39,17 @@ function AuthDetails() {
     <div>
       {authUser ? (
         <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
-          <img
-            alt="Profile"
-            src={sana}
-            className="w-24 h-24 rounded-full shadow-yellow-500/50 shadow-lg"
-          />
+          <img alt="Profile" src={sana} className="w-24 h-24 rounded-full" />
           <Link
             to="/help"
-            className="mt-2 px-8 py-2 text-black text-xl sm:text-lg md:text-xl rounded-lg hover:from-pink-500 hover:to-yellow-500 hover:text-white shadow-yellow-500/50 shadow-md font-bold flex items-center space-x-2"
+            className="mt-2 px-8 py-2 text-black text-xl sm:text-lg md:text-xl rounded-lg hover:text-white font-bold flex items-center space-x-2"
           >
             <FaCog className="text-xl" />
             <span className="font-medium">Account Settings</span>
           </Link>
 
           <button
-            className="mt-2 px-8 py-2 text-black text-xl sm:text-lg md:text-xl rounded-lg hover:from-pink-500 hover:to-yellow-500 hover:text-white shadow-yellow-500/50 shadow-md font-bold flex items-center space-x-2"
+            className="mt-2 px-8 py-2 text-black text-xl sm:text-lg md:text-xl rounded-lg hover:text-white font-bold flex items-center space-x-2"
             onClick={userSignOut}
           >
             Sign Out
@@ -64,14 +60,14 @@ function AuthDetails() {
           <div>
             <Link
               to="/SignIn"
-              className="mt-2 px-8 py-2 text-black text-xl sm:text-lg md:text-xl rounded-lg hover:from-pink-500 hover:to-yellow-500 hover:text-white shadow-yellow-500/50 shadow-md font-bold flex items-center space-x-2"
+              className="mt-2 px-8 py-2 text-black text-xl sm:text-lg md:text-xl rounded-lg hover:text-white font-bold flex items-center space-x-2"
             >
               Sign In
             </Link>
           </div>
           <div>
             <Link
-              className="mt-2 px-8 py-2 text-black text-xl sm:text-lg md:text-xl rounded-lg hover:from-pink-500 hover:to-yellow-500 hover:text-white shadow-yellow-500/50 shadow-md font-bold flex items-center space-x-2"
+              className="mt-2 px-8 py-2 text-black text-xl sm:text-lg md:text-xl rounded-lg hover:text-white font-bold flex items-center space-x-2"
               to="/SignUp"
             >
               Create New Account
