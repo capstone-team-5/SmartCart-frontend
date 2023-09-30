@@ -16,7 +16,7 @@ const SignInComponent = () => {
     event.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        navigate("/index");
+        navigate("/home");
       })
       .catch((error) => {
         console.log(error);
@@ -104,7 +104,8 @@ const SignInComponent = () => {
                   type="password"
                   name="password"
                   id="password"
-                  placeholder="••••••••"
+                  placeholder="*******************"
+                  pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                   value={password}
@@ -113,7 +114,7 @@ const SignInComponent = () => {
                 />
                 <p className="text-xs mt-2 dark:text-white">
                   {" "}
-                  Use 8 or more characters with a mix of letters, numbers &
+                  Hint: 8 or more characters with a mix of letters, numbers &
                   symbols{" "}
                 </p>
               </div>
@@ -126,7 +127,6 @@ const SignInComponent = () => {
                       aria-describedby="remember"
                       type="checkbox"
                       className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                      required
                     />
                   </div>
                   <div className="ml-3 text-sm">
