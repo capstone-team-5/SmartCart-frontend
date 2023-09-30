@@ -1,9 +1,7 @@
-// This will be a cheese omelette
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const CheeseOmeletteRecipeComponent = ({
+const JollyRancherCandyApplesRecipeComponent = ({
   addIngredientsToCart,
   nameOfIngredients
 }) => {
@@ -32,12 +30,10 @@ const CheeseOmeletteRecipeComponent = ({
     }
   }, [nameOfIngredients, allItems]);
 
-
   const handleAddToCartClick = () => {
     try {
       const newItemAddedToFood = [];
       if (addIngredientsToCart && filteredItems.length > 0) {
-
         filteredItems.forEach((product) => {
           const food = {
             name: product.product_name,
@@ -45,8 +41,7 @@ const CheeseOmeletteRecipeComponent = ({
             id: product.product_id,
             length: 1,
           };
-        
-          newItemAddedToFood.push(food); 
+          newItemAddedToFood.push(food);
         });
 
         addIngredientsToCart(newItemAddedToFood);
@@ -62,51 +57,40 @@ const CheeseOmeletteRecipeComponent = ({
 
   return (
     <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Cheese Omelette</h3>
+      <h3 className="text-2xl font-semibold mb-4">Jolly Rancher Candy Apples</h3>
       <img
-        src="https://stordfkenticomedia.blob.core.windows.net/df-us/rms/media/recipemediafiles/recipes/retail/desktopimages/15492.jpg?ext=.jpg"
-        alt="cheese omelette"
+        src="https://publish-p50513-e440257.adobeaemcloud.com/content/dam/hersheyland/en-us/recipes/recipe-images/275-jolly-rancher-candy-apple.jpg"
+        alt="Jolly Rancher Candy Apples"
+        style={{ width: "300px", height: "auto" }}
       />
       <div className="recipe">
         <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
         <ul className="list-disc pl-6 mb-4">
-          <li>3 large eggs</li>
-          <li>1 tablespoon milk, or as needed</li>
-          <li>salt and freshly ground white pepper to taste</li>
-          <li>2 tablespoons butter</li>
-          <li>¼ cup shredded cheese</li>
+          <li>6 apples (preferably Granny Smith)</li>
+          <li>2 cups Jolly Rancher candies (assorted colors)</li>
+          <li>1/2 cup water</li>
+          <li>6 wooden sticks</li>
         </ul>
 
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> Whisk eggs in a bowl; add milk and season
-            with salt and white pepper. Whisk until egg mixture is foamy, 2 to 3
-            minutes.
+            <strong>Step 1:</strong> Wash and dry the apples thoroughly. Insert a wooden stick into the top of each apple.
           </li>
           <li>
-            <strong>Step 2:</strong> Melt butter in a small, nonstick skillet
-            over medium-low heat. Pour in egg mixture and swirl the skillet, so
-            the bottom is evenly covered with egg. Cook until egg starts to set,
-            about 1 minute. Lift edges with a spatula and tilt the skillet so
-            uncooked egg can flow towards the bottom of the skillet to set.
-            Repeat until no visible liquid egg remains.
+            <strong>Step 2:</strong> Unwrap the Jolly Rancher candies and place them in a microwave-safe bowl. Add water to the bowl.
           </li>
           <li>
-            <strong>Step 3:</strong> Carefully flip omelette; cook until warmed
-            through, 30 seconds to 1 minute. Sprinkle cheese down the middle of
-            omelette; fold in half. Cook until cheese is melted, about 20
-            seconds. Slide omelette onto a plate.
+            <strong>Step 3:</strong> Microwave the candies and water in 30-second intervals, stirring each time, until the candies are completely melted and smooth.
           </li>
           <li>
-            <strong>Step 4:</strong> Carefully fold one side of the omelette
-            over the other, covering the cheese. Cook until cheese is completely
-            melted and omelette is firm but not browned, 2 to 3 minutes. Slide
-            omelette onto a plate.
+            <strong>Step 4:</strong> Quickly dip each apple into the melted candy, coating it evenly. Allow any excess candy to drip off.
           </li>
           <li>
-            <strong>Step 5:</strong> Season omelette with salt and white pepper.
-            Cut into wedges and serve immediately.
+            <strong>Step 5:</strong> Place the coated apples on a parchment paper-lined tray to cool and harden.
+          </li>
+          <li>
+            <strong>Step 6:</strong> Once the candy coating is set, your Jolly Rancher Candy Apples are ready to enjoy!
           </li>
         </ol>
       </div>
@@ -125,4 +109,4 @@ const CheeseOmeletteRecipeComponent = ({
   );
 };
 
-export default CheeseOmeletteRecipeComponent;
+export default JollyRancherCandyApplesRecipeComponent;

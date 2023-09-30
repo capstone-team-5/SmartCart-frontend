@@ -1,9 +1,7 @@
-// This will be a cheese omelette
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const CheeseOmeletteRecipeComponent = ({
+const HomemadeApplePieRecipeComponent = ({
   addIngredientsToCart,
   nameOfIngredients
 }) => {
@@ -32,12 +30,10 @@ const CheeseOmeletteRecipeComponent = ({
     }
   }, [nameOfIngredients, allItems]);
 
-
   const handleAddToCartClick = () => {
     try {
       const newItemAddedToFood = [];
       if (addIngredientsToCart && filteredItems.length > 0) {
-
         filteredItems.forEach((product) => {
           const food = {
             name: product.product_name,
@@ -45,8 +41,7 @@ const CheeseOmeletteRecipeComponent = ({
             id: product.product_id,
             length: 1,
           };
-        
-          newItemAddedToFood.push(food); 
+          newItemAddedToFood.push(food);
         });
 
         addIngredientsToCart(newItemAddedToFood);
@@ -62,51 +57,54 @@ const CheeseOmeletteRecipeComponent = ({
 
   return (
     <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Cheese Omelette</h3>
+      <h3 className="text-2xl font-semibold mb-4">Homemade Apple Pie</h3>
       <img
-        src="https://stordfkenticomedia.blob.core.windows.net/df-us/rms/media/recipemediafiles/recipes/retail/desktopimages/15492.jpg?ext=.jpg"
-        alt="cheese omelette"
+        src="https://amandascookin.com/wp-content/uploads/2016/11/homemade-apple-pie-680.jpg"
+        alt="Homemade Apple Pie"
+        style={{ width: "300px", height: "auto" }}
       />
       <div className="recipe">
         <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
         <ul className="list-disc pl-6 mb-4">
-          <li>3 large eggs</li>
-          <li>1 tablespoon milk, or as needed</li>
-          <li>salt and freshly ground white pepper to taste</li>
-          <li>2 tablespoons butter</li>
-          <li>¼ cup shredded cheese</li>
+          <li>6-7 cups peeled, cored, and sliced apples (about 6-7 medium-sized apples)</li>
+          <li>3/4 cup granulated sugar</li>
+          <li>2 tablespoons all-purpose flour</li>
+          <li>1 teaspoon ground cinnamon</li>
+          <li>1/4 teaspoon ground nutmeg</li>
+          <li>1/4 teaspoon salt</li>
+          <li>1 tablespoon lemon juice</li>
+          <li>2 tablespoons unsalted butter</li>
+          <li>2 prepared pie crusts (1 for the bottom and 1 for the top)</li>
         </ul>
 
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> Whisk eggs in a bowl; add milk and season
-            with salt and white pepper. Whisk until egg mixture is foamy, 2 to 3
-            minutes.
+            <strong>Step 1:</strong> Preheat your oven to 425°F (220°C).
           </li>
           <li>
-            <strong>Step 2:</strong> Melt butter in a small, nonstick skillet
-            over medium-low heat. Pour in egg mixture and swirl the skillet, so
-            the bottom is evenly covered with egg. Cook until egg starts to set,
-            about 1 minute. Lift edges with a spatula and tilt the skillet so
-            uncooked egg can flow towards the bottom of the skillet to set.
-            Repeat until no visible liquid egg remains.
+            <strong>Step 2:</strong> In a large bowl, combine the sliced apples, granulated sugar, all-purpose flour, ground cinnamon, ground nutmeg, salt, and lemon juice. Toss until the apples are evenly coated.
           </li>
           <li>
-            <strong>Step 3:</strong> Carefully flip omelette; cook until warmed
-            through, 30 seconds to 1 minute. Sprinkle cheese down the middle of
-            omelette; fold in half. Cook until cheese is melted, about 20
-            seconds. Slide omelette onto a plate.
+            <strong>Step 3:</strong> Place one of the prepared pie crusts in a 9-inch pie dish.
           </li>
           <li>
-            <strong>Step 4:</strong> Carefully fold one side of the omelette
-            over the other, covering the cheese. Cook until cheese is completely
-            melted and omelette is firm but not browned, 2 to 3 minutes. Slide
-            omelette onto a plate.
+            <strong>Step 4:</strong> Spoon the apple filling into the pie crust, spreading it out evenly.
           </li>
           <li>
-            <strong>Step 5:</strong> Season omelette with salt and white pepper.
-            Cut into wedges and serve immediately.
+            <strong>Step 5:</strong> Dot the top of the apple filling with small pieces of unsalted butter.
+          </li>
+          <li>
+            <strong>Step 6:</strong> Place the second pie crust over the filling and crimp the edges to seal the pie.
+          </li>
+          <li>
+            <strong>Step 7:</strong> Cut small slits in the top crust to allow steam to escape.
+          </li>
+          <li>
+            <strong>Step 8:</strong> Bake in the preheated oven for 45-55 minutes, or until the crust is golden brown and the filling is bubbling.
+          </li>
+          <li>
+            <strong>Step 9:</strong> Remove from the oven and let the pie cool before serving. Enjoy your Homemade Apple Pie!
           </li>
         </ol>
       </div>
@@ -125,4 +123,4 @@ const CheeseOmeletteRecipeComponent = ({
   );
 };
 
-export default CheeseOmeletteRecipeComponent;
+export default HomemadeApplePieRecipeComponent;

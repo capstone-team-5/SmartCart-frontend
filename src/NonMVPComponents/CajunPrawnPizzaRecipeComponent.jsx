@@ -1,9 +1,7 @@
-// This will be a cheese omelette
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const CheeseOmeletteRecipeComponent = ({
+const CajunPrawnPizzaRecipeComponent = ({
   addIngredientsToCart,
   nameOfIngredients
 }) => {
@@ -32,12 +30,10 @@ const CheeseOmeletteRecipeComponent = ({
     }
   }, [nameOfIngredients, allItems]);
 
-
   const handleAddToCartClick = () => {
     try {
       const newItemAddedToFood = [];
       if (addIngredientsToCart && filteredItems.length > 0) {
-
         filteredItems.forEach((product) => {
           const food = {
             name: product.product_name,
@@ -45,8 +41,7 @@ const CheeseOmeletteRecipeComponent = ({
             id: product.product_id,
             length: 1,
           };
-        
-          newItemAddedToFood.push(food); 
+          newItemAddedToFood.push(food);
         });
 
         addIngredientsToCart(newItemAddedToFood);
@@ -62,51 +57,66 @@ const CheeseOmeletteRecipeComponent = ({
 
   return (
     <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Cheese Omelette</h3>
+      <h3 className="text-2xl font-semibold mb-4">Cajun Prawn Pizza</h3>
       <img
-        src="https://stordfkenticomedia.blob.core.windows.net/df-us/rms/media/recipemediafiles/recipes/retail/desktopimages/15492.jpg?ext=.jpg"
-        alt="cheese omelette"
+        src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/cajun-pizza-589e9c2.jpg?quality=90&webp=true&resize=440,400"
+        alt="Cajun Prawn Pizza"
+        style={{ width: "300px", height: "auto" }}
       />
       <div className="recipe">
         <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
         <ul className="list-disc pl-6 mb-4">
-          <li>3 large eggs</li>
-          <li>1 tablespoon milk, or as needed</li>
-          <li>salt and freshly ground white pepper to taste</li>
-          <li>2 tablespoons butter</li>
-          <li>¼ cup shredded cheese</li>
+          <li>1 pre-made pizza dough</li>
+          <li>1/2 cup pizza sauce</li>
+          <li>1 1/2 cups shredded mozzarella cheese</li>
+          <li>1/2 cup cooked prawns</li>
+          <li>1/4 cup sliced red bell pepper</li>
+          <li>1/4 cup sliced green bell pepper</li>
+          <li>1/4 cup sliced red onion</li>
+          <li>1 teaspoon Cajun seasoning</li>
+          <li>Fresh parsley for garnish</li>
         </ul>
 
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> Whisk eggs in a bowl; add milk and season
-            with salt and white pepper. Whisk until egg mixture is foamy, 2 to 3
-            minutes.
+            <strong>Step 1:</strong> Preheat your oven to the recommended
+            temperature for the pizza dough.
           </li>
           <li>
-            <strong>Step 2:</strong> Melt butter in a small, nonstick skillet
-            over medium-low heat. Pour in egg mixture and swirl the skillet, so
-            the bottom is evenly covered with egg. Cook until egg starts to set,
-            about 1 minute. Lift edges with a spatula and tilt the skillet so
-            uncooked egg can flow towards the bottom of the skillet to set.
-            Repeat until no visible liquid egg remains.
+            <strong>Step 2:</strong> Roll out the pizza dough on a floured
+            surface to your desired thickness.
           </li>
           <li>
-            <strong>Step 3:</strong> Carefully flip omelette; cook until warmed
-            through, 30 seconds to 1 minute. Sprinkle cheese down the middle of
-            omelette; fold in half. Cook until cheese is melted, about 20
-            seconds. Slide omelette onto a plate.
+            <strong>Step 3:</strong> Transfer the dough to a pizza stone or
+            baking sheet.
           </li>
           <li>
-            <strong>Step 4:</strong> Carefully fold one side of the omelette
-            over the other, covering the cheese. Cook until cheese is completely
-            melted and omelette is firm but not browned, 2 to 3 minutes. Slide
-            omelette onto a plate.
+            <strong>Step 4:</strong> Spread pizza sauce evenly over the dough,
+            leaving a small border around the edges.
           </li>
           <li>
-            <strong>Step 5:</strong> Season omelette with salt and white pepper.
-            Cut into wedges and serve immediately.
+            <strong>Step 5:</strong> Sprinkle shredded mozzarella cheese over
+            the sauce.
+          </li>
+          <li>
+            <strong>Step 6:</strong> Arrange cooked prawns, sliced red and
+            green bell peppers, and sliced red onion on top of the cheese.
+          </li>
+          <li>
+            <strong>Step 7:</strong> Sprinkle Cajun seasoning over the
+            ingredients.
+          </li>
+          <li>
+            <strong>Step 8:</strong> Bake in the preheated oven according to
+            the pizza dough instructions until the crust is golden and the
+            cheese is bubbly.
+          </li>
+          <li>
+            <strong>Step 9:</strong> Garnish with fresh parsley.
+          </li>
+          <li>
+            <strong>Step 10:</strong> Slice and serve the Cajun Prawn Pizza.
           </li>
         </ol>
       </div>
@@ -125,4 +135,4 @@ const CheeseOmeletteRecipeComponent = ({
   );
 };
 
-export default CheeseOmeletteRecipeComponent;
+export default CajunPrawnPizzaRecipeComponent;
