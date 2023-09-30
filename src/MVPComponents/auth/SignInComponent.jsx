@@ -1,4 +1,4 @@
-// This is the sign-up page
+// This is the sign-in page
 
 import { signInWithEmailAndPassword, signInWithRedirect } from "firebase/auth";
 import { useState } from "react";
@@ -29,7 +29,7 @@ const SignInComponent = () => {
   }
 
   return (
-    <section className=" dark:bg-gray-900">
+    <section className="dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <Link
           to="/"
@@ -90,7 +90,7 @@ const SignInComponent = () => {
                   onChange={(event) => setPassword(event.target.value)}
                   title="Enter your password"
                 />
-                <p className="text-xs mt-2">
+                <p className="text-xs mt-2 dark:text-white">
                   {" "}
                   Use 8 or more characters with a mix of letters, numbers &
                   symbols{" "}
