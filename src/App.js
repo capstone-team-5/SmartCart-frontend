@@ -32,7 +32,13 @@ import Favorites from "./Pages/Favorites";
 import Savings from "./Pages/Savings";
 import WhereDidYouShop from "./Pages/WhereDidYouShop";
 import TermsAndConditions from "./Pages/TermAndConditions";
+import Recipes from "./Pages/Recipes/Recipes";
+import BreakfastFoods from "./Pages/BreakfastFoods";
+import LunchFoods from "./Pages/LunchFoods";
 import CheeseOmeletteRecipe from "./Pages/Recipes/CheeseOmeletteRecipe";
+import DinnerFoods from "./Pages/DinnerFoods";
+import SnackFoods from "./Pages/SnackFoods";
+import DessertFoods from "./Pages/DessertFoods";
 
 // Components
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
@@ -40,6 +46,7 @@ import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
 import FaqComponent from "./NonMVPComponents/FaqComponent";
 import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent";
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
+import Fruits from "./MVPComponents/HomeComponent/Fruits";
 // import LocationComponent from "./Commons/LocationComponent";
 import HookComponent from "./MVPComponents/LocationHookComponent";
 // import SearchComponent from "./MVPComponents/SearchComponent";
@@ -74,26 +81,90 @@ function App() {
   const [comparison, setComparison] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
-  
 
-  const handleAddToFavorites = (food) => {
-    const updatedFavorites = [...favorites];
-    const existingItemIndex = updatedFavorites.findIndex(
+  // const handleAddToFavorites = (food) => {
+  // const updatedFavorites = [...favorites];
+  // const existingItemIndex = updatedFavorites.findIndex(
+  // (item) => item.id === food.product_id
+  // );
+
+  // if (existingItemIndex === -1) {
+  // updatedFavorites.push({
+  // name: food.product_name,
+  // image: food.product_image,
+  // id: food.product_id,
+  // });
+  // console.log("updatedFavorites:", updatedFavorites);
+  // setFavorites(updatedFavorites);
+  // window.localStorage.setItem(
+  // "Testing_Favorites",
+  // JSON.stringify(updatedFavorites)
+  // );
+  // }
+  // };
+
+  const handleAddToCart = (food, specificIds) => {
+    const updatedCart = [...cart];
+    const existingItemIndex = updatedCart.findIndex(
       (item) => item.id === food.product_id
     );
-
-    if (existingItemIndex === -1) {
-      updatedFavorites.push({
+    if (existingItemIndex !== -1) {
+      updatedCart[existingItemIndex].length += 1;
+    } else {
+      updatedCart.push({
         name: food.product_name,
         image: food.product_image,
         id: food.product_id,
+        length: 1,
       });
-      console.log("updatedFavorites:", updatedFavorites);
-      setFavorites(updatedFavorites);
-      window.localStorage.setItem(
-        "Testing_Favorites",
-        JSON.stringify(updatedFavorites)
-      );
+    }
+    console.log("updatedCart:", updatedCart);
+    setCart(updatedCart);
+    window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+    setCartLength((previousCartLength) => previousCartLength + 1);
+    updateCartLength(updateCartLength);
+  };
+
+  const handleAddToFavorites = async (food) => {
+    // Check if the item is already in favorites
+    const existingItemIndex = favorites.findIndex(
+      (item) => item.id === food.product_id
+    );
+    if (existingItemIndex === -1) {
+      // If not in local favorites, add it to the backend
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_BACKEND_API}/favorites`,
+          {
+            shopper_firebase_uid: "YOUR_USER_ID", // Replace with the user's ID
+            product_id: food.product_id, // Pass the product ID to add
+          }
+        );
+        if (response.status === 201) {
+          // Item added to backend successfully, update frontend state
+          const updatedFavorites = [
+            ...favorites,
+            {
+              name: food.product_name,
+              image: food.product_image,
+              id: food.product_id,
+            },
+          ];
+          console.log("updatedFavorites:", updatedFavorites);
+          setFavorites(updatedFavorites);
+          window.localStorage.setItem(
+            "Testing_Favorites",
+            JSON.stringify(updatedFavorites)
+          );
+        } else {
+          // Handle other status codes or errors as needed
+          console.error("Failed to add item to favorites.");
+        }
+      } catch (error) {
+        console.error("Error adding item to favorites:", error);
+      }
+    } else {
+      console.log("Item is already in favorites.");
     }
   };
 
@@ -194,107 +265,72 @@ function App() {
     setCartLength(length);
   };
 
-const updateCartWithSpecificIds = (specificIds) => {
-  const updatedCart = [...cart];
+  const updateCartWithSpecificIds = (specificIds) => {
+    const updatedCart = [...cart];
 
-  specificIds.forEach((id) => {
-    const existingItemIndex = updatedCart.findIndex((item) => item.id === id);
+    specificIds.forEach((id) => {
+      const existingItemIndex = updatedCart.findIndex((item) => item.id === id);
 
-    if (existingItemIndex !== -1) {
-      updatedCart[existingItemIndex].length += 1;
-    } else {
-      updatedCart.push({
-        name: "Item Name",
-        image: "item_image_url",
-        id: id,
-        length: 1,
-      });
-    }
-  });
-
-  setCart(updatedCart); // Update the cart state
-  window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-  setCartLength(updatedCart.length); // Update cart length
-};
-
-
-
-// const handleAddToCart = (food) => {
-//   console.log("handleAddToCart function is called");
-//   console.log("food:", food);
-//   const updatedCart = [...cart];
-//   const existingItemIndex = updatedCart.findIndex(
-//     (item) => item.id === food.product_id
-//   );
-
-//   if (existingItemIndex !== -1) {
-//     updatedCart[existingItemIndex].length += 1;
-//   } else {
-//     updatedCart.push({
-//       name: food.product_name,
-//       image: food.product_image,
-//       id: food.product_id,
-//       length: 1,
-//     });
-//   }
-
-//   console.log("Updated Cart App.js:", updatedCart);
-
-//   // Update the cart state
-//   setCart(updatedCart);
-//   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-
-//   // Update the cart length by calculating the total quantity in the cart
-//   const cartAdjustedLength = updatedCart.reduce(
-//     (total, item) => total + item.length,
-//     0
-//   );
-//   setCartLength(cartAdjustedLength);
-//   // console.log("Updated Cart App.js2:", updatedCart);
-// };
-  
-const handleAddToCart = (food) => {
-  console.log("handleAddToCart function is called");
-  console.log("food:", food);
-  const updatedCart = [...cart];
-  const existingItemIndex = updatedCart.findIndex(
-    (item) => item.id === food.product_id
-  );
-
-  if (existingItemIndex !== -1) {
-    updatedCart[existingItemIndex].length += 1;
-  } else {
-    updatedCart.push({
-      name: food.product_name,
-      image: food.product_image,
-      id: food.product_id,
-      length: 1,
+      if (existingItemIndex !== -1) {
+        updatedCart[existingItemIndex].length += 1;
+      } else {
+        updatedCart.push({
+          name: "Item Name",
+          image: "item_image_url",
+          id: id,
+          length: 1,
+        });
+      }
     });
-  }
 
-  console.log("Updated Cart App.js:", updatedCart);
+    setCart(updatedCart); // Update the cart state
+    window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+    setCartLength(updatedCart.length); // Update cart length
+  };
 
-  // Update the cart state
-  setCart(updatedCart);
-  window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+  const handleAddIngredientsToCart = (newItemAddedToFood) => {
+    const updatedCart = [...cart];
+    newItemAddedToFood.forEach((food) => {
+      const existingItemIndex = updatedCart.findIndex(
+        (item) => item.id === food.id
+      );
+      if (existingItemIndex !== -1) {
+        updatedCart[existingItemIndex].length += 1;
+        console.log("updatedCart 2.0:", updatedCart);
+      } else {
+        updatedCart.push({
+          name: food.name,
+          image: food.image,
+          id: food.id,
+          length: 1,
+        });
+        // updatedCart.push(newItemAddedToFood)
+        console.log("updatedCart 2.1:", updatedCart);
+      }
+    });
 
-  // Update the cart length by calculating the total quantity in the cart
-  const cartAdjustedLength = updatedCart.reduce(
-    (total, item) => total + item.length,
-    0
-  );
-  setCartLength(cartAdjustedLength);
+    console.log("Updated Cart App.js:", updatedCart);
 
-  // Return the updated cart
-  return updatedCart;
-};
+    // Update the cart state
+    setCart(updatedCart);
+    // [...cart] i believe this is empty rn
+    window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
 
+    // Update the cart length by calculating the total quantity in the cart
+    const cartAdjustedLength = updatedCart.reduce(
+      (total, item) => total + item.length,
+      0
+    );
+    setCartLength(cartAdjustedLength);
 
-useEffect(() => {
-  // Log the updated cart value
-  console.log("Updated Cart App.js2:", cart);
-}, [cart]); // This useEffect runs whenever cart changes
+    // Return the updated cart
+    return updatedCart;
+  };
 
+  useEffect(() => {
+    // Log the updated cart value
+    console.log("Updated Cart App.js2:", cart);
+  }, [cart]); // This useEffect runs whenever cart changes
 
   const [itemQuantities, setItemQuantities] = useState(
     cart.reduce((quantities, item) => {
@@ -449,7 +485,24 @@ useEffect(() => {
             element={<TermsAndConditions />}
             path="/terms-and-conditions"
           />
-          <Route element={<CheeseOmeletteRecipe addToCart={handleAddToCart} cart={cart} setCart={setCart} updateCartWithSpecificIds={updateCartWithSpecificIds} />} path="/recipes/cheese-omelette" />
+          <Route element={<Recipes />} path="/recipes" />
+          <Route element={<BreakfastFoods />} path="/recipes/breakfast-foods" />
+          <Route
+            element={
+              <CheeseOmeletteRecipe
+                addToCart={handleAddIngredientsToCart}
+                cart={cart}
+                setCart={setCart}
+                updateCartWithSpecificIds={updateCartWithSpecificIds}
+              />
+            }
+            path="/recipes/breakfast-food-cheese-omelette"
+          />
+          <Route element={<LunchFoods />} path="/recipes/lunch-foods" />
+          <Route element={<DinnerFoods />} path="/recipes/dinner-foods" />
+          <Route element={<SnackFoods />} path="/recipes/snack-foods" />
+          <Route element={<DessertFoods />} path="/recipes/dessert-foods" />
+          <Route element={<Fruits />} path="/fruits" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
         <Footer handleThemeChange={handleThemeChange} />
@@ -459,61 +512,3 @@ useEffect(() => {
 }
 
 export default App;
-
-
-
-  // const handleAddToCart = (food, specificIds) => {
-  //   const updatedCart = [...cart];
-  //   const existingItemIndex = updatedCart.findIndex(
-  //     (item) => item.id === food.product_id
-  //   );
-
-  //   if (existingItemIndex !== -1) {
-  //     updatedCart[existingItemIndex].length += 1;
-  //   } else {
-  //     updatedCart.push({
-  //       name: food.product_name,
-  //       image: food.product_image,
-  //       id: food.product_id,
-  //       length: 1,
-  //     });
-  //   }
-  //   console.log("updatedCart:", updatedCart);
-  //   setCart(updatedCart);
-  //   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-  //   setCartLength((previousCartLength) => previousCartLength + 1);
-  //   updateCartLength(updateCartLength);
-
-  // };
-
-  // Define a function to add specific IDs to the cart
-//   const updateCartWithSpecificIds = (specificIds) => {
-//   const updatedCart = [...cart];
-
-//   specificIds.forEach((id) => {
-//     const existingItemIndex = updatedCart.findIndex((item) => item.id === id);
-
-//     if (existingItemIndex !== -1) {
-//       // If the item already exists, increment its length
-//       updatedCart[existingItemIndex].length += 1;
-//     } else {
-//       // If the item doesn't exist, add it to the cart
-//       // You can provide default values for the name, image, etc.
-//       updatedCart.push({
-//         name: "Item Name",
-//         image: "item_image_url",
-//         id: id,
-//         length: 1,
-//       });
-//     }
-//   });
-
-
-//   // Update the cart state
-//   setCart(updatedCart);
-//   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-//   setCartLength(updatedCart.length); // Update cart length
-// };
-
-  
-
