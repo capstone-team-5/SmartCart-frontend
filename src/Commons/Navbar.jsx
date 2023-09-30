@@ -150,6 +150,26 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
     };
   }, []);
 
+  const handleTrackSavingsClick = () => {
+    if (authUser) {
+      // User is signed in, navigate to the "Track Savings" route
+      navigate("/user/:id/track-savings");
+    } else {
+      // User is not signed in, navigate to the sign-in page
+      navigate("/sign-in");
+    }
+  };
+
+  const handleFavoritesClick = () => {
+    if (authUser) {
+      // User is signed in, navigate to the "My Favorites" route
+      navigate("/user/:id/favorites");
+    } else {
+      // User is not signed in, navigate to the sign-in page
+      navigate("/sign-in");
+    }
+  };
+
   const userSignOut = () => {
     if (window.confirm("Are you sure you want to sign out?")) {
       signOut(auth)
@@ -395,7 +415,10 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
                   <FaHeart />
-                  <div className="text-sm font-medium text-gray-900 dark:text-white">
+                  <div
+                    onClick={handleFavoritesClick}
+                    className="text-sm font-medium text-gray-900 dark:text-white"
+                  >
                     My Favorites
                   </div>
                 </Link>
@@ -426,7 +449,10 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
                   <MdSavings />
-                  <div className="text-sm font-medium text-gray-900 dark:text-white">
+                  <div
+                    onClick={handleTrackSavingsClick}
+                    className="text-sm font-medium text-gray-900 dark:text-white"
+                  >
                     Track Savings
                   </div>
                 </Link>
@@ -520,6 +546,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   <Link
                     to="#"
                     className="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    onClick={handleFavoritesClick}
                   >
                     <FaHeart />
                     My favorites
