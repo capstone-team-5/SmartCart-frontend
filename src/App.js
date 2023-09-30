@@ -97,6 +97,31 @@ function App() {
   //   }
   // };
 
+  const handleAddToCart = (food, specificIds) => {
+    const updatedCart = [...cart];
+    const existingItemIndex = updatedCart.findIndex(
+      (item) => item.id === food.product_id
+    );
+  
+    if (existingItemIndex !== -1) {
+      updatedCart[existingItemIndex].length += 1;
+    } else {
+      updatedCart.push({
+        name: food.product_name,
+        image: food.product_image,
+        id: food.product_id,
+        length: 1,
+      });
+    }
+    console.log("updatedCart:", updatedCart);
+    setCart(updatedCart);
+    window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+    setCartLength((previousCartLength) => previousCartLength + 1);
+    updateCartLength(updateCartLength);
+  
+  };
+  
+
   const handleAddToFavorites = async (food) => {
     // Check if the item is already in favorites
     const existingItemIndex = favorites.findIndex(
@@ -258,88 +283,75 @@ const updateCartWithSpecificIds = (specificIds) => {
   setCartLength(updatedCart.length); // Update cart length
 };
 
-
-
-// const handleAddToCart = (food) => {
-//   console.log("handleAddToCart function is called");
-//   console.log("food:", food);
-//   const updatedCart = [...cart];
-//   const existingItemIndex = updatedCart.findIndex(
-//     (item) => item.id === food.product_id
-//   );
-
-//   if (existingItemIndex !== -1) {
-//     updatedCart[existingItemIndex].length += 1;
-//   } else {
-//     updatedCart.push({
-//       name: food.product_name,
-//       image: food.product_image,
-//       id: food.product_id,
-//       length: 1,
-//     });
-//   }
-
-//   console.log("Updated Cart App.js:", updatedCart);
-
-//   // Update the cart state
-//   setCart(updatedCart);
-//   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-
-//   // Update the cart length by calculating the total quantity in the cart
-//   const cartAdjustedLength = updatedCart.reduce(
-//     (total, item) => total + item.length,
-//     0
-//   );
-//   setCartLength(cartAdjustedLength);
-//   // console.log("Updated Cart App.js2:", updatedCart);
-// };
   
-const handleAddToCart = (food) => {
-  // console.log("handleAddToCart function is called");
-  // console.log("food:", food);
-  const updatedCart = [...cart];
-  console.log('updatedCart', updatedCart);
-  const existingItemIndex = updatedCart.findIndex(
-    (item) => item.id === food.id
-  );
+  
 
-  if (existingItemIndex !== -1) {
-    updatedCart[existingItemIndex].length += 1;
-  } else {
-    // console.log('name app.js:', food.product_name)
-    // console.log('image:', food.product_image)
-    // console.log('id:', food.product_id )
-    updatedCart.push({
-      name: food.product_name,
-      image: food.product_image,
-      id: food.product_id,
-      length: 1,
-    });
-  }
+  
+  const handleAddIngredientsToCart = (newItemAddedToFood) => { // [ {1:milk}, {2:egg} ]
+    /**
+     * overall strategy
+     * 
+    // we have as input 'foods' which is an array of food items
+    const updatedCart = [...cart];
+    // do something here that updates updatedCart to include foods
+      // we have to consider when updatedCart already includes an item from foods - edit updatedCart as needed
+      // and we also have to consider when it doesn't - edit updatedCart as needed
+    // setCart(updatedCart)
+     */
+    // food.id
+    // console.log("handleAddToCart function is called");
+    // console.log("food:", newItemAddedToFood);
+    const updatedCart = [...cart];
 
-  // console.log("Updated Cart App.js:", updatedCart);
+    // console.log("updatedCart 1:", updatedCart);
+    // console.log("food.product_id:", newItemAddedToFood.product_id);
+    // console.log("food.id:", newItemAddedToFood.id);
+    
+    newItemAddedToFood.forEach((food) => {
+      const existingItemIndex = updatedCart.findIndex( //[ {1:milk}, {2:egg}]
+        (item) => item.id === food.id
+      );
+      if (existingItemIndex !== -1) {
+        updatedCart[existingItemIndex].length += 1;
+  
+        console.log("updatedCart 2.0:", updatedCart);
+      } else {
+        updatedCart.push({
+          name: food.name,
+          image: food.image,
+          id: food.id,
+          length: 1,
+        });
+        
+        // updatedCart.push(newItemAddedToFood)
+        console.log("updatedCart 2.1:", updatedCart);
+      }
+    })
 
-  // Update the cart state
-  setCart(updatedCart);
-  window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+    
 
-  // Update the cart length by calculating the total quantity in the cart
-  const cartAdjustedLength = updatedCart.reduce(
-    (total, item) => total + item.length,
-    0
-  );
-  setCartLength(cartAdjustedLength);
+    console.log("Updated Cart App.js:", updatedCart);
 
-  // Return the updated cart
-  return updatedCart;
-};
+    // Update the cart state
+    setCart(updatedCart);
+    // [...cart] i believe this is empty rn
+    window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
 
+    // Update the cart length by calculating the total quantity in the cart
+    const cartAdjustedLength = updatedCart.reduce(
+      (total, item) => total + item.length,
+      0
+    );
+    setCartLength(cartAdjustedLength);
 
-useEffect(() => {
-  // Log the updated cart value
-  console.log("Updated Cart App.js2:", cart);
-}, [cart]); // This useEffect runs whenever cart changes
+    // Return the updated cart
+    return updatedCart;
+  };
 
+  useEffect(() => {
+    // Log the updated cart value
+    console.log("Updated Cart App.js2:", cart);
+  }, [cart]); // This useEffect runs whenever cart changes
 
   const [itemQuantities, setItemQuantities] = useState(
     cart.reduce((quantities, item) => {
@@ -494,7 +506,7 @@ useEffect(() => {
             element={<TermsAndConditions />}
             path="/terms-and-conditions"
           />
-          <Route element={<CheeseOmeletteRecipe addToCart={handleAddToCart} cart={cart} setCart={setCart} updateCartWithSpecificIds={updateCartWithSpecificIds} />} path="/recipes/cheese-omelette" />
+          <Route element={<CheeseOmeletteRecipe addToCart={handleAddIngredientsToCart} cart={cart} setCart={setCart} updateCartWithSpecificIds={updateCartWithSpecificIds} />} path="/recipes/cheese-omelette" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
         <Footer handleThemeChange={handleThemeChange} />
@@ -507,51 +519,55 @@ export default App;
 
 
 
-  // const handleAddToCart = (food, specificIds) => {
-  //   const updatedCart = [...cart];
-  //   const existingItemIndex = updatedCart.findIndex(
-  //     (item) => item.id === food.product_id
-  //   );
-
-  //   if (existingItemIndex !== -1) {
-  //     updatedCart[existingItemIndex].length += 1;
-  //   } else {
-  //     updatedCart.push({
-  //       name: food.product_name,
-  //       image: food.product_image,
-  //       id: food.product_id,
-  //       length: 1,
-  //     });
-  //   }
-  //   console.log("updatedCart:", updatedCart);
-  //   setCart(updatedCart);
-  //   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-  //   setCartLength((previousCartLength) => previousCartLength + 1);
-  //   updateCartLength(updateCartLength);
-
-  // };
-
-  // Define a function to add specific IDs to the cart
-//   const updateCartWithSpecificIds = (specificIds) => {
+// const handleAddToCart = (food, specificIds) => {
 //   const updatedCart = [...cart];
+//   const existingItemIndex = updatedCart.findIndex(
+//     (item) => item.id === food.product_id
+//   );
 
-//   specificIds.forEach((id) => {
-//     const existingItemIndex = updatedCart.findIndex((item) => item.id === id);
+//   if (existingItemIndex !== -1) {
+//     updatedCart[existingItemIndex].length += 1;
+//   } else {
+//     updatedCart.push({
+//       name: food.product_name,
+//       image: food.product_image,
+//       id: food.product_id,
+//       length: 1,
+//     });
+//   }
+//   console.log("updatedCart:", updatedCart);
+//   setCart(updatedCart);
+//   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+//   setCartLength((previousCartLength) => previousCartLength + 1);
+//   updateCartLength(updateCartLength);
 
-//     if (existingItemIndex !== -1) {
-//       // If the item already exists, increment its length
-//       updatedCart[existingItemIndex].length += 1;
-//     } else {
-//       // If the item doesn't exist, add it to the cart
-//       // You can provide default values for the name, image, etc.
-//       updatedCart.push({
-//         name: "Item Name",
-//         image: "item_image_url",
-//         id: id,
-//         length: 1,
-//       });
-//     }
-//   });
+// };
+
+
+
+
+
+// Define a function to add specific IDs to the cart
+// const updateCartWithSpecificIds = (specificIds) => {
+// const updatedCart = [...cart];
+
+// specificIds.forEach((id) => {
+//   const existingItemIndex = updatedCart.findIndex((item) => item.id === id);
+
+//   if (existingItemIndex !== -1) {
+//     // If the item already exists, increment its length
+//     updatedCart[existingItemIndex].length += 1;
+//   } else {
+//     // If the item doesn't exist, add it to the cart
+//     // You can provide default values for the name, image, etc.
+//     updatedCart.push({
+//       name: "Item Name",
+//       image: "item_image_url",
+//       id: id,
+//       length: 1,
+//     });
+//   }
+// });
 
 
 //   // Update the cart state
@@ -559,6 +575,101 @@ export default App;
 //   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
 //   setCartLength(updatedCart.length); // Update cart length
 // };
+
+
+
+
+
+
+
+
+// const handleAddToCart = (food) => {
+//   console.log("handleAddToCart function is called");
+//   console.log("food:", food);
+//   const updatedCart = [...cart];
+//   const existingItemIndex = updatedCart.findIndex(
+//     (item) => item.id === food.product_id
+//   );
+
+//   if (existingItemIndex !== -1) {
+//     updatedCart[existingItemIndex].length += 1;
+//   } else {
+//     updatedCart.push({
+//       name: food.product_name,
+//       image: food.product_image,
+//       id: food.product_id,
+//       length: 1,
+//     });
+//   }
+
+//   console.log("Updated Cart App.js:", updatedCart);
+
+//   // Update the cart state
+//   setCart(updatedCart);
+//   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+
+//   // Update the cart length by calculating the total quantity in the cart
+//   const cartAdjustedLength = updatedCart.reduce(
+//     (total, item) => total + item.length,
+//     0
+//   );
+//   setCartLength(cartAdjustedLength);
+//   // console.log("Updated Cart App.js2:", updatedCart);
+// };
+  
+// const handleAddToCart = (food) => {
+//   // console.log("handleAddToCart function is called");
+//   // console.log("food:", food);
+//   const updatedCart = [...cart];
+//   console.log('updatedCart', updatedCart);
+//   const existingItemIndex = updatedCart.findIndex(
+//     (item) => item.id === food.id
+//   );
+
+//   if (existingItemIndex !== -1) {
+//     updatedCart[existingItemIndex].length += 1;
+//   } else {
+//     // console.log('name app.js:', food.product_name)
+//     // console.log('image:', food.product_image)
+//     // console.log('id:', food.product_id )
+//     updatedCart.push({
+//       name: food.product_name,
+//       image: food.product_image,
+//       id: food.product_id,
+//       length: 1,
+//     });
+//   }
+
+//   // console.log("Updated Cart App.js:", updatedCart);
+
+//   // Update the cart state
+//   setCart(updatedCart);
+//   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+
+//   // Update the cart length by calculating the total quantity in the cart
+//   const cartAdjustedLength = updatedCart.reduce(
+//     (total, item) => total + item.length,
+//     0
+//   );
+//   setCartLength(cartAdjustedLength);
+
+//   // Return the updated cart
+//   return updatedCart;
+// };
+
+
+// useEffect(() => {
+//   // Log the updated cart value
+//   console.log("Updated Cart App.js2:", cart);
+// }, [cart]); // This useEffect runs whenever cart changes
+
+
+//   const [itemQuantities, setItemQuantities] = useState(
+//     cart.reduce((quantities, item) => {
+//       quantities[item.id] = item.length;
+//       return quantities;
+//     }, {})
+  //   );
 
   
 
