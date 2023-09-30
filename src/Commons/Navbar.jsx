@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo_image from "../Assets/SmrtCARTLogo4.png";
 import sana from "../Assets/sana.jpg";
 import { FaHeart, FaUserAlt } from "react-icons/fa";
 import { HiOutlineShoppingCart, HiSearch, HiMenuAlt2 } from "react-icons/hi";
 import { AiFillAppstore, AiFillHome } from "react-icons/ai";
 import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
+import { auth } from "../firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+
 import {
   MdLogout,
   MdSavings,
@@ -87,6 +90,8 @@ const userDropDown = [
 ];
 
 const Navbar = ({ cartLength, handleThemeChange }) => {
+  const navigate = useNavigate();
+  const [authUser, setAuthUser] = useState(null);
   const [open, setOpen] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showAppsDropdown, setShowAppsDropdown] = useState(false);
@@ -129,6 +134,32 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
   const closeMenu = () => {
     setOpen(false);
     setShowUserDropdown(false);
+  };
+
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthUser(user);
+      } else {
+        setAuthUser(null);
+      }
+    });
+
+    return () => {
+      listen();
+    };
+  }, []);
+
+  const userSignOut = () => {
+    if (window.confirm("Are you sure you want to sign out?")) {
+      signOut(auth)
+        .then(() => {
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   useEffect(() => {
@@ -423,7 +454,10 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
                   <MdLogout />
-                  <div className="text-sm font-medium text-gray-900 dark:text-white">
+                  <div
+                    onClick={userSignOut}
+                    className="text-sm font-medium text-gray-900 dark:text-white"
+                  >
                     Logout
                   </div>
                 </Link>
