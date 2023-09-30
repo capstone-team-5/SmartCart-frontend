@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 
 const BreakfastFoodComponent = () => {
     return (
+        <div className="bg-gray-100 min-h-screen">
+            <div className="container mx-auto py-8">
+            <h1 className="text-4xl font-semibold text-center mb-8">
+                    Add the Ingredients List to Your Cart
+                </h1>
         <div className="grid grid-cols-3 gap-4 mt-8">
             {/* Recipe Card 1 */}
             <div className="bg-white rounded-lg shadow-md p-4">
@@ -109,7 +114,9 @@ const BreakfastFoodComponent = () => {
                 </Link>
             </div>
 
-        </div>
+                </div>
+                </div>
+            </div>
     );
 };
 

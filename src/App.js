@@ -498,12 +498,12 @@ const updateCartWithSpecificIds = (specificIds) => {
             path="/terms-and-conditions"
           />
           <Route element={<Recipes />} path="/recipes" />
-          <Route element={<BreakfastFoods />} path="/breakfast-foods" />
+          <Route element={<BreakfastFoods />} path="/recipes/breakfast-foods" />
           <Route element={<CheeseOmeletteRecipe addToCart={handleAddIngredientsToCart} cart={cart} setCart={setCart} updateCartWithSpecificIds={updateCartWithSpecificIds} />} path="/recipes/breakfast-food-cheese-omelette" />
-          <Route element={<LunchFoods />} path="lunch-foods" />
-          <Route element={<DinnerFoods />} path="/dinner-foods" />
-          <Route element={<SnackFoods />} path="/snack-foods" />
-          <Route element={<DessertFoods />} path="/dessert-foods" />
+          <Route element={<LunchFoods />} path="/recipes/lunch-foods" />
+          <Route element={<DinnerFoods />} path="/recipes/dinner-foods" />
+          <Route element={<SnackFoods />} path="/recipes/snack-foods" />
+          <Route element={<DessertFoods />} path="/recipes/dessert-foods" />
           <Route element={<Fruits />} path="/fruits" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
