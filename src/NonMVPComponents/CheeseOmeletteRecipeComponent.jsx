@@ -1,24 +1,21 @@
 // This will be a cheese omelette
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const CheeseOmeletteRecipeComponent = ({
-  addToCart,
-  cart,
-  setCart,
-  specificIds,
-  updateCartWithSpecificIds,
+  addIngredientsToCart,
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
-  const [filteredItems, setFilteredItems] = useState([]); 
+  const [filteredItems, setFilteredItems] = useState([]);
 
   useEffect(() => {
     // Fetch all items from your API
     axios
       .get(`${process.env.REACT_APP_BACKEND_API}/products`)
       .then((response) => {
-        console.log("All items:", response.data);
         setAllItems(response.data);
       })
       .catch((error) => {
@@ -27,60 +24,31 @@ const CheeseOmeletteRecipeComponent = ({
   }, []);
 
   useEffect(() => {
-    if (specificIds && specificIds.length > 0) {
-      // Use a filter function to select items with specific IDs
+    if (nameOfIngredients && nameOfIngredients.length > 0) {
       const filtered = allItems.filter((item) =>
-        specificIds.includes(item.product_id)
+        nameOfIngredients.includes(item.product_name)
       );
-      console.log("Filtered items:", filtered);
       setFilteredItems(filtered);
     }
-  }, [specificIds, allItems]);
-
-  // const handleAddToCartClick = () => {
-  //   try {
-  //     if (addToCart && filteredItems.length > 0) {
-  //       filteredItems.forEach((product) => {
-  //         // Add the product to the cart with the desired properties
-  //          addToCart({
-  //           id: product.product_id,
-  //           name: product.product_name,
-  //           image: product.product_image,
-  //           length: 1, // Set the initial quantity to 1 for each item
-  //         });
-  //       });
-
-  //       setMessage("Ingredients have been added to your cart.");
-  //     } else {
-  //       setMessage("No specific ingredients selected to add to the cart.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error adding ingredients to cart:", error);
-  //   }
-  // };
+  }, [nameOfIngredients, allItems]);
 
   const handleAddToCartClick = () => {
     try {
-      if (addToCart && filteredItems.length > 0) {
-        console.log("Filtered Items:", filteredItems);
-  
+      const newItemAddedToFood = [];
+      if (addIngredientsToCart && filteredItems.length > 0) {
         filteredItems.forEach((product) => {
-          // Add the product to the cart with the desired properties
-
-          console.log("Adding to cart:", product);
-          console.log('name of food:', product.product_name)
-          console.log('image of food:', product.product_image)
-          console.log('id:', product.product_id)
-          const result = addToCart({
+          const food = {
             name: product.product_name,
             image: product.product_image,
             id: product.product_id,
-            length: 1, // Set the initial quantity to 1 for each item
-          });
-  
-          console.log("Result of addToCart:", result);
+            length: 1,
+          };
+
+          newItemAddedToFood.push(food);
         });
-  
+
+        addIngredientsToCart(newItemAddedToFood);
+
         setMessage("Ingredients have been added to your cart.");
       } else {
         setMessage("No specific ingredients selected to add to the cart.");
@@ -89,10 +57,6 @@ const CheeseOmeletteRecipeComponent = ({
       console.error("Error adding ingredients to cart:", error);
     }
   };
-  
-
-  
-  
 
   return (
     <div className="bg-white p-4 shadow-md rounded-lg">
@@ -110,7 +74,7 @@ const CheeseOmeletteRecipeComponent = ({
           <li>2 tablespoons butter</li>
           <li>¼ cup shredded cheese</li>
         </ul>
-  
+
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
@@ -144,7 +108,7 @@ const CheeseOmeletteRecipeComponent = ({
           </li>
         </ol>
       </div>
-  
+
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
@@ -153,12 +117,10 @@ const CheeseOmeletteRecipeComponent = ({
           Add Ingredients To Cart
         </button>
       </div>
-  
+
       {message && <p className="mt-4">{message}</p>}
     </div>
   );
-  
 };
 
 export default CheeseOmeletteRecipeComponent;
-
