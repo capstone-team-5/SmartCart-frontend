@@ -1,18 +1,12 @@
 // This is the sign-up page
 
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithRedirect,
-} from "firebase/auth";
-import { useState } from "react";
-// import { auth } from "../../firebase";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo_image from "../../Assets/SmrtCARTLogo4.png";
-
-import { auth, provider } from "../../firebase";
-
-import { FaGoogle, FaFacebookF } from "react-icons/fa6";
+import axios from "axios";
+import { auth, googleProvider } from "../../firebase";
+import { FaGoogle } from "react-icons/fa6";
 
 const SignUpComponent = () => {
   const [email, setEmail] = useState("");
@@ -28,9 +22,32 @@ const SignUpComponent = () => {
       window.alert("Passwords do not match");
       return;
     }
+
+    // Create the user in Firebase
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        navigate("/home");
+        const { user } = userCredential;
+        // Send user data to backend
+        const userData = {
+          shopper_firebase_uid: user.uid,
+          shopper_email: email,
+          shopper_first_name: firstName,
+          shopper_last_name: lastName,
+        };
+
+        // Make a POST request to backend
+        axios
+          .post(`${process.env.REACT_APP_BACKEND_API}/shoppers`, userData)
+          .then((response) => {
+            // Navigate to the home page
+            navigate(-1);
+          })
+          .catch((error) => {
+            console.error(
+              "Error sending user data to the backend:",
+              error.response
+            );
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -38,7 +55,35 @@ const SignUpComponent = () => {
   }
 
   function google() {
-    signInWithRedirect(auth, provider);
+    // signInWithRedirect(auth, googleProvider);
+    signInWithPopup(auth, googleProvider)
+      .then((userCredential) => {
+        const { user } = userCredential;
+        // Send user data to backend
+        const userData = {
+          shopper_firebase_uid: user.uid,
+          shopper_email: email,
+          shopper_first_name: firstName,
+          shopper_last_name: lastName,
+        };
+
+        // Make a POST request to backend
+        axios
+          .post(`${process.env.REACT_APP_BACKEND_API}/shoppers`, userData)
+          .then((response) => {
+            // Navigate to the home page
+            navigate(-1);
+          })
+          .catch((error) => {
+            console.error(
+              "Error sending user data to the backend:",
+              error.response
+            );
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
@@ -67,13 +112,6 @@ const SignUpComponent = () => {
                 className="flex items-center justify-center w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 whitespace-nowrap mr-2"
               >
                 Sign In With Google <FaGoogle size={18} className="ml-2" />
-              </button>
-              <button
-                type="button"
-                onClick={google}
-                className="flex items-center justify-center w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 whitespace-nowrap mr-2"
-              >
-                Sign In With Facebook <FaFacebookF size={18} className="ml-2" />
               </button>
             </div>
 
