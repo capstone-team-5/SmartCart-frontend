@@ -11,19 +11,32 @@ const SignInComponent = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  function signIn(event) {
+  const signIn = async (event) => {
     event.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        navigate("/home");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+    setError(null);
+    setLoading(true);
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      navigate("/home");
+    } catch (error) {
+      setError("Invalid credentials. Please check your email and password.");
+      console.log("Error signing in:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   function google() {
+    setError(null);
+    setLoading(true);
     signInWithRedirect(auth, googleProvider);
   }
 
@@ -46,6 +59,7 @@ const SignInComponent = () => {
             <h1 className="text-xl font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Welcome Back
             </h1>
+
             <div className="flex flex-row">
               <button
                 type="button"
@@ -145,12 +159,15 @@ const SignInComponent = () => {
                   Forgot password?
                 </Link>
               </div>
+              {error && <div className="text-red-500">{error}</div>}
 
               <button
                 type="submit"
+                disabled={loading}
                 className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                Sign in
+                {loading ? "Signing in..." : "Sign in"}
+                {/* Sign in */}
               </button>
 
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
