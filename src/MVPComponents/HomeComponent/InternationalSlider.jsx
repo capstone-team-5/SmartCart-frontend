@@ -49,16 +49,16 @@ const InternationalSlider = () => {
             alt={product.product_name}
             className="object-contain object-center w-full h-56"
           />
-          {/*<div className="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-             <h3 className="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white">
+          <div className="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+            {/* <h3 className="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white">
               {product.product_name}{" "}
-            </h3> 
+            </h3> */}
             <div className="flex h-full items-end pb-6">
-              {/* <h3 className="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white">
+              <h3 className="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white">
                 {product.product_name}{" "}
-              </h3> 
-            </div> 
-          </div>*/}
+              </h3>
+            </div>
+          </div>
         </div>
       </Slide>
     ));
