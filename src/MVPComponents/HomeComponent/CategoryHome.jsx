@@ -45,10 +45,11 @@ const CategoryHome = () => {
     return section.map((image, index) => (
       <div key={index}>
         <img
-          className="h-48 max-w-full rounded-lg"
+          className="h-48 max-w-full rounded-lg shadow-xl border-2"
           src={image.product_image}
           alt={`Art of ${index + 1}`}
         />
+        <h1> Fruits</h1>
       </div>
     ));
   };
@@ -64,11 +65,11 @@ const CategoryHome = () => {
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 p-6 dark:bg-gray-900">
       {/* Fruits Section */}
-      <div className="bg-green-200 dark:bg-gray-900 p-4 dark:text-white">
+      <div className="bg-white border rounded-lg  dark:bg-gray-900 p-4 dark:text-white">
         <div className="mb-4 text-3xl tracking-wide font-extrabold text-gray-900 sm:text-4xl dark:text-white text-center">
           Shop Our
         </div>
-        <div className="bg-orange-200 p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 dark:bg-gray-900">
+        <div className="p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 dark:bg-gray-900">
           {renderImages(sections.fruits)}
         </div>
         <div className="bg-green-200 p-4 text-center mt-4 dark:bg-gray-900">
