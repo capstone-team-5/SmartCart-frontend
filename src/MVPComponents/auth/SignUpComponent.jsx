@@ -59,14 +59,20 @@ const SignUpComponent = () => {
     signInWithPopup(auth, googleProvider)
       .then((userCredential) => {
         const { user } = userCredential;
+        console.log("user", user);
+        const fullName = user.displayName;
+        const splitName = fullName.split(" ");
+        const first_name = splitName[0];
+        const last_name = splitName[splitName.length - 1];
         // Send user data to backend
         const userData = {
           shopper_firebase_uid: user.uid,
-          shopper_email: email,
-          shopper_first_name: firstName,
-          shopper_last_name: lastName,
+          shopper_email: user.email,
+          shopper_first_name: first_name,
+          shopper_last_name: last_name,
         };
 
+        console.log("userData", userData);
         // Make a POST request to backend
         axios
           .post(`${process.env.REACT_APP_BACKEND_API}/shoppers`, userData)
