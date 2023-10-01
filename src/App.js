@@ -435,7 +435,7 @@ const updateCartWithSpecificIds = (specificIds) => {
   };
 
   return (
-    <div className="App">
+    <div className="dark:bg-gray-900">
       <BrowserRouter>
         {/* <HookComponent /> */}
         <Navbar
