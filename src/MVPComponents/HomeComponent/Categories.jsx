@@ -103,7 +103,7 @@ const Categories = () => {
     {
       name: "Vegan Foods",
       logoSrc:
-        "https://m.merchantsnearby.com/images/business/5593936/sq184c1a1605eb53128411a2bb14b6435d114e061b.png",
+        "https://s41230.pcdn.co/wp-content/uploads/2017/07/smoothie.jpg",
     },
     {
       name: "Dietary Lifestyles",
@@ -113,27 +113,27 @@ const Categories = () => {
     {
       name: "Baking Goods",
       logoSrc:
-        "https://m.merchantsnearby.com/images/business/5593936/sq184c1a1605eb53128411a2bb14b6435d114e061b.png",
+        "https://static.toiimg.com/photo/70074592.cms",
     },
     {
       name: "Halal Foods",
       logoSrc:
-        "https://m.merchantsnearby.com/images/business/5593936/sq184c1a1605eb53128411a2bb14b6435d114e061b.png",
+        "https://chiknrice.com/wp-content/uploads/2021/07/halal-food-asia-768x518-1.jpg",
     },
     {
       name: "Kosher Foods",
       logoSrc:
-        "https://m.merchantsnearby.com/images/business/5593936/sq184c1a1605eb53128411a2bb14b6435d114e061b.png",
+        "https://media.licdn.com/dms/image/D4D12AQHGy-kRjPnaOg/article-cover_image-shrink_600_2000/0/1689653913059?e=2147483647&v=beta&t=5FK8yHZRwxSQfUsW3wI0867PNqZ3fkuvgEUpFRUaefU",
     },
     {
       name: "Organic Foods",
       logoSrc:
-        "https://m.merchantsnearby.com/images/business/5593936/sq184c1a1605eb53128411a2bb14b6435d114e061b.png",
+        "https://learningtreechildcare.com/wp-content/uploads/2019/09/organic-food-on-board-fb.jpg",
     },
     {
       name: "Allergy Friendly",
       logoSrc:
-        "https://m.merchantsnearby.com/images/business/5593936/sq184c1a1605eb53128411a2bb14b6435d114e061b.png",
+        "https://www.eatingwithfoodallergies.com/wp-content/uploads/2018/01/Allergy-Friendly-Substitutes-1.jpg",
     },
     // Add other partner objects here
   ];
