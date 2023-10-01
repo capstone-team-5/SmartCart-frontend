@@ -1,10 +1,12 @@
 //Chocolate Drizzled Popcorn Recipe Page
 
+import ChocolateDrizzledPopcornRecipeComponent from "../../NonMVPComponents/ChocolateDrizzledPopcornRecipeComponent";
+
 const ChocolateDrizzledPopcornRecipe = ({addIngredientsToCart}) => {
 
     return (
         <div>
-            <ChocolateDrizzledPopcornRecipe addIngredientsToCart={addIngredientsToCart}  />
+            <ChocolateDrizzledPopcornRecipeComponent addIngredientsToCart={addIngredientsToCart}  />
         </div>
     )
 };
