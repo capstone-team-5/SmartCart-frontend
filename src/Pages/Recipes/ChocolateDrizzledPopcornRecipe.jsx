@@ -1,6 +1,6 @@
 //Chocolate Drizzled Popcorn Recipe Page
 
-import ChocolateDrizzledPopcornRecipeComponent from "../../NonMVPComponents/Recipes/Snacks/ChocolateDrizzledPopcornRecipeComponent";
+import ChocolateDrizzledPopcornRecipeComponent from "../../NonMVPComponents/ChocolateDrizzledPopcornRecipeComponent";
 
 const ChocolateDrizzledPopcornRecipe = ({ addIngredientsToCart }) => {
   return (

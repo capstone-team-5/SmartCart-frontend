@@ -1,6 +1,6 @@
 //Breakfast Burrito Page
 
-import BreakfastBurritoRecipeComponent from "../../../NonMVPComponents/Recipes/Breakfast/BreakfastBurritoRecipeComponent";
+import BreakfastBurritoRecipeComponent from "../../NonMVPComponents/BreakfastBurritoRecipeComponent";
 
 const BreakfastBurritoRecipe = () => {
   return (

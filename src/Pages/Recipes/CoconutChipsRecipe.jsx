@@ -1,6 +1,6 @@
 //Coconut Chips Recipe Page
 
-import CoconutChipsRecipeComponent from "../../NonMVPComponents/Recipes/Desserts/CoconutChipsRecipeComponent"
+import CoconutChipsRecipeComponent from "../../NonMVPComponents/CoconutChipsRecipeComponent"
 
 const CoconutChipsRecipe = ({addIngredientsToCart}) => {
      

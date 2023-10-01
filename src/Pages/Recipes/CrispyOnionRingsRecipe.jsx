@@ -1,6 +1,6 @@
 //Crispy Onion Rings Recipe Page
 
-import CrispyOnionRingsRecipeComponent from "../../NonMVPComponents/Recipes/Snacks/CrispyOnionRingsRecipeComponent"
+import CrispyOnionRingsRecipeComponent from "../../NonMVPComponents/CrispyOnionRingsRecipeComponent"
 
 const CrispyOnionRingsRecipe = ({addIngredientsToCart}) => {
 

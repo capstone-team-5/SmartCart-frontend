@@ -1,6 +1,6 @@
 //This is the dinner foods page
 
-import DinnerFoodsComponent from "../NonMVPComponents/Recipes/Dinner/DinnerFoodsComponent"
+import DinnerFoodsComponent from "../NonMVPComponents/DinnerFoodsComponent"
 
 const DinnerFoods = () => {
 

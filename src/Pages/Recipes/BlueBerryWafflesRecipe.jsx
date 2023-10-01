@@ -1,6 +1,6 @@
 //Blueberry Waffles Recipe Page
 
-import BlueberryWafflesRecipeComponent from "../../../NonMVPComponents/Recipes/Breakfast/BlueberryWafflesComponent";
+import BlueberryWafflesRecipeComponent from "../../NonMVPComponents/BlueberryWafflesComponent";
 
 const BlueberryWafflesRecipe = () => {
   return (

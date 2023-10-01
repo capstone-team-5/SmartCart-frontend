@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo_image from "../../Assets/SmrtCARTLogo4.png";
 import axios from "axios";
-import { auth, googleProvider } from "../../firebase";
+import { auth, googleProvider } from "../../Firebase";
 import { FaGoogle } from "react-icons/fa6";
 
 const SignUpComponent = () => {
