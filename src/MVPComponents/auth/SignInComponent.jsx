@@ -2,7 +2,7 @@
 
 import { signInWithEmailAndPassword, signInWithRedirect } from "firebase/auth";
 import { useState } from "react";
-import { auth, provider } from "../../firebase";
+import { auth, googleProvider } from "../../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle, FaFacebookF } from "react-icons/fa6";
 import logo_image from "../../Assets/SmrtCARTLogo4.png";
@@ -24,7 +24,7 @@ const SignInComponent = () => {
   }
 
   function google() {
-    signInWithRedirect(auth, provider);
+    signInWithRedirect(auth, googleProvider);
   }
 
   return (
