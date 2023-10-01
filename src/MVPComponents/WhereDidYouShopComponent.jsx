@@ -1,5 +1,3 @@
-//This component will be used for the user to answer which store they shopped at
-
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -55,7 +53,7 @@ const WhereDidYouShopComponent = ({ comparison, sortedStores }) => {
             onChange={handleStoreRadioChange}
             className="mr-2"
           />
-          I got all the lowest priced items
+          I got all the lowest-priced items
         </label>
       </div>
       {errorMessage && (
@@ -72,3 +70,4 @@ const WhereDidYouShopComponent = ({ comparison, sortedStores }) => {
 };
 
 export default WhereDidYouShopComponent;
+
