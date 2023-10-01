@@ -1,4 +1,4 @@
-import BreakfastFoodComponent from "../NonMVPComponents/BreakfastFoodsComponent"
+import BreakfastFoodComponent from "../NonMVPComponents/Recipes/Breakfast/BreakfastFoodsComponent"
 
 const BreakfastFoods = () => {
     return (

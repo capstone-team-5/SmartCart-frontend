@@ -41,9 +41,9 @@ import SnackFoods from "./Pages/SnackFoods";
 import DessertFoods from "./Pages/DessertFoods";
 import ChocolateChipPancakesRecipe from "./Pages/Recipes/ChocolateChipPancakes";
 import OvernightOatsRecipe from "./Pages/Recipes/OvernightOatsRecipe";
-import BlueberryWafflesRecipe from "./Pages/Recipes/BlueBerryWafflesRecipe";
+import BlueberryWafflesRecipe from "./Pages/Recipes/Breakfast/BlueBerryWafflesRecipe";
 import KetoChocolateCroissantsRecipe from "./Pages/Recipes/KetoChocolateCroissantRecipe";
-import BreakfastBurritoRecipe from "./Pages/Recipes/BreakfastBurritoRecipe";
+import BreakfastBurritoRecipe from "./Pages/Recipes/Breakfast/BreakfastBurritoRecipe";
 import SpicedCreamOfWheatPorridgeRecipe from "./Pages/Recipes/SpicedCreamOfWheatPorridgeRecipe";
 import OldFashionOatsRecipe from "./Pages/Recipes/OldFashionOatsRecipe";
 import YogurtParfaitRecipe from "./Pages/Recipes/YogurtParfaitRecipe";
@@ -100,7 +100,7 @@ import HookComponent from "./MVPComponents/LocationHookComponent";
 
 // Styling
 import "./App.css";
-import ChocolateDrizzledPopcornRecipeComponent from "./NonMVPComponents/ChocolateDrizzledPopcornRecipeComponent";
+import ChocolateDrizzledPopcornRecipeComponent from "./NonMVPComponents/Recipes/Snacks/ChocolateDrizzledPopcornRecipeComponent";
 
 function App() {
   const [cart, setCart] = useState(() => {

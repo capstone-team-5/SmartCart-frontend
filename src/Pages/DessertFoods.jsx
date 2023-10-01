@@ -1,4 +1,4 @@
-import DessertFoodsComponent from "../NonMVPComponents/DessertFoodsComponent"
+import DessertFoodsComponent from "../NonMVPComponents/Recipes/Desserts/DessertFoodsComponent"
 
 const DessertFoods = () => {
 

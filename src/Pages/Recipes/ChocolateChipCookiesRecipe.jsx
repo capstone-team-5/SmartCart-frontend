@@ -1,6 +1,6 @@
 //Chocolate Chip Cookies Recipe Page
 
-import ChocolateChipCookiesRecipeComponent from "../../NonMVPComponents/ChocolateChipCookiesRecipeComponent"
+import ChocolateChipCookiesRecipeComponent from "../../NonMVPComponents/Recipes/Desserts/ChocolateChipCookiesRecipeComponent"
 
 const ChocolateChipCookiesRecipe = ({addIngredientsToCart}) => {
     

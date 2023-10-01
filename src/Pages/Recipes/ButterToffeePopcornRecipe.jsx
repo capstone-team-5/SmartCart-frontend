@@ -1,6 +1,6 @@
 //Butter Toffee Popcorn Recipe Page
 
-import ButterToffeePopcornRecipeComponent from "../../NonMVPComponents/ButterToffeePopcornRecipeComponent"
+import ButterToffeePopcornRecipeComponent from "../../NonMVPComponents/Recipes/Snacks/ButterToffeePopcornRecipeComponent"
 
 const ButterToffeePopcornRecipe = ({addIngredientsToCart}) => {
 
