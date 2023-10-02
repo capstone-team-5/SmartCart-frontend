@@ -474,6 +474,7 @@ function App() {
             }
             path="/cart"
           />
+
           <Route element={<Login />} path="/login" />
           <Route element={<SignUp />} path="/sign-up" />
           <Route element={<User />} path="/user/:id" />
@@ -694,6 +695,7 @@ function App() {
             }
             path="/recipes/dinner-foods-bajan-cou-cou-and-flying-fish"
           />
+          
           <Route
             element={
               <IndianButterChickenRecipe

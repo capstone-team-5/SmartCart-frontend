@@ -142,7 +142,7 @@ const Categories = () => {
         <h2 className="mb-4 lg:mb-8 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
           Featured Categories
         </h2>
-        <p className="mb-8 lg:mb-16 text-gray-500 text-center">Shop All</p>
+        {/* <p className="mb-8 lg:mb-16 text-gray-500 text-center">Shop All</p> */}
 
         <div className="grid grid-cols-2 gap-8 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400">
           {GroceryCategories.length > 0 ? (
