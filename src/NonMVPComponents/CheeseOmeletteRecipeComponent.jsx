@@ -5,7 +5,7 @@ import axios from "axios";
 
 const CheeseOmeletteRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -32,12 +32,10 @@ const CheeseOmeletteRecipeComponent = ({
     }
   }, [nameOfIngredients, allItems]);
 
-
   const handleAddToCartClick = () => {
     try {
       const newItemAddedToFood = [];
       if (addIngredientsToCart && filteredItems.length > 0) {
-
         filteredItems.forEach((product) => {
           const food = {
             name: product.product_name,
@@ -45,8 +43,8 @@ const CheeseOmeletteRecipeComponent = ({
             id: product.product_id,
             length: 1,
           };
-        
-          newItemAddedToFood.push(food); 
+
+          newItemAddedToFood.push(food);
         });
 
         addIngredientsToCart(newItemAddedToFood);

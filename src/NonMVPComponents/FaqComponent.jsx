@@ -19,6 +19,7 @@ const FaqComponent = () => {
           </p>
         </div>
       </div>
+
       <div className=" flex md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
         <div className=" md:w-5/12 lg:w-4/12 w-full ">
           <img
@@ -32,6 +33,7 @@ const FaqComponent = () => {
             className="w-full md:hidden block "
           />
         </div>
+
         <div className=" md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
           <div>
             <div className=" flex justify-between items-center cursor-pointer">
@@ -60,6 +62,7 @@ const FaqComponent = () => {
           </div>
 
           <hr className=" my-7 bg-gray-200" />
+
           <div>
             <div className=" flex justify-between items-center cursor-pointer">
               <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
@@ -140,7 +143,6 @@ const FaqComponent = () => {
               comprehensive price comparison service possible.
             </p>
           </div>
-
           <hr className=" my-7 bg-gray-200" />
 
           <div>
@@ -224,7 +226,6 @@ const FaqComponent = () => {
               filter and find the product
             </p>
           </div>
-
           <hr className=" my-7 bg-gray-200" />
         </div>
       </div>

@@ -32,7 +32,7 @@ import Favorites from "./Pages/Favorites";
 import Savings from "./Pages/Savings";
 import WhereDidYouShop from "./Pages/WhereDidYouShop";
 import TermsAndConditions from "./Pages/TermAndConditions";
-import Recipes from "./Pages/Recipes/Recipes"
+import Recipes from "./Pages/Recipes/Recipes";
 import BreakfastFoods from "./Pages/BreakfastFoods";
 import CheeseOmeletteRecipe from "./Pages/Recipes/CheeseOmeletteRecipe";
 import ChocolateChipPancakesRecipe from "./Pages/Recipes/ChocolateChipPancakes";
@@ -90,7 +90,7 @@ import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
 import FaqComponent from "./NonMVPComponents/FaqComponent";
 import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent";
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
-import Fruits from "./MVPComponents/HomeComponent/Fruits"
+import Fruits from "./MVPComponents/HomeComponent/Fruits";
 // import LocationComponent from "./Commons/LocationComponent";
 import HookComponent from "./MVPComponents/LocationHookComponent";
 // import SearchComponent from "./MVPComponents/SearchComponent";
@@ -126,27 +126,26 @@ function App() {
   const [comparison, setComparison] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
-  
 
   // const handleAddToFavorites = (food) => {
-  //   const updatedFavorites = [...favorites];
-  //   const existingItemIndex = updatedFavorites.findIndex(
-  //     (item) => item.id === food.product_id
-  //   );
+  // const updatedFavorites = [...favorites];
+  // const existingItemIndex = updatedFavorites.findIndex(
+  // (item) => item.id === food.product_id
+  // );
 
-  //   if (existingItemIndex === -1) {
-  //     updatedFavorites.push({
-  //       name: food.product_name,
-  //       image: food.product_image,
-  //       id: food.product_id,
-  //     });
-  //     console.log("updatedFavorites:", updatedFavorites);
-  //     setFavorites(updatedFavorites);
-  //     window.localStorage.setItem(
-  //       "Testing_Favorites",
-  //       JSON.stringify(updatedFavorites)
-  //     );
-  //   }
+  // if (existingItemIndex === -1) {
+  // updatedFavorites.push({
+  // name: food.product_name,
+  // image: food.product_image,
+  // id: food.product_id,
+  // });
+  // console.log("updatedFavorites:", updatedFavorites);
+  // setFavorites(updatedFavorites);
+  // window.localStorage.setItem(
+  // "Testing_Favorites",
+  // JSON.stringify(updatedFavorites)
+  // );
+  // }
   // };
 
   const handleAddToCart = (food) => {
@@ -154,7 +153,6 @@ function App() {
     const existingItemIndex = updatedCart.findIndex(
       (item) => item.id === food.product_id
     );
-  
     if (existingItemIndex !== -1) {
       updatedCart[existingItemIndex].length += 1;
     } else {
@@ -170,32 +168,33 @@ function App() {
     window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
     setCartLength((previousCartLength) => previousCartLength + 1);
     updateCartLength(updateCartLength);
-  
   };
-  
 
   const handleAddToFavorites = async (food) => {
     // Check if the item is already in favorites
     const existingItemIndex = favorites.findIndex(
       (item) => item.id === food.product_id
     );
-  
     if (existingItemIndex === -1) {
       // If not in local favorites, add it to the backend
       try {
-        const response = await axios.post(`${process.env.REACT_APP_BACKEND_API}/favorites`, {
-          shopper_firebase_uid: "YOUR_USER_ID", // Replace with the user's ID
-          product_id: food.product_id, // Pass the product ID to add
-        });
-  
+        const response = await axios.post(
+          `${process.env.REACT_APP_BACKEND_API}/favorites`,
+          {
+            shopper_firebase_uid: "YOUR_USER_ID", // Replace with the user's ID
+            product_id: food.product_id, // Pass the product ID to add
+          }
+        );
         if (response.status === 201) {
           // Item added to backend successfully, update frontend state
-          const updatedFavorites = [...favorites, {
-            name: food.product_name,
-            image: food.product_image,
-            id: food.product_id,
-          }];
-          
+          const updatedFavorites = [
+            ...favorites,
+            {
+              name: food.product_name,
+              image: food.product_image,
+              id: food.product_id,
+            },
+          ];
           console.log("updatedFavorites:", updatedFavorites);
           setFavorites(updatedFavorites);
           window.localStorage.setItem(
@@ -213,7 +212,6 @@ function App() {
       console.log("Item is already in favorites.");
     }
   };
-  
 
   useEffect(() => {
     const newStoreTotalPrices = {};
@@ -312,44 +310,37 @@ function App() {
     setCartLength(length);
   };
 
-const updateCartWithSpecificIds = (specificIds) => {
-  const updatedCart = [...cart];
-
-  specificIds.forEach((id) => {
-    const existingItemIndex = updatedCart.findIndex((item) => item.id === id);
-
-    if (existingItemIndex !== -1) {
-      updatedCart[existingItemIndex].length += 1;
-    } else {
-      updatedCart.push({
-        name: "Item Name",
-        image: "item_image_url",
-        id: id,
-        length: 1,
-      });
-    }
-  });
-
-  setCart(updatedCart); // Update the cart state
-  window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-  setCartLength(updatedCart.length); // Update cart length
-};
-
-  
-  
-
-  
-  const handleAddIngredientsToCart = (newItemAddedToFood) => {
-    
+  const updateCartWithSpecificIds = (specificIds) => {
     const updatedCart = [...cart];
-    
+
+    specificIds.forEach((id) => {
+      const existingItemIndex = updatedCart.findIndex((item) => item.id === id);
+
+      if (existingItemIndex !== -1) {
+        updatedCart[existingItemIndex].length += 1;
+      } else {
+        updatedCart.push({
+          name: "Item Name",
+          image: "item_image_url",
+          id: id,
+          length: 1,
+        });
+      }
+    });
+
+    setCart(updatedCart); // Update the cart state
+    window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+    setCartLength(updatedCart.length); // Update cart length
+  };
+
+  const handleAddIngredientsToCart = (newItemAddedToFood) => {
+    const updatedCart = [...cart];
     newItemAddedToFood.forEach((food) => {
-      const existingItemIndex = updatedCart.findIndex( 
+      const existingItemIndex = updatedCart.findIndex(
         (item) => item.id === food.id
       );
       if (existingItemIndex !== -1) {
         updatedCart[existingItemIndex].length += 1;
-  
         console.log("updatedCart 2.0:", updatedCart);
       } else {
         updatedCart.push({
@@ -358,13 +349,10 @@ const updateCartWithSpecificIds = (specificIds) => {
           id: food.id,
           length: 1,
         });
-        
         // updatedCart.push(newItemAddedToFood)
         console.log("updatedCart 2.1:", updatedCart);
       }
-    })
-
-    
+    });
 
     console.log("Updated Cart App.js:", updatedCart);
 
@@ -544,55 +532,368 @@ const updateCartWithSpecificIds = (specificIds) => {
           />
           <Route element={<Recipes />} path="/recipes" />
           <Route element={<BreakfastFoods />} path="/recipes/breakfast-foods" />
-          <Route element={<CheeseOmeletteRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/breakfast-food-cheese-omelette" />
-          <Route element={<ChocolateChipPancakesRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/breakfast-food-chocolate-chip-pancakes" />
-          <Route element={<OvernightOatsRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/breakfast-food-overnight-oats" />
-          <Route element={<BlueberryWafflesRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/breakfast-food-blueberry-waffles" />
-          <Route element={<KetoChocolateCroissantsRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/breakfast-food-keto-chocolate-croissant" />
-          <Route element={<BreakfastBurritoRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/breakfast-food-breakfast-burrito" />
-          <Route element={<SpicedCreamOfWheatPorridgeRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/breakfast-food-spiced-cream-of-wheat-porridge" />
-          <Route element={<OldFashionOatsRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/old-fashion-oats" />
-          <Route element={<YogurtParfaitRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/breakfast-food-yogurt-parfait" />
+          <Route
+            element={
+              <CheeseOmeletteRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/breakfast-food-cheese-omelette"
+          />
+          <Route
+            element={
+              <ChocolateChipPancakesRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/breakfast-food-chocolate-chip-pancakes"
+          />
+          <Route
+            element={
+              <OvernightOatsRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/breakfast-food-overnight-oats"
+          />
+          <Route
+            element={
+              <BlueberryWafflesRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/breakfast-food-blueberry-waffles"
+          />
+          <Route
+            element={
+              <KetoChocolateCroissantsRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/breakfast-food-keto-chocolate-croissant"
+          />
+          <Route
+            element={
+              <BreakfastBurritoRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/breakfast-food-breakfast-burrito"
+          />
+          <Route
+            element={
+              <SpicedCreamOfWheatPorridgeRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/breakfast-food-spiced-cream-of-wheat-porridge"
+          />
+          <Route
+            element={
+              <OldFashionOatsRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/old-fashion-oats"
+          />
+          <Route
+            element={
+              <YogurtParfaitRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/breakfast-food-yogurt-parfait"
+          />
           <Route element={<LunchFoods />} path="/recipes/lunch-foods" />
-          <Route element={<CapreseSandwichRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/lunch-food-caprese-sandwich" />
-          <Route element={<WholeWheatVeggieWrapRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/lunch-food-whole-wheat-veggie-wrap" />
-          <Route element={<FarroBowlWithRotisserieChickenRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/lunch-food-farro-bowl-with-rotisserie-chicken" />
-          <Route element={<BaconCheeseburgerRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/lunch-food-bacon-cheeseburger" />
-          <Route element={<CajunPrawnPizzaRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/lunch-food-cajun-prawn-pizza" />
-          <Route element={<TunaMeltRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/lunch-food-tuna-melt" />
-          <Route element={<GrilledCheeseSandwichRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/lunch-food-grilled-cheese" />
-          <Route element={<SpicyChickenSandwichRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/lunch-food-spicy-chicken-sandwich" />
-          <Route element={<CrispyOnionRingsRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/lunch-food-crisy-onion-rings" />
+          <Route
+            element={
+              <CapreseSandwichRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/lunch-food-caprese-sandwich"
+          />
+          <Route
+            element={
+              <WholeWheatVeggieWrapRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/lunch-food-whole-wheat-veggie-wrap"
+          />
+          <Route
+            element={
+              <FarroBowlWithRotisserieChickenRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/lunch-food-farro-bowl-with-rotisserie-chicken"
+          />
+          <Route
+            element={
+              <BaconCheeseburgerRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/lunch-food-bacon-cheeseburger"
+          />
+          <Route
+            element={
+              <CajunPrawnPizzaRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/lunch-food-cajun-prawn-pizza"
+          />
+          <Route
+            element={
+              <TunaMeltRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/lunch-food-tuna-melt"
+          />
+          <Route
+            element={
+              <GrilledCheeseSandwichRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/lunch-food-grilled-cheese"
+          />
+          <Route
+            element={
+              <SpicyChickenSandwichRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/lunch-food-spicy-chicken-sandwich"
+          />
+          <Route
+            element={
+              <CrispyOnionRingsRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/lunch-food-crisy-onion-rings"
+          />
           <Route element={<DinnerFoods />} path="/recipes/dinner-foods" />
-          <Route element={<BakedMacAndCheeseRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dinner-foods-baked-mac-and-cheese" />
-          <Route element={<BajanCouCouWithFlyingFishRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dinner-foods-bajan-cou-cou-and-flying-fish" />
-          <Route element={<IndianButterChickenRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dinner-foods-indian-butter-chicken" />
-          <Route element={<JamaicanJerkChickenRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dinner-foods-jamaican-jerk-chicken" />
-          <Route element={<SpanishRiceAndBeansRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dinner-foods-spanish-rice-and-beans" />
-          <Route element={<ChickenBiryaniRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dinner-foods-chicken-biryani" />
-          <Route element={<SpaghettiWithMeatballsRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dinner-foods-spaghetti-with-meatballs" />
-          <Route element={<GingerGarlicSalmonRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dinner-foods-ginger-garlic-salmon" />
-          <Route element={<VeganCurryRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dinner-foods-vegan-curry" />
+          <Route
+            element={
+              <BakedMacAndCheeseRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dinner-foods-baked-mac-and-cheese"
+          />
+          <Route
+            element={
+              <BajanCouCouWithFlyingFishRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dinner-foods-bajan-cou-cou-and-flying-fish"
+          />
+          <Route
+            element={
+              <IndianButterChickenRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dinner-foods-indian-butter-chicken"
+          />
+          <Route
+            element={
+              <JamaicanJerkChickenRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dinner-foods-jamaican-jerk-chicken"
+          />
+          <Route
+            element={
+              <SpanishRiceAndBeansRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dinner-foods-spanish-rice-and-beans"
+          />
+          <Route
+            element={
+              <ChickenBiryaniRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dinner-foods-chicken-biryani"
+          />
+          <Route
+            element={
+              <SpaghettiWithMeatballsRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dinner-foods-spaghetti-with-meatballs"
+          />
+          <Route
+            element={
+              <GingerGarlicSalmonRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dinner-foods-ginger-garlic-salmon"
+          />
+          <Route
+            element={
+              <VeganCurryRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dinner-foods-vegan-curry"
+          />
           <Route element={<SnackFoods />} path="/recipes/snack-foods" />
-          <Route element={<HomemadePotatoChipsRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/snack-foods-homemade-potato-chips" />
-          <Route element={<HomemadePretzelRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/snack-foods-homemade-pretzel" />
-          <Route element={<HomemadePopTartsRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/snack-foods-homemade-pop-tarts" />
-          <Route element={<TrailMixRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/snack-foods-trail-mix" />
-          <Route element={<SmoresRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/snack-foods-smores" />
-          <Route element={<ButterToffeePopcornRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/snack-foods-butter-toffee-popcorn" />
-          <Route element={<JollyRancherCandyApplesRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/snack-foods-jolly-rancher-candy-apples" />
-          <Route element={<ChocolateDrizzledPopcornRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/snack-foods-chocolate-drizzled-popcorn" />
-          <Route element={<CoconutChipsRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/snack-foods-coconut-chips" />
+          <Route
+            element={
+              <HomemadePotatoChipsRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/snack-foods-homemade-potato-chips"
+          />
+          <Route
+            element={
+              <HomemadePretzelRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/snack-foods-homemade-pretzel"
+          />
+          <Route
+            element={
+              <HomemadePopTartsRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/snack-foods-homemade-pop-tarts"
+          />
+          <Route
+            element={
+              <TrailMixRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/snack-foods-trail-mix"
+          />
+          <Route
+            element={
+              <SmoresRecipe addIngredientsToCart={handleAddIngredientsToCart} />
+            }
+            path="/recipes/snack-foods-smores"
+          />
+          <Route
+            element={
+              <ButterToffeePopcornRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/snack-foods-butter-toffee-popcorn"
+          />
+          <Route
+            element={
+              <JollyRancherCandyApplesRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/snack-foods-jolly-rancher-candy-apples"
+          />
+          <Route
+            element={
+              <ChocolateDrizzledPopcornRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/snack-foods-chocolate-drizzled-popcorn"
+          />
+          <Route
+            element={
+              <CoconutChipsRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/snack-foods-coconut-chips"
+          />
           <Route element={<DessertFoods />} path="/recipes/dessert-foods" />
-          <Route element={<HomemadeApplePieRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dessert-foods-homemade-apple-pie" />
-          <Route element={<TresLechesCakeRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dessert-foods-tres-leche-cake" />
-          <Route element={<GermanChocolateCakeRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dessert-foods-german-chocolate-cake" />
-          <Route element={<OatmealRaisinCookiesRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dessert-foods-oatmeal-raisin-cookies" />
-          <Route element={<OatmealChocolateChipCookiesRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dessert-foods-oatmeal-chocolate-chip-cookie" />
-          <Route element={<StrawberryCheesecakeRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dessert-foods-strawberry-cheesecake" />
-          <Route element={<ChocolateChipCookiesRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dessert-foods-classic-chocolate-chip-cookie" />
-          <Route element={<MacaronsRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dessert-foods-macarons" />
-          <Route element={<StrawberryIceCreamRecipe addIngredientsToCart={handleAddIngredientsToCart} />} path="/recipes/dessert-foods-homemade-strawberry-icecream" />
+          <Route
+            element={
+              <HomemadeApplePieRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dessert-foods-homemade-apple-pie"
+          />
+          <Route
+            element={
+              <TresLechesCakeRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dessert-foods-tres-leche-cake"
+          />
+          <Route
+            element={
+              <GermanChocolateCakeRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dessert-foods-german-chocolate-cake"
+          />
+          <Route
+            element={
+              <OatmealRaisinCookiesRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dessert-foods-oatmeal-raisin-cookies"
+          />
+          <Route
+            element={
+              <OatmealChocolateChipCookiesRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dessert-foods-oatmeal-chocolate-chip-cookie"
+          />
+          <Route
+            element={
+              <StrawberryCheesecakeRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dessert-foods-strawberry-cheesecake"
+          />
+          <Route
+            element={
+              <ChocolateChipCookiesRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dessert-foods-classic-chocolate-chip-cookie"
+          />
+          <Route
+            element={
+              <MacaronsRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dessert-foods-macarons"
+          />
+          <Route
+            element={
+              <StrawberryIceCreamRecipe
+                addIngredientsToCart={handleAddIngredientsToCart}
+              />
+            }
+            path="/recipes/dessert-foods-homemade-strawberry-icecream"
+          />
           <Route element={<Fruits />} path="/fruits" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>

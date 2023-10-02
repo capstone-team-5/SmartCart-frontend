@@ -4,7 +4,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 
 const API = process.env.REACT_APP_BACKEND_API;
 
-const Fruits = ({ addToCart }) => {
+const Vegetables = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,7 +14,7 @@ const Fruits = ({ addToCart }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API}/products/fruits`, {
+        const response = await axios.get(`${API}/products/vegetables`, {
           params: {
             page: currentPage, // Send the current page
             pageSize: productsPerPage, // Send the products per page
@@ -47,10 +47,10 @@ const Fruits = ({ addToCart }) => {
   return (
     <div className="sm:px-8 md:px-24 py-12 dark:bg-gray-900">
       <div className="flex flex-col dark:bg-gray-900">
-        <div className="bg-transparent bg-cover bg-[url(https://www.tastingtable.com/img/gallery/11-fruits-you-can-still-enjoy-on-a-keto-diet/intro-1657125016.webp)] bg-gray-700 bg-blend-multiply ">
+        <div className="bg-transparent bg-cover bg-[url(https://d2jx2rerrg6sh3.cloudfront.net/image-handler/picture/2019/5/Assortment_of_fresh_fruits_and_vegetables_-_Image_-_Alexander_Raths_A1_3c4a26f865c44eea80b0017c2dc1c858-620x480.jpg)] bg-gray-700 bg-blend-multiply ">
           <div className="px-4 w-full mx-auto text-center py-8 md:py-32 lg:py-40 bg-black bg-opacity-50">
             <h1 className="mb-2 text-3xl md:text-4xl lg:text-5xl text-white font-extrabold tracking-wide leading-none">
-              All Fruits
+              All Vegetables
             </h1>
           </div>
         </div>
@@ -59,7 +59,7 @@ const Fruits = ({ addToCart }) => {
           {products.map((product) => (
             <div
               key={product.product_id}
-              className="group group-hover:bg-opacity-60 rounded-2xl shadow-orange-500/70 shadow-md transition duration-500 relative bg-white p-4 md:p-6 flex flex-col justify-center items-center"
+              className="group group-hover:bg-opacity-60 rounded-2xl drop-shadow-md transition duration-500 relative bg-white p-4 md:p-6 flex flex-col justify-center items-center"
             >
               <div className="flex justify-center mb-2">
                 <div
@@ -127,4 +127,4 @@ const Fruits = ({ addToCart }) => {
   );
 };
 
-export default Fruits;
+export default Vegetables;
