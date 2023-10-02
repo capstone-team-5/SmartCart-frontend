@@ -4,9 +4,12 @@ import { HiSearch } from "react-icons/hi";
 import { PiCaretDownBold } from "react-icons/pi";
 
 const NutritionComponent = () => {
-  const API_BASE_URL = "https://api.edamam.com/api/food-database/v2/parser";
-  const API_ID = process.env.REACT_APP_EDAMAM_API_ID;
-  const API_KEY = process.env.REACT_APP_EDAMAM_API_KEY;
+  const API_BASE_URL1 = "https://api.edamam.com/api/food-database/v2/parser";
+  const API_BASE_URL2 = "https://api.edamam.com/api/nutrition-data";
+  const API_ID1 = process.env.REACT_APP_EDAMAM_API_ID1;
+  const API_KEY1 = process.env.REACT_APP_EDAMAM_API_KEY1;
+  const API_ID2 = process.env.REACT_APP_EDAMAM_API_ID2;
+  const API_KEY2 = process.env.REACT_APP_EDAMAM_API_KEY2;
 
   const [foodName, setFoodName] = useState("");
   const [nutritionInfo, setNutritionInfo] = useState(null);
@@ -23,12 +26,23 @@ const NutritionComponent = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(
-        `${API_BASE_URL}?app_id=${API_ID}&app_key=${API_KEY}&ingr=${foodName}&nutrition-type=cooking`
+      // Fetch data from the first API
+      const response1 = await axios.get(
+        `${API_BASE_URL1}?app_id=${API_ID1}&app_key=${API_KEY1}&ingr=${foodName}&nutrition-type=cooking`
       );
 
-      if (response.status === 200) {
-        setNutritionInfo(response.data);
+      // Fetch data from the second API
+      const response2 = await axios.get(
+        `${API_BASE_URL2}?app_id=${API_ID2}&app_key=${API_KEY2}&nutrition-type=cooking&ingr=${foodName}`
+      );
+
+      if (response1.status === 200 && response2.status === 200) {
+        setNutritionInfo({
+          edamamFood: response1.data,
+          additionalFood: response2.data,
+        });
+
+        console.log(response1.data, response2.data);
       } else {
         console.error("Failed to fetch nutrition data.");
       }
@@ -51,7 +65,10 @@ const NutritionComponent = () => {
       </div>
 
       <div className="border-2 w-1/2 shadow rounded mx-auto pb-10 p-6 flex items-center">
-        <form onSubmit={getNutritionInfo} className="flex items-center p-10 w-full">
+        <form
+          onSubmit={getNutritionInfo}
+          className="flex items-center p-10 w-full"
+        >
           <label
             htmlFor="foodName"
             className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -77,180 +94,207 @@ const NutritionComponent = () => {
         </form>
       </div>
 
-      {nutritionInfo && (
-        <div className="2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6 py-9 px-4">
-          <div className=" flex md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
-            <div className=" md:w-5/12 lg:w-4/12 w-full ">
-              <h2 className=" font-semibold text-center lg:text-4xl text-3xl lg:leading-9 md:leading-7 leading-9 text-gray-800">
-                {nutritionInfo.parsed[0].food.label}
-              </h2>
-              <br />
-              <img
-                src={nutritionInfo.parsed[0].food.image}
-                alt={nutritionInfo.parsed[0].food.label}
-                className="w-full md:block hidden"
-              />
-              <img
-                src={nutritionInfo.parsed[0].food.image}
-                alt={nutritionInfo.parsed[0].food.label}
-                className="w-full md:hidden block "
-              />
-            </div>
-
-            <div className=" md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
-              <div>
-                <div className=" flex justify-between items-center cursor-pointer">
-                  <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
-                    Category
-                  </h3>
-                  <button
-                    aria-label="too"
-                    className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
-                    onClick={() => setShow(!show)}
-                  >
-                    <PiCaretDownBold />
-                  </button>
-                </div>
-                <p
-                  className={
-                    "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
-                    (show ? "block" : "hidden")
-                  }
-                >
-                  {nutritionInfo.parsed[0].food.category}
-                </p>
+      {nutritionInfo &&
+        nutritionInfo.parsed &&
+        nutritionInfo.parsed.length > 0 && (
+          <div className="2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6 py-9 px-4">
+            <div className=" flex md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
+              <div className=" md:w-5/12 lg:w-4/12 w-full ">
+                <h2 className=" font-semibold text-center lg:text-4xl text-3xl lg:leading-9 md:leading-7 leading-9 text-gray-800">
+                  {nutritionInfo.parsed[0].food.label}
+                </h2>
+                <br />
+                <img
+                  src={nutritionInfo.parsed[0].food.image}
+                  alt={nutritionInfo.parsed[0].food.label}
+                  className="w-full md:block hidden"
+                />
+                <img
+                  src={nutritionInfo.parsed[0].food.image}
+                  alt={nutritionInfo.parsed[0].food.label}
+                  className="w-full md:hidden block "
+                />
               </div>
 
-              <hr className=" my-7 bg-gray-200" />
-
-              <div>
-                <div className=" flex justify-between items-center cursor-pointer">
-                  <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
-                    Category Label
-                  </h3>
-                  <button
-                    aria-label="too"
-                    className=" cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
-                    onClick={() => setShow3(!show3)}
+              <div className=" md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
+                <div>
+                  <div className=" flex justify-between items-center cursor-pointer">
+                    <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
+                      Category
+                    </h3>
+                    <button
+                      aria-label="too"
+                      className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+                      onClick={() => setShow(!show)}
+                    >
+                      <PiCaretDownBold />
+                    </button>
+                  </div>
+                  <p
+                    className={
+                      "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
+                      (show ? "block" : "hidden")
+                    }
                   >
-                    <PiCaretDownBold />
-                  </button>
+                    {nutritionInfo.parsed[0].food.category}
+                  </p>
                 </div>
-                <p
-                  className={
-                    "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
-                    (show3 ? "block" : "hidden")
-                  }
-                >
-                  {nutritionInfo.parsed[0].food.categoryLabel}
-                </p>
-              </div>
 
-              <hr className=" my-7 bg-gray-200" />
+                <hr className=" my-7 bg-gray-200" />
 
-              <div>
-                <div className=" flex justify-between items-center cursor-pointer">
-                  <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
-                    Known As:
-                  </h3>
-                  <button
-                    aria-label="too"
-                    className=" cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
-                    onClick={() => setShow3(!show3)}
+                <div>
+                  <div className=" flex justify-between items-center cursor-pointer">
+                    <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
+                      Category Label
+                    </h3>
+                    <button
+                      aria-label="too"
+                      className=" cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+                      onClick={() => setShow3(!show3)}
+                    >
+                      <PiCaretDownBold />
+                    </button>
+                  </div>
+                  <p
+                    className={
+                      "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
+                      (show3 ? "block" : "hidden")
+                    }
                   >
-                    <PiCaretDownBold />
-                  </button>
+                    {nutritionInfo.parsed[0].food.categoryLabel}
+                  </p>
                 </div>
-                <p
-                  className={
-                    "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
-                    (show3 ? "block" : "hidden")
-                  }
-                >
-                  {nutritionInfo.parsed[0].food.knownAs}
-                </p>
-              </div>
 
-              <hr className=" my-7 bg-gray-200" />
+                <hr className=" my-7 bg-gray-200" />
 
-              <div>
-                <div className=" flex justify-between items-center cursor-pointer">
-                  <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
-                    Calories
-                  </h3>
-                  <button
-                    aria-label="too"
-                    className=" cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
-                    onClick={() => setShow4(!show4)}
+                <div>
+                  <div className=" flex justify-between items-center cursor-pointer">
+                    <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
+                      Known As:
+                    </h3>
+                    <button
+                      aria-label="too"
+                      className=" cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+                      onClick={() => setShow3(!show3)}
+                    >
+                      <PiCaretDownBold />
+                    </button>
+                  </div>
+                  <p
+                    className={
+                      "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
+                      (show3 ? "block" : "hidden")
+                    }
                   >
-                    <PiCaretDownBold />
-                  </button>
+                    {nutritionInfo.parsed[0].food.knownAs}
+                  </p>
                 </div>
-                <p
-                  className={
-                    "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
-                    (show4 ? "block" : "hidden")
-                  }
-                >
-                  {nutritionInfo.parsed[0].food.nutrients.ENERC_KCAL}
-                </p>
-              </div>
 
-              <hr className=" my-7 bg-gray-200" />
+                <hr className=" my-7 bg-gray-200" />
 
-              <div>
-                <div className=" flex justify-between items-center cursor-pointer">
-                  <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
-                    Protein
-                  </h3>
-                  <button
-                    aria-label="too"
-                    className=" cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
-                    onClick={() => setShow4(!show4)}
+                <div>
+                  <div className=" flex justify-between items-center cursor-pointer">
+                    <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
+                      Calories
+                    </h3>
+                    <button
+                      aria-label="too"
+                      className=" cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+                      onClick={() => setShow4(!show4)}
+                    >
+                      <PiCaretDownBold />
+                    </button>
+                  </div>
+                  <p
+                    className={
+                      "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
+                      (show4 ? "block" : "hidden")
+                    }
                   >
-                    <PiCaretDownBold />
-                  </button>
+                    {nutritionInfo.parsed[0].food.nutrients.ENERC_KCAL}
+                  </p>
                 </div>
-                <p
-                  className={
-                    "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
-                    (show4 ? "block" : "hidden")
-                  }
-                >
-                  {nutritionInfo.parsed[0].food.nutrients.PROCNT}
-                </p>
-              </div>
 
-              <hr className=" my-7 bg-gray-200" />
+                <hr className=" my-7 bg-gray-200" />
 
-              <div>
-                <div className=" flex justify-between items-center cursor-pointer">
-                  <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
-                    Fat
-                  </h3>
-                  <button
-                    aria-label="too"
-                    className=" cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
-                    onClick={() => setShow4(!show4)}
+                <div>
+                  <div className=" flex justify-between items-center cursor-pointer">
+                    <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
+                      Protein
+                    </h3>
+                    <button
+                      aria-label="too"
+                      className=" cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+                      onClick={() => setShow4(!show4)}
+                    >
+                      <PiCaretDownBold />
+                    </button>
+                  </div>
+                  <p
+                    className={
+                      "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
+                      (show4 ? "block" : "hidden")
+                    }
                   >
-                    <PiCaretDownBold />
-                  </button>
+                    {nutritionInfo.parsed[0].food.nutrients.PROCNT}
+                  </p>
                 </div>
-                <p
-                  className={
-                    "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
-                    (show4 ? "block" : "hidden")
-                  }
-                >
-                  {nutritionInfo.parsed[0].food.nutrients.FAT}
-                </p>
-              </div>
 
-              <hr className=" my-7 bg-gray-200" />
+                <hr className=" my-7 bg-gray-200" />
+
+                <div>
+                  <div className=" flex justify-between items-center cursor-pointer">
+                    <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
+                      Fat
+                    </h3>
+                    <button
+                      aria-label="too"
+                      className=" cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+                      onClick={() => setShow4(!show4)}
+                    >
+                      <PiCaretDownBold />
+                    </button>
+                  </div>
+                  <p
+                    className={
+                      "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
+                      (show4 ? "block" : "hidden")
+                    }
+                  >
+                    {nutritionInfo.parsed[0].food.nutrients.FAT}
+                  </p>
+                </div>
+
+                <hr className=" my-7 bg-gray-200" />
+
+                <div>
+                  <div className=" flex justify-between items-center cursor-pointer">
+                    <h3 className=" font-medium  sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
+                      Health Labels
+                    </h3>
+                    <button
+                      aria-label="too"
+                      className=" cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+                      onClick={() => setShow4(!show4)}
+                    >
+                      <PiCaretDownBold />
+                    </button>
+                  </div>
+                  <p
+                    className={
+                      "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
+                      (show4 ? "block" : "hidden")
+                    }
+                  >
+                    {nutritionInfo.healthLabels}
+                  </p>
+                </div>
+
+                <hr className=" my-7 bg-gray-200" />
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 };
