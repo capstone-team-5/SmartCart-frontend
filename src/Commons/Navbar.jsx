@@ -33,6 +33,14 @@ const navLinks = [
     link: "/categories",
   },
   {
+    title: "View Recipes",
+    link: "/recipes",
+  },
+  {
+    title: "Nutrition Info",
+    link: "/nutrition",
+  },
+  {
     title: "My Favorites ♥️",
     link: "/user/:id/favorites",
   },
@@ -458,21 +466,21 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                 </Link>
 
                 <Link
-                  to="#"
+                  to="/recipes"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
                   <FaUserAlt />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Profile
+                    Recipes
                   </div>
                 </Link>
                 <Link
-                  to="#"
+                  to="/nutrition"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
                   <MdSettings />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
-                    Settings
+                    Nutrition
                   </div>
                 </Link>
                 <Link
