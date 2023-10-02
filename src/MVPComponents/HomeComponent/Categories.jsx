@@ -26,12 +26,12 @@ const Categories = () => {
     {
       name: "Poultry",
       logoSrc:
-        "https://www.census.gov/newsroom/stories/poultry-day/_jcr_content/root/responsivegrid/responsivegrid_1749353263/imagecore.coreimg.jpeg/1678791602578/stories-poultry-1300x867.jpeg",
+        "https://agridata.ec.europa.eu/extensions/CommonImages/eggs-poultry.png",
     },
     {
       name: "Dairy",
       logoSrc:
-        "https://www.onegreenplanet.org/wp-content/uploads/2018/05/shutterstock_412394602-e1684191591876.jpg",
+        "https://www.usda.gov/sites/default/files/ams-june-natl-dairy-month-blog-060223.jpg",
     },
     {
       name: "Bread & Bakery",
@@ -102,8 +102,7 @@ const Categories = () => {
     },
     {
       name: "Vegan Foods",
-      logoSrc:
-        "https://s41230.pcdn.co/wp-content/uploads/2017/07/smoothie.jpg",
+      logoSrc: "https://s41230.pcdn.co/wp-content/uploads/2017/07/smoothie.jpg",
     },
     {
       name: "Dietary Lifestyles",
@@ -112,8 +111,7 @@ const Categories = () => {
     },
     {
       name: "Baking Goods",
-      logoSrc:
-        "https://static.toiimg.com/photo/70074592.cms",
+      logoSrc: "https://static.toiimg.com/photo/70074592.cms",
     },
     {
       name: "Halal Foods",
@@ -154,15 +152,17 @@ const Categories = () => {
                   to="#"
                   className="flex flex-col items-center p-4 rounded-lg"
                 >
-                  <div className="w-full h-full mb-4">
+                  <div className="w-48 h-40 mb-4">
                     <img
                       src={category.logoSrc}
                       alt={category.name}
-                      className="w-40 h-full object-contain object-center"
+                      className="w-full h-full object-cover"
                     />
                   </div>
+                  <h3 className="mt-2 text-center font-bold">
+                    {category.name}
+                  </h3>
                 </Link>
-                <h3 className="mt-2 text-center font-bold">{category.name}</h3>
               </div>
             ))
           ) : (
