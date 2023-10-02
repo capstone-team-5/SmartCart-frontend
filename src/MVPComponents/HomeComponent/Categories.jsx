@@ -152,13 +152,13 @@ const Categories = () => {
               <div key={index} className="flex flex-col items-center">
                 <Link
                   to="#"
-                  className="flex flex-col items-center border-2 border-red-500 p-4 rounded"
+                  className="flex flex-col items-center p-4 rounded-lg"
                 >
                   <div className="w-full h-full mb-4">
                     <img
                       src={category.logoSrc}
                       alt={category.name}
-                      className="w-40 h-40 object-contain object-center"
+                      className="w-40 h-full object-contain object-center"
                     />
                   </div>
                 </Link>
