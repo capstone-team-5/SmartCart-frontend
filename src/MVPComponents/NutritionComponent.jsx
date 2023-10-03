@@ -26,23 +26,24 @@ const NutritionComponent = () => {
     event.preventDefault();
 
     try {
-      // Fetch data from the first API
-      const response1 = await axios.get(
-        `${API_BASE_URL1}?app_id=${API_ID1}&app_key=${API_KEY1}&ingr=${foodName}&nutrition-type=cooking`
-      );
+      // Make both API calls concurrently using Promise.all
+      const [response1, response2] = await Promise.all([
+        axios.get(
+          `${API_BASE_URL1}?app_id=${API_ID1}&app_key=${API_KEY1}&ingr=${foodName}&nutrition-type=cooking`
+        ),
+        axios.get(
+          `${API_BASE_URL2}?app_id=${API_ID2}&app_key=${API_KEY2}&nutrition-type=cooking&ingr=${foodName}`
+        ),
+      ]);
 
-      // Fetch data from the second API
-      const response2 = await axios.get(
-        `${API_BASE_URL2}?app_id=${API_ID2}&app_key=${API_KEY2}&nutrition-type=cooking&ingr=${foodName}`
-      );
+      if (response1.status === 200 || response2.status === 200) {
+        const data1 = response1.data;
+        const data2 = response2.data;
 
-      if (response1.status === 200 && response2.status === 200) {
         setNutritionInfo({
-          edamamFood: response1.data,
-          additionalFood: response2.data,
+          edamamFood: data1,
+          additionalFood: data2,
         });
-
-        console.log(response1.data, response2.data);
       } else {
         console.error("Failed to fetch nutrition data.");
       }
@@ -80,11 +81,11 @@ const NutritionComponent = () => {
               autoFocus
               value={foodName}
               id="foodName"
-              placeholder="Search Food, Recipe ..."
+              placeholder="Search an item for nutritional information ..."
             />
             <button
               type="submit"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2 md:ml-4"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               <HiSearch size={24} />
             </button>
@@ -94,23 +95,35 @@ const NutritionComponent = () => {
 
       {nutritionInfo && (
         <div className="2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6 py-9 px-4">
-          {nutritionInfo.edamamFood && nutritionInfo.edamamFood.parsed && (
+          {nutritionInfo.edamamFood && nutritionInfo.edamamFood.hints[0] && (
             <div className="flex md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
               <div className="md:w-5/12 lg:w-4/12 w-full">
                 <h2 className="font-semibold text-center lg:text-4xl text-3xl lg:leading-9 md:leading-7 leading-9 text-gray-800">
-                  {nutritionInfo.parsed[0].food.label}
+                  {nutritionInfo.edamamFood.hints[0].food.label}
                 </h2>
                 <br />
-                <img
-                  src={nutritionInfo.parsed[0].food.image}
-                  alt={nutritionInfo.parsed[0].food.label}
-                  className="w-full md:block hidden"
-                />
-                <img
-                  src={nutritionInfo.parsed[0].food.image}
-                  alt={nutritionInfo.parsed[0].food.label}
-                  className="w-full md:hidden block"
-                />
+                {nutritionInfo.edamamFood.hints.length > 0 &&
+                nutritionInfo.edamamFood.hints[0].food.image ? (
+                  <>
+                    <img
+                      src={nutritionInfo.edamamFood.hints[0].food.image}
+                      alt={nutritionInfo.edamamFood.hints[0].food.label}
+                      className="w-full md:block hidden"
+                    />
+                    <img
+                      src={nutritionInfo.edamamFood.hints[0].food.image}
+                      alt={nutritionInfo.edamamFood.hints[0].food.label}
+                      className="w-full md:hidden block"
+                    />
+                  </>
+                ) : (
+                  <div
+                    className="w-full h-48 bg-gray-200 flex items-center justify-center"
+                    style={{ borderRadius: "0.375rem" }}
+                  >
+                    No Image Available
+                  </div>
+                )}
               </div>
 
               <div className="md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
@@ -133,7 +146,7 @@ const NutritionComponent = () => {
                       (show ? "block" : "hidden")
                     }
                   >
-                    {nutritionInfo.parsed[0].food.category}
+                    {nutritionInfo.edamamFood.hints[0].food.category}
                   </p>
                 </div>
 
@@ -158,7 +171,7 @@ const NutritionComponent = () => {
                       (show3 ? "block" : "hidden")
                     }
                   >
-                    {nutritionInfo.parsed[0].food.categoryLabel}
+                    {nutritionInfo.edamamFood.hints[0].food.categoryLabel}
                   </p>
                 </div>
 
@@ -183,7 +196,7 @@ const NutritionComponent = () => {
                       (show3 ? "block" : "hidden")
                     }
                   >
-                    {nutritionInfo.parsed[0].food.knownAs}
+                    {nutritionInfo.edamamFood.hints[0].food.knownAs}
                   </p>
                 </div>
 
@@ -208,7 +221,10 @@ const NutritionComponent = () => {
                       (show4 ? "block" : "hidden")
                     }
                   >
-                    {nutritionInfo.parsed[0].food.nutrients.ENERC_KCAL}
+                    {
+                      nutritionInfo.edamamFood.hints[0].food.nutrients
+                        .ENERC_KCAL
+                    }
                   </p>
                 </div>
 
@@ -233,7 +249,7 @@ const NutritionComponent = () => {
                       (show4 ? "block" : "hidden")
                     }
                   >
-                    {nutritionInfo.parsed[0].food.nutrients.PROCNT}
+                    {nutritionInfo.edamamFood.hints[0].food.nutrients.PROCNT}
                   </p>
                 </div>
 
@@ -258,38 +274,39 @@ const NutritionComponent = () => {
                       (show4 ? "block" : "hidden")
                     }
                   >
-                    {nutritionInfo.parsed[0].food.nutrients.FAT}
+                    {nutritionInfo.edamamFood.hints[0].food.nutrients.FAT}
                   </p>
                 </div>
 
                 <hr className=" my-7 bg-gray-200" />
+                <div>
+                  <div className="flex justify-between items-center cursor-pointer">
+                    <h3 className="font-medium sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
+                      Health Labels
+                    </h3>
+                    <button
+                      aria-label="toggle"
+                      className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+                      onClick={() => setShow2(!show2)}
+                    >
+                      <PiCaretDownBold />
+                    </button>
+                  </div>
+                  <ul className={show2 ? "block" : "hidden"}>
+                    {nutritionInfo.additionalFood.healthLabels.map(
+                      (label, index) => (
+                        <li
+                          key={index}
+                          className="font-normal text-base leading-6 text-gray-600 mt-4 mb-4 list-disc"
+                        >
+                          {label}
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </div>
+                <hr className="my-7 bg-gray-200" />
               </div>
-            </div>
-          )}
-
-          {nutritionInfo.additionalFood && (
-            <div>
-              <div className="flex justify-between items-center cursor-pointer">
-                <h3 className="font-medium sm:text-sm md:text-md lg:text-lg leading-5 text-gray-800">
-                  Health Labels
-                </h3>
-                <button
-                  aria-label="toggle"
-                  className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
-                  onClick={() => setShow4(!show4)}
-                >
-                  <PiCaretDownBold />
-                </button>
-              </div>
-              <p
-                className={
-                  "font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 " +
-                  (show4 ? "block" : "hidden")
-                }
-              >
-                {nutritionInfo.healthLabels}
-              </p>
-              <hr className="my-7 bg-gray-200" />
             </div>
           )}
 
@@ -301,4 +318,5 @@ const NutritionComponent = () => {
     </div>
   );
 };
+
 export default NutritionComponent;
