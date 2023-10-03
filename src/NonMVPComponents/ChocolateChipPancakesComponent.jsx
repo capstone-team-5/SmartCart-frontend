@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const ChocolateChipPancakesRecipeComponent = ({
-  addToCart,
+  addIngredientsToCart,
   nameOfIngredients
 }) => {
   const [message, setMessage] = useState("");
@@ -35,7 +35,7 @@ const ChocolateChipPancakesRecipeComponent = ({
   const handleAddToCartClick = () => {
     try {
       const newItemAddedToFood = [];
-      if (addToCart && filteredItems.length > 0) {
+      if (addIngredientsToCart && filteredItems.length > 0) {
         filteredItems.forEach((product) => {
           const food = {
             name: product.product_name,
@@ -46,7 +46,7 @@ const ChocolateChipPancakesRecipeComponent = ({
           newItemAddedToFood.push(food);
         });
 
-        addToCart(newItemAddedToFood);
+        addIngredientsToCart(newItemAddedToFood);
 
         setMessage("Ingredients have been added to your cart.");
       } else {

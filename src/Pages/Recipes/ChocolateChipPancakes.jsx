@@ -2,11 +2,13 @@
 
 import ChocolateChipPancakesRecipeComponent from "../../NonMVPComponents/ChocolateChipPancakesComponent"
 
-const ChocolateChipPancakesRecipe = () => {
+const ChocolateChipPancakesRecipe = ({ addIngredientsToCart }) => {
+    
+    const nameOfIngredients = ["King Arthur Flour", "Domino Granulated Sugar", "Davis Baking Powder", "Arm & Hammer Baking Soda", "Iodized Salt", "Garlick Farms Buttermilk", "Horizon Organic Whole Milk", "Large White Eggs", "Land OLakes Salted Butter", "Nestlé Toll House Semi-Sweet Chocolate Chips"]
 
     return (
         <div>
-            <ChocolateChipPancakesRecipeComponent />
+            <ChocolateChipPancakesRecipeComponent addIngredientsToCart={addIngredientsToCart} nameOfIngredients={nameOfIngredients} />
         </div>
     )
 };
