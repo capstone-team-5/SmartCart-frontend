@@ -1,14 +1,25 @@
 //Chocolate Chip Cookies Recipe Page
 
-import ChocolateChipCookiesRecipeComponent from "../../NonMVPComponents/ChocolateChipCookiesRecipeComponent"
+import ChocolateChipCookiesRecipeComponent from "../../NonMVPComponents/ChocolateChipCookiesRecipeComponent";
 
-const ChocolateChipCookiesRecipe = ({addIngredientsToCart}) => {
-    
-    return (
-        <div>
-            <ChocolateChipCookiesRecipeComponent addIngredientsToCart={addIngredientsToCart} />
-        </div>
-    )
+const ChocolateChipCookiesRecipe = ({ addIngredientsToCart }) => {
+  const nameOfIngredients = [
+    "Domino Granulated Sugar",
+    "McCormick Pure Vanilla Extract",
+    "Large Brown Eggs",
+    "King Arthur Flour",
+    "Arm & Hammer Baking Soda",
+    "Nestlé Toll House Semi-Sweet Chocolate Chips",
+  ];
+
+  //   missing   unsalted butter, brown sugar, Iodized Salt
+  return (
+    <div>
+      <ChocolateChipCookiesRecipeComponent
+        addIngredientsToCart={addIngredientsToCart}
+      />
+    </div>
+  );
 };
 
 export default ChocolateChipCookiesRecipe;

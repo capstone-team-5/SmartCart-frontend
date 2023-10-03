@@ -49,7 +49,7 @@ const CategoryHome = () => {
           src={image.product_image}
           alt={`Art of ${index + 1}`}
         />
-        <h1> Fruits</h1>
+        <h1> Fruits </h1>
       </div>
     ));
   };

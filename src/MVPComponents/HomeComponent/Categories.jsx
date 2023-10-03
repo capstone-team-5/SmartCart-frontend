@@ -26,12 +26,12 @@ const Categories = () => {
     {
       name: "Poultry",
       logoSrc:
-        "https://www.census.gov/newsroom/stories/poultry-day/_jcr_content/root/responsivegrid/responsivegrid_1749353263/imagecore.coreimg.jpeg/1678791602578/stories-poultry-1300x867.jpeg",
+        "https://agridata.ec.europa.eu/extensions/CommonImages/eggs-poultry.png",
     },
     {
       name: "Dairy",
       logoSrc:
-        "https://www.onegreenplanet.org/wp-content/uploads/2018/05/shutterstock_412394602-e1684191591876.jpg",
+        "https://www.usda.gov/sites/default/files/ams-june-natl-dairy-month-blog-060223.jpg",
     },
     {
       name: "Bread & Bakery",
@@ -64,6 +64,12 @@ const Categories = () => {
     },
 
     {
+      name: "Snacks",
+      logoSrc:
+        "https://www.eatthis.com/wp-content/uploads/sites/4/2021/06/unhealthy-snacks.png?strip=all",
+    },
+
+    {
       name: "Grains & Legumes",
       logoSrc:
         "https://oldwayspt.org/sites/default/files/thumbnails/image/iStock-1292432879_0.jpg",
@@ -76,12 +82,12 @@ const Categories = () => {
     },
 
     {
-      name: "Snacks",
+      name: "Hot Beverages",
       logoSrc:
-        "https://www.eatthis.com/wp-content/uploads/sites/4/2021/06/unhealthy-snacks.png?strip=all",
+        "https://www.comunicaffe.com/wp-content/uploads/2018/10/Hot-beverage.jpg",
     },
     {
-      name: "Beverages",
+      name: "Cold Beverages",
       logoSrc:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIksH6bdhP1hxnFsM05sEybSWCnDqAkEpu5FWzsTLNqGL9dAtlPUTtM4Us5XpXw-rpnGI&usqp=CAU",
     },
@@ -102,8 +108,7 @@ const Categories = () => {
     },
     {
       name: "Vegan Foods",
-      logoSrc:
-        "https://s41230.pcdn.co/wp-content/uploads/2017/07/smoothie.jpg",
+      logoSrc: "https://s41230.pcdn.co/wp-content/uploads/2017/07/smoothie.jpg",
     },
     {
       name: "Dietary Lifestyles",
@@ -112,8 +117,7 @@ const Categories = () => {
     },
     {
       name: "Baking Goods",
-      logoSrc:
-        "https://static.toiimg.com/photo/70074592.cms",
+      logoSrc: "https://static.toiimg.com/photo/70074592.cms",
     },
     {
       name: "Halal Foods",
@@ -135,6 +139,13 @@ const Categories = () => {
       logoSrc:
         "https://www.eatingwithfoodallergies.com/wp-content/uploads/2018/01/Allergy-Friendly-Substitutes-1.jpg",
     },
+
+    {
+      name: "Non Processed",
+      logoSrc:
+        "https://img.livestrong.com/-/clsd/getty/887e538ab41a4f5b82ab53a5548a8d81.jpg",
+    },
+
     // Add other partner objects here
   ];
 
@@ -144,7 +155,7 @@ const Categories = () => {
         <h2 className="mb-4 lg:mb-8 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
           Featured Categories
         </h2>
-        <p className="mb-8 lg:mb-16 text-gray-500 text-center">Shop All</p>
+        {/* <p className="mb-8 lg:mb-16 text-gray-500 text-center">Shop All</p> */}
 
         <div className="grid grid-cols-2 gap-8 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400">
           {GroceryCategories.length > 0 ? (
@@ -154,15 +165,17 @@ const Categories = () => {
                   to="#"
                   className="flex flex-col items-center p-4 rounded-lg"
                 >
-                  <div className="w-full h-full mb-4">
+                  <div className="w-48 h-40 mb-4">
                     <img
                       src={category.logoSrc}
                       alt={category.name}
-                      className="w-40 h-full object-contain object-center"
+                      className="w-full h-full object-cover"
                     />
                   </div>
+                  <h3 className="mt-2 text-center font-bold">
+                    {category.name}
+                  </h3>
                 </Link>
-                <h3 className="mt-2 text-center font-bold">{category.name}</h3>
               </div>
             ))
           ) : (

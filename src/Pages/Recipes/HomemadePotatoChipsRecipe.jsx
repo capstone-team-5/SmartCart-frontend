@@ -1,14 +1,21 @@
 //Homemade Potato Chips Recipe Page
 
-import HomemadePotatoChipsRecipeComponent from "../../NonMVPComponents/HomemadePotatoChipsRecipeComponent"
+import HomemadePotatoChipsRecipeComponent from "../../NonMVPComponents/HomemadePotatoChipsRecipeComponent";
 
-const HomemadePotatoChipsRecipe = ({addIngredientsToCart}) => {
-
-    return (
-        <div>
-            <HomemadePotatoChipsRecipeComponent addIngredientsToCart={addIngredientsToCart} />
-        </div>
-    )
+const HomemadePotatoChipsRecipe = ({ addIngredientsToCart }) => {
+  const nameOfIngredients = [
+    "Potatoes",
+    "Crisco Pure Vegetable Oil",
+    "Iodized Salt",
+  ];
+  return (
+    <div>
+      <HomemadePotatoChipsRecipeComponent
+        addIngredientsToCart={addIngredientsToCart}
+        nameOfIngredients={nameOfIngredients}
+      />
+    </div>
+  );
 };
 
-export default HomemadePotatoChipsRecipe
+export default HomemadePotatoChipsRecipe;
