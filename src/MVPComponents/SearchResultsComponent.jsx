@@ -31,45 +31,49 @@ const SearchResultsComponent = ({ addToCart }) => {
   }, [query]);
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-semibold mb-4">Search Results:</h2>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {filteredResults.map((product) => (
-          <li
-            key={product.product_id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden"
-          >
-            <Link to={`/product/${product.product_id}`}>
-              {/* Wrap the card with a Link */}
-              <div>
+    <section className="bg-white dark:bg-gray-900">
+      <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+            Search Results
+          </h2>
+        </div>
+
+        <div className="grid gap-8 mb-6 lg:mb-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          {filteredResults.map((product) => (
+            <div
+              key={product.product_id}
+              className="bg-gray-50 rounded-xl shadow-lg p-5 mb-4 flex flex-col justify-between"
+            >
+              <Link to={`/product/${product.product_id}`}>
                 <img
+                  className="w-full shadow-xl rounded-xl mb-4 h-48 object-contain"
                   src={product.product_image}
                   alt={product.product_name}
-                  className="w-full h-40 object-cover"
                 />
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold mb-2">
+              </Link>
+              <div className="flex flex-col items-center">
+                <h3 className="text-xl font-bold mb-4 mt-4">
+                  <Link to={`/product/${product.product_id}`}>
                     {product.product_name}
-                  </h3>
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault(); 
-                      addToCart(product);
-                    }}
-                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-300"
-                  >
-                    Add To Cart
-                  </button>
-                </div>
+                  </Link>
+                </h3>
+                <button
+                  onClick={(event) => {
+                    event.preventDefault();
+                    addToCart(product);
+                  }}
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-300 mt-4 mb-4"
+                >
+                  Add To Cart
+                </button>
               </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
 export default SearchResultsComponent;
-
-
