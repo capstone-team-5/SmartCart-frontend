@@ -9,6 +9,7 @@ const SubscriptionComponent = () => {
     setMenu(false);
     setCountry(e.target.textContent);
   };
+
   return (
     <div className="flex justify-center items-center">
       <div className="py-16 px-4 md:px-6 2xl:px-0 flex justify-center items-center 2xl:mx-auto 2xl:container">

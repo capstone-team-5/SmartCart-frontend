@@ -64,6 +64,12 @@ const Categories = () => {
     },
 
     {
+      name: "Snacks",
+      logoSrc:
+        "https://www.eatthis.com/wp-content/uploads/sites/4/2021/06/unhealthy-snacks.png?strip=all",
+    },
+
+    {
       name: "Grains & Legumes",
       logoSrc:
         "https://oldwayspt.org/sites/default/files/thumbnails/image/iStock-1292432879_0.jpg",
@@ -76,12 +82,12 @@ const Categories = () => {
     },
 
     {
-      name: "Snacks",
+      name: "Hot Beverages",
       logoSrc:
-        "https://www.eatthis.com/wp-content/uploads/sites/4/2021/06/unhealthy-snacks.png?strip=all",
+        "https://www.comunicaffe.com/wp-content/uploads/2018/10/Hot-beverage.jpg",
     },
     {
-      name: "Beverages",
+      name: "Cold Beverages",
       logoSrc:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIksH6bdhP1hxnFsM05sEybSWCnDqAkEpu5FWzsTLNqGL9dAtlPUTtM4Us5XpXw-rpnGI&usqp=CAU",
     },
@@ -133,6 +139,13 @@ const Categories = () => {
       logoSrc:
         "https://www.eatingwithfoodallergies.com/wp-content/uploads/2018/01/Allergy-Friendly-Substitutes-1.jpg",
     },
+
+    {
+      name: "Non Processed",
+      logoSrc:
+        "https://img.livestrong.com/-/clsd/getty/887e538ab41a4f5b82ab53a5548a8d81.jpg",
+    },
+
     // Add other partner objects here
   ];
 
