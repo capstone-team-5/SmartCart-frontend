@@ -12,11 +12,13 @@ const SavingsComponent = () => {
   const [savings, setSavings] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  console.log('savingsId', id)
+
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_API}/saving/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND_API}/savings/${id}`)
       .then((response) => {
-        console.log(response.data);
+        console.log('savingsData:', response.data);
         setUserComparisonData(response.data);
         setLoading(false);
       })
