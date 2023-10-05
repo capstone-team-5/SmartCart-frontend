@@ -83,6 +83,9 @@ import StrawberryCheesecakeRecipe from "./Pages/Recipes/StrawberryCheesecakeReci
 import ChocolateChipCookiesRecipe from "./Pages/Recipes/ChocolateChipCookiesRecipe";
 import MacaronsRecipe from "./Pages/Recipes/MacaronsRecipe";
 import StrawberryIceCreamRecipe from "./Pages/Recipes/StrawberryIceCreamRecipe";
+import Vegetables from "./MVPComponents/HomeComponent/Vegetables";
+import NutritionComponent from "./MVPComponents/NutritionComponent";
+import Categories from "./MVPComponents/HomeComponent/Categories";
 
 // Components
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
@@ -513,6 +516,9 @@ function App() {
             }
             path="/test"
           />
+          <Route element={<Categories />} path="/categories" />
+          <Route element={<Vegetables />} path="/vegetables" />
+          <Route element={<NutritionComponent />} path="/nutrition" />
           <Route element={<Savings />} path="/user/:id/savings" />
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />

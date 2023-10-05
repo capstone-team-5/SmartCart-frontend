@@ -7,9 +7,11 @@ const FavoritesComponent = ({ updatedFavorites, addToCart, addAllFavorites }) =>
 
   const filteredFavorites = updatedFavorites.filter((item) => Object.keys(item).length > 0);
 
-  const handleDeleteFavoriteItem = () => {
-    if (window.confirm('Are you sure you want to delete this item from your favorites?')) {
-      axios.delete(`${process.env.REACT_APP_BACKEND_API}/favorites/${id}`);
+  const handleDeleteFavoriteItem = (product_id) => {
+      if (window.confirm('Are you sure you want to delete this item from your favorites?')) {
+          console.log('product delete:', product_id)
+          console.log('user delete:', id)
+      axios.delete(`${process.env.REACT_APP_BACKEND_API}/favorites/${id}?product_id=${product_id}`);
     }
   };
 
@@ -40,7 +42,7 @@ const FavoritesComponent = ({ updatedFavorites, addToCart, addAllFavorites }) =>
                 Add To Cart
               </button>
               <button
-                onClick={handleDeleteFavoriteItem}
+                onClick={() => handleDeleteFavoriteItem(item.id)}
                 className="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded-md"
               >
                 Remove
