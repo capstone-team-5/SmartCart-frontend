@@ -1,5 +1,5 @@
 //Dependencies
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { applyTheme, setTheme } from "./Theme";
 import axios from "axios";
@@ -436,6 +436,8 @@ function App() {
     }
   };
 
+ 
+
   const handleClearCart = () => {
     if (
       window.confirm(
@@ -522,7 +524,7 @@ function App() {
             path="/price-compare"
           />
           <Route element={<UserCart />} path="/user/:id/cart" />
-          <Route element={<Favorites addToCart={handleAddToFavoritesCart} updatedFavorites={favorites} />} path="/user/:id/favorites" />
+          <Route element={<Favorites addToCart={handleAddToFavoritesCart} updatedFavorites={favorites}  />} path="/user/:id/favorites" />
           <Route element={<UserEdit />} path="/user/:id/edit" />
           <Route element={<Subscription />} path="/user/:id/subscription" />
           <Route
