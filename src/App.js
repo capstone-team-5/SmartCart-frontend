@@ -83,6 +83,10 @@ import StrawberryCheesecakeRecipe from "./Pages/Recipes/StrawberryCheesecakeReci
 import ChocolateChipCookiesRecipe from "./Pages/Recipes/ChocolateChipCookiesRecipe";
 import MacaronsRecipe from "./Pages/Recipes/MacaronsRecipe";
 import StrawberryIceCreamRecipe from "./Pages/Recipes/StrawberryIceCreamRecipe";
+import Vegetables from "./MVPComponents/HomeComponent/Vegetables";
+import NutritionComponent from "./MVPComponents/NutritionComponent";
+import Categories from "./MVPComponents/HomeComponent/Categories";
+
 // Components
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
 import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
@@ -237,6 +241,43 @@ function App() {
       console.log("Item is already in favorites.");
     }
   };
+
+  const handleAddFavoritesToCart = (favoriteItems) => {
+    // Clone the current cart state
+    const updatedCart = [...cart];
+  
+    // Loop through the favorite items and add them to the cart
+    favoriteItems.forEach((favoriteItem) => {
+      const existingItemIndex = updatedCart.findIndex((item) => item.id === favoriteItem.id);
+  
+      if (existingItemIndex !== -1) {
+        // If the item already exists in the cart, increase its quantity
+        updatedCart[existingItemIndex].length += 1;
+      } else {
+        // If the item doesn't exist in the cart, add it as a new item
+        updatedCart.push({
+          name: favoriteItem.name,
+          image: favoriteItem.image,
+          id: favoriteItem.id,
+          length: 1,
+        });
+      }
+    });
+  
+    // Update the cart state
+    setCart(updatedCart);
+  
+    // Update the cart length by calculating the total quantity in the cart
+    const cartAdjustedLength = updatedCart.reduce((total, item) => total + item.length, 0);
+    setCartLength(cartAdjustedLength);
+  
+    // Save the updated cart to local storage
+    window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+  
+    // Return the updated cart
+    return updatedCart;
+  };
+  
 
   useEffect(() => {
     const newStoreTotalPrices = {};
@@ -475,6 +516,9 @@ function App() {
             }
             path="/test"
           />
+          <Route element={<Categories />} path="/categories" />
+          <Route element={<Vegetables />} path="/vegetables" />
+          <Route element={<NutritionComponent />} path="/nutrition" />
           <Route element={<Savings />} path="/user/:id/savings" />
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />
@@ -523,7 +567,7 @@ function App() {
             path="/price-compare"
           />
           <Route element={<UserCart />} path="/user/:id/cart" />
-          <Route element={<Favorites addToCart={handleAddToFavoritesCart} updatedFavorites={favorites}  />} path="/user/:id/favorites" />
+          <Route element={<Favorites addToCart={handleAddToFavoritesCart} updatedFavorites={favorites} addAllFavorites={handleAddFavoritesToCart}  />} path="/user/:id/favorites" />
           <Route element={<UserEdit />} path="/user/:id/edit" />
           <Route element={<Subscription />} path="/user/:id/subscription" />
           <Route
