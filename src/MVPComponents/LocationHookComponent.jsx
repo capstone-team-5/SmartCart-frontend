@@ -18,7 +18,6 @@ const LocationHookComponent = () => {
 
   const [locationName, setLocationName] = useState("");
   const [displayLocation, setDisplayLocation] = useState(false);
- 
 
   useEffect(() => {
     if (location.coordinates.lat && location.coordinates.lng) {
@@ -56,9 +55,6 @@ const LocationHookComponent = () => {
 
             setLocation(newLocation);
 
-            // console.log("Latitude:", newLocation.coordinates.lat);
-            // console.log("Longitude:", newLocation.coordinates.lng);
-
             fetchLocationDetails(newLocation.coordinates.lat, newLocation.coordinates.lng);
           },
           (error) => {
@@ -94,18 +90,15 @@ const LocationHookComponent = () => {
     if (!latitude || !longitude) {
       return null;
     }
-    // const backendEndPoint = `${process.env.REACT_APP_BACKEND_API}/locations?latitude=${latitude}&longitude=${longitude}`;
-    // const backendEndPoint = `${process.env.REACT_APP_BACKEND_API}/locations/${40.739634}/${-73.794490}`;
-    const backendEndPoint = `${process.env.REACT_APP_BACKEND_API}/locations/${latitude}/${longitude}`;
-    
 
+    const backendEndPoint = `${process.env.REACT_APP_BACKEND_API}/locations/${latitude}/${longitude}`;
     
     axios
       .get(backendEndPoint)
       .then((response) => {
         const data = response.data;
         console.log("Fetched location details:", data);
-        setLocationName(data.result.location_name);
+        setLocationName(data.location_name);
       })
       .catch((error) => {
         console.error("Error fetching location details:", error);
@@ -119,7 +112,7 @@ const LocationHookComponent = () => {
       </button>
       {location.loaded && locationName && (
         <div>
-          <p>Location: {locationName}</p>
+          <p className="text-white">{locationName}</p>
         </div>
       )}
     </div>
