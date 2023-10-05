@@ -97,7 +97,7 @@ import HookComponent from "./MVPComponents/LocationHookComponent";
 
 // Styling
 import "./App.css";
-import ChocolateDrizzledPopcornRecipeComponent from "./NonMVPComponents/ChocolateDrizzledPopcornRecipeComponent";
+
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -170,7 +170,32 @@ function App() {
     updateCartLength(updateCartLength);
   };
 
-  const handleAddToFavorites = async (food) => {
+  const handleAddToFavoritesCart = (food) => {
+    const updatedCart = [...cart];
+    const existingItemIndex = updatedCart.findIndex(
+      (item) => item.id === food.id
+    );
+    if (existingItemIndex !== -1) {
+      updatedCart[existingItemIndex].length += 1;
+    } else {
+      updatedCart.push({
+        name: food.name,
+        image: food.image,
+        id: food.id,
+        length: 1,
+      });
+    }
+    console.log("updatedCart:", updatedCart);
+    setCart(updatedCart);
+    window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+    setCartLength((previousCartLength) => previousCartLength + 1);
+    updateCartLength(updateCartLength);
+  };
+
+
+
+
+  const handleAddToFavorites = async (food, shopperFirebaseId) => {
     // Check if the item is already in favorites
     const existingItemIndex = favorites.findIndex(
       (item) => item.id === food.product_id
@@ -181,8 +206,9 @@ function App() {
         const response = await axios.post(
           `${process.env.REACT_APP_BACKEND_API}/favorites`,
           {
-            shopper_firebase_uid: "YOUR_USER_ID", // Replace with the user's ID
-            product_id: food.product_id, // Pass the product ID to add
+            // shopper_firebase_uid: shopperFirebaseId, 
+            shopper_firebase_uid: 'StSYbI8Gw1c2cm2oV2IDFn4WwAI2',
+            product_id: food.product_id, 
           }
         );
         if (response.status === 201) {
@@ -496,7 +522,7 @@ function App() {
             path="/price-compare"
           />
           <Route element={<UserCart />} path="/user/:id/cart" />
-          <Route element={<Favorites />} path="/user/:id/favorites" />
+          <Route element={<Favorites addToCart={handleAddToFavoritesCart} updatedFavorites={favorites} />} path="/user/:id/favorites" />
           <Route element={<UserEdit />} path="/user/:id/edit" />
           <Route element={<Subscription />} path="/user/:id/subscription" />
           <Route
@@ -509,7 +535,7 @@ function App() {
             path="/testimonials"
           />
           <Route element={<FaqComponent />} path="/faq" />
-          <Route element={<FeedbackComponent />} path="/user/:id/feedback" />
+          <Route element={<FeedbackComponent />} path="/feedback" />
           <Route
             element={<ChangePasswordComponent />}
             path="/change-password"

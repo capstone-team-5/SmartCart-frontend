@@ -2,10 +2,13 @@
 
 import BlueberryWafflesRecipeComponent from "../../NonMVPComponents/BlueberryWafflesComponent";
 
-const BlueberryWafflesRecipe = () => {
+const BlueberryWafflesRecipe = ({addIngredientsToCart}) => {
+
+  const nameOfIngredients = ["King Arthur Flour", "Domino Granulated Sugar", "Davis Baking Powder", "Iodized Salt", "Horizon Organic Whole Milk", "Crisco Pure Vegetable Oil", "Large Brown Eggs", "McCormick Pure Vanilla Extract", "Blueberries"]
+  
   return (
     <div>
-      <BlueberryWafflesRecipeComponent />
+      <BlueberryWafflesRecipeComponent addIngredientsToCart={addIngredientsToCart} nameOfIngredients={nameOfIngredients} />
     </div>
   );
 };

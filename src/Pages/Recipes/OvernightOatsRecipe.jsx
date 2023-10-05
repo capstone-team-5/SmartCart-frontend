@@ -2,10 +2,11 @@
 
 import OvernightOatsRecipeComponent from "../../NonMVPComponents/OvernightOatsComponent"
 
-const OvernightOatsRecipe = ({addIngredientsToCart}) => {
+const OvernightOatsRecipe = ({ addIngredientsToCart }) => {
+    const nameOfIngredients = ["Horizon Organic Whole Milk", "Chobani Greek Yogurt, Plain", "McCormick Pure Vanilla Extract", "Strawberries", "Blueberries", "Almonds"]
     return (
         <div>
-            <OvernightOatsRecipeComponent addIngredientsToCart={addIngredientsToCart} />
+            <OvernightOatsRecipeComponent addIngredientsToCart={addIngredientsToCart} nameOfIngredients={nameOfIngredients} />
         </div>
     )
 };

@@ -17,7 +17,7 @@ const RecipesComponent = () => {
               alt="breakfast foods"
               className="w-full h-auto rounded-lg shadow-md"
             />
-            <h3 className="mt-2 text-lg font-semibold">Breakfast Foods</h3>
+            <h3 className="mt-2 text-lg font-semibold">Breakfast</h3>
           </Link>
         </div>
 
@@ -28,7 +28,7 @@ const RecipesComponent = () => {
               alt="lunch foods"
               className="w-full h-auto rounded-lg shadow-md"
             />
-            <h3 className="mt-2 text-lg font-semibold">Lunch Foods</h3>
+            <h3 className="mt-2 text-lg font-semibold">Lunch</h3>
           </Link>
         </div>
 
@@ -39,7 +39,7 @@ const RecipesComponent = () => {
               alt="dinner foods"
               className="w-full h-auto rounded-lg shadow-md"
             />
-            <h3 className="mt-2 text-lg font-semibold">Dinner Foods</h3>
+            <h3 className="mt-2 text-lg font-semibold">Dinner</h3>
           </Link>
         </div>
 
@@ -50,7 +50,7 @@ const RecipesComponent = () => {
               alt="snack foods"
               className="w-full h-auto rounded-lg shadow-md"
             />
-            <h3 className="mt-2 text-lg font-semibold">Snack Foods</h3>
+            <h3 className="mt-2 text-lg font-semibold">Snacks</h3>
           </Link>
         </div>
 
