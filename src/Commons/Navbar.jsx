@@ -42,7 +42,7 @@ const navLinks = [
   },
   {
     title: "My Favorites ♥️",
-    link: "/user/:id/favorites",
+    link: "/user/:id/favorites", 
   },
   {
     title: "Contact Us",
@@ -62,7 +62,7 @@ const navLinks = [
   },
   {
     title: "Track Savings",
-    link: "/user/:id/feedback",
+    link: "/user/:id/savings",
   },
   {
     title: "Our Testimonials",
@@ -161,7 +161,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
   const handleTrackSavingsClick = () => {
     if (authUser) {
       // User is signed in, navigate to the "Track Savings" route
-      navigate("/user/:id/track-savings");
+      navigate("/user/:id/savings")
     } else {
       // User is not signed in, navigate to the sign-in page
       navigate("/sign-in");
@@ -453,7 +453,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                 </Link>
 
                 <Link
-                  to="#"
+                  to="/user/:id/savings"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
                   <MdSavings />

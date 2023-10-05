@@ -67,7 +67,7 @@ const InternationalSlider = ({ addToCart }) => {
   };
 
   return (
-    <div className="mx-auto container p-4 mt-10 dark:bg-gray-900">
+    <div className="mx-auto container p-4 mt-2 dark:bg-gray-900">
       <h1 className="p-2 text-black mb-4 xl:text-3xl md:text-2xl tracking-wide font-extrabold sm:text-lg dark:text-white">
         {" "}
         Shop our International Categories

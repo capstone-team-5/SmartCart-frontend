@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Categories = () => {
+  const [showAll, setShowAll] = useState(false);
+
   const GroceryCategories = [
     {
       name: "Fruits",

@@ -83,7 +83,6 @@ import StrawberryCheesecakeRecipe from "./Pages/Recipes/StrawberryCheesecakeReci
 import ChocolateChipCookiesRecipe from "./Pages/Recipes/ChocolateChipCookiesRecipe";
 import MacaronsRecipe from "./Pages/Recipes/MacaronsRecipe";
 import StrawberryIceCreamRecipe from "./Pages/Recipes/StrawberryIceCreamRecipe";
-
 // Components
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
 import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
@@ -695,7 +694,6 @@ function App() {
             }
             path="/recipes/dinner-foods-bajan-cou-cou-and-flying-fish"
           />
-          
           <Route
             element={
               <IndianButterChickenRecipe
