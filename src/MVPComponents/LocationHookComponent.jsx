@@ -1,7 +1,8 @@
 // this will display the user location
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MdLocationPin } from "react-icons/md";
+import axios from "axios";
 
 const LocationHookComponent = () => {
   const [location, setLocation] = useState(() => {
@@ -15,7 +16,21 @@ const LocationHookComponent = () => {
     };
   });
 
+  const [locationName, setLocationName] = useState("");
   const [displayLocation, setDisplayLocation] = useState(false);
+
+  useEffect(() => {
+    if (location.coordinates.lat && location.coordinates.lng) {
+      fetchLocationDetails(location.coordinates.lat, location.coordinates.lng);
+    }
+  }, [location.coordinates]);
+
+  useEffect(() => {
+    if (location.loaded && location.coordinates.lat && location.coordinates.lng) {
+      // Fetch location name from the backend API using axios
+      fetchLocationDetails(location.coordinates.lat, location.coordinates.lng);
+    }
+  }, [location.loaded, location.coordinates]);
 
   const handleGetLocationClick = () => {
     if ("geolocation" in navigator) {
@@ -39,7 +54,8 @@ const LocationHookComponent = () => {
             );
 
             setLocation(newLocation);
-            setDisplayLocation(true);
+
+            fetchLocationDetails(newLocation.coordinates.lat, newLocation.coordinates.lng);
           },
           (error) => {
             const newLocation = {
@@ -48,7 +64,6 @@ const LocationHookComponent = () => {
               error: error.message,
             };
 
-            
             window.localStorage.setItem(
               "User_Location",
               JSON.stringify(newLocation)
@@ -66,17 +81,38 @@ const LocationHookComponent = () => {
     }
   };
 
+  // Function to fetch location details from the backend
+  const fetchLocationDetails = () => {
+    const latitude = location.coordinates.lat 
+    const longitude = location.coordinates.lng
+    console.log('lng1',longitude)
+    console.log('lat1:', latitude)
+    if (!latitude || !longitude) {
+      return null;
+    }
+
+    const backendEndPoint = `${process.env.REACT_APP_BACKEND_API}/locations/${latitude}/${longitude}`;
+    
+    axios
+      .get(backendEndPoint)
+      .then((response) => {
+        const data = response.data;
+        console.log("Fetched location details:", data);
+        setLocationName(data.location_name);
+      })
+      .catch((error) => {
+        console.error("Error fetching location details:", error);
+      });
+  };
+
   return (
     <div>
-      <button
-        onClick={handleGetLocationClick}
-      >
+      <button onClick={handleGetLocationClick}>
         <MdLocationPin className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
       </button>
-      {location.loaded && displayLocation && (
+      {location.loaded && locationName && (
         <div>
-          <p>Latitude: {location.coordinates.lat}</p>
-          <p>Longitude: {location.coordinates.lng}</p>
+          <p className="text-white">{locationName}</p>
         </div>
       )}
     </div>
