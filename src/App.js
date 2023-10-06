@@ -519,7 +519,7 @@ function App() {
           <Route element={<Categories />} path="/categories" />
           <Route element={<Vegetables />} path="/vegetables" />
           <Route element={<NutritionComponent />} path="/nutrition" />
-          <Route element={<Savings />} path="/user/:id/savings" />
+          <Route element={<Savings />} path="/user/:id/savings/:selectedStore" />
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />
           <Route
