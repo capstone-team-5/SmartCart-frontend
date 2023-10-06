@@ -306,7 +306,8 @@ function App() {
     .filter((store) => comparison.hasOwnProperty(store.store_id))
     .sort(
       (a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
-    );
+  );
+  
 
   useEffect(() => {
     const cartIds = cart.map((food) => food.id);

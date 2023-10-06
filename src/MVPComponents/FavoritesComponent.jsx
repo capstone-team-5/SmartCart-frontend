@@ -11,7 +11,7 @@ const FavoritesComponent = ({ updatedFavorites, addToCart, addAllFavorites }) =>
       if (window.confirm('Are you sure you want to delete this item from your favorites?')) {
           console.log('product delete:', product_id)
           console.log('user delete:', id)
-      axios.delete(`${process.env.REACT_APP_BACKEND_API}/favorites/${id}?product_id=${product_id}`);
+      axios.delete(`${process.env.REACT_APP_BACKEND_API}/favorites/${id}/${product_id}`);
     }
   };
 
