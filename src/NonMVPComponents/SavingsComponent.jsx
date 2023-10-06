@@ -25,6 +25,8 @@ const SavingsComponent = ({ comparison }) => {
     }
   }, [comparison, selectedStore]);
 
+  console.log('savings id:', comparison[1])
+
   return (
     <div className="p-4">
       <h2 className="text-2xl font-semibold">Your Savings</h2>

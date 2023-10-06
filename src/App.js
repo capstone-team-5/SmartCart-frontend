@@ -130,6 +130,8 @@ function App() {
   const [showDrumRoll, setShowDrumRoll] = useState(false);
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
 
+  const {id, product_id} = useParams
+
   // const handleAddToFavorites = (food) => {
   // const updatedFavorites = [...favorites];
   // const existingItemIndex = updatedFavorites.findIndex(
@@ -206,11 +208,13 @@ function App() {
     if (existingItemIndex === -1) {
       // If not in local favorites, add it to the backend
       try {
+        console.log('app.js food:', food)
+        console.log('app.js shopper id:', shopperFirebaseId)
         const response = await axios.post(
           `${process.env.REACT_APP_BACKEND_API}/favorites`,
           {
-            // shopper_firebase_uid: shopperFirebaseId, 
-            shopper_firebase_uid: 'StSYbI8Gw1c2cm2oV2IDFn4WwAI2',
+            shopper_firebase_uid: shopperFirebaseId,
+            // shopper_firebase_uid: 'StSYbI8Gw1c2cm2oV2IDFn4WwAI2',
             product_id: food.product_id, 
           }
         );
