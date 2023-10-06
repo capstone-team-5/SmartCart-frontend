@@ -453,7 +453,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                 </Link>
 
                 <Link
-                  to="/user/:id/savings"
+                  to="/user/:id/savings/:selectedStore"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
                   <MdSavings />
