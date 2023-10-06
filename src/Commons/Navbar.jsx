@@ -62,7 +62,7 @@ const navLinks = [
   },
   {
     title: "Track Savings",
-    link: "/user/:id/savings",
+    link: "/user/:id/savings/:selectedStore",
   },
   {
     title: "Our Testimonials",
