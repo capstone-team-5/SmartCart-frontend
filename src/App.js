@@ -1,8 +1,10 @@
 //Dependencies
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { applyTheme, setTheme } from "./Theme";
 import axios from "axios";
+import { auth } from "./Firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 //Commons
 // import Header from "./Commons/Header";
@@ -86,6 +88,8 @@ import StrawberryIceCreamRecipe from "./Pages/Recipes/StrawberryIceCreamRecipe";
 import Vegetables from "./MVPComponents/HomeComponent/Vegetables";
 import NutritionComponent from "./MVPComponents/NutritionComponent";
 import Categories from "./MVPComponents/HomeComponent/Categories";
+import AuthDetails from "./MVPComponents/AuthDetails";
+import SignInComponent from "./MVPComponents/auth/SignInComponent";
 
 // Components
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
@@ -94,13 +98,9 @@ import FaqComponent from "./NonMVPComponents/FaqComponent";
 import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent";
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
 import Fruits from "./MVPComponents/HomeComponent/Fruits";
-// import LocationComponent from "./Commons/LocationComponent";
-import HookComponent from "./MVPComponents/LocationHookComponent";
-// import SearchComponent from "./MVPComponents/SearchComponent";
 
 // Styling
 import "./App.css";
-
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -117,18 +117,35 @@ function App() {
     return isNaN(storedCartLength) ? 0 : storedCartLength;
   });
 
-  const [favorites, setFavorites] = useState(() => {
-    const storedFavoritesData = JSON.parse(
-      window.localStorage.getItem("Testing_Favorites")
-    );
-    return Array.isArray(storedFavoritesData) ? storedFavoritesData : [];
-  });
+  const [favorites, setFavorites] = useState([]);
 
   const [loading, setLoading] = useState("Finding Shops In Your Area");
   const [stores, setStores] = useState([]);
   const [comparison, setComparison] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
+
+  const [authUser, setAuthUser] = useState(null);
+
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthUser(user);
+      } else {
+        setAuthUser(null);
+      }
+    });
+
+    return () => {
+      listen();
+    };
+  }, []);
+
+  console.log("app.js authUser:", authUser);
+
+  // working
+  const user = authUser !== null ? authUser.uid : null;
+  // const user = authUser?.uid  -- potential shorthand
 
   // const handleAddToFavorites = (food) => {
   // const updatedFavorites = [...favorites];
@@ -195,9 +212,6 @@ function App() {
     updateCartLength(updateCartLength);
   };
 
-
-
-
   const handleAddToFavorites = async (food, shopperFirebaseId) => {
     // Check if the item is already in favorites
     const existingItemIndex = favorites.findIndex(
@@ -206,12 +220,12 @@ function App() {
     if (existingItemIndex === -1) {
       // If not in local favorites, add it to the backend
       try {
+        console.log("app.js food:", food);
         const response = await axios.post(
           `${process.env.REACT_APP_BACKEND_API}/favorites`,
           {
-            // shopper_firebase_uid: shopperFirebaseId, 
-            shopper_firebase_uid: 'StSYbI8Gw1c2cm2oV2IDFn4WwAI2',
-            product_id: food.product_id, 
+            shopper_firebase_uid: user,
+            product_id: food.product_id,
           }
         );
         if (response.status === 201) {
@@ -224,12 +238,9 @@ function App() {
               id: food.product_id,
             },
           ];
-          console.log("updatedFavorites:", updatedFavorites);
+          console.log("user in app.js:", user);
+          console.log("updatedFavorites in app.js:", updatedFavorites);
           setFavorites(updatedFavorites);
-          window.localStorage.setItem(
-            "Testing_Favorites",
-            JSON.stringify(updatedFavorites)
-          );
         } else {
           // Handle other status codes or errors as needed
           console.error("Failed to add item to favorites.");
@@ -245,11 +256,13 @@ function App() {
   const handleAddFavoritesToCart = (favoriteItems) => {
     // Clone the current cart state
     const updatedCart = [...cart];
-  
+
     // Loop through the favorite items and add them to the cart
     favoriteItems.forEach((favoriteItem) => {
-      const existingItemIndex = updatedCart.findIndex((item) => item.id === favoriteItem.id);
-  
+      const existingItemIndex = updatedCart.findIndex(
+        (item) => item.id === favoriteItem.id
+      );
+
       if (existingItemIndex !== -1) {
         // If the item already exists in the cart, increase its quantity
         updatedCart[existingItemIndex].length += 1;
@@ -263,21 +276,23 @@ function App() {
         });
       }
     });
-  
+
     // Update the cart state
     setCart(updatedCart);
-  
+
     // Update the cart length by calculating the total quantity in the cart
-    const cartAdjustedLength = updatedCart.reduce((total, item) => total + item.length, 0);
+    const cartAdjustedLength = updatedCart.reduce(
+      (total, item) => total + item.length,
+      0
+    );
     setCartLength(cartAdjustedLength);
-  
+
     // Save the updated cart to local storage
     window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-  
+
     // Return the updated cart
     return updatedCart;
   };
-  
 
   useEffect(() => {
     const newStoreTotalPrices = {};
@@ -476,8 +491,6 @@ function App() {
     }
   };
 
- 
-
   const handleClearCart = () => {
     if (
       window.confirm(
@@ -493,15 +506,11 @@ function App() {
   return (
     <div className="dark:bg-gray-900">
       <BrowserRouter>
-        {/* <HookComponent /> */}
         <Navbar
           cartLength={cartLength}
           handleThemeChange={handleThemeChange}
           updateCartLength={setCartLength}
         />
-        {/* <SearchComponent /> */}
-        {/* <LocationComponent /> */}
-        {/* <Header addToCart={handleAddToCart} /> */}
         <Routes>
           <Route element={<LandingPage />} path="/" />
           <Route element={<Home addToCart={handleAddToCart} />} path="/home" />
@@ -516,10 +525,32 @@ function App() {
             }
             path="/test"
           />
+          <Route element={SignInComponent} path="/sign-in" />
+          <Route
+            element={
+              authUser ? (
+                <Favorites
+                  addToCart={handleAddToFavoritesCart}
+                  updatedFavorites={favorites}
+                  addAllFavorites={handleAddFavoritesToCart}
+                  user={user}
+                />
+              ) : (
+                <p>Please sign in to view favorites</p>
+              )
+            }
+            path="/user/:id/favorites"
+          />
+          <Route element={<AuthDetails auth={auth} authUser={authUser} />} />
           <Route element={<Categories />} path="/categories" />
           <Route element={<Vegetables />} path="/vegetables" />
           <Route element={<NutritionComponent />} path="/nutrition" />
-          <Route element={<Savings />} path="/user/:id/savings/:selectedStore" />
+          <Route
+            element={
+              <Savings sortedStores={filteredStores} comparison={comparison} />
+            }
+            path="/user/:id/savings/:selectedStore"
+          />
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />
           <Route
@@ -567,7 +598,7 @@ function App() {
             path="/price-compare"
           />
           <Route element={<UserCart />} path="/user/:id/cart" />
-          <Route element={<Favorites addToCart={handleAddToFavoritesCart} updatedFavorites={favorites} addAllFavorites={handleAddFavoritesToCart}  />} path="/user/:id/favorites" />
+          {/* <Route element={<Favorites addToCart={handleAddToFavoritesCart} updatedFavorites={favorites} addAllFavorites={handleAddFavoritesToCart}  />} path="/user/:id/favorites" /> */}
           <Route element={<UserEdit />} path="/user/:id/edit" />
           <Route element={<Subscription />} path="/user/:id/subscription" />
           <Route
