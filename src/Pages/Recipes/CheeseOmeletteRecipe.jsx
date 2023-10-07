@@ -5,10 +5,11 @@ import CheeseOmeletteRecipeComponent from "../../NonMVPComponents/CheeseOmelette
 const CheeseOmeletteRecipe = ({ addIngredientsToCart }) => {
   const nameOfIngredients = [
     "Large White Eggs",
-    "Milk",
-    "Pure Ground Black pepper",
+    "Deans Dairy Pure Milk",
+    "McCormick Pure Ground Black pepper",
     "Land OLakes Salted Butter",
-    "Cheese",
+    "Happy Belly Finely Shredded Mexican Four Cheese Blend",
+    "Iodized Salt"
   ];
 
   return (
