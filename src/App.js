@@ -89,6 +89,7 @@ import Vegetables from "./MVPComponents/HomeComponent/Vegetables";
 import NutritionComponent from "./MVPComponents/NutritionComponent";
 import Categories from "./MVPComponents/HomeComponent/Categories";
 import AuthDetails from "./MVPComponents/AuthDetails";
+import SignInComponent from "./MVPComponents/auth/SignInComponent"
 
 // Components
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
@@ -530,7 +531,7 @@ function App() {
             }
             path="/test"
           />
-
+          <Route element={SignInComponent} path='/sign-in' />
           <Route
             element={authUser ? (
             < Favorites addToCart={handleAddToFavoritesCart} updatedFavorites={favorites} addAllFavorites={handleAddFavoritesToCart} user={user} />  
