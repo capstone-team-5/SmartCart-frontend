@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Fruits from "./Fruits";
 
 const API = process.env.REACT_APP_BACKEND_API;
 
@@ -49,7 +48,6 @@ const CategoryHome = () => {
           src={image.product_image}
           alt={`Art of ${index + 1}`}
         />
-        
       </div>
     ));
   };
@@ -74,9 +72,9 @@ const CategoryHome = () => {
         </div>
         <div className="bg-white p-4 text-center mt-4 dark:bg-gray-900">
           <Link to="/fruits" className="hover:underline">
-            {/* <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+            <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
               Fresh Produce
-            </h1> */}
+            </h1>
           </Link>
         </div>
       </div>
@@ -90,9 +88,9 @@ const CategoryHome = () => {
           {renderImages(sections.spices)}
         </div>
         <div className="bg-white p-4 text-center mt-4 dark:bg-gray-900">
-          {/* <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+          <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
             Meat & Seafood
-          </h1> */}
+          </h1>
         </div>
       </div>
 
@@ -105,9 +103,9 @@ const CategoryHome = () => {
           {renderImages(sections.vegetables)}
         </div>
         <div className="bg-white p-4 text-center mt-4 dark:bg-gray-900 dark:text-white">
-          {/* <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+          <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
             Spices, Meat, Nuts, Snacks
-          </h1> */}
+          </h1>
         </div>
       </div>
 
@@ -120,9 +118,9 @@ const CategoryHome = () => {
           {renderImages(sections.dairy)}
         </div>
         <div className="bg-white p-4 text-center mt-4 dark:bg-gray-900 dark:text-white">
-          {/* <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
+          <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
             Vegetables
-          </h1> */}
+          </h1>
         </div>
       </div>
     </div>

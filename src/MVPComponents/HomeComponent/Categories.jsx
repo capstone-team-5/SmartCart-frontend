@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Fruits from "./Fruits";
 
 const Categories = () => {
   const GroceryCategories = [
