@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 const Categories = () => {
-  const [showAll, setShowAll] = useState(false);
-
   const GroceryCategories = [
     {
       name: "Fruits",
