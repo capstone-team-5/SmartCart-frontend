@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import logo_image from "../Assets/SmrtCARTLogo4.png";
-import sana from "../Assets/sana.jpg";
 import { FaHeart, FaUserAlt } from "react-icons/fa";
 import { HiOutlineShoppingCart, HiSearch, HiMenuAlt2 } from "react-icons/hi";
 import { AiFillAppstore, AiFillHome } from "react-icons/ai";
@@ -42,7 +41,7 @@ const navLinks = [
   },
   {
     title: "My Favorites ♥️",
-    link: "/user/:id/favorites", 
+    link: "/user/:id/favorites",
   },
   {
     title: "Contact Us",
@@ -161,7 +160,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
   const handleTrackSavingsClick = () => {
     if (authUser) {
       // User is signed in, navigate to the "Track Savings" route
-      navigate("/user/:id/savings")
+      navigate("/user/:id/savings");
     } else {
       // User is not signed in, navigate to the sign-in page
       navigate("/sign-in");
@@ -506,11 +505,11 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               onClick={toggleUserDropdown}
             >
               <span className="sr-only">Open user menu</span>
-              <img
+              {/* <img
                 className="w-8 h-8 rounded-full object-contain"
                 src={sana}
                 alt="user icon"
-              />
+              /> */}
             </button>
             {/* <!-- Dropdown menu --> */}
             <div
