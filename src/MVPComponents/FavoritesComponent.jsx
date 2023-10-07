@@ -1,20 +1,18 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
+
 
 const FavoritesComponent = ({ updatedFavorites, addToCart, addAllFavorites, user }) => {
-  // const { id } = useParams();
+
   const [favorites, setFavorites] = useState([])
 
   const filteredFavorites = updatedFavorites.filter((item) => Object.keys(item).length > 0);
 
-  console.log('updatedFavorites in favorites:', updatedFavorites)
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BACKEND_API}/favorites/${user}`)
       .then((response) => {
-        console.log('response in favorites:', response.data)
         setFavorites(response.data)
     })
   })
@@ -22,8 +20,8 @@ const FavoritesComponent = ({ updatedFavorites, addToCart, addAllFavorites, user
 
   const handleDeleteFavoriteItem = (product_id) => {
       if (window.confirm('Are you sure you want to delete this item from your favorites?')) {
-          console.log('product delete:', product_id)
-          console.log('user delete:', user)
+          // console.log('product delete:', product_id)
+          // console.log('user delete:', user)
           axios.delete(`${process.env.REACT_APP_BACKEND_API}/favorites/${user}/${product_id}`);
     }
   };
@@ -43,7 +41,7 @@ const FavoritesComponent = ({ updatedFavorites, addToCart, addAllFavorites, user
     <div className="bg-gray-100 py-8 px-4">
       <h1 className="text-3xl font-semibold text-center mb-4">These are the user's favorite items:</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {favorites.map((item, index) => (
+        {favorites.map((item) => (
           <div key={item.product_id} className="bg-white rounded-lg shadow-md p-4">
             <img src={item.product_image} alt={item.product_name} className="mx-auto mb-4 rounded-md h-40 w-40" />
             <p className="text-lg font-semibold text-center mb-2">{item.product_name}</p>

@@ -1,5 +1,5 @@
 //Dependencies
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { applyTheme, setTheme } from "./Theme";
 import axios from "axios";
@@ -97,9 +97,7 @@ import FaqComponent from "./NonMVPComponents/FaqComponent";
 import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent";
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
 import Fruits from "./MVPComponents/HomeComponent/Fruits";
-// import LocationComponent from "./Commons/LocationComponent";
-import HookComponent from "./MVPComponents/LocationHookComponent";
-// import SearchComponent from "./MVPComponents/SearchComponent";
+
 
 // Styling
 import "./App.css";
@@ -229,12 +227,10 @@ function App() {
       // If not in local favorites, add it to the backend
       try {
         console.log('app.js food:', food)
-        // console.log('app.js shopper id:', shopperFirebaseId)
         const response = await axios.post(
           `${process.env.REACT_APP_BACKEND_API}/favorites`,
           {
             shopper_firebase_uid: user,
-            // shopper_firebase_uid: 'StSYbI8Gw1c2cm2oV2IDFn4WwAI2',
             product_id: food.product_id, 
           }
         );
@@ -515,15 +511,11 @@ function App() {
   return (
     <div className="dark:bg-gray-900">
       <BrowserRouter>
-        {/* <HookComponent /> */}
         <Navbar
           cartLength={cartLength}
           handleThemeChange={handleThemeChange}
           updateCartLength={setCartLength}
         />
-        {/* <SearchComponent /> */}
-        {/* <LocationComponent /> */}
-        {/* <Header addToCart={handleAddToCart} /> */}
         <Routes>
           <Route element={<LandingPage />} path="/" />
           <Route element={<Home addToCart={handleAddToCart} />} path="/home" />

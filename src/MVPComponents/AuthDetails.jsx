@@ -1,6 +1,3 @@
-import React, { useState, useEffect } from "react";
-// import { auth } from "../firebase";
-// import { onAuthStateChanged, signOut } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import sana from "../Assets/sana.jpg";
@@ -8,21 +5,6 @@ import { FaCog } from "react-icons/fa";
 
 function AuthDetails({auth, authUser}) {
   const navigate = useNavigate();
-  // const [authUser, setAuthUser] = useState(null);
-
-  // useEffect(() => {
-  //   const listen = onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       setAuthUser(user);
-  //     } else {
-  //       setAuthUser(null);
-  //     }
-  //   });
-
-  //   return () => {
-  //     listen();
-  //   };
-  // }, []);
 
   const userSignOut = () => {
     if (window.confirm("Are you sure you want to sign out?")) {
