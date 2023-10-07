@@ -2,11 +2,11 @@
 
 import FavoritesComponent from "../MVPComponents/FavoritesComponent"
 
-const Favorites = ({updatedFavorites, addToCart, addAllFavorites}) => {
+const Favorites = ({updatedFavorites, addToCart, addAllFavorites, user}) => {
 
     return (
         <div>
-            <FavoritesComponent updatedFavorites={updatedFavorites} addToCart={addToCart} addAllFavorites={addAllFavorites}  />
+            <FavoritesComponent updatedFavorites={updatedFavorites} addToCart={addToCart} addAllFavorites={addAllFavorites} user={user}  />
         </div>
     )
 };
