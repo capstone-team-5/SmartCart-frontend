@@ -1,11 +1,15 @@
 //This Component Will Compare Your Entire Cart Across Stores
 
-
 import React, { useState, useEffect } from "react";
 import FadeLoader from "react-spinners/FadeLoader";
 import { Link, useParams } from "react-router-dom";
 
-const PriceComparisonComponent = ({ cart, stores, comparison, sortedStores }) => {
+const PriceComparisonComponent = ({
+  cart,
+  stores,
+  comparison,
+  sortedStores,
+}) => {
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
   const [storeDetails, setStoreDetails] = useState({});
   const { id } = useParams();
@@ -95,7 +99,7 @@ const PriceComparisonComponent = ({ cart, stores, comparison, sortedStores }) =>
       ) : (
         <div>
           {sortedStores.map((store, index) => (
-            <div key={store.store_id} className="border p-4 my-4">
+            <div key={store.store_id} className="border p-4 my-4 mx-5">
               {index === 0 ? (
                 <div>
                   <h1 className="text-2xl font-bold">Best Value</h1>
@@ -105,19 +109,26 @@ const PriceComparisonComponent = ({ cart, stores, comparison, sortedStores }) =>
                   <h1 className="text-2xl font-bold">Total Cart Price</h1>
                 </div>
               )}
-              <h1 className="text-3xl font-bold">${storeTotalPrices[store.store_id]?.toFixed(2)}</h1>
-              <img
-                src={store.store_image}
-                alt={`${store.store_name}`}
-                width="200px"
-                className="my-2"
-              />
-              <h3 className="text-xl">Store Name: {store.store_name}</h3>
-              <p>Address: {store.store_address}</p>
-              <p>City: {store.store_city}</p>
-              <p>State: {store.store_state}</p>
-              <p>Zipcode: {store.store_zipcode}</p>
-              <p>Phone Number: {store.store_phone_number}</p>
+              <h1 className="text-3xl font-bold">
+                ${storeTotalPrices[store.store_id]?.toFixed(2)}
+              </h1>
+              <div className="grid grid-cols-2">
+                <img
+                  src={store.store_image}
+                  alt={`${store.store_name}`}
+                  width="200px"xt
+                  className="my-2"
+                />
+                <div className="ml-5">
+                  <h3 className="text-xl">Store Name: {store.store_name}</h3>
+                  <p>Address: {store.store_address}</p>
+                  <p>City: {store.store_city}</p>
+                  <p>State: {store.store_state}</p>
+                  <p>Zipcode: {store.store_zipcode}</p>
+                  <p>Phone Number: {store.store_phone_number}</p>
+                </div>
+              </div>
+
               <button
                 onClick={() => toggleDetails(store.store_id)}
                 className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
@@ -138,7 +149,8 @@ const PriceComparisonComponent = ({ cart, stores, comparison, sortedStores }) =>
                         <br />
                         Total cost for this item: $
                         {(
-                          comparison[store.store_id][item.id] * (item.length || 0)
+                          comparison[store.store_id][item.id] *
+                          (item.length || 0)
                         ).toFixed(2)}
                       </li>
                     </div>

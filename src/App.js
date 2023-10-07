@@ -89,7 +89,7 @@ import Vegetables from "./MVPComponents/HomeComponent/Vegetables";
 import NutritionComponent from "./MVPComponents/NutritionComponent";
 import Categories from "./MVPComponents/HomeComponent/Categories";
 import AuthDetails from "./MVPComponents/AuthDetails";
-import SignInComponent from "./MVPComponents/auth/SignInComponent"
+import SignInComponent from "./MVPComponents/auth/SignInComponent";
 
 // Components
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
@@ -99,10 +99,8 @@ import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent"
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
 import Fruits from "./MVPComponents/HomeComponent/Fruits";
 
-
 // Styling
 import "./App.css";
-
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -143,12 +141,11 @@ function App() {
     };
   }, []);
 
-  console.log('app.js authUser:', authUser)
+  console.log("app.js authUser:", authUser);
 
   // working
-  const user = authUser !== null ? (authUser.uid) : null
+  const user = authUser !== null ? authUser.uid : null;
   // const user = authUser?.uid  -- potential shorthand
-  
 
   // const handleAddToFavorites = (food) => {
   // const updatedFavorites = [...favorites];
@@ -215,10 +212,6 @@ function App() {
     updateCartLength(updateCartLength);
   };
 
-  
-
-
-
   const handleAddToFavorites = async (food, shopperFirebaseId) => {
     // Check if the item is already in favorites
     const existingItemIndex = favorites.findIndex(
@@ -227,12 +220,12 @@ function App() {
     if (existingItemIndex === -1) {
       // If not in local favorites, add it to the backend
       try {
-        console.log('app.js food:', food)
+        console.log("app.js food:", food);
         const response = await axios.post(
           `${process.env.REACT_APP_BACKEND_API}/favorites`,
           {
             shopper_firebase_uid: user,
-            product_id: food.product_id, 
+            product_id: food.product_id,
           }
         );
         if (response.status === 201) {
@@ -245,7 +238,7 @@ function App() {
               id: food.product_id,
             },
           ];
-          console.log('user in app.js:', user)
+          console.log("user in app.js:", user);
           console.log("updatedFavorites in app.js:", updatedFavorites);
           setFavorites(updatedFavorites);
         } else {
@@ -263,11 +256,13 @@ function App() {
   const handleAddFavoritesToCart = (favoriteItems) => {
     // Clone the current cart state
     const updatedCart = [...cart];
-  
+
     // Loop through the favorite items and add them to the cart
     favoriteItems.forEach((favoriteItem) => {
-      const existingItemIndex = updatedCart.findIndex((item) => item.id === favoriteItem.id);
-  
+      const existingItemIndex = updatedCart.findIndex(
+        (item) => item.id === favoriteItem.id
+      );
+
       if (existingItemIndex !== -1) {
         // If the item already exists in the cart, increase its quantity
         updatedCart[existingItemIndex].length += 1;
@@ -281,21 +276,23 @@ function App() {
         });
       }
     });
-  
+
     // Update the cart state
     setCart(updatedCart);
-  
+
     // Update the cart length by calculating the total quantity in the cart
-    const cartAdjustedLength = updatedCart.reduce((total, item) => total + item.length, 0);
+    const cartAdjustedLength = updatedCart.reduce(
+      (total, item) => total + item.length,
+      0
+    );
     setCartLength(cartAdjustedLength);
-  
+
     // Save the updated cart to local storage
     window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-  
+
     // Return the updated cart
     return updatedCart;
   };
-  
 
   useEffect(() => {
     const newStoreTotalPrices = {};
@@ -324,8 +321,7 @@ function App() {
     .filter((store) => comparison.hasOwnProperty(store.store_id))
     .sort(
       (a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
-  );
-  
+    );
 
   useEffect(() => {
     const cartIds = cart.map((food) => food.id);
@@ -495,8 +491,6 @@ function App() {
     }
   };
 
- 
-
   const handleClearCart = () => {
     if (
       window.confirm(
@@ -531,20 +525,32 @@ function App() {
             }
             path="/test"
           />
-          <Route element={SignInComponent} path='/sign-in' />
+          <Route element={SignInComponent} path="/sign-in" />
           <Route
-            element={authUser ? (
-            < Favorites addToCart={handleAddToFavoritesCart} updatedFavorites={favorites} addAllFavorites={handleAddFavoritesToCart} user={user} />  
-          ) : (
-          <p>Please sign in to view favorites</p>
-            )}
+            element={
+              authUser ? (
+                <Favorites
+                  addToCart={handleAddToFavoritesCart}
+                  updatedFavorites={favorites}
+                  addAllFavorites={handleAddFavoritesToCart}
+                  user={user}
+                />
+              ) : (
+                <p>Please sign in to view favorites</p>
+              )
+            }
             path="/user/:id/favorites"
           />
           <Route element={<AuthDetails auth={auth} authUser={authUser} />} />
           <Route element={<Categories />} path="/categories" />
           <Route element={<Vegetables />} path="/vegetables" />
           <Route element={<NutritionComponent />} path="/nutrition" />
-          <Route element={<Savings sortedStores={filteredStores} comparison={comparison} />} path="/user/:id/savings/:selectedStore" />
+          <Route
+            element={
+              <Savings sortedStores={filteredStores} comparison={comparison} />
+            }
+            path="/user/:id/savings/:selectedStore"
+          />
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />
           <Route
@@ -791,7 +797,6 @@ function App() {
             }
             path="/recipes/dinner-foods-bajan-cou-cou-and-flying-fish"
           />
-          
           <Route
             element={
               <IndianButterChickenRecipe

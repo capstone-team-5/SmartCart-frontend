@@ -55,11 +55,9 @@ const SignUpComponent = () => {
   }
 
   function google() {
-    // signInWithRedirect(auth, googleProvider);
     signInWithPopup(auth, googleProvider)
       .then((userCredential) => {
         const { user } = userCredential;
-        console.log("user", user);
         const fullName = user.displayName;
         const splitName = fullName.split(" ");
         const first_name = splitName[0];
