@@ -43,22 +43,22 @@ const CustomerTestimonialsComponent = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Aprill Doe",
-      job: "Lawyer",
+      name: "Jordan Manley",
+      job: "Senior Instructor Pursuit",
       text: "With my large caseload, I love that this saves me time and money.",
       image:
         "https://m.media-amazon.com/images/M/MV5BMWVjOTAzMmItOGM1NS00MTdkLWE0YzAtZDE5ZDJlNDcxZjk5XkEyXkFqcGdeQXVyNDg3NTIyODU@._V1_.jpg",
     },
     {
       id: 2,
-      name: "Libby",
+      name: "Stephen Chyau",
       job: "Biochemist",
       text: "I can't get enough of this site.",
       image: Libby,
     },
     {
       id: 3,
-      name: "Alice Johnson",
+      name: "Lillian Schneck",
       job: "Marketing Manager",
       text: "I love how user-friendly your website is.",
       image:
@@ -66,7 +66,7 @@ const CustomerTestimonialsComponent = () => {
     },
     {
       id: 4,
-      name: "Jese Leos",
+      name: "Afshin Babveh",
       job: "Design Lead",
       text: "The amount I've saved using this app is mind blowing.",
       image:
@@ -74,14 +74,14 @@ const CustomerTestimonialsComponent = () => {
     },
     {
       id: 5,
-      name: "John Odee",
+      name: "Michael Law",
       job: "Neighborhood Terror",
       text: "hiiiiiissssssssss",
       image: "https://i.scdn.co/image/ab6761610000e5ebd5100eebd11d8d4aa8b13da6",
     },
     {
       id: 6,
-      name: "John",
+      name: "Nataja",
       job: "Truck Driver",
       text: "As a person who has no time for anything, this is the perfect app for me",
       image:
@@ -89,8 +89,8 @@ const CustomerTestimonialsComponent = () => {
     },
 
     {
-      id: 6,
-      name: "Ana",
+      id: 7,
+      name: "Caroline Kang",
       job: "Web Developer",
       text: "All Smiles",
       image: Randy,
