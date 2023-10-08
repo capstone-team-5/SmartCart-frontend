@@ -1,7 +1,7 @@
 import CategoryHome from "../MVPComponents/HomeComponent/CategoryHome";
 import InternationalSlider from "../MVPComponents/HomeComponent/InternationalSlider";
 import Categories from "../MVPComponents/HomeComponent/Categories";
-import NonVegetarianSlider from "../MVPComponents/HomeComponent/NonVegetarianSlider";
+import FrozenSlider from "../MVPComponents/HomeComponent/FrozenSlider";
 import RecipeSlider from "../MVPComponents/HomeComponent/RecipeSlider";
 const Home = () => {
   return (
@@ -9,7 +9,7 @@ const Home = () => {
       <CategoryHome />
       <Categories />
       <InternationalSlider />
-      <NonVegetarianSlider />
+      <FrozenSlider />
       <RecipeSlider />
     </div>
   );

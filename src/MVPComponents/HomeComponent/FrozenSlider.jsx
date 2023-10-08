@@ -12,14 +12,14 @@ import {
 
 const API = process.env.REACT_APP_BACKEND_API;
 
-const NonVegetarianSlider = ({ addToCart }) => {
+const FrozenSlider = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
-      .get(`${API}/products/meat`)
+      .get(`${API}/products/frozen`)
       .then((response) => {
         setProducts(response.data);
         setLoading(false);
@@ -70,7 +70,7 @@ const NonVegetarianSlider = ({ addToCart }) => {
     <div className="mx-auto container p-4 mt-2 dark:bg-gray-900">
       <h1 className="p-2 text-black mb-4 xl:text-3xl md:text-2xl tracking-wide font-extrabold sm:text-lg dark:text-white">
         {" "}
-        Shop Meats, Seafood, Poultry
+        Shop Frozen Foods
       </h1>
       <div className="py-24 sm:py-8 px-4">
         <CarouselProvider
@@ -106,4 +106,4 @@ const NonVegetarianSlider = ({ addToCart }) => {
   );
 };
 
-export default NonVegetarianSlider;
+export default FrozenSlider;

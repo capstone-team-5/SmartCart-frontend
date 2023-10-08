@@ -145,7 +145,11 @@ const Categories = () => {
       logoSrc:
         "https://img.livestrong.com/-/clsd/getty/887e538ab41a4f5b82ab53a5548a8d81.jpg",
     },
-
+    {
+      name: "Herbs",
+      logoSrc:
+        "https://i.etsystatic.com/6186509/r/il/5ead75/3817289188/il_fullxfull.3817289188_52d3.jpg",
+    },
     // Add other partner objects here
   ];
 
