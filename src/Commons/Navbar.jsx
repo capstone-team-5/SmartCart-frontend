@@ -503,6 +503,10 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               onClick={toggleUserDropdown}
             >
               <span className="sr-only">Open user menu</span>
+              <FaUserAlt
+                size={30}
+                className="w-8 h-8 rounded-full object-contain bg-white"
+              />
               {/* <img
                 className="w-8 h-8 rounded-full object-contain"
                 src={sana}
