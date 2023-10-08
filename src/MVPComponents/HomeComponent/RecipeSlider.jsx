@@ -1,106 +1,112 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "pure-react-carousel/dist/react-carousel.es.css";
-import { GrPrevious, GrNext } from "react-icons/gr";
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  ButtonBack,
-  ButtonNext,
-} from "pure-react-carousel";
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
-const API = process.env.REACT_APP_BACKEND_API;
+const RecipeSlider = () => {
+  const recipes = [
+    {
+      id: 1,
+      name: "Breakfast",
+      image:
+        "https://simply-delicious-food.com/wp-content/uploads/2022/09/Breakfast-board28.jpg",
+      link: "/recipes/breakfast-foods",
+    },
+    {
+      id: 2,
+      name: "Lunch",
+      image:
+        "https://www.eatingwell.com/thmb/uAo_rveXpw6wB0j01eOstQoLS9A=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/caprese-sandwich-e0bb2b846cf14cd7a0eb2d3f4d4b6aa2.jpg",
+      link: "/recipes/lunch-foods",
+    },
+    {
+      id: 3,
+      name: "Dinner",
+      image:
+        "https://hips.hearstapps.com/hmg-prod/images/easy-dinner-ideas-tandoori-spiced-cauliflower-chicken-flatbreads-6422fa89eb35f.jpg",
+      link: "/recipes/dinner-foods",
+    },
+    {
+      id: 4,
+      name: "Snacks",
+      image:
+        "https://article.innovamarketinsights360.com/articleimgs/article_images/637238398158072578Variation-unhealthy-snacks-959888654_2118x2118.jpeg",
+      link: "/recipes/snack-foods",
+    },
+    {
+      id: 5,
+      name: "Desserts",
+      image:
+        "https://resize.img.allw.mn/thumbs/00/surd8r8ca2rka63zdt9in_1080_1225.jpg?width=1200&height=1200",
+      link: "/recipes/dessert-foods",
+    },
+  ];
 
-const RecipeSlider = ({ addToCart }) => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    axios
-      .get(`${API}/products/international`)
-      .then((response) => {
-        setProducts(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setError("An error occurred while fetching data.");
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-
-  const renderSlides = () => {
-    return products.map((product, index) => (
-      <Slide index={index} key={product.id}>
-        <div className="flex flex-col items-center relative w-full h-full sm:w-auto sm: gap-2 lg:gap-8 md:gap-6 justify-start transition ease-out duration-700">
-          <div className="bg-gray-100 p-4 rounded mb-4">
-            <img
-              src={product.product_image}
-              alt={product.product_name}
-              className="object-contain object-center w-full h-56"
-            />
-          </div>
-          <h3 className=" text-black mb-4 md:text-xl tracking-wide font-medium  sm:text-lg dark:text-white">
-            {product.product_name}
-          </h3>
-          <div className="flex justify-center mt-1 mb-1">
-            <button
-              onClick={() => addToCart(product)}
-              className="justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
-            >
-              Add To Cart
-            </button>
-          </div>
-        </div>
-      </Slide>
-    ));
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
-    <div className="mx-auto container p-4 mt-2 dark:bg-gray-900">
-      <h1 className="p-2 text-black mb-4 xl:text-3xl md:text-2xl tracking-wide font-extrabold sm:text-lg dark:text-white">
-        {" "}
-        Shop Recipes
+    <div className="mx-auto container p-4 mt-2">
+      <h1 className="p-2 text-black mb-4 text-xl font-extrabold">
+        Shop Directly From Our Recipes
       </h1>
-      <div className="py-24 sm:py-8 px-4">
-        <CarouselProvider
-          naturalSlideWidth={100}
-          isIntrinsicHeight={true}
-          totalSlides={products.length}
-          visibleSlides={3}
-          step={1}
-          infinite={true}
-        >
-          <div className="w-full flex items-center justify-center">
-            <ButtonBack
-              role="button"
-              aria-label="slide backward"
-              className="absolute z-30 left-0 ml-8 bg-gray-400 ring-2  ring-black focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
-              id="prev"
+      <div
+        className="relative w-full border-2 rounded-lg"
+        data-carousel="slide"
+      >
+        <Slider {...settings}>
+          {recipes.map((recipe) => (
+            <div
+              key={recipe.id}
+              className="flex flex-col items-center relative shadow-lg"
             >
-              <GrPrevious size={30} />
-            </ButtonBack>
-            <Slider>{renderSlides()}</Slider>
-            <ButtonNext
-              role="button"
-              aria-label="slide forward"
-              className="absolute z-30 right-0 mr-8 bg-gray-400 ring-2  ring-black focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
-              id="next"
-            >
-              <GrNext size={30} />
-            </ButtonNext>
-          </div>
-        </CarouselProvider>
+              <div className="p-2 rounded mb-2">
+                <Link to={recipe.link} className="block">
+                  <img
+                    src={recipe.image}
+                    alt={recipe.name}
+                    className="object-contain object-center w-full h-full rounded-lg shadow-md"
+                  />
+                  <h3 className="mt-2 text-lg font-semibold text-center">
+                    {recipe.name}
+                  </h3>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </Slider>
       </div>
     </div>
   );
