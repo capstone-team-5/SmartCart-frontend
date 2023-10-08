@@ -26,7 +26,7 @@ const Categories = () => {
     {
       name: "Poultry",
       logoSrc:
-        "https://agridata.ec.europa.eu/extensions/CommonImages/eggs-poultry.png",
+        "https://cdn11.bigcommerce.com/s-efc47/images/stencil/1280x1280/products/2579/5433/images__13526__32612.1535055045.jpg?c=2",
     },
     {
       name: "Dairy",
@@ -153,6 +153,15 @@ const Categories = () => {
     // Add other partner objects here
   ];
 
+  const [showAllCategories, setShowAllCategories] = useState(false);
+  const displayedCategories = showAllCategories
+    ? GroceryCategories
+    : GroceryCategories.slice(0, 6);
+
+  const handleToggleCategories = () => {
+    setShowAllCategories(!showAllCategories);
+  };
+
   return (
     <section className="bg-white dark:bg-gray-900">
       <div className="py-8 lg:py-16 mx-auto max-w-screen-xl mt-1 px-4">
@@ -162,8 +171,8 @@ const Categories = () => {
         {/* <p className="mb-8 lg:mb-16 text-gray-500 text-center">Shop All</p> */}
 
         <div className="grid grid-cols-2 gap-8 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400">
-          {GroceryCategories.length > 0 ? (
-            GroceryCategories.map((category, index) => (
+          {displayedCategories.length > 0 ? (
+            displayedCategories.map((category, index) => (
               <div key={index} className="flex flex-col items-center">
                 <Link
                   to="#"
@@ -185,6 +194,14 @@ const Categories = () => {
           ) : (
             <p>No Categories Found!</p>
           )}
+        </div>
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={handleToggleCategories}
+            className="text-indigo-600 hover:underline mb-4 lg:mb-8 text-xl font-extrabold tracking-tight leading-tight text-center dark:text-white md:text-2xl"
+          >
+            {showAllCategories ? "Show Less" : "Show  More"}
+          </button>
         </div>
       </div>
     </section>
