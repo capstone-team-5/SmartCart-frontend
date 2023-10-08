@@ -9,7 +9,7 @@ const DiandreComponent = () => {
     setShowAll(!showAll);
   };
   return (
-    <div className="bg-white min-h-screen flex flex-col items-center justify-center">
+    <div className="bg-white min-h-screen flex flex-col items-center justify-center dark:bg-gray-700">
       <h1 className="mb-4 pb-4 p-4 text-center text-3xl font-bold dark:text-white">
         {" "}
         Diandre Miller
