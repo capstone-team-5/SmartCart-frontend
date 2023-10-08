@@ -6,7 +6,7 @@ const RecipesComponent = () => {
   return (
     <div>
       <h1 className="text-3xl font-semibold text-center mb-8">
-        Choose From Hundreds of Recipes and Add Them to Your Cart
+        Choose From Hundreds of Recipes and Add All Ingredients to Your Cart
       </h1>
 
       <div className="flex flex-wrap justify-center">
@@ -17,7 +17,9 @@ const RecipesComponent = () => {
               alt="breakfast foods"
               className="w-full h-auto rounded-lg shadow-md"
             />
-            <h3 className="mt-2 text-lg font-semibold">Breakfast</h3>
+            <h3 className="mt-2 text-lg font-semibold text-center">
+              Breakfast
+            </h3>
           </Link>
         </div>
 
@@ -28,7 +30,7 @@ const RecipesComponent = () => {
               alt="lunch foods"
               className="w-full h-auto rounded-lg shadow-md"
             />
-            <h3 className="mt-2 text-lg font-semibold">Lunch</h3>
+            <h3 className="mt-2 text-lg font-semibold text-center">Lunch</h3>
           </Link>
         </div>
 
@@ -39,7 +41,7 @@ const RecipesComponent = () => {
               alt="dinner foods"
               className="w-full h-auto rounded-lg shadow-md"
             />
-            <h3 className="mt-2 text-lg font-semibold">Dinner</h3>
+            <h3 className="mt-2 text-lg font-semibold text-center">Dinner</h3>
           </Link>
         </div>
 
@@ -50,7 +52,7 @@ const RecipesComponent = () => {
               alt="snack foods"
               className="w-full h-auto rounded-lg shadow-md"
             />
-            <h3 className="mt-2 text-lg font-semibold">Snacks</h3>
+            <h3 className="mt-2 text-lg font-semibold text-center">Snacks</h3>
           </Link>
         </div>
 
@@ -61,7 +63,7 @@ const RecipesComponent = () => {
               alt="dessert foods"
               className="w-full h-auto rounded-lg shadow-md"
             />
-            <h3 className="mt-2 text-lg font-semibold">Dessert Foods</h3>
+            <h3 className="mt-2 text-lg font-semibold text-center">Desserts</h3>
           </Link>
         </div>
       </div>
