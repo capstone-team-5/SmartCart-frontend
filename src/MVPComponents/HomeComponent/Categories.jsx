@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Fruits from "./Fruits";
 
 const Categories = () => {
   const GroceryCategories = [
@@ -8,11 +7,13 @@ const Categories = () => {
       name: "Fruits",
       logoSrc:
         "https://images.immediate.co.uk/production/volatile/sites/30/2023/02/Bowl-of-fruit-5155e6f.jpg?quality=90&resize=440,400",
+      link: "/fruits",
     },
     {
       name: "Vegetables",
       logoSrc:
         "https://media.post.rvohealth.io/wp-content/uploads/2020/08/fruits-and-vegetables-thumb-1-732x549.jpg",
+      link: "/vegetables",
     },
     {
       name: "Meat",
@@ -175,7 +176,7 @@ const Categories = () => {
             displayedCategories.map((category, index) => (
               <div key={index} className="flex flex-col items-center">
                 <Link
-                  to="#"
+                  to={category.link || "#"}
                   className="flex flex-col items-center p-4 rounded-lg"
                 >
                   <div className="w-48 h-40 mb-4">
@@ -198,9 +199,11 @@ const Categories = () => {
         <div className="flex justify-center mt-8">
           <button
             onClick={handleToggleCategories}
-            className="text-indigo-600 hover:underline mb-4 lg:mb-8 text-xl font-extrabold tracking-tight leading-tight text-center dark:text-white md:text-2xl"
+            className="text-indigo-600 hover:underline mb-4 lg:mb-8 text-xl font-extrabold tracking-wide leading-tight text-center dark:text-white md:text-2xl"
           >
-            {showAllCategories ? "Show Less" : "Show  More"}
+            {showAllCategories
+              ? "Show Less Categories"
+              : "Explore More Categories"}
           </button>
         </div>
       </div>
