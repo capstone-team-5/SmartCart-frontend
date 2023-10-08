@@ -12,7 +12,7 @@ import {
 
 const API = process.env.REACT_APP_BACKEND_API;
 
-const InternationalSlider = ({ addToCart }) => {
+const RecipeSlider = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -70,7 +70,7 @@ const InternationalSlider = ({ addToCart }) => {
     <div className="mx-auto container p-4 mt-2 dark:bg-gray-900">
       <h1 className="p-2 text-black mb-4 xl:text-3xl md:text-2xl tracking-wide font-extrabold sm:text-lg dark:text-white">
         {" "}
-        Shop International Groceries
+        Shop Recipes
       </h1>
       <div className="py-24 sm:py-8 px-4">
         <CarouselProvider
@@ -106,4 +106,4 @@ const InternationalSlider = ({ addToCart }) => {
   );
 };
 
-export default InternationalSlider;
+export default RecipeSlider;

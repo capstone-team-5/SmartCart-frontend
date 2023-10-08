@@ -97,7 +97,7 @@ const PriceComparisonComponent = ({
           )}
         </div>
       ) : (
-        <div>
+        <div className="grid grid-cols-4">
           {sortedStores.map((store, index) => (
             <div key={store.store_id} className="border p-4 my-4 mx-5">
               {index === 0 ? (
