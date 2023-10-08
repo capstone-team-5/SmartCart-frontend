@@ -28,7 +28,6 @@ const CategoryHome = () => {
           spices: spicesResponse.data,
           dairy: dairyResponse.data,
         });
-
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);

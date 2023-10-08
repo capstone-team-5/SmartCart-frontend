@@ -350,14 +350,12 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
 
             <Link
               to="/cart"
-              className="p-2 mr-1 rounded-lg hover:bg-white dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              className="p-2 mr-1 rounded-lg hover:bg-white relative dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
             >
               <HiOutlineShoppingCart className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
               {cartLength > 0 && (
-                <div className="absolute top-3 right-28">
-                  <div className="rounded-full bg-orange-500 text-black w-5 h-5 text-xs font-bold flex items-center justify-center">
-                    {cartLength}
-                  </div>
+                <div className="rounded-full bg-orange-500 text-black w-5 h-5 text-xs font-bold flex items-center justify-center absolute -top-1 right-0">
+                  {cartLength}
                 </div>
               )}
             </Link>
