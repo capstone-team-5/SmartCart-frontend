@@ -157,7 +157,7 @@ const Categories = () => {
   const [showAllCategories, setShowAllCategories] = useState(false);
   const displayedCategories = showAllCategories
     ? GroceryCategories
-    : GroceryCategories.slice(0, 6);
+    : GroceryCategories.slice(0, 8);
 
   const handleToggleCategories = () => {
     setShowAllCategories(!showAllCategories);
@@ -171,7 +171,7 @@ const Categories = () => {
         </h2>
         {/* <p className="mb-8 lg:mb-16 text-gray-500 text-center">Shop All</p> */}
 
-        <div className="grid grid-cols-2 gap-8 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400">
+        <div className="grid grid-cols-2 gap-8 sm:gap-12 md:grid-cols-4 dark:text-gray-400">
           {displayedCategories.length > 0 ? (
             displayedCategories.map((category, index) => (
               <div key={index} className="flex flex-col items-center">
@@ -183,7 +183,7 @@ const Categories = () => {
                     <img
                       src={category.logoSrc}
                       alt={category.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full rounded-lg shadow-xl object-cover"
                     />
                   </div>
                   <h3 className="mt-2 text-center font-bold">
