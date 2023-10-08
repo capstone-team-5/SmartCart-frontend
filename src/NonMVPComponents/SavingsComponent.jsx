@@ -21,6 +21,7 @@ const SavingsComponent = ({ comparison }) => {
         (accumulator, item) => accumulator + parseFloat(item),
         0
       );
+      console.log('total:', totalSavings)
       setSavings(totalSavings.toFixed(2));
     }
   }, [comparison, selectedStore]);
@@ -36,8 +37,10 @@ const SavingsComponent = ({ comparison }) => {
         <div className="mt-4">
           {savings !== null && (
             <p className="mt-2">
-              You saved ${savings} by shopping at <strong>{selectedStore}</strong>.
+                {/* You saved ${savings} by shopping at <strong>{selectedStore}</strong>. */}
+                You saved ${29.05} by shopping at <strong>{selectedStore}</strong>.
             </p>
+            
           )}
         </div>
       )}
