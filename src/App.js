@@ -391,28 +391,28 @@ function App() {
     setCartLength(length);
   };
 
-  const updateCartWithSpecificIds = (specificIds) => {
-    const updatedCart = [...cart];
+  // const updateCartWithSpecificIds = (specificIds) => {
+  //   const updatedCart = [...cart];
 
-    specificIds.forEach((id) => {
-      const existingItemIndex = updatedCart.findIndex((item) => item.id === id);
+  //   specificIds.forEach((id) => {
+  //     const existingItemIndex = updatedCart.findIndex((item) => item.id === id);
 
-      if (existingItemIndex !== -1) {
-        updatedCart[existingItemIndex].length += 1;
-      } else {
-        updatedCart.push({
-          name: "Item Name",
-          image: "item_image_url",
-          id: id,
-          length: 1,
-        });
-      }
-    });
+  //     if (existingItemIndex !== -1) {
+  //       updatedCart[existingItemIndex].length += 1;
+  //     } else {
+  //       updatedCart.push({
+  //         name: "Item Name",
+  //         image: "item_image_url",
+  //         id: id,
+  //         length: 1,
+  //       });
+  //     }
+  //   });
 
-    setCart(updatedCart); // Update the cart state
-    window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
-    setCartLength(updatedCart.length); // Update cart length
-  };
+  //   setCart(updatedCart); // Update the cart state
+  //   window.localStorage.setItem("Testing_Cart", JSON.stringify(updatedCart));
+  //   setCartLength(updatedCart.length); // Update cart length
+  // };
 
   const handleAddIngredientsToCart = (newItemAddedToFood) => {
     const updatedCart = [...cart];
@@ -541,6 +541,19 @@ function App() {
             }
             path="/user/:id/favorites"
           />
+          <Route
+            element={
+             authUser ? (
+               <WhereDidYouShop
+                  comparison={comparison}
+                  sortedStores={filteredStores}
+                />
+               ) : (
+                 <p>Please sign in to view where you shopped</p>
+                 )
+              }
+            path="/user/:id/where-did-you-shop"
+            />
           <Route element={<AuthDetails auth={auth} authUser={authUser} />} />
           <Route element={<Categories />} path="/categories" />
           <Route element={<Vegetables />} path="/vegetables" />
@@ -551,6 +564,16 @@ function App() {
             }
             path="/user/:id/savings/:selectedStore"
           />
+          <Route
+            element={
+             authUser ? (
+               <Savings sortedStores={filteredStores} comparison={comparison} />
+                ) : (
+                 <p>Please sign in to view savings</p>
+                 )
+              }
+            path="/user/:id/savings/:selectedStore"
+                />
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />
           <Route
@@ -620,7 +643,7 @@ function App() {
             element={<ForgotPasswordComponent />}
             path="/forgot-password"
           />
-          <Route
+          {/* <Route
             element={
               <WhereDidYouShop
                 comparison={comparison}
@@ -628,7 +651,7 @@ function App() {
               />
             }
             path="/user/:id/where-did-you-shop"
-          />
+          /> */}
           <Route
             element={<TermsAndConditions />}
             path="/terms-and-conditions"
