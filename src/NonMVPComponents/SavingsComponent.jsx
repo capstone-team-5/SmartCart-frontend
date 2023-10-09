@@ -38,7 +38,7 @@ const SavingsComponent = ({ comparison }) => {
           {savings !== null && (
             <p className="mt-2">
                 {/* You saved ${savings} by shopping at <strong>{selectedStore}</strong>. */}
-                You saved ${29.05} by shopping at <strong>{selectedStore}</strong>.
+                You saved ${20.89} by shopping at <strong>{selectedStore}</strong>.
             </p>
             
           )}
