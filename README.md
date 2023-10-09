@@ -1,71 +1,79 @@
-# Getting Started with Create React App
+# $mrtCART Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the $mrtCART front end application! This front end is designed with one core mission: to cater to the needs of shoppers who are seeking an effortless way to compare prices. Our backend empowers users to make informed purchasing decisions by providing them with a seamless and convenient experience when it comes to comparing prices for their desired products.
 
-## Available Scripts
+## The Concept
 
-In the project directory, you can run:
+At the heart of $mrtCART lies a simple yet powerful idea: making price comparison a breeze for shoppers. The main logic of the application revolves around a user-friendly process that begins with users selecting their desired location and entering their grocery list. Once the grocery list is entered, the magic of the $mrtCART comes into play.
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Deployed Backend URL](https://)
+- [Deployed Frontend URL](https://)
+- Meet Team Members
+- Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Team Members
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Meet the fantastic minds behind $mrtCART:
 
-### `npm run build`
+- **Diandre Miller**: Technical Lead
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - [GitHub](https://github.com/DiandreMiller)
+  - [LinkedIn](https://www.linkedin.com/in/diandre-miller/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Ryan Fodera**:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  - [GitHub](https://github.com/ryanfodera)
+  - [LinkedIn](https://www.linkedin.com/in/ryan-fodera/)
 
-### `npm run eject`
+- **Tafari Excell**:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  - [GitHub](https://github.com/Tafarigit)
+  - [LinkedIn](https://www.linkedin.com/in/tafari-e-7a5554110/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Touhami Benmessaoud**:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  - [GitHub](https://github.com/touhami-ben)
+  - [LinkedIn](https://www.linkedin.com/in/touhami-benmessaoud-aaa072259/)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Vandhana Mohan**: Design Lead
+  - [GitHub](https://github.com/Vandhana-Mohan)
+  - [LinkedIn](https://www.linkedin.com/in/vandhanamohan/)
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Getting started with the $mrtCART is a breeze:
 
-### Code Splitting
+1. Fork and Clone the repository using the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   ```
+   git clone <repository-url>
+   ```
 
-### Analyzing the Bundle Size
+2. Navigate to the project directory and install the dependencies using the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   ```
+   `cd` into this repository
+   npm install
+   ```
 
-### Making a Progressive Web App
+3. Create a `.env` file in the root directory and add the following environment variables:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```
+   PORT=<port-number>
+   ```
 
-### Advanced Configuration
+4. Start the server using the following command
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   ```
+   npm start
+   ```
 
-### Deployment
+   🍓🛒🛍🍓 Feel free to explore these endpoints to manage products, stores, and reviews for an enhanced shopping experience! 🍓🛒🛍🍓
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# frontend
+---

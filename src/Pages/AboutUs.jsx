@@ -1,11 +1,11 @@
-import AboutUsComponent from "../NonMVPComponents/AboutUsComponent"
+import AboutUsComponent from "../NonMVPComponents/AboutUsComponent";
 
 const AboutUs = () => {
-    return (
-        <div>
-            <AboutUsComponent />
-        </div>
-    )
-}
+  return (
+    <div>
+      <AboutUsComponent />
+    </div>
+  );
+};
 
 export default AboutUs;

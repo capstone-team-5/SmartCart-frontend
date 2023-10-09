@@ -1,9 +1,9 @@
 import SavingsComponent from "../NonMVPComponents/SavingsComponent"
 
-const Savings = () => {
+const Savings = ({sortedStores, comparison, stores}) => {
     return (
         <div>
-            <SavingsComponent />
+            <SavingsComponent sortedStores={sortedStores} comparison={comparison} stores={stores} />
         </div>
     )
 };
