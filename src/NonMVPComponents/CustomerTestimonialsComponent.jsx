@@ -47,7 +47,7 @@ const CustomerTestimonialsComponent = () => {
       job: "Senior Instructor Pursuit",
       text: "With my large caseload, I love that this saves me time and money.",
       image:
-        "https://m.media-amazon.com/images/M/MV5BMWVjOTAzMmItOGM1NS00MTdkLWE0YzAtZDE5ZDJlNDcxZjk5XkEyXkFqcGdeQXVyNDg3NTIyODU@._V1_.jpg",
+        "https://media.licdn.com/dms/image/C4D03AQEEQaOc98LPgw/profile-displayphoto-shrink_800_800/0/1579980988739?e=1702512000&v=beta&t=nc0e8FU0ZAf2veVIn4RlRCwiI0_uvSoHRV5Rx2_8Jn0",
     },
     {
       id: 2,
@@ -59,10 +59,10 @@ const CustomerTestimonialsComponent = () => {
     {
       id: 3,
       name: "Lillian Schneck",
-      job: "Marketing Manager",
+      job: "Director",
       text: "I love how user-friendly your website is.",
       image:
-        "https://media.istockphoto.com/id/858979828/photo/creepy-clown-face.jpg?s=612x612&w=0&k=20&c=Po9cGmqC8oQGPqnxmLFypK6vG9-FeBm3Z_fPK6vxHy8=",
+        "https://media.licdn.com/dms/image/C4D03AQGvdepbXdpNBQ/profile-displayphoto-shrink_800_800/0/1608569572142?e=1702512000&v=beta&t=XyFXBPAx88PwRu-ausqCZ_iB-0HCBGKjkEjZjWmpjEg",
     },
     {
       id: 4,
