@@ -2,11 +2,13 @@
 
 import GingerGarlicSalmonRecipeComponent from "../../NonMVPComponents/GingerGarlicSalmonRecipeComponent"
 
-const GingerGarlicSalmonRecipe = ({addIngredientsToCart}) => {
+const GingerGarlicSalmonRecipe = ({ addIngredientsToCart }) => {
+    
+    const nameOfIngredients = ["Wild Salmon", "Garlic"]
 
     return (
         <div>
-            <GingerGarlicSalmonRecipeComponent addIngredientsToCart={addIngredientsToCart} />
+            <GingerGarlicSalmonRecipeComponent addIngredientsToCart={addIngredientsToCart} nameOfIngredients={nameOfIngredients} />
         </div>
     )
 };
