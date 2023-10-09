@@ -234,7 +234,6 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
 
               return a.product_name.localeCompare(b.product_name);
             });
-
           setProducts(foundItems);
         })
         .catch((error) => console.log(error));
