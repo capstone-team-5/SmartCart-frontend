@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Fruits from "./Fruits";
 
 const Categories = () => {
   const GroceryCategories = [
@@ -8,11 +7,13 @@ const Categories = () => {
       name: "Fruits",
       logoSrc:
         "https://images.immediate.co.uk/production/volatile/sites/30/2023/02/Bowl-of-fruit-5155e6f.jpg?quality=90&resize=440,400",
+      link: "/fruits",
     },
     {
       name: "Vegetables",
       logoSrc:
         "https://media.post.rvohealth.io/wp-content/uploads/2020/08/fruits-and-vegetables-thumb-1-732x549.jpg",
+      link: "/vegetables",
     },
     {
       name: "Meat",
@@ -26,7 +27,7 @@ const Categories = () => {
     {
       name: "Poultry",
       logoSrc:
-        "https://agridata.ec.europa.eu/extensions/CommonImages/eggs-poultry.png",
+        "https://cdn11.bigcommerce.com/s-efc47/images/stencil/1280x1280/products/2579/5433/images__13526__32612.1535055045.jpg?c=2",
     },
     {
       name: "Dairy",
@@ -145,9 +146,22 @@ const Categories = () => {
       logoSrc:
         "https://img.livestrong.com/-/clsd/getty/887e538ab41a4f5b82ab53a5548a8d81.jpg",
     },
-
+    {
+      name: "Herbs",
+      logoSrc:
+        "https://i.etsystatic.com/6186509/r/il/5ead75/3817289188/il_fullxfull.3817289188_52d3.jpg",
+    },
     // Add other partner objects here
   ];
+
+  const [showAllCategories, setShowAllCategories] = useState(false);
+  const displayedCategories = showAllCategories
+    ? GroceryCategories
+    : GroceryCategories.slice(0, 8);
+
+  const handleToggleCategories = () => {
+    setShowAllCategories(!showAllCategories);
+  };
 
   return (
     <section className="bg-white dark:bg-gray-900">
@@ -157,19 +171,19 @@ const Categories = () => {
         </h2>
         {/* <p className="mb-8 lg:mb-16 text-gray-500 text-center">Shop All</p> */}
 
-        <div className="grid grid-cols-2 gap-8 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400">
-          {GroceryCategories.length > 0 ? (
-            GroceryCategories.map((category, index) => (
+        <div className="grid grid-cols-2 gap-8 sm:gap-12 md:grid-cols-4 dark:text-gray-400">
+          {displayedCategories.length > 0 ? (
+            displayedCategories.map((category, index) => (
               <div key={index} className="flex flex-col items-center">
                 <Link
-                  to="#"
+                  to={category.link || "#"}
                   className="flex flex-col items-center p-4 rounded-lg"
                 >
                   <div className="w-48 h-40 mb-4">
                     <img
                       src={category.logoSrc}
                       alt={category.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full rounded-lg shadow-xl object-cover"
                     />
                   </div>
                   <h3 className="mt-2 text-center font-bold">
@@ -181,6 +195,16 @@ const Categories = () => {
           ) : (
             <p>No Categories Found!</p>
           )}
+        </div>
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={handleToggleCategories}
+            className="text-indigo-600 hover:underline mb-4 lg:mb-8 text-xl font-extrabold tracking-wide leading-tight text-center dark:text-white md:text-2xl"
+          >
+            {showAllCategories
+              ? "Show Less Categories"
+              : "Explore More Categories"}
+          </button>
         </div>
       </div>
     </section>

@@ -17,7 +17,7 @@ const { id } = useParams;
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-gray-50 dark:bg-gray-900">
+      <footer className="dark:bg-gray-900">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <MailingListComponent />
           <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />

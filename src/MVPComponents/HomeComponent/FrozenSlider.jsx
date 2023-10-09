@@ -6,14 +6,14 @@ import "slick-carousel/slick/slick-theme.css";
 
 const API = process.env.REACT_APP_BACKEND_API;
 
-const InternationalSlider = ({ addToCart }) => {
+const FrozenSlider = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
-      .get(`${API}/products/international`)
+      .get(`${API}/products/frozen`)
       .then((response) => {
         setProducts(response.data);
         setLoading(false);
@@ -72,7 +72,7 @@ const InternationalSlider = ({ addToCart }) => {
   return (
     <div className="mx-auto container p-4 mt-2">
       <h1 className="p-2 text-black mb-4 text-xl font-extrabold">
-        Shop International Groceries
+        Shop Frozen Foods
       </h1>
       <div
         className="relative w-full border-2 rounded-lg"
@@ -88,7 +88,7 @@ const InternationalSlider = ({ addToCart }) => {
                 <img
                   src={product.product_image}
                   alt={product.product_name}
-                  className="object-contain object-center w-full h-40"
+                  className="object-contain object-center w-full h-40 "
                 />
               </div>
               <h3 className="text-black mb-4 mt-4 md:text-lg text-center font-medium">
@@ -109,4 +109,4 @@ const InternationalSlider = ({ addToCart }) => {
     </div>
   );
 };
-export default InternationalSlider;
+export default FrozenSlider;

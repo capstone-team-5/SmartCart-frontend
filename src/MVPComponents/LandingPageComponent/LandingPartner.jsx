@@ -20,7 +20,7 @@ const LandingPartner = () => {
     {
       name: "Stop and shop",
       logoSrc:
-        "https://assets.stickpng.com/images/609a5c64e23929000482a85a.png",
+        "https://customercarecontacts.com/wp-content/uploads/2020/08/stop-shop-logo-300x258.jpg",
     },
     {
       name: "Bjs",
@@ -77,7 +77,7 @@ const LandingPartner = () => {
         <h2 className="mb-4 lg:mb-8 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
           30,000+ stores
         </h2>
-        <p className="mb-8 lg:mb-16 text-gray-500 text-center">
+        <p className="mb-8 lg:mb-16 text-white font-semibold text-center">
           Whether you're shopping for Organic or Vegan, we got you covered. We
           will help you find the lowest price.
         </p>
@@ -85,7 +85,7 @@ const LandingPartner = () => {
           {partners.map((partner, index) => (
             <div key={index} className="flex flex-col items-center">
               <Link to="#" className="flex justify-center items-center">
-                <div className="w-40 h-40 rounded-full overflow-hidden">
+                <div className="w-40 h-40 rounded-full">
                   <img
                     className="w-full h-full object-contain"
                     src={partner.logoSrc}
