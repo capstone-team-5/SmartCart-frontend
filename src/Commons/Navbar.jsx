@@ -340,14 +340,15 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               {/* <!-- Search icon --> */}
               <HiSearch size={20} />
             </button>
-            <button
-              type="button"
-              data-dropdown-toggle="notification-dropdown"
-              className="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-            >
-              <FaHeart className="text-orange-500 peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
-            </button>
-
+            <Link to="/user/:id/favorites">
+              <button
+                type="button"
+                data-dropdown-toggle="notification-dropdown"
+                className="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              >
+                <FaHeart className="text-orange-500 peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
+              </button>
+            </Link>
             <Link
               to="/cart"
               className="p-2 mr-1 rounded-lg hover:bg-white relative dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -553,7 +554,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               >
                 <li>
                   <Link
-                    to="#"
+                    to="/user/:id/favorites"
                     className="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     onClick={handleFavoritesClick}
                   >
