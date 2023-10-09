@@ -4,7 +4,7 @@ import GingerGarlicSalmonRecipeComponent from "../../NonMVPComponents/GingerGarl
 
 const GingerGarlicSalmonRecipe = ({ addIngredientsToCart }) => {
     
-    const nameOfIngredients = ["Wild Salmon", "Garlic"]
+    const nameOfIngredients = ["Wild Salmon", "Garlic", "Ginger", "Kikkoman Soy Sauce", "Natures Nate Unfiltered Honey", "Bertolli Extra Virgin Olive Oil", "Kadoya Sesame oil", "McCormick Red pepper flakes", "McCormick Pure Ground Black pepper", "Coarse Kosher Salt", "Cilantro"]
 
     return (
         <div>
