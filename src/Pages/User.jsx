@@ -1,11 +1,12 @@
-import UserComponent from "../MVPComponents/UserComponent";
-
+// import UserComponent from "../MVPComponents/UserComponent";
+import ChangePasswordComponent from "../NonMVPComponents/ChangePasswordComponent";
 const User = () => {
-    return (
-        <div>
-            <UserComponent />
-        </div>
-    )
+  return (
+    <div>
+      {/* <UserComponent /> */}
+      <ChangePasswordComponent />
+    </div>
+  );
 };
 
 export default User;
