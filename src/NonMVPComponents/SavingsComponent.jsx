@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import SavingsChartComponent from "../MVPComponents/SavingsChartComponent";
 
 const SavingsComponent = ({ comparison }) => {
   const { id, selectedStore } = useParams(); 
@@ -44,6 +45,7 @@ const SavingsComponent = ({ comparison }) => {
           )}
         </div>
       )}
+      <SavingsChartComponent />
     </div>
   );
 };
