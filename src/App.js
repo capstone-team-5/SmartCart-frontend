@@ -330,11 +330,13 @@ function App() {
     setStoreTotalPrices(newStoreTotalPrices);
   }, [cart, comparison, stores]);
 
-  const filteredStores = stores
-    .filter((store) => comparison.hasOwnProperty(store.store_id))
-    .sort(
-      (a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
-    );
+  const filteredStores = stores.length === 0
+  ? null
+  : stores
+      .filter((store) => comparison.hasOwnProperty(store.store_id))
+      .sort(
+        (a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
+      );
 
   useEffect(() => {
     const cartIds = cart.map((food) => food.id);
