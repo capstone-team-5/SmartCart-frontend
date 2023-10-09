@@ -74,10 +74,7 @@ const InternationalSlider = ({ addToCart }) => {
       <h1 className="p-2 text-black mb-4 text-xl font-extrabold">
         Shop International Groceries
       </h1>
-      <div
-        className="relative w-full border-2 rounded-lg"
-        data-carousel="slide"
-      >
+      <div className="relative w-full border-2 rounded-lg" data-carousel="slide">
         <Slider {...settings}>
           {products.map((product) => (
             <div
