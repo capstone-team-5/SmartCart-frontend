@@ -1,4 +1,4 @@
-import SearchComponent from "../MVPComponents/SearchComponent";
+// import SearchComponent from "../MVPComponents/SearchComponent";
 
 const Header = ({ addToCart }) => {
   return (
