@@ -110,7 +110,7 @@ const ChangePasswordComponent = () => {
                   I accept the{" "}
                   <Link
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                    href="#"
+                    to="/terms-and-conditions"
                   >
                     Terms and Conditions
                   </Link>
