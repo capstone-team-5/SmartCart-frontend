@@ -71,7 +71,7 @@ const InternationalSlider = ({ addToCart }) => {
 
   return (
     <div className="mx-auto container p-4 mt-2">
-      <h1 className="p-2 text-black mb-4 text-xl font-extrabold">
+      <h1 className="p-2 text-black mb-4 text-xl font-extrabold dark:text-white">
         Shop International Groceries
       </h1>
       <div className="relative w-full border-2 rounded-lg" data-carousel="slide">
@@ -88,7 +88,7 @@ const InternationalSlider = ({ addToCart }) => {
                   className="object-contain object-center w-full h-40"
                 />
               </div>
-              <h3 className="text-black mb-4 mt-4 md:text-lg text-center font-medium">
+              <h3 className="text-black mb-4 mt-4 md:text-lg text-center font-medium dark:text-white">
                 {product.product_name}
               </h3>
               <div className="flex justify-center mt-1 mb-1">
