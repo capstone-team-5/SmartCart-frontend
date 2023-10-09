@@ -2,14 +2,14 @@
 
 const TermsAndConditionsComponent = () => {
   return (
-    <section className="text-center mt-20 px-4">
+    <section className="text-center mt-20 px-4 dark:text-white">
       <h1 className="text-4xl mb-8 tracking-tight font-extrabold text-gray-900 dark:text-white">
         Terms and Conditions
       </h1>
 
       <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-6 gap-8">
         <div className="rounded border-gray-300 dark:border-gray-700 border-2 p-4">
-          <h2 className="text-xl font-semibold mb-2">1. Definitions</h2>
+          <h2 className="text-xl font-semibold mb-2 dark:text-white">1. Definitions</h2>
           <ul className="list-disc pl-4">
             <li>"Application" refers to $mrtCART, the service provided by us to compare prices of grocery items and find the best deals in your area.</li>
             <li>"User" refers to individuals who use our application to compare prices and make informed purchasing decisions.</li>
