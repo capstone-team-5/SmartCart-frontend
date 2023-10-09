@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import logo_image from "../Assets/SmrtCARTLogo4.png";
-import { FaHeart, FaUserAlt } from "react-icons/fa";
+import { FaHeart, FaUserAlt, FaNutritionix } from "react-icons/fa";
 import { HiOutlineShoppingCart, HiSearch, HiMenuAlt2 } from "react-icons/hi";
 import { AiFillAppstore, AiFillHome } from "react-icons/ai";
 import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
 import { auth } from "../Firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-
+import { GiMeal } from "react-icons/gi";
 import {
   MdLogout,
   MdSavings,
@@ -69,7 +69,7 @@ const navLinks = [
   },
   {
     title: "Sign in",
-    link: "/user/:id/feedback",
+    link: "/sign-in",
   },
   {
     title: "FAQ",
@@ -80,11 +80,11 @@ const navLinks = [
 const userDropDown = [
   {
     title: "Sign In",
-    link: "/sign-up",
+    link: "/sign-in",
   },
   {
     title: "Create Account",
-    link: "/signup",
+    link: "/sign-up",
   },
   {
     title: "Profile Settings",
@@ -335,19 +335,21 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               id="toggleSidebarMobileSearch"
               type="button"
               className="p-2 text-white rounded-lg lg:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              onClick={(event) => handleSearchChange(event)}
             >
               <span className="sr-only">Search</span>
               {/* <!-- Search icon --> */}
               <HiSearch size={20} />
             </button>
-            <button
-              type="button"
-              data-dropdown-toggle="notification-dropdown"
-              className="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-            >
-              <FaHeart className="text-orange-500 peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
-            </button>
-
+            <Link to="/user/:id/favorites">
+              <button
+                type="button"
+                data-dropdown-toggle="notification-dropdown"
+                className="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              >
+                <FaHeart className="text-orange-500 peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
+              </button>
+            </Link>
             <Link
               to="/cart"
               className="p-2 mr-1 rounded-lg hover:bg-white relative dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -384,7 +386,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="/home"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <AiFillHome />
+                  <AiFillHome className="dark:text-white" />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
                     Home
                   </div>
@@ -394,7 +396,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <MdCategory />
+                  <MdCategory className="dark:text-white" />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
                     Categories
                   </div>
@@ -403,7 +405,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <HiOutlineShoppingCart />
+                  <HiOutlineShoppingCart className="dark:text-white" />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
                     Cart
                   </div>
@@ -419,7 +421,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="/user/:id/favorites"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <FaHeart />
+                  <FaHeart className="dark:text-white" />
                   <div
                     onClick={handleFavoritesClick}
                     className="text-sm font-medium text-gray-900 dark:text-white"
@@ -434,14 +436,14 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                 >
                   {isDarkTheme ? (
                     <>
-                      <BiSolidMoon />
+                      <BiSolidMoon className="dark:text-white" />
                       <div className="text-sm font-medium text-gray-900 dark:text-white">
                         Dark Mode
                       </div>
                     </>
                   ) : (
                     <>
-                      <BiSolidSun />
+                      <BiSolidSun className="dark:text-white" />
                       <div className="text-sm font-medium text-gray-900 dark:text-white">
                         Light Mode
                       </div>
@@ -453,7 +455,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="/user/:id/savings/:selectedStore"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <MdSavings />
+                  <MdSavings className="dark:text-white" />
                   <div
                     onClick={handleTrackSavingsClick}
                     className="text-sm font-medium text-gray-900 dark:text-white"
@@ -466,7 +468,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="/recipes"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <FaUserAlt />
+                  <GiMeal className="dark:text-white" />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
                     Recipes
                   </div>
@@ -475,7 +477,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="/nutrition"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <MdSettings />
+                  <FaNutritionix className="dark:text-white" />
                   <div className="text-sm font-medium text-gray-900 dark:text-white">
                     Nutrition
                   </div>
@@ -484,7 +486,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   to="#"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
-                  <MdLogout />
+                  <MdLogout className="dark:text-white" />
                   <div
                     onClick={userSignOut}
                     className="text-sm font-medium text-gray-900 dark:text-white"
@@ -505,7 +507,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               <span className="sr-only">Open user menu</span>
               <FaUserAlt
                 size={30}
-                className="w-8 h-8 rounded-full object-contain bg-white"
+                className="w-8 h-8 rounded-full object-contain text-white"
               />
               {/* <img
                 className="w-8 h-8 rounded-full object-contain"
@@ -553,7 +555,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               >
                 <li>
                   <Link
-                    to="#"
+                    to="/user/:id/favorites"
                     className="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     onClick={handleFavoritesClick}
                   >

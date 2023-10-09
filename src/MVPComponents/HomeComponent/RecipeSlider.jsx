@@ -79,7 +79,7 @@ const RecipeSlider = () => {
 
   return (
     <div className="mx-auto container p-4 mt-2">
-      <h1 className="p-2 text-black mb-4 text-xl font-extrabold">
+      <h1 className="p-2 text-black mb-4 text-xl font-extrabold dark:text-white">
         Shop Directly From Our Recipes
       </h1>
       <div
@@ -99,7 +99,7 @@ const RecipeSlider = () => {
                     alt={recipe.name}
                     className="object-contain object-center w-full h-full rounded-lg shadow-md"
                   />
-                  <h3 className="mt-2 text-lg font-semibold text-center">
+                  <h3 className="mt-2 text-lg font-semibold text-center dark:text-white">
                     {recipe.name}
                   </h3>
                 </Link>
