@@ -1,12 +1,12 @@
 //This is the terms and conditions page
-
+import { Link, useNavigate } from "react-router-dom";
 const TermsAndConditionsComponent = () => {
+  const navigate = useNavigate();
   return (
     <section className="text-center mt-20 px-4 dark:text-white">
       <h1 className="text-4xl mb-8 tracking-tight font-extrabold text-gray-900 dark:text-white">
         Terms and Conditions
       </h1>
-
       <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-6 gap-8">
         <div className="rounded border-gray-300 dark:border-gray-700 border-2 p-4">
           <h2 className="text-xl font-semibold mb-2 dark:text-white">
@@ -135,6 +135,15 @@ const TermsAndConditionsComponent = () => {
         Thank you for using $mrtCART. We hope our service helps you save time
         and money while shopping for groceries!
       </p>
+      <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+        <Link
+          to="/"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900  focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-900 my-4"
+          onClick={() => navigate(-1)}
+        >
+          Back
+        </Link>
+      </div>
     </section>
   );
 };
