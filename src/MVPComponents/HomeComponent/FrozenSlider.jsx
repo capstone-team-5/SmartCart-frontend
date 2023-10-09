@@ -74,12 +74,15 @@ const FrozenSlider = ({ addToCart }) => {
       <h1 className="p-2 text-black mb-4 text-xl font-extrabold">
         Shop Frozen Foods
       </h1>
-      <div className="relative w-full border-2" data-carousel="slide">
+      <div
+        className="relative w-full border-2 rounded-lg"
+        data-carousel="slide"
+      >
         <Slider {...settings}>
           {products.map((product) => (
             <div
               key={product.id}
-              className="flex flex-col items-center relative"
+              className="flex flex-col items-center relative shadow-lg"
             >
               <div className="p-2 rounded mb-2">
                 <img

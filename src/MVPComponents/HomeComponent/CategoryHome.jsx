@@ -45,7 +45,7 @@ const CategoryHome = () => {
         <img
           className="h-48 max-w-full rounded-lg shadow-xl border-2"
           src={image.product_image}
-          alt={`Art of ${index + 1}`}
+          alt={image.product_name}
         />
       </div>
     ));
@@ -88,7 +88,7 @@ const CategoryHome = () => {
         </div>
         <div className="bg-white p-4 text-center mt-4 dark:bg-gray-900">
           <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
-            Meat & Seafood
+            Meat, Poultry & Seafood
           </h1>
         </div>
       </div>
@@ -103,7 +103,7 @@ const CategoryHome = () => {
         </div>
         <div className="bg-white p-4 text-center mt-4 dark:bg-gray-900 dark:text-white">
           <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
-            Spices, Meat, Nuts, Snacks
+            Hot & Cold Beverages
           </h1>
         </div>
       </div>
@@ -118,7 +118,7 @@ const CategoryHome = () => {
         </div>
         <div className="bg-white p-4 text-center mt-4 dark:bg-gray-900 dark:text-white">
           <h1 className="mb-4 text-xl tracking-wide font-extrabold text-gray-900 sm:text-lg dark:text-white text-center">
-            Vegetables
+            Nutty Munchy Snacks
           </h1>
         </div>
       </div>

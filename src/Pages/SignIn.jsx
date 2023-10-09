@@ -1,12 +1,11 @@
-import SignInComponent from "../MVPComponents/auth/SignInComponent"
+import SignInComponent from "../MVPComponents/auth/SignInComponent";
 
 const SignIn = () => {
-
-    return (
-        <div>
-            <SignInComponent />
-        </div>
-    )
+  return (
+    <div>
+      <SignInComponent />
+    </div>
+  );
 };
 
 export default SignIn;
