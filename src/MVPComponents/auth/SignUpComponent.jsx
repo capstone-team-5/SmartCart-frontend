@@ -40,7 +40,7 @@ const SignUpComponent = () => {
           .post(`${process.env.REACT_APP_BACKEND_API}/shoppers`, userData)
           .then((response) => {
             // Navigate to the home page
-            navigate(-1);
+            navigate("/home");
           })
           .catch((error) => {
             console.error(
@@ -76,7 +76,7 @@ const SignUpComponent = () => {
           .post(`${process.env.REACT_APP_BACKEND_API}/shoppers`, userData)
           .then((response) => {
             // Navigate to the home page
-            navigate(-1);
+            navigate("/home");
           })
           .catch((error) => {
             console.error(

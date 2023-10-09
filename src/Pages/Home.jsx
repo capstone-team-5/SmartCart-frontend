@@ -3,14 +3,18 @@ import InternationalSlider from "../MVPComponents/HomeComponent/InternationalSli
 import Categories from "../MVPComponents/HomeComponent/Categories";
 import FrozenSlider from "../MVPComponents/HomeComponent/FrozenSlider";
 import RecipeSlider from "../MVPComponents/HomeComponent/RecipeSlider";
+import FallSlider from "../MVPComponents/HomeComponent/FallSlider";
+import ConfettiComponent from "../NonMVPComponents/ConfettiComponent";
 const Home = () => {
   return (
     <div>
       <CategoryHome />
       <Categories />
+      <FallSlider />
       <InternationalSlider />
       <FrozenSlider />
       <RecipeSlider />
+      <ConfettiComponent />
     </div>
   );
 };
