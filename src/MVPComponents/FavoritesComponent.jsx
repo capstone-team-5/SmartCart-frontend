@@ -34,6 +34,7 @@ const FavoritesComponent = ({ updatedFavorites, addToCart, addAllFavorites, user
       length: 1,
     }));
 
+    console.log('all:', allFavoriteItems)
     addAllFavorites(allFavoriteItems);
   };
 

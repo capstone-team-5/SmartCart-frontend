@@ -125,6 +125,7 @@ function App() {
   const [comparison, setComparison] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
+  const [selectedStore, setSelectedStore] = useState(null)
 
   const [authUser, setAuthUser] = useState(null);
 
@@ -168,6 +169,10 @@ function App() {
   // );
   // }
   // };
+
+  const handleStoreSelection = (store) => {
+    setSelectedStore(store);
+  };
 
   const handleAddToCart = (food) => {
     const updatedCart = [...cart];
@@ -261,8 +266,12 @@ function App() {
     // Loop through the favorite items and add them to the cart
     favoriteItems.forEach((favoriteItem) => {
       const existingItemIndex = updatedCart.findIndex(
-        (item) => item.id === favoriteItem.id
+        (item) => item.id === favoriteItem.id 
+      
       );
+
+      console.log('favoriteItem:', favoriteItem);
+
 
       if (existingItemIndex !== -1) {
         // If the item already exists in the cart, increase its quantity
@@ -278,6 +287,9 @@ function App() {
       }
     });
 
+    console.log('favorite items in app.js:', updatedCart);
+
+    console.log('favorite items in app.js:', updatedCart)
     // Update the cart state
     setCart(updatedCart);
 
@@ -557,11 +569,11 @@ function App() {
             />
           <Route element={<AuthDetails auth={auth} authUser={authUser} />} />
           <Route element={<Categories />} path="/categories" />
-          <Route element={<Vegetables />} path="/vegetables" />
+          <Route element={<Vegetables addToCart={handleAddToCart} />} path="/vegetables" />
           <Route element={<NutritionComponent />} path="/nutrition" />
           <Route
             element={
-              <Savings sortedStores={filteredStores} comparison={comparison} />
+              <Savings sortedStores={filteredStores} comparison={comparison} stores={stores} selectedStore={selectedStore} />
             }
             path="/user/:id/savings/:selectedStore"
           />
@@ -649,6 +661,7 @@ function App() {
               <WhereDidYouShop
                 comparison={comparison}
                 sortedStores={filteredStores}
+                handleStoreSelection={handleStoreSelection}
               />
             }
             path="/user/:id/where-did-you-shop"
@@ -1021,7 +1034,7 @@ function App() {
             }
             path="/recipes/dessert-foods-homemade-strawberry-icecream"
           />
-          <Route element={<Fruits />} path="/fruits" />
+          <Route element={<Fruits addToCart={handleAddToCart} />} path="/fruits" />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
         <Footer handleThemeChange={handleThemeChange} />

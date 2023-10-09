@@ -4,9 +4,10 @@ import JamaicanJerkChickenRecipeComponent from "../../NonMVPComponents/JamaicanJ
 
 const JamaicanJerkChickenRecipe = ({addIngredientsToCart}) => {
 
+    const nameOfIngredients = ["Perdue Boneless Skinless All Natural Chicken Breasts", "Bertolli Extra Virgin Olive Oil", "Kikkoman", "Garlic"]
     return (
         <div>
-            <JamaicanJerkChickenRecipeComponent addIngredientsToCart={addIngredientsToCart}  />
+            <JamaicanJerkChickenRecipeComponent addIngredientsToCart={addIngredientsToCart} nameOfIngredients={nameOfIngredients}  />
         </div>
     )
 };
