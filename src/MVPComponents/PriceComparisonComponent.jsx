@@ -71,103 +71,142 @@ const PriceComparisonComponent = ({
     }));
   };
 
-  return (
-    <div className="bg-gray-100 min-h-screen p-4">
-      {loadingMessages.length > 0 ? (
-        <div className="text-center">
-          <p className="text-xl">{loadingMessages[loadingIndex]}</p>
-          {loadingIndex === 2 && showDrumRoll ? (
-            <div>
-              <p className="text-2xl font-bold">Drum Roll !!!!</p>
-              <img
-                src="https://media0.giphy.com/media/YqWtkg0PflgGdwjrtc/giphy.gif?cid=6c09b952ugqlrnk8zvzvjkowgp2y63wn21s6466w6khi0ggr&ep=v1_stickers_related&rid=giphy.gif&ct=s"
-                alt="Drum Roll"
-                className="mx-auto mt-4"
-              />
-            </div>
-          ) : (
-            <FadeLoader
-              color={"#de8613"}
-              loading={true}
-              size={100}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-              className="mx-auto my-4"
-            />
-          )}
-        </div>
-      ) : (
-        <div className="grid grid-cols-4">
-          {sortedStores.map((store, index) => (
-            <div key={store.store_id} className="border p-4 my-4 mx-5">
-              {index === 0 ? (
-                <div>
-                  <h1 className="text-2xl font-bold">Best Value</h1>
-                </div>
-              ) : (
-                <div>
-                  <h1 className="text-2xl font-bold">Total Cart Price</h1>
-                </div>
-              )}
-              <h1 className="text-3xl font-bold">
-                ${storeTotalPrices[store.store_id]?.toFixed(2)}
-              </h1>
-              <div className="grid grid-cols-2">
-                <img
-                  src={store.store_image}
-                  alt={`${store.store_name}`}
-                  width="200px"xt
-                  className="my-2"
-                />
-                <div className="ml-5">
-                  <h3 className="text-xl">Store Name: {store.store_name}</h3>
-                  <p>Address: {store.store_address}</p>
-                  <p>City: {store.store_city}</p>
-                  <p>State: {store.store_state}</p>
-                  <p>Zipcode: {store.store_zipcode}</p>
-                  <p>Phone Number: {store.store_phone_number}</p>
-                </div>
-              </div>
+  console.log("store_accepts_EBT:", storeDetails.store_accepts_EBT);
 
-              <button
-                onClick={() => toggleDetails(store.store_id)}
-                className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
-              >
-                {storeDetails[store.store_id] ? "Show Less" : "Show More"}
-              </button>
-              {storeDetails[store.store_id] && (
-                <ul>
-                  {cart.map((item) => (
-                    <div key={item.id}>
-                      <li>
-                        <img src={item.image} alt={item.name} width="100px" />
-                        Item: {item.name}
-                        <br />
-                        Price per item: ${comparison[store.store_id][item.id]}
-                        <br />
-                        Quantity in cart: {item.length || 0}
-                        <br />
-                        Total cost for this item: $
-                        {(
-                          comparison[store.store_id][item.id] *
-                          (item.length || 0)
-                        ).toFixed(2)}
-                      </li>
-                    </div>
-                  ))}
-                  <br /> <br />
-                </ul>
-              )}
+  return (
+    <section className="bg-white dark:bg-gray-900">
+      <div>
+        {loadingMessages.length > 0 ? (
+          <div className="text-center">
+            <p className="text-3xl">{loadingMessages[loadingIndex]}</p>
+            {loadingIndex === 2 && showDrumRoll ? (
+              <div>
+                {/* <p className="text-2xl font-bold"></p>
+                <img
+                  src="https://media0.giphy.com/media/YqWtkg0PflgGdwjrtc/giphy.gif?cid=6c09b952ugqlrnk8zvzvjkowgp2y63wn21s6466w6khi0ggr&ep=v1_stickers_related&rid=giphy.gif&ct=s"
+                  alt="Drum Roll"
+                  className="mx-auto mt-4"
+                /> */}
+              </div>
+            ) : (
+              <FadeLoader
+                color={"#de8613"}
+                loading={true}
+                size={1000}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+                className="mx-auto my-4"
+              />
+            )}
+          </div>
+        ) : (
+          <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+            <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+              <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                Price Comparison Results
+              </h2>
+              <h3 className="mb-4 text-xl tracking-tight font-bold text-gray-900 dark:text-white">
+                {" "}
+                Unbelievable Prices with smrtCART
+              </h3>
             </div>
-          ))}
-          <Link to={`/user/${id}/where-did-you-shop`}>
-            <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700">
-              See Your Savings
-            </button>
-          </Link>
-        </div>
-      )}
-    </div>
+            <div className="grid gap-8 mb-6 sm:grid-cols-2 md:grid-cols-3">
+              {sortedStores.map((store, index) => (
+                <div
+                  key={store.store_id}
+                  className="bg-gray-50 rounded-xl shadow-lg p-5 mb-4 flex flex-col justify-between"
+                >
+                  {index === 0 ? (
+                    <div>
+                      <h1 className="text-2xl font-bold">Best Value</h1>
+                    </div>
+                  ) : (
+                    <div>
+                      <h1 className="text-2xl font-bold">Total Cart Price</h1>
+                    </div>
+                  )}
+                  <h1 className="text-3xl font-bold">
+                    ${storeTotalPrices[store.store_id]?.toFixed(2)}
+                  </h1>
+                  <img
+                    className="w-full shadow-xl rounded-xl mb-4 h-48 object-cover"
+                    src={store.store_image}
+                    alt={`${store.store_name}`}
+                  />
+                  <div className="border rounded-lg p-6 bg-gray-100">
+                    <div className="flex flex-col items-start mb-4">
+                      <span className="font-bold">
+                        Store Name: {store.store_name}
+                      </span>
+                    </div>
+                    <div className="flex flex-col items-start mb-4">
+                      <span className="font-bold">Store Details:</span>
+                      <p>{store.store_address}</p>
+                      <p>{store.store_city}</p>
+                      <p>
+                        {store.store_state}, {store.store_zipcode}
+                      </p>
+                      <p>{store.store_phone_number}</p>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => toggleDetails(store.store_id)}
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-300 mt-4 mb-4"
+                  >
+                    {storeDetails[store.store_id] ? "Show Less" : "Show More"}
+                  </button>
+                  {storeDetails[store.store_id] && (
+                    <ul>
+                      <div className="grid gap-8 mb-6 sm:grid-cols-2 md:grid-cols-3">
+                        {cart.map((item) => (
+                          <div
+                            key={item.id}
+                            className="bg-gray-50 rounded-xl shadow-lg p-5 mb-4 flex flex-col justify-between"
+                          >
+                            <li>
+                              <img
+                                className="w-full shadow-xl rounded-xl mb-4 h-48 object-contain"
+                                src={item.image}
+                                alt={item.name}
+                              />
+                              <div className="flex flex-col items-center">
+                                <h3 className="text-xl font-bold mb-4 mt-4">
+                                  Item: {item.name}
+                                </h3>
+                                <h3 className="text-xl font-bold mb-4 mt-4">
+                                  Price per item: $
+                                  {comparison[store.store_id][item.id]}
+                                </h3>
+                                <h3 className="text-xl font-bold mb-4 mt-4">
+                                  Quantity in cart: {item.length || 0}
+                                </h3>
+                                <h3 className="text-xl font-bold mb-4 mt-4">
+                                  Total cost for this item: $
+                                  {(
+                                    comparison[store.store_id][item.id] *
+                                    (item.length || 0)
+                                  ).toFixed(2)}
+                                </h3>
+                              </div>
+                            </li>
+                          </div>
+                        ))}
+                      </div>
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+            <Link to={`/user/${id}/where-did-you-shop`}>
+              <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-300 mt-4 mb-4">
+                See Your Savings
+              </button>
+            </Link>
+          </div>
+        )}
+      </div>
+    </section>
   );
 };
 

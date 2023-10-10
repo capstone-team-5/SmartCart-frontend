@@ -356,16 +356,16 @@ function App() {
         setComparison(response.data.stores);
         setTimeout(() => {
           setLoading("Calculating Your Savings");
-        }, 1500);
+        }, 5000);
 
         setTimeout(() => {
           setLoading("Drum Roll !!!!");
           setShowDrumRoll(true);
-        }, 5000);
+        }, 50);
 
         setTimeout(() => {
           setLoading(false);
-        }, 7500);
+        }, 700);
       })
       .catch((error) => {
         console.error("Error fetching comparison data:", error);

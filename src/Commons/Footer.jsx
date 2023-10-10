@@ -168,7 +168,7 @@ const Footer = () => {
               </Link>
 
               <Link
-                to="#"
+                to="https://www.instagram.com/officialsmrtcart/"
                 target="_blank"
                 className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
               >
@@ -184,7 +184,7 @@ const Footer = () => {
                 <span className="sr-only">YouTube</span>
               </Link>
               <Link
-                to="#"
+                to="https://www.tiktok.com/@samanthajohn4327?is_from_webapp=1&sender_device=pc"
                 target="_blank"
                 className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
               >
