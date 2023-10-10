@@ -4,8 +4,7 @@ const LandingBanner = () => {
     <section className="bg-center  bg-transparent bg-[url(https://www.bankrate.com/2020/08/01170557/How-to-save-money-on-groceries.jpeg)] bg-gray-700 bg-blend-multiply bg-contain">
       <div className="px-4 w-full mx-auto text-center py-24 lg:py-56 bg-black bg-opacity-50">
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
-          Find the lowest prices and best deals on groceries across hundreds of
-          stores in your area with $mrtCART.
+          Find the lowest prices and best deals on groceries with $mrtCART.
         </h1>
         <p className="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">
           Get Started to Save Today!

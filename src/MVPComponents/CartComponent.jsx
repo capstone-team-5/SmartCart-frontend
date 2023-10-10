@@ -1,9 +1,10 @@
 //This will function is for the user's cart before they are logged in
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import axios from "axios";
+import ReactToPrint from "react-to-print";
 
 const CartComponent = ({
   deleteItem,
@@ -15,10 +16,13 @@ const CartComponent = ({
 }) => {
   const [itemQuantities, setItemQuantities] = useState({});
   const [comparison, setComparison] = useState({});
+  const [shoppingList, setShoppingList] = useState(
+    "Your shopping list goes here."
+  );
+  const componentRef = useRef(null);
 
   // Log the JSON representation of itemQuantities
-// console.log("itemQuantities:", JSON.stringify(itemQuantities, null, 2));
-
+  // console.log("itemQuantities:", JSON.stringify(itemQuantities, null, 2));
 
   useEffect(() => {
     const quantities = cart.reduce((quantities, item) => {
@@ -79,6 +83,20 @@ const CartComponent = ({
     );
   }, [itemQuantities, cartLength, updateCartLength]);
 
+  useEffect(() => {
+    const updatedShoppingList = cart.map(
+      (item) => `${item.name} - Quantity: ${itemQuantities[item.id] || 0}`
+    );
+    setShoppingList(updatedShoppingList.join("\n"));
+  }, [cart, itemQuantities]);
+
+  const handleCopyToClipboard = () => {
+    navigator.clipboard
+      .writeText(shoppingList)
+      .then(() => alert("Shopping list copied to clipboard!"))
+      .catch((error) => console.error("Failed to copy: ", error));
+  };
+
   return (
     <div>
       {cart.length === 0 ? (
@@ -94,12 +112,15 @@ const CartComponent = ({
         </p>
       ) : (
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <div
+            className="relative overflow-x-auto shadow-md sm:rounded-lg mb-8"
+            ref={componentRef}
+          >
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <caption className="p-5 mb-4 text-3xl tracking-tight sm:text-4xl font-extrabold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                 Shopping List
               </caption>
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <thead className="text-xs text-gray-700 uppercase bg-orange-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" className="px-2 py-2 md:px-6 md:py-3">
                     <span className="sr-only">Image</span>
@@ -135,7 +156,7 @@ const CartComponent = ({
                         <img
                           src={item.image}
                           alt={item.name}
-                          className="max-w-full h-auto"
+                          className="w-24 h-24 object-contain"
                         />
                       </Link>
                     </td>
@@ -179,19 +200,33 @@ const CartComponent = ({
             </table>
           </div>
           <button
-            className="font-medium bg-blue-200 p-4 m-4 text-red-600 dark:text-red-500 hover:underline"
+            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 mr-8"
             onClick={clearCart}
           >
             Clear Cart
           </button>
           <Link to="/price-compare">
             <button
-              className="font-medium bg-blue-200 p-4 m-4 text-red-600 dark:text-red-500 hover:underline"
+              className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 mr-8"
               onClick={handleSubmit}
             >
               Confirm Your Cart!
             </button>
           </Link>
+          <button
+            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 mr-8"
+            onClick={() => {
+              window.print();
+            }}
+          >
+            Print Shopping List
+          </button>
+          <button
+            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 mr-8"
+            onClick={handleCopyToClipboard}
+          >
+            Copy Shopping List
+          </button>
         </div>
       )}
     </div>

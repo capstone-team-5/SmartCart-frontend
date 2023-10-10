@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const API = process.env.REACT_APP_BACKEND_API;
 
-const Vegetables = ({ addToCart }) => {
+const Meat = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -15,7 +15,7 @@ const Vegetables = ({ addToCart }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API}/products/vegetables`, {
+        const response = await axios.get(`${API}/products/meat`, {
           params: {
             page: currentPage, // Send the current page
             pageSize: productsPerPage, // Send the products per page
@@ -29,7 +29,6 @@ const Vegetables = ({ addToCart }) => {
         setLoading(false);
       }
     };
-
     fetchData();
   }, [currentPage]);
 
@@ -48,10 +47,10 @@ const Vegetables = ({ addToCart }) => {
   return (
     <div className="sm:px-8 md:px-24 py-12 dark:bg-gray-900">
       <div className="flex flex-col dark:bg-gray-900">
-        <div className="bg-transparent bg-cover bg-[url(https://d2jx2rerrg6sh3.cloudfront.net/image-handler/picture/2019/5/Assortment_of_fresh_fruits_and_vegetables_-_Image_-_Alexander_Raths_A1_3c4a26f865c44eea80b0017c2dc1c858-620x480.jpg)] bg-gray-700 bg-blend-multiply ">
+        <div className="bg-transparent bg-cover bg-[url(https://www.shutterstock.com/image-photo/panorama-banner-large-selection-barbecued-260nw-1564442593.jpg)] bg-gray-700 bg-blend-multiply ">
           <div className="px-4 w-full mx-auto text-center py-8 md:py-32 lg:py-40 bg-black bg-opacity-50">
             <h1 className="mb-2 text-3xl md:text-4xl lg:text-5xl text-white font-extrabold tracking-wide leading-none">
-              All Vegetables
+              All Meats
             </h1>
           </div>
         </div>
@@ -138,4 +137,4 @@ const Vegetables = ({ addToCart }) => {
   );
 };
 
-export default Vegetables;
+export default Meat;

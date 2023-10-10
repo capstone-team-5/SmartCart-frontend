@@ -39,7 +39,7 @@ const SearchResultsComponent = ({ addToCart }) => {
           </h2>
         </div>
 
-        <div className="grid gap-8 mb-6 lg:mb-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        <div className="grid gap-8 mb-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {filteredResults.map((product) => (
             <div
               key={product.product_id}

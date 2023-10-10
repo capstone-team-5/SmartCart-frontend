@@ -7,6 +7,8 @@ import logo_image from "../../Assets/SmrtCARTLogo4.png";
 import axios from "axios";
 import { auth, googleProvider } from "../../Firebase";
 import { FaGoogle } from "react-icons/fa6";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+// import { FcGoogle } from "react-icons/fc";
 
 const SignUpComponent = () => {
   const [email, setEmail] = useState("");
@@ -93,7 +95,7 @@ const SignUpComponent = () => {
   return (
     <section className="dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <Link
+        {/* <Link
           to="/"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
         >
@@ -103,12 +105,38 @@ const SignUpComponent = () => {
             alt="SmrtCART Logo"
           />
           $mrtCART
-        </Link>
+        </Link> */}
         <div className="w-full bg-white rounded-lg drop-shadow-md dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Welcome
             </h1>
+            <div className="flex items-start">
+              <div className="flex items-center h-5">
+                <input
+                  id="newsletter"
+                  aria-describedby="newsletter"
+                  type="checkbox"
+                  className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                  required
+                />
+              </div>
+              <div className="ml-3 text-sm">
+                <label
+                  htmlFor="newsletter"
+                  className="font-light text-gray-500 dark:text-gray-300"
+                >
+                  I accept the{" "}
+                  <Link
+                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                    to="/terms-and-conditions"
+                  >
+                    Terms and Conditions
+                  </Link>
+                </label>
+              </div>
+            </div>
+
             <div className="flex flex-row">
               <button
                 type="button"
@@ -186,7 +214,7 @@ const SignUpComponent = () => {
                   title="Enter your email"
                 />
               </div>
-              <div className="mb-2">
+              <div className="mb-2 relative">
                 <label
                   htmlFor="password"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -196,7 +224,7 @@ const SignUpComponent = () => {
 
                 <input
                   type="password"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 pr-10"
                   id="password"
                   placeholder="*******************"
                   pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
@@ -205,6 +233,12 @@ const SignUpComponent = () => {
                   onChange={(event) => setPassword(event.target.value)}
                   title="Enter your password"
                 />
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  <AiOutlineEyeInvisible
+                    className="text-gray-400 dark:text-gray-200"
+                    size={20}
+                  />
+                </div>
                 <p className="text-xs mt-2 dark:text-white">
                   {" "}
                   Use 8 or more characters with a mix of letters, numbers &
