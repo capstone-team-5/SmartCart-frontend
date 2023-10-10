@@ -1,14 +1,13 @@
-//This is the snack food page
+// This is the snack food page
 
-import SnackFoodsComponent from "../NonMVPComponents/SnackFoodsComponent"
+import SnackFoodsComponent from "../NonMVPComponents/SnackFoodsComponent";
 
 const SnackFoods = () => {
-    
-    return (
-        <div>
-            <SnackFoodsComponent />
-        </div>
-    )
+  return (
+    <div>
+      <SnackFoodsComponent />
+    </div>
+  );
 };
 
 export default SnackFoods;
