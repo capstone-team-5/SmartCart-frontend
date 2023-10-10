@@ -7,7 +7,7 @@ const ConfettiComponent = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowConfetti(true);
-    }, 300); // 3 seconds
+    }, 500); // 3 seconds
 
     return () => clearTimeout(timer);
   }, []);
@@ -20,7 +20,8 @@ const ConfettiComponent = () => {
       <Confetti
         width={confettiWidth}
         height={confettiHeight}
-        numberOfPieces={showConfetti ? 500 : 0}
+        numberOfPieces={showConfetti ? 2000 : 0}
+        recycle={false}
       />
     </div>
   );
