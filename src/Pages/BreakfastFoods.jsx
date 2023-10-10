@@ -1,11 +1,11 @@
-import BreakfastFoodComponent from "../NonMVPComponents/BreakfastFoodsComponent"
+import BreakfastFoodComponent from "../NonMVPComponents/BreakfastFoodsComponent";
 
 const BreakfastFoods = () => {
-    return (
-        <div>
-            <BreakfastFoodComponent />
-        </div>
-    )
+  return (
+    <div>
+      <BreakfastFoodComponent />
+    </div>
+  );
 };
 
-export default BreakfastFoods
+export default BreakfastFoods;
