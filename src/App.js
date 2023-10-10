@@ -91,7 +91,6 @@ import NutritionComponent from "./MVPComponents/NutritionComponent";
 import Categories from "./MVPComponents/HomeComponent/Categories";
 import AuthDetails from "./MVPComponents/AuthDetails";
 
-
 // Components
 import CustomerTestimonialsComponent from "./NonMVPComponents/CustomerTestimonialsComponent";
 import FeedbackComponent from "./NonMVPComponents/FeedBackComponent";
@@ -99,6 +98,14 @@ import FaqComponent from "./NonMVPComponents/FaqComponent";
 import ChangePasswordComponent from "./NonMVPComponents/ChangePasswordComponent";
 import ForgotPasswordComponent from "./NonMVPComponents/ForgotPasswordComponent";
 import Fruits from "./MVPComponents/HomeComponent/Fruits";
+import Meat from "./MVPComponents/HomeComponent/Meat";
+import Legumes from "./MVPComponents/HomeComponent/Legumes";
+import Spices from "./MVPComponents/HomeComponent/Spices";
+import Nuts from "./MVPComponents/HomeComponent/Nuts";
+import Grains from "./MVPComponents/HomeComponent/Grains";
+import Bakery from "./MVPComponents/HomeComponent/Bakery";
+import Dairy from "./MVPComponents/HomeComponent/Dairy";
+import Snacks from "./MVPComponents/HomeComponent/Snacks";
 
 // Styling
 import "./App.css";
@@ -125,7 +132,7 @@ function App() {
   const [comparison, setComparison] = useState({});
   const [showDrumRoll, setShowDrumRoll] = useState(false);
   const [storeTotalPrices, setStoreTotalPrices] = useState({});
-  const [selectedStore, setSelectedStore] = useState(null)
+  const [selectedStore, setSelectedStore] = useState(null);
 
   const [authUser, setAuthUser] = useState(null);
 
@@ -266,12 +273,10 @@ function App() {
     // Loop through the favorite items and add them to the cart
     favoriteItems.forEach((favoriteItem) => {
       const existingItemIndex = updatedCart.findIndex(
-        (item) => item.id === favoriteItem.id 
-      
+        (item) => item.id === favoriteItem.id
       );
 
-      console.log('favoriteItem:', favoriteItem);
-
+      console.log("favoriteItem:", favoriteItem);
 
       if (existingItemIndex !== -1) {
         // If the item already exists in the cart, increase its quantity
@@ -287,9 +292,9 @@ function App() {
       }
     });
 
-    console.log('favorite items in app.js:', updatedCart);
+    console.log("favorite items in app.js:", updatedCart);
 
-    console.log('favorite items in app.js:', updatedCart)
+    console.log("favorite items in app.js:", updatedCart);
     // Update the cart state
     setCart(updatedCart);
 
@@ -330,13 +335,15 @@ function App() {
     setStoreTotalPrices(newStoreTotalPrices);
   }, [cart, comparison, stores]);
 
-  const filteredStores = stores.length === 0
-  ? null
-  : stores
-      .filter((store) => comparison.hasOwnProperty(store.store_id))
-      .sort(
-        (a, b) => storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
-      );
+  const filteredStores =
+    stores.length === 0
+      ? null
+      : stores
+          .filter((store) => comparison.hasOwnProperty(store.store_id))
+          .sort(
+            (a, b) =>
+              storeTotalPrices[a.store_id] - storeTotalPrices[b.store_id]
+          );
 
   useEffect(() => {
     const cartIds = cart.map((food) => food.id);
@@ -558,37 +565,48 @@ function App() {
           />
           <Route
             element={
-             authUser ? (
-               <WhereDidYouShop
+              authUser ? (
+                <WhereDidYouShop
                   comparison={comparison}
                   sortedStores={filteredStores}
                 />
-               ) : (
-                 <p>Please sign in to view where you shopped</p>
-                 )
-              }
+              ) : (
+                <p>Please sign in to view where you shopped</p>
+              )
+            }
             path="/user/:id/where-did-you-shop"
-            />
+          />
           <Route element={<AuthDetails auth={auth} authUser={authUser} />} />
           <Route element={<Categories />} path="/categories" />
-          <Route element={<Vegetables addToCart={handleAddToCart} />} path="/vegetables" />
+          <Route
+            element={<Vegetables addToCart={handleAddToCart} />}
+            path="/vegetables"
+          />
           <Route element={<NutritionComponent />} path="/nutrition" />
           <Route
             element={
-              <Savings sortedStores={filteredStores} comparison={comparison} stores={stores} selectedStore={selectedStore} />
+              <Savings
+                sortedStores={filteredStores}
+                comparison={comparison}
+                stores={stores}
+                selectedStore={selectedStore}
+              />
             }
             path="/user/:id/savings/:selectedStore"
           />
           <Route
             element={
-             authUser ? (
-               <Savings sortedStores={filteredStores} comparison={comparison} />
-                ) : (
-                 <p>Please sign in to view savings</p>
-                 )
-              }
-            path="/user/:id/savings/:selectedStore"
+              authUser ? (
+                <Savings
+                  sortedStores={filteredStores}
+                  comparison={comparison}
                 />
+              ) : (
+                <p>Please sign in to view savings</p>
+              )
+            }
+            path="/user/:id/savings/:selectedStore"
+          />
           <Route element={<AboutUs />} path="/about-us" />
           <Route element={<ContactUs />} path="/contact-us" />
           <Route
@@ -1036,7 +1054,36 @@ function App() {
             }
             path="/recipes/dessert-foods-homemade-strawberry-icecream"
           />
-          <Route element={<Fruits addToCart={handleAddToCart} />} path="/fruits" />
+          <Route
+            element={<Fruits addToCart={handleAddToCart} />}
+            path="/fruits"
+          />
+          <Route element={<Meat addToCart={handleAddToCart} />} path="/meat" />
+          <Route
+            element={<Legumes addToCart={handleAddToCart} />}
+            path="/legumes"
+          />
+          <Route
+            element={<Spices addToCart={handleAddToCart} />}
+            path="/spices"
+          />
+          <Route element={<Nuts addToCart={handleAddToCart} />} path="/nuts" />
+          <Route
+            element={<Grains addToCart={handleAddToCart} />}
+            path="/grains"
+          />
+          <Route
+            element={<Dairy addToCart={handleAddToCart} />}
+            path="/dairy"
+          />
+          <Route
+            element={<Snacks addToCart={handleAddToCart} />}
+            path="/snacks"
+          />
+          <Route
+            element={<Bakery addToCart={handleAddToCart} />}
+            path="/bakery"
+          />
           <Route element={<FourOFour />} path="/*" />
         </Routes>
         <Footer handleThemeChange={handleThemeChange} />
