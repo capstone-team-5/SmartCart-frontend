@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const API = process.env.REACT_APP_BACKEND_API;
 
@@ -121,6 +122,16 @@ const Vegetables = ({ addToCart }) => {
               Next
             </button>
           </div>
+        </div>
+        <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+          <Link to="/categories">
+            <button
+              className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900  focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-900 my-4"
+              aria-label="Categories"
+            >
+              Back To Categories
+            </button>
+          </Link>
         </div>
       </div>
     </div>
