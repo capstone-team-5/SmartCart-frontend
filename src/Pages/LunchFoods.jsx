@@ -1,11 +1,11 @@
-import LunchFoodsComponent from "../NonMVPComponents/LunchFoodsComponent"
+import LunchFoodsComponent from "../NonMVPComponents/LunchFoodsComponent";
 
 const LunchFoods = () => {
-    return (
-        <div>
-            <LunchFoodsComponent />
-        </div>
-    )
+  return (
+    <div>
+      <LunchFoodsComponent />
+    </div>
+  );
 };
 
-export default LunchFoods
+export default LunchFoods;
