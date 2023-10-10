@@ -18,6 +18,7 @@ const Categories = () => {
     {
       name: "Meat",
       logoSrc: "https://m.media-amazon.com/images/I/61iGja+X-PS.jpg",
+      link: "/meat",
     },
     {
       name: "Seafood",
@@ -33,17 +34,25 @@ const Categories = () => {
       name: "Dairy",
       logoSrc:
         "https://www.usda.gov/sites/default/files/ams-june-natl-dairy-month-blog-060223.jpg",
+      link: "/dairy",
     },
     {
       name: "Bread & Bakery",
       logoSrc:
         "https://www.referenceforbusiness.com/photos/bread-bakery-business-plan-437.jpg",
+      link: "/bakery",
     },
-
     {
-      name: "Nuts & Spices",
+      name: "Spices",
+      logoSrc:
+        "https://www.tastingtable.com/img/gallery/tips-you-need-when-cooking-with-spices/intro-1683560012.jpg",
+      link: "/spices",
+    },
+    {
+      name: "Nuts",
       logoSrc:
         "https://www.tashasartisanfoods.com/blog/wp-content/uploads/2018/02/unnamed-2-2-1-scaled.jpg",
+      link: "/nuts",
     },
 
     {
@@ -68,12 +77,21 @@ const Categories = () => {
       name: "Snacks",
       logoSrc:
         "https://www.eatthis.com/wp-content/uploads/sites/4/2021/06/unhealthy-snacks.png?strip=all",
+      link: "/snacks",
     },
 
     {
-      name: "Grains & Legumes",
+      name: "Legumes",
       logoSrc:
         "https://oldwayspt.org/sites/default/files/thumbnails/image/iStock-1292432879_0.jpg",
+      link: "/legumes",
+    },
+
+    {
+      name: "Grains",
+      logoSrc:
+        "https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-4foodgroups_grains_detailfeatureb.jpg?sfvrsn=3c347197_6",
+      link: "/grains",
     },
 
     {
