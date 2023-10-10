@@ -4,17 +4,15 @@ import Categories from "../MVPComponents/HomeComponent/Categories";
 import FrozenSlider from "../MVPComponents/HomeComponent/FrozenSlider";
 import RecipeSlider from "../MVPComponents/HomeComponent/RecipeSlider";
 import FallSlider from "../MVPComponents/HomeComponent/FallSlider";
-import ConfettiComponent from "../NonMVPComponents/ConfettiComponent";
 import PrintComponent from "../MVPComponents/PrintComponent";
-const Home = () => {
+const Home = ({ addToCart }) => {
   return (
     <div>
       <CategoryHome />
       <Categories />
-      <FallSlider />
-      <ConfettiComponent />
-      <InternationalSlider />
-      <FrozenSlider />
+      <FallSlider addToCart={addToCart} />
+      <InternationalSlider addToCart={addToCart} />
+      <FrozenSlider addToCart={addToCart} />
       <RecipeSlider />
       <PrintComponent />
     </div>
