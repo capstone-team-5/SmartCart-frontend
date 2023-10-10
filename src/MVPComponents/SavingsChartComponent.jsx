@@ -3,7 +3,7 @@ import { Chart } from "react-google-charts";
 const data = [
     ["", "Value", { role: "style" }],
     ["Average", 294.15, "orange"],
-    ["Café Deli - Cious", 271.67, "green"],
+    ["Salt & Pepper Gourmet", 271.67, "green"],
 ];
 
 const options = {
