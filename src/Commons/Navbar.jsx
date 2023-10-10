@@ -234,6 +234,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
 
               return a.product_name.localeCompare(b.product_name);
             });
+
           setProducts(foundItems);
         })
         .catch((error) => console.log(error));
@@ -325,7 +326,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
             </button>
             <button
               type="button"
-              className="p-2 mr-1 rounded-lg hover:bg-white dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              className="p-2 mr-1 rounded-lg dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
             >
               {/* <MdLocationPin className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer" /> */}
               <LocationHookComponent className="text-white hover:text-black peer text-xl md:text-2xl sm:text-lg cursor-pointer" />
@@ -334,7 +335,6 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               id="toggleSidebarMobileSearch"
               type="button"
               className="p-2 text-white rounded-lg lg:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              onClick={(event) => handleSearchChange(event)}
             >
               <span className="sr-only">Search</span>
               {/* <!-- Search icon --> */}
