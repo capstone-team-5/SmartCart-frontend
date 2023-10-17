@@ -3,7 +3,7 @@ import axios from "axios";
 
 const CajunPrawnPizzaRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -100,17 +100,17 @@ const CajunPrawnPizzaRecipeComponent = ({
             the sauce.
           </li>
           <li>
-            <strong>Step 6:</strong> Arrange cooked prawns, sliced red and
-            green bell peppers, and sliced red onion on top of the cheese.
+            <strong>Step 6:</strong> Arrange cooked prawns, sliced red and green
+            bell peppers, and sliced red onion on top of the cheese.
           </li>
           <li>
             <strong>Step 7:</strong> Sprinkle Cajun seasoning over the
             ingredients.
           </li>
           <li>
-            <strong>Step 8:</strong> Bake in the preheated oven according to
-            the pizza dough instructions until the crust is golden and the
-            cheese is bubbly.
+            <strong>Step 8:</strong> Bake in the preheated oven according to the
+            pizza dough instructions until the crust is golden and the cheese is
+            bubbly.
           </li>
           <li>
             <strong>Step 9:</strong> Garnish with fresh parsley.

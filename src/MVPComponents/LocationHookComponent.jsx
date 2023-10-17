@@ -9,11 +9,13 @@ const LocationHookComponent = () => {
     const storedLocationData = JSON.parse(
       window.localStorage.getItem("User_Location")
     );
-    return storedLocationData || {
-      loaded: false,
-      coordinates: { lat: "", lng: "" },
-      error: null,
-    };
+    return (
+      storedLocationData || {
+        loaded: false,
+        coordinates: { lat: "", lng: "" },
+        error: null,
+      }
+    );
   });
 
   const [locationName, setLocationName] = useState("");
@@ -26,7 +28,11 @@ const LocationHookComponent = () => {
   }, [location.coordinates]);
 
   useEffect(() => {
-    if (location.loaded && location.coordinates.lat && location.coordinates.lng) {
+    if (
+      location.loaded &&
+      location.coordinates.lat &&
+      location.coordinates.lng
+    ) {
       // Fetch location name from the backend API using axios
       fetchLocationDetails(location.coordinates.lat, location.coordinates.lng);
     }
@@ -55,7 +61,10 @@ const LocationHookComponent = () => {
 
             setLocation(newLocation);
 
-            fetchLocationDetails(newLocation.coordinates.lat, newLocation.coordinates.lng);
+            fetchLocationDetails(
+              newLocation.coordinates.lat,
+              newLocation.coordinates.lng
+            );
           },
           (error) => {
             const newLocation = {
@@ -83,16 +92,16 @@ const LocationHookComponent = () => {
 
   // Function to fetch location details from the backend
   const fetchLocationDetails = () => {
-    const latitude = location.coordinates.lat 
-    const longitude = location.coordinates.lng
-    console.log('lng1',longitude)
-    console.log('lat1:', latitude)
+    const latitude = location.coordinates.lat;
+    const longitude = location.coordinates.lng;
+    console.log("lng1", longitude);
+    console.log("lat1:", latitude);
     if (!latitude || !longitude) {
       return null;
     }
 
     const backendEndPoint = `${process.env.REACT_APP_BACKEND_API}/locations/${latitude}/${longitude}`;
-    
+
     axios
       .get(backendEndPoint)
       .then((response) => {

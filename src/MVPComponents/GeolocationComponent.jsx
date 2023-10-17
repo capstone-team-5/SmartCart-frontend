@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const Geolocation = () => {
   const [location, setLocation] = useState({
     loaded: false,
-    coordinates: { lat: "", lng: "" }
+    coordinates: { lat: "", lng: "" },
   });
 
   const success = () => {
@@ -12,8 +12,8 @@ const Geolocation = () => {
       loaded: true,
       coordinates: {
         lat: prevState.coordinates.lat,
-        lng: prevState.coordinates.lng, 
-      }
+        lng: prevState.coordinates.lng,
+      },
     }));
   };
 
@@ -38,10 +38,11 @@ const Geolocation = () => {
   return (
     <div>
       <h1>This is the geolocation component</h1>
-      {location.loaded ? JSON.stringify(location) : "Location data not available"}
+      {location.loaded
+        ? JSON.stringify(location)
+        : "Location data not available"}
     </div>
   );
 };
 
 export default Geolocation;
-

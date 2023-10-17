@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const SmoresRecipeComponent = ({
-  addIngredientsToCart,
-  nameOfIngredients
-}) => {
+const SmoresRecipeComponent = ({ addIngredientsToCart, nameOfIngredients }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
@@ -74,19 +71,23 @@ const SmoresRecipeComponent = ({
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> Break the graham crackers in half to form two squares.
+            <strong>Step 1:</strong> Break the graham crackers in half to form
+            two squares.
           </li>
           <li>
-            <strong>Step 2:</strong> Place a piece of chocolate on one graham cracker square.
+            <strong>Step 2:</strong> Place a piece of chocolate on one graham
+            cracker square.
           </li>
           <li>
             <strong>Step 3:</strong> Roast the marshmallow until golden brown.
           </li>
           <li>
-            <strong>Step 4:</strong> Place the marshmallow on top of the chocolate.
+            <strong>Step 4:</strong> Place the marshmallow on top of the
+            chocolate.
           </li>
           <li>
-            <strong>Step 5:</strong> Top with the other graham cracker square and press gently to create a sandwich.
+            <strong>Step 5:</strong> Top with the other graham cracker square
+            and press gently to create a sandwich.
           </li>
           <li>
             <strong>Step 6:</strong> Enjoy your S'mores!

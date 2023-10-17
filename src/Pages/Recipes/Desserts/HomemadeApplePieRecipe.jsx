@@ -13,7 +13,7 @@ const HomemadeApplePieRecipe = ({ addIngredientsToCart }) => {
   ];
 
   // missing lemon juice,  unsalted butter,  pie crusts
-  
+
   return (
     <HomemadeApplePieRecipeComponent
       addIngredientsToCart={addIngredientsToCart}

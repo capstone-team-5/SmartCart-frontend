@@ -3,7 +3,7 @@ import axios from "axios";
 
 const ChickenBiryaniRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -108,8 +108,8 @@ const ChickenBiryaniRecipeComponent = ({
           </li>
           <li>
             <strong>Step 6:</strong> In a separate large pot, bring 4 cups of
-            water to a boil. Add soaked and drained rice. Cook until rice is
-            70% cooked. Drain the rice.
+            water to a boil. Add soaked and drained rice. Cook until rice is 70%
+            cooked. Drain the rice.
           </li>
           <li>
             <strong>Step 7:</strong> Layer the cooked chicken mixture and

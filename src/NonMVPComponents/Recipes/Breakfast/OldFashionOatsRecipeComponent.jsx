@@ -3,7 +3,7 @@ import axios from "axios";
 
 const OldFashionOatsRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -57,7 +57,9 @@ const OldFashionOatsRecipeComponent = ({
 
   return (
     <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Old Fashion Oats with Raspberries and Peaches</h3>
+      <h3 className="text-2xl font-semibold mb-4">
+        Old Fashion Oats with Raspberries and Peaches
+      </h3>
       <img
         src="https://www.eatingwell.com/thmb/-UULlbERQCfJRQTnb5bwjoo9-UQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/old-fashioned-oatmeal-hero-05-060861b81cb641cea272e068aba093fd.jpg"
         alt="Old Fashion Oats with Raspberries and Peaches"
@@ -97,8 +99,8 @@ const OldFashionOatsRecipeComponent = ({
             peaches.
           </li>
           <li>
-            <strong>Step 6:</strong> Serve Old Fashion Oats with Raspberries
-            and Peaches warm.
+            <strong>Step 6:</strong> Serve Old Fashion Oats with Raspberries and
+            Peaches warm.
           </li>
         </ol>
       </div>

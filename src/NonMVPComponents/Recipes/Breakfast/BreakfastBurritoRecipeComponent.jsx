@@ -3,7 +3,7 @@ import axios from "axios";
 
 const BreakfastBurritoRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -82,12 +82,12 @@ const BreakfastBurritoRecipeComponent = ({
           </li>
           <li>
             <strong>Step 2:</strong> Heat a non-stick skillet over medium heat.
-            Pour the beaten eggs into the skillet and scramble them until
-            cooked to your liking.
+            Pour the beaten eggs into the skillet and scramble them until cooked
+            to your liking.
           </li>
           <li>
-            <strong>Step 3:</strong> Warm the flour tortilla in a dry skillet
-            or microwave.
+            <strong>Step 3:</strong> Warm the flour tortilla in a dry skillet or
+            microwave.
           </li>
           <li>
             <strong>Step 4:</strong> Place the scrambled eggs, sliced sausage,

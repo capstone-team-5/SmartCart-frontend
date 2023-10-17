@@ -3,7 +3,7 @@ import axios from "axios";
 
 const CrispyOnionRingsRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -98,8 +98,8 @@ const CrispyOnionRingsRecipeComponent = ({
             and coat them in the flour mixture.
           </li>
           <li>
-            <strong>Step 6:</strong> Fry the onion rings in batches until
-            golden brown and crispy, about 2-3 minutes per batch. Drain on paper
+            <strong>Step 6:</strong> Fry the onion rings in batches until golden
+            brown and crispy, about 2-3 minutes per batch. Drain on paper
             towels.
           </li>
           <li>

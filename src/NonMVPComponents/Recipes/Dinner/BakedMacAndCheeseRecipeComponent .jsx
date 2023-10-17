@@ -3,7 +3,7 @@ import axios from "axios";
 
 const BakedMacAndCheeseRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -88,13 +88,13 @@ const BakedMacAndCheeseRecipeComponent = ({
             over medium heat. Stir in enough flour to make a roux. Add milk to
             roux slowly, stirring constantly. Stir in cheeses, and cook over low
             heat until cheese is melted and the sauce is a little thick. Put
-            macaroni in large casserole dish, and pour sauce over macaroni.
-            Stir well.
+            macaroni in large casserole dish, and pour sauce over macaroni. Stir
+            well.
           </li>
           <li>
             <strong>Step 3:</strong> Melt butter or margarine in a skillet over
-            medium heat. Add breadcrumbs and brown. Spread over the macaroni
-            and cheese to cover. Sprinkle with a little paprika.
+            medium heat. Add breadcrumbs and brown. Spread over the macaroni and
+            cheese to cover. Sprinkle with a little paprika.
           </li>
           <li>
             <strong>Step 4:</strong> Bake at 350°F (175°C) for 30 minutes.

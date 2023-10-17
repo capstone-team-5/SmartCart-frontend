@@ -71,7 +71,6 @@
 
 // export default WhereDidYouShopComponent;
 
-
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -101,7 +100,7 @@ const WhereDidYouShopComponent = ({ sortedStores }) => {
     }
   };
 
-   console.log('where did you shop selected Store:', selectedStore)
+  console.log("where did you shop selected Store:", selectedStore);
 
   return (
     <div className="p-4 space-y-4">
@@ -132,9 +131,7 @@ const WhereDidYouShopComponent = ({ sortedStores }) => {
           I got all the lowest-priced items
         </label>
       </div>
-      {errorMessage && (
-        <p className="text-red-500">{errorMessage}</p>
-      )}
+      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
       <button
         onClick={handleSubmit}
         className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full"
@@ -146,4 +143,3 @@ const WhereDidYouShopComponent = ({ sortedStores }) => {
 };
 
 export default WhereDidYouShopComponent;
-

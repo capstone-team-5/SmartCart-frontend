@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const OvernightOatsRecipeComponent = ({
-    addIngredientsToCart,
-  nameOfIngredients
+  addIngredientsToCart,
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -87,8 +87,8 @@ const OvernightOatsRecipeComponent = ({
             overnight, or for at least 4 hours.
           </li>
           <li>
-            <strong>Step 3:</strong> In the morning, give the oats a good
-            stir. Top with fresh berries and chopped nuts before serving.
+            <strong>Step 3:</strong> In the morning, give the oats a good stir.
+            Top with fresh berries and chopped nuts before serving.
           </li>
           <li>
             <strong>Step 4:</strong> Enjoy your delicious and nutritious

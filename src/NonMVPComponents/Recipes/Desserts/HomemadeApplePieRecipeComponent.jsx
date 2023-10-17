@@ -3,7 +3,7 @@ import axios from "axios";
 
 const HomemadeApplePieRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -66,7 +66,10 @@ const HomemadeApplePieRecipeComponent = ({
       <div className="recipe">
         <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
         <ul className="list-disc pl-6 mb-4">
-          <li>6-7 cups peeled, cored, and sliced apples (about 6-7 medium-sized apples)</li>
+          <li>
+            6-7 cups peeled, cored, and sliced apples (about 6-7 medium-sized
+            apples)
+          </li>
           <li>3/4 cup granulated sugar</li>
           <li>2 tablespoons all-purpose flour</li>
           <li>1 teaspoon ground cinnamon</li>
@@ -83,28 +86,38 @@ const HomemadeApplePieRecipeComponent = ({
             <strong>Step 1:</strong> Preheat your oven to 425°F (220°C).
           </li>
           <li>
-            <strong>Step 2:</strong> In a large bowl, combine the sliced apples, granulated sugar, all-purpose flour, ground cinnamon, ground nutmeg, salt, and lemon juice. Toss until the apples are evenly coated.
+            <strong>Step 2:</strong> In a large bowl, combine the sliced apples,
+            granulated sugar, all-purpose flour, ground cinnamon, ground nutmeg,
+            salt, and lemon juice. Toss until the apples are evenly coated.
           </li>
           <li>
-            <strong>Step 3:</strong> Place one of the prepared pie crusts in a 9-inch pie dish.
+            <strong>Step 3:</strong> Place one of the prepared pie crusts in a
+            9-inch pie dish.
           </li>
           <li>
-            <strong>Step 4:</strong> Spoon the apple filling into the pie crust, spreading it out evenly.
+            <strong>Step 4:</strong> Spoon the apple filling into the pie crust,
+            spreading it out evenly.
           </li>
           <li>
-            <strong>Step 5:</strong> Dot the top of the apple filling with small pieces of unsalted butter.
+            <strong>Step 5:</strong> Dot the top of the apple filling with small
+            pieces of unsalted butter.
           </li>
           <li>
-            <strong>Step 6:</strong> Place the second pie crust over the filling and crimp the edges to seal the pie.
+            <strong>Step 6:</strong> Place the second pie crust over the filling
+            and crimp the edges to seal the pie.
           </li>
           <li>
-            <strong>Step 7:</strong> Cut small slits in the top crust to allow steam to escape.
+            <strong>Step 7:</strong> Cut small slits in the top crust to allow
+            steam to escape.
           </li>
           <li>
-            <strong>Step 8:</strong> Bake in the preheated oven for 45-55 minutes, or until the crust is golden brown and the filling is bubbling.
+            <strong>Step 8:</strong> Bake in the preheated oven for 45-55
+            minutes, or until the crust is golden brown and the filling is
+            bubbling.
           </li>
           <li>
-            <strong>Step 9:</strong> Remove from the oven and let the pie cool before serving. Enjoy your Homemade Apple Pie!
+            <strong>Step 9:</strong> Remove from the oven and let the pie cool
+            before serving. Enjoy your Homemade Apple Pie!
           </li>
         </ol>
       </div>

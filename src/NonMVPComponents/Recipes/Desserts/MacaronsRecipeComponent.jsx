@@ -3,7 +3,7 @@ import axios from "axios";
 
 const MacaronsRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -77,28 +77,44 @@ const MacaronsRecipeComponent = ({
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> In a food processor, pulse almond flour and confectioners' sugar until well combined. Sift the mixture through a fine-mesh sieve into a large bowl; discard any large pieces.
+            <strong>Step 1:</strong> In a food processor, pulse almond flour and
+            confectioners' sugar until well combined. Sift the mixture through a
+            fine-mesh sieve into a large bowl; discard any large pieces.
           </li>
           <li>
-            <strong>Step 2:</strong> In a separate bowl, beat egg whites with a hand mixer until foamy. Gradually add granulated sugar and continue to beat until stiff, glossy peaks form. Add vanilla extract and food coloring (if desired), and mix until combined.
+            <strong>Step 2:</strong> In a separate bowl, beat egg whites with a
+            hand mixer until foamy. Gradually add granulated sugar and continue
+            to beat until stiff, glossy peaks form. Add vanilla extract and food
+            coloring (if desired), and mix until combined.
           </li>
           <li>
-            <strong>Step 3:</strong> Gently fold the almond flour mixture into the egg white mixture until fully combined and smooth.
+            <strong>Step 3:</strong> Gently fold the almond flour mixture into
+            the egg white mixture until fully combined and smooth.
           </li>
           <li>
-            <strong>Step 4:</strong> Transfer the batter to a pastry bag fitted with a 1/2-inch round tip. Pipe small circles onto parchment-lined baking sheets, spacing them about 1 inch apart.
+            <strong>Step 4:</strong> Transfer the batter to a pastry bag fitted
+            with a 1/2-inch round tip. Pipe small circles onto parchment-lined
+            baking sheets, spacing them about 1 inch apart.
           </li>
           <li>
-            <strong>Step 5:</strong> Tap the baking sheets on the counter to remove any air bubbles. Let the macarons sit at room temperature for 30 minutes to 1 hour, or until a skin forms and they are no longer sticky to the touch.
+            <strong>Step 5:</strong> Tap the baking sheets on the counter to
+            remove any air bubbles. Let the macarons sit at room temperature for
+            30 minutes to 1 hour, or until a skin forms and they are no longer
+            sticky to the touch.
           </li>
           <li>
-            <strong>Step 6:</strong> Preheat your oven to 300°F (150°C). Bake the macarons for 15-18 minutes, or until they lift easily from the parchment paper. Let them cool completely on the baking sheets.
+            <strong>Step 6:</strong> Preheat your oven to 300°F (150°C). Bake
+            the macarons for 15-18 minutes, or until they lift easily from the
+            parchment paper. Let them cool completely on the baking sheets.
           </li>
           <li>
-            <strong>Step 7:</strong> Once cooled, carefully remove the macarons from the parchment paper and match them up by size.
+            <strong>Step 7:</strong> Once cooled, carefully remove the macarons
+            from the parchment paper and match them up by size.
           </li>
           <li>
-            <strong>Step 8:</strong> Fill the macarons with your favorite filling, such as ganache or buttercream. Sandwich them together and refrigerate for 24 hours to let the flavors meld.
+            <strong>Step 8:</strong> Fill the macarons with your favorite
+            filling, such as ganache or buttercream. Sandwich them together and
+            refrigerate for 24 hours to let the flavors meld.
           </li>
           <li>
             <strong>Step 9:</strong> Enjoy your homemade Macarons!

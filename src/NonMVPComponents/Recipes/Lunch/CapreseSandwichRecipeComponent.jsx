@@ -3,7 +3,7 @@ import axios from "axios";
 
 const CapreseSandwichRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -78,8 +78,8 @@ const CapreseSandwichRecipeComponent = ({
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> Drizzle olive oil on one side of each
-            bread slice.
+            <strong>Step 1:</strong> Drizzle olive oil on one side of each bread
+            slice.
           </li>
           <li>
             <strong>Step 2:</strong> Layer one slice of mozzarella, tomato

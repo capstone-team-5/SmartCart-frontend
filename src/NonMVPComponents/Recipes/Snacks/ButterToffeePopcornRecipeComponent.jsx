@@ -3,7 +3,7 @@ import axios from "axios";
 
 const ButterToffeePopcornRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -78,28 +78,38 @@ const ButterToffeePopcornRecipeComponent = ({
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> Preheat your oven to 250°F (120°C). Place the popped popcorn in a large mixing bowl.
+            <strong>Step 1:</strong> Preheat your oven to 250°F (120°C). Place
+            the popped popcorn in a large mixing bowl.
           </li>
           <li>
-            <strong>Step 2:</strong> In a medium saucepan over medium heat, melt the butter. Stir in the brown sugar, corn syrup, and salt. Bring the mixture to a boil, stirring constantly.
+            <strong>Step 2:</strong> In a medium saucepan over medium heat, melt
+            the butter. Stir in the brown sugar, corn syrup, and salt. Bring the
+            mixture to a boil, stirring constantly.
           </li>
           <li>
-            <strong>Step 3:</strong> Once the mixture is boiling, stop stirring and let it boil for 4-5 minutes without stirring. Remove from heat.
+            <strong>Step 3:</strong> Once the mixture is boiling, stop stirring
+            and let it boil for 4-5 minutes without stirring. Remove from heat.
           </li>
           <li>
-            <strong>Step 4:</strong> Stir in the baking soda and vanilla extract until well combined.
+            <strong>Step 4:</strong> Stir in the baking soda and vanilla extract
+            until well combined.
           </li>
           <li>
-            <strong>Step 5:</strong> Pour the toffee mixture over the popped popcorn and gently toss to coat the popcorn evenly.
+            <strong>Step 5:</strong> Pour the toffee mixture over the popped
+            popcorn and gently toss to coat the popcorn evenly.
           </li>
           <li>
-            <strong>Step 6:</strong> Spread the coated popcorn onto a baking sheet lined with parchment paper.
+            <strong>Step 6:</strong> Spread the coated popcorn onto a baking
+            sheet lined with parchment paper.
           </li>
           <li>
-            <strong>Step 7:</strong> Bake in the preheated oven for 45 minutes, stirring every 15 minutes.
+            <strong>Step 7:</strong> Bake in the preheated oven for 45 minutes,
+            stirring every 15 minutes.
           </li>
           <li>
-            <strong>Step 8:</strong> Remove from the oven and let it cool completely. Once cooled, break into pieces and enjoy your butter toffee popcorn!
+            <strong>Step 8:</strong> Remove from the oven and let it cool
+            completely. Once cooled, break into pieces and enjoy your butter
+            toffee popcorn!
           </li>
         </ol>
       </div>

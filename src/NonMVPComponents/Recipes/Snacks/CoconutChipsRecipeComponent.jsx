@@ -3,7 +3,7 @@ import axios from "axios";
 
 const CoconutChipsRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -75,22 +75,30 @@ const CoconutChipsRecipeComponent = ({
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> Preheat your oven to 325°F (160°C). Line a baking sheet with parchment paper.
+            <strong>Step 1:</strong> Preheat your oven to 325°F (160°C). Line a
+            baking sheet with parchment paper.
           </li>
           <li>
-            <strong>Step 2:</strong> In a bowl, combine the coconut flakes, maple syrup, vanilla extract, and salt. Mix until the coconut is evenly coated.
+            <strong>Step 2:</strong> In a bowl, combine the coconut flakes,
+            maple syrup, vanilla extract, and salt. Mix until the coconut is
+            evenly coated.
           </li>
           <li>
-            <strong>Step 3:</strong> Spread the coated coconut flakes in an even layer on the prepared baking sheet.
+            <strong>Step 3:</strong> Spread the coated coconut flakes in an even
+            layer on the prepared baking sheet.
           </li>
           <li>
-            <strong>Step 4:</strong> Bake in the preheated oven for 10-15 minutes, stirring every 5 minutes, until the coconut chips are golden brown and toasted.
+            <strong>Step 4:</strong> Bake in the preheated oven for 10-15
+            minutes, stirring every 5 minutes, until the coconut chips are
+            golden brown and toasted.
           </li>
           <li>
-            <strong>Step 5:</strong> Remove from the oven and let them cool completely on the baking sheet.
+            <strong>Step 5:</strong> Remove from the oven and let them cool
+            completely on the baking sheet.
           </li>
           <li>
-            <strong>Step 6:</strong> Once cooled, your Coconut Chips are ready to enjoy as a snack or topping for various dishes.
+            <strong>Step 6:</strong> Once cooled, your Coconut Chips are ready
+            to enjoy as a snack or topping for various dishes.
           </li>
         </ol>
       </div>

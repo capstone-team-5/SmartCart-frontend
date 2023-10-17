@@ -3,7 +3,7 @@ import axios from "axios";
 
 const HomemadePotatoChipsRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);

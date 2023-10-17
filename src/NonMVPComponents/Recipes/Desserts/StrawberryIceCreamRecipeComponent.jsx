@@ -3,7 +3,7 @@ import axios from "axios";
 
 const StrawberryIceCreamRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -57,7 +57,9 @@ const StrawberryIceCreamRecipeComponent = ({
 
   return (
     <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Homemade Strawberry Ice Cream</h3>
+      <h3 className="text-2xl font-semibold mb-4">
+        Homemade Strawberry Ice Cream
+      </h3>
       <img
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCGrHPtMinRNe6_wwRtVrpc-svyEHqdkAw-lyGSxSm4ZfDE3vvbCIU7YP_KxjjbAcCSyU&usqp=CAU"
         alt="Homemade Strawberry Ice Cream"
@@ -76,25 +78,35 @@ const StrawberryIceCreamRecipeComponent = ({
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> In a mixing bowl, combine the sliced strawberries and 1/2 cup of granulated sugar. Let them sit for about 15 minutes, allowing the strawberries to release their juices.
+            <strong>Step 1:</strong> In a mixing bowl, combine the sliced
+            strawberries and 1/2 cup of granulated sugar. Let them sit for about
+            15 minutes, allowing the strawberries to release their juices.
           </li>
           <li>
-            <strong>Step 2:</strong> After 15 minutes, use a blender or food processor to puree the strawberry mixture until smooth.
+            <strong>Step 2:</strong> After 15 minutes, use a blender or food
+            processor to puree the strawberry mixture until smooth.
           </li>
           <li>
-            <strong>Step 3:</strong> In a separate bowl, whisk together the remaining 1/2 cup of sugar, heavy cream, whole milk, and vanilla extract until the sugar is dissolved.
+            <strong>Step 3:</strong> In a separate bowl, whisk together the
+            remaining 1/2 cup of sugar, heavy cream, whole milk, and vanilla
+            extract until the sugar is dissolved.
           </li>
           <li>
-            <strong>Step 4:</strong> Combine the strawberry puree with the cream mixture and mix well.
+            <strong>Step 4:</strong> Combine the strawberry puree with the cream
+            mixture and mix well.
           </li>
           <li>
-            <strong>Step 5:</strong> Pour the mixture into an ice cream maker and churn according to the manufacturer's instructions until it reaches a soft-serve consistency.
+            <strong>Step 5:</strong> Pour the mixture into an ice cream maker
+            and churn according to the manufacturer's instructions until it
+            reaches a soft-serve consistency.
           </li>
           <li>
-            <strong>Step 6:</strong> Transfer the ice cream to an airtight container and freeze for at least 4 hours or until firm.
+            <strong>Step 6:</strong> Transfer the ice cream to an airtight
+            container and freeze for at least 4 hours or until firm.
           </li>
           <li>
-            <strong>Step 7:</strong> Scoop and enjoy your Homemade Strawberry Ice Cream!
+            <strong>Step 7:</strong> Scoop and enjoy your Homemade Strawberry
+            Ice Cream!
           </li>
         </ol>
       </div>

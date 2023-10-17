@@ -3,7 +3,7 @@ import axios from "axios";
 
 const BajanCouCouRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -57,7 +57,9 @@ const BajanCouCouRecipeComponent = ({
 
   return (
     <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Bajan Cou Cou with Flying Fish</h3>
+      <h3 className="text-2xl font-semibold mb-4">
+        Bajan Cou Cou with Flying Fish
+      </h3>
       <img
         src="https://mybajan.com/wp-content/uploads/2020/04/barbados-cou-cou-fish-bajan-recipe-678x381.jpg"
         alt="Bajan Cou Cou with Flying Fish"

@@ -3,7 +3,7 @@ import axios from "axios";
 
 const GrilledCheeseSandwichRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -74,8 +74,8 @@ const GrilledCheeseSandwichRecipeComponent = ({
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> Place a slice of cheese between two
-            slices of bread to form a sandwich.
+            <strong>Step 1:</strong> Place a slice of cheese between two slices
+            of bread to form a sandwich.
           </li>
           <li>
             <strong>Step 2:</strong> Heat a skillet or griddle over medium-low

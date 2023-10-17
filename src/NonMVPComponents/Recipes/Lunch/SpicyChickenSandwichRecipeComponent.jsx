@@ -3,7 +3,7 @@ import axios from "axios";
 
 const SpicyChickenSandwichRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -85,8 +85,8 @@ const SpicyChickenSandwichRecipeComponent = ({
             Add the chicken breast and let it marinate for at least 30 minutes.
           </li>
           <li>
-            <strong>Step 2:</strong> In a separate bowl, combine flour,
-            paprika, garlic powder, cayenne pepper, salt, and pepper.
+            <strong>Step 2:</strong> In a separate bowl, combine flour, paprika,
+            garlic powder, cayenne pepper, salt, and pepper.
           </li>
           <li>
             <strong>Step 3:</strong> Remove the chicken from the marinade and

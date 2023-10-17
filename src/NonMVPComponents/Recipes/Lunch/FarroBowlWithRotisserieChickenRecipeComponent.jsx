@@ -3,7 +3,7 @@ import axios from "axios";
 
 const FarroBowlWithRotisserieChickenRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -57,7 +57,9 @@ const FarroBowlWithRotisserieChickenRecipeComponent = ({
 
   return (
     <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Farro Bowl with Rotisserie Chicken</h3>
+      <h3 className="text-2xl font-semibold mb-4">
+        Farro Bowl with Rotisserie Chicken
+      </h3>
       <img
         src="https://www.eatingwell.com/thmb/BPaWZ52825U3VaTyAMW-xdfHBFs=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/3-ingredient-mediterranean-farro-bowl-03d8ae97c41b43eaba08f0c6998da890.jpg"
         alt="Farro Bowl with Rotisserie Chicken"

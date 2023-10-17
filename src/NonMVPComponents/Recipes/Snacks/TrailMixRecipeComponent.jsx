@@ -3,7 +3,7 @@ import axios from "axios";
 
 const TrailMixRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -77,13 +77,15 @@ const TrailMixRecipeComponent = ({
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> In a large bowl, combine all the ingredients.
+            <strong>Step 1:</strong> In a large bowl, combine all the
+            ingredients.
           </li>
           <li>
             <strong>Step 2:</strong> Toss everything together until well mixed.
           </li>
           <li>
-            <strong>Step 3:</strong> Store in an airtight container or portion into snack-sized bags for easy on-the-go snacking.
+            <strong>Step 3:</strong> Store in an airtight container or portion
+            into snack-sized bags for easy on-the-go snacking.
           </li>
         </ol>
       </div>

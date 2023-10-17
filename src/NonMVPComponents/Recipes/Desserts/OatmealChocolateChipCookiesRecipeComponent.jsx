@@ -3,7 +3,7 @@ import axios from "axios";
 
 const OatmealChocolateChipCookiesRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -57,7 +57,9 @@ const OatmealChocolateChipCookiesRecipeComponent = ({
 
   return (
     <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Oatmeal Chocolate Chip Cookies</h3>
+      <h3 className="text-2xl font-semibold mb-4">
+        Oatmeal Chocolate Chip Cookies
+      </h3>
       <img
         src="https://chefsavvy.com/wp-content/uploads/oatmeal-chocolate-chip-cookies.jpg"
         alt="Oatmeal Chocolate Chip Cookies"
@@ -82,31 +84,42 @@ const OatmealChocolateChipCookiesRecipeComponent = ({
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> Preheat your oven to 350°F (175°C). Line baking sheets with parchment paper.
+            <strong>Step 1:</strong> Preheat your oven to 350°F (175°C). Line
+            baking sheets with parchment paper.
           </li>
           <li>
-            <strong>Step 2:</strong> In a large mixing bowl, cream together the softened butter, granulated sugar, and brown sugar until smooth.
+            <strong>Step 2:</strong> In a large mixing bowl, cream together the
+            softened butter, granulated sugar, and brown sugar until smooth.
           </li>
           <li>
-            <strong>Step 3:</strong> Beat in the eggs one at a time, then stir in the vanilla.
+            <strong>Step 3:</strong> Beat in the eggs one at a time, then stir
+            in the vanilla.
           </li>
           <li>
-            <strong>Step 4:</strong> In a separate bowl, combine the flour, baking soda, salt, and ground cinnamon. Gradually add this dry mixture to the butter mixture and mix until just blended.
+            <strong>Step 4:</strong> In a separate bowl, combine the flour,
+            baking soda, salt, and ground cinnamon. Gradually add this dry
+            mixture to the butter mixture and mix until just blended.
           </li>
           <li>
-            <strong>Step 5:</strong> Stir in the old-fashioned oats and semisweet chocolate chips until evenly distributed.
+            <strong>Step 5:</strong> Stir in the old-fashioned oats and
+            semisweet chocolate chips until evenly distributed.
           </li>
           <li>
-            <strong>Step 6:</strong> Drop rounded tablespoons of dough onto the prepared baking sheets.
+            <strong>Step 6:</strong> Drop rounded tablespoons of dough onto the
+            prepared baking sheets.
           </li>
           <li>
-            <strong>Step 7:</strong> Bake in the preheated oven for 10-12 minutes or until the edges are golden brown.
+            <strong>Step 7:</strong> Bake in the preheated oven for 10-12
+            minutes or until the edges are golden brown.
           </li>
           <li>
-            <strong>Step 8:</strong> Allow the cookies to cool on the baking sheets for a few minutes before transferring them to wire racks to cool completely.
+            <strong>Step 8:</strong> Allow the cookies to cool on the baking
+            sheets for a few minutes before transferring them to wire racks to
+            cool completely.
           </li>
           <li>
-            <strong>Step 9:</strong> Enjoy your homemade Oatmeal Chocolate Chip Cookies!
+            <strong>Step 9:</strong> Enjoy your homemade Oatmeal Chocolate Chip
+            Cookies!
           </li>
         </ol>
       </div>

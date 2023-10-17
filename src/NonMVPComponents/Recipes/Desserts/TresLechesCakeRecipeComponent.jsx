@@ -3,7 +3,7 @@ import axios from "axios";
 
 const TresLechesCakeRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -81,40 +81,55 @@ const TresLechesCakeRecipeComponent = ({
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> Preheat your oven to 350°F (175°C). Grease and flour a 9x13-inch baking dish.
+            <strong>Step 1:</strong> Preheat your oven to 350°F (175°C). Grease
+            and flour a 9x13-inch baking dish.
           </li>
           <li>
-            <strong>Step 2:</strong> In a medium mixing bowl, whisk together the flour and baking powder. Set aside.
+            <strong>Step 2:</strong> In a medium mixing bowl, whisk together the
+            flour and baking powder. Set aside.
           </li>
           <li>
-            <strong>Step 3:</strong> In a large mixing bowl, cream together the softened butter and granulated sugar until light and fluffy.
+            <strong>Step 3:</strong> In a large mixing bowl, cream together the
+            softened butter and granulated sugar until light and fluffy.
           </li>
           <li>
-            <strong>Step 4:</strong> Add the eggs one at a time, beating well with each addition. Stir in the vanilla extract.
+            <strong>Step 4:</strong> Add the eggs one at a time, beating well
+            with each addition. Stir in the vanilla extract.
           </li>
           <li>
-            <strong>Step 5:</strong> Gradually add the flour mixture to the wet ingredients, mixing until just combined.
+            <strong>Step 5:</strong> Gradually add the flour mixture to the wet
+            ingredients, mixing until just combined.
           </li>
           <li>
-            <strong>Step 6:</strong> Pour the batter into the prepared baking dish and spread it out evenly.
+            <strong>Step 6:</strong> Pour the batter into the prepared baking
+            dish and spread it out evenly.
           </li>
           <li>
-            <strong>Step 7:</strong> Bake in the preheated oven for 30-35 minutes or until a toothpick inserted into the center comes out clean.
+            <strong>Step 7:</strong> Bake in the preheated oven for 30-35
+            minutes or until a toothpick inserted into the center comes out
+            clean.
           </li>
           <li>
-            <strong>Step 8:</strong> While the cake is still warm, poke holes all over the surface using a fork or skewer.
+            <strong>Step 8:</strong> While the cake is still warm, poke holes
+            all over the surface using a fork or skewer.
           </li>
           <li>
-            <strong>Step 9:</strong> In a mixing bowl, combine the whole milk, sweetened condensed milk, and evaporated milk. Pour this mixture evenly over the warm cake.
+            <strong>Step 9:</strong> In a mixing bowl, combine the whole milk,
+            sweetened condensed milk, and evaporated milk. Pour this mixture
+            evenly over the warm cake.
           </li>
           <li>
-            <strong>Step 10:</strong> Let the cake cool to room temperature, then refrigerate for at least 4 hours or overnight to allow the cake to absorb the milk mixture.
+            <strong>Step 10:</strong> Let the cake cool to room temperature,
+            then refrigerate for at least 4 hours or overnight to allow the cake
+            to absorb the milk mixture.
           </li>
           <li>
-            <strong>Step 11:</strong> Before serving, whip the heavy cream until stiff peaks form, and spread it over the cake.
+            <strong>Step 11:</strong> Before serving, whip the heavy cream until
+            stiff peaks form, and spread it over the cake.
           </li>
           <li>
-            <strong>Step 12:</strong> Serve chilled and enjoy your Tres Leches Cake!
+            <strong>Step 12:</strong> Serve chilled and enjoy your Tres Leches
+            Cake!
           </li>
         </ol>
       </div>

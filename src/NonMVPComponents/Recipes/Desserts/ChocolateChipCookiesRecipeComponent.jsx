@@ -3,7 +3,7 @@ import axios from "axios";
 
 const ChocolateChipCookiesRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -83,25 +83,34 @@ const ChocolateChipCookiesRecipeComponent = ({
             <strong>Step 1:</strong> Preheat your oven to 375°F (190°C).
           </li>
           <li>
-            <strong>Step 2:</strong> In a large mixing bowl, cream together the softened butter, granulated sugar, brown sugar, and vanilla extract until smooth.
+            <strong>Step 2:</strong> In a large mixing bowl, cream together the
+            softened butter, granulated sugar, brown sugar, and vanilla extract
+            until smooth.
           </li>
           <li>
-            <strong>Step 3:</strong> Add the eggs one at a time, beating well after each addition.
+            <strong>Step 3:</strong> Add the eggs one at a time, beating well
+            after each addition.
           </li>
           <li>
-            <strong>Step 4:</strong> In a separate bowl, whisk together the all-purpose flour, baking soda, and salt. Gradually add the dry ingredients to the wet ingredients and mix until just combined.
+            <strong>Step 4:</strong> In a separate bowl, whisk together the
+            all-purpose flour, baking soda, and salt. Gradually add the dry
+            ingredients to the wet ingredients and mix until just combined.
           </li>
           <li>
             <strong>Step 5:</strong> Stir in the semisweet chocolate chips.
           </li>
           <li>
-            <strong>Step 6:</strong> Drop rounded tablespoons of cookie dough onto ungreased baking sheets.
+            <strong>Step 6:</strong> Drop rounded tablespoons of cookie dough
+            onto ungreased baking sheets.
           </li>
           <li>
-            <strong>Step 7:</strong> Bake in the preheated oven for 9-11 minutes or until the edges are golden but the centers are still soft.
+            <strong>Step 7:</strong> Bake in the preheated oven for 9-11 minutes
+            or until the edges are golden but the centers are still soft.
           </li>
           <li>
-            <strong>Step 8:</strong> Remove from the oven and let the cookies cool on the baking sheets for a few minutes before transferring them to wire racks to cool completely.
+            <strong>Step 8:</strong> Remove from the oven and let the cookies
+            cool on the baking sheets for a few minutes before transferring them
+            to wire racks to cool completely.
           </li>
           <li>
             <strong>Step 9:</strong> Enjoy your homemade Chocolate Chip Cookies!

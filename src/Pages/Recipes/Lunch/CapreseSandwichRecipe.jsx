@@ -1,12 +1,13 @@
 // Caprese Sandwich Recipe Page
 
-import CapreseSandwichRecipeComponent from "../../../NonMVPComponents/Recipes/Lunch/CapreseSandwichRecipeComponent"
+import CapreseSandwichRecipeComponent from "../../../NonMVPComponents/Recipes/Lunch/CapreseSandwichRecipeComponent";
 
-const CapreseSandwichRecipe = ({addIngredientsToCart}) => {
-
-    return (
-        <CapreseSandwichRecipeComponent addIngredientsToCart={addIngredientsToCart} />
-    )
+const CapreseSandwichRecipe = ({ addIngredientsToCart }) => {
+  return (
+    <CapreseSandwichRecipeComponent
+      addIngredientsToCart={addIngredientsToCart}
+    />
+  );
 };
 
-export default CapreseSandwichRecipe
+export default CapreseSandwichRecipe;

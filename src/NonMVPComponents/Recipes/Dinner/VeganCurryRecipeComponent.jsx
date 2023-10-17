@@ -3,7 +3,7 @@ import axios from "axios";
 
 const VeganCurryRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -66,7 +66,9 @@ const VeganCurryRecipeComponent = ({
       <div className="recipe">
         <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
         <ul className="list-disc pl-6 mb-4">
-          <li>2 cups mixed vegetables (e.g., carrots, bell peppers, broccoli)</li>
+          <li>
+            2 cups mixed vegetables (e.g., carrots, bell peppers, broccoli)
+          </li>
           <li>1 cup chickpeas, cooked</li>
           <li>1 onion, chopped</li>
           <li>3 cloves garlic, minced</li>

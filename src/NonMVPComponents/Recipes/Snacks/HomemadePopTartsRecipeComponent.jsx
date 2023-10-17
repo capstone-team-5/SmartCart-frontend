@@ -3,7 +3,7 @@ import axios from "axios";
 
 const HomemadePopTartsRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -79,28 +79,39 @@ const HomemadePopTartsRecipeComponent = ({
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> Preheat your oven to 350°F (175°C) and line a baking sheet with parchment paper.
+            <strong>Step 1:</strong> Preheat your oven to 350°F (175°C) and line
+            a baking sheet with parchment paper.
           </li>
           <li>
-            <strong>Step 2:</strong> In a saucepan, combine diced strawberries, granulated sugar, and cornstarch. Cook over medium heat, stirring constantly until the mixture thickens and the strawberries break down (about 5-7 minutes). Remove from heat and let it cool.
+            <strong>Step 2:</strong> In a saucepan, combine diced strawberries,
+            granulated sugar, and cornstarch. Cook over medium heat, stirring
+            constantly until the mixture thickens and the strawberries break
+            down (about 5-7 minutes). Remove from heat and let it cool.
           </li>
           <li>
-            <strong>Step 3:</strong> Roll out the pie crusts and cut them into rectangles.
+            <strong>Step 3:</strong> Roll out the pie crusts and cut them into
+            rectangles.
           </li>
           <li>
-            <strong>Step 4:</strong> Place a spoonful of the strawberry filling in the center of half of the rectangles.
+            <strong>Step 4:</strong> Place a spoonful of the strawberry filling
+            in the center of half of the rectangles.
           </li>
           <li>
-            <strong>Step 5:</strong> Place another rectangle on top of each strawberry-filled rectangle and use a fork to seal the edges.
+            <strong>Step 5:</strong> Place another rectangle on top of each
+            strawberry-filled rectangle and use a fork to seal the edges.
           </li>
           <li>
-            <strong>Step 6:</strong> Bake for 12-15 minutes or until the pastries are golden brown.
+            <strong>Step 6:</strong> Bake for 12-15 minutes or until the
+            pastries are golden brown.
           </li>
           <li>
-            <strong>Step 7:</strong> While the pop tarts are cooling, whisk together the powdered sugar, milk, and vanilla extract to make the icing.
+            <strong>Step 7:</strong> While the pop tarts are cooling, whisk
+            together the powdered sugar, milk, and vanilla extract to make the
+            icing.
           </li>
           <li>
-            <strong>Step 8:</strong> Once the pop tarts are completely cool, drizzle the icing over them and add sprinkles if desired.
+            <strong>Step 8:</strong> Once the pop tarts are completely cool,
+            drizzle the icing over them and add sprinkles if desired.
           </li>
         </ol>
       </div>

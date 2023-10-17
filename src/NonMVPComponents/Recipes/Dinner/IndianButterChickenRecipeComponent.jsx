@@ -3,7 +3,7 @@ import axios from "axios";
 
 const IndianButterChickenRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -66,7 +66,10 @@ const IndianButterChickenRecipeComponent = ({
       <div className="recipe">
         <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
         <ul className="list-disc pl-6 mb-4">
-          <li>1.5 lbs boneless, skinless chicken thighs, cut into bite-sized pieces</li>
+          <li>
+            1.5 lbs boneless, skinless chicken thighs, cut into bite-sized
+            pieces
+          </li>
           <li>1 cup plain yogurt</li>
           <li>2 tablespoons lemon juice</li>
           <li>2 teaspoons ground turmeric</li>
@@ -90,8 +93,8 @@ const IndianButterChickenRecipeComponent = ({
           <li>
             <strong>Step 1:</strong> In a large bowl, combine yogurt, lemon
             juice, turmeric, garam masala, cumin, chili powder, paprika,
-            cinnamon, coriander, garlic, and ginger. Mix well. Add chicken pieces
-            and marinate for at least 1 hour, preferably overnight in the
+            cinnamon, coriander, garlic, and ginger. Mix well. Add chicken
+            pieces and marinate for at least 1 hour, preferably overnight in the
             refrigerator.
           </li>
           <li>

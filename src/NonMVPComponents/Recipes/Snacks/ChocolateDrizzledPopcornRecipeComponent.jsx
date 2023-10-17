@@ -3,7 +3,7 @@ import axios from "axios";
 
 const ChocolateDrizzledPopcornRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -57,7 +57,9 @@ const ChocolateDrizzledPopcornRecipeComponent = ({
 
   return (
     <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Chocolate Drizzled Popcorn</h3>
+      <h3 className="text-2xl font-semibold mb-4">
+        Chocolate Drizzled Popcorn
+      </h3>
       <img
         src="https://www.thechunkychef.com/wp-content/uploads/2020/01/Chocolate-Covered-Popcorn-gift.jpg"
         alt="Chocolate Drizzled Popcorn"
@@ -76,19 +78,26 @@ const ChocolateDrizzledPopcornRecipeComponent = ({
         <h3 className="text-lg font-semibold mb-2">Directions</h3>
         <ol className="list-decimal pl-6 mb-4">
           <li>
-            <strong>Step 1:</strong> Line a baking sheet with parchment paper and spread the popped popcorn evenly on it.
+            <strong>Step 1:</strong> Line a baking sheet with parchment paper
+            and spread the popped popcorn evenly on it.
           </li>
           <li>
-            <strong>Step 2:</strong> In a microwave-safe bowl, melt the semisweet chocolate chips and white chocolate chips (if using) with vegetable oil in 30-second intervals, stirring each time, until smooth.
+            <strong>Step 2:</strong> In a microwave-safe bowl, melt the
+            semisweet chocolate chips and white chocolate chips (if using) with
+            vegetable oil in 30-second intervals, stirring each time, until
+            smooth.
           </li>
           <li>
-            <strong>Step 3:</strong> Drizzle the melted chocolate over the popcorn and immediately sprinkle with a pinch of salt.
+            <strong>Step 3:</strong> Drizzle the melted chocolate over the
+            popcorn and immediately sprinkle with a pinch of salt.
           </li>
           <li>
-            <strong>Step 4:</strong> Let the chocolate drizzle cool and harden, which may take about 30 minutes at room temperature.
+            <strong>Step 4:</strong> Let the chocolate drizzle cool and harden,
+            which may take about 30 minutes at room temperature.
           </li>
           <li>
-            <strong>Step 5:</strong> Once the chocolate is set, break the popcorn into clusters and enjoy your Chocolate Drizzled Popcorn!
+            <strong>Step 5:</strong> Once the chocolate is set, break the
+            popcorn into clusters and enjoy your Chocolate Drizzled Popcorn!
           </li>
         </ol>
       </div>

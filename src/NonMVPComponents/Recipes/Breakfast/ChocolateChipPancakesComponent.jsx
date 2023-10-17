@@ -5,7 +5,7 @@ import axios from "axios";
 
 const ChocolateChipPancakesRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
