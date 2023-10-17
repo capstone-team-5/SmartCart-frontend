@@ -56,53 +56,62 @@ const VeganCurryRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Vegan Curry</h3>
-      <img
-        src="https://www.acouplecooks.com/wp-content/uploads/2021/01/Vegan-Curry-010.jpg"
-        alt="Vegan Curry"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>
-            2 cups mixed vegetables (e.g., carrots, bell peppers, broccoli)
-          </li>
-          <li>1 cup chickpeas, cooked</li>
-          <li>1 onion, chopped</li>
-          <li>3 cloves garlic, minced</li>
-          <li>1-inch piece of ginger, grated</li>
-          <li>1 can (14 oz) coconut milk</li>
-          <li>2 tablespoons curry powder</li>
-          <li>1 tablespoon vegetable oil</li>
-          <li>Salt and pepper to taste</li>
-          <li>Fresh cilantro leaves for garnish</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Vegan Curry
+          </h3>
+          <img
+            src="https://www.acouplecooks.com/wp-content/uploads/2021/01/Vegan-Curry-010.jpg"
+            alt="Vegan Curry"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">
+              2 cups mixed vegetables (e.g., carrots, bell peppers, broccoli)
+            </li>
+            <li className="mb-4">1 cup chickpeas, cooked</li>
+            <li className="mb-4">1 onion, chopped</li>
+            <li className="mb-4">3 cloves garlic, minced</li>
+            <li className="mb-4">1-inch piece of ginger, grated</li>
+            <li className="mb-4">1 can (14 oz) coconut milk</li>
+            <li className="mb-4">2 tablespoons curry powder</li>
+            <li className="mb-4">1 tablespoon vegetable oil</li>
+            <li className="mb-4">Salt and pepper to taste</li>
+            <li className="mb-4">Fresh cilantro leaves for garnish</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> Heat vegetable oil in a large pan over
-            medium heat. Add chopped onion, garlic, and grated ginger. Sauté
-            until fragrant and onions are translucent.
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> Heat vegetable oil in a
+            large pan over medium heat. Add chopped onion, garlic, and grated
+            ginger. Sauté until fragrant and onions are translucent.
           </li>
-          <li>
-            <strong>Step 2:</strong> Add mixed vegetables and chickpeas to the
-            pan. Cook for a few minutes until the vegetables start to soften.
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> Add mixed vegetables
+            and chickpeas to the pan. Cook for a few minutes until the
+            vegetables start to soften.
           </li>
-          <li>
-            <strong>Step 3:</strong> Stir in curry powder and cook for another
-            minute.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> Stir in curry powder
+            and cook for another minute.
           </li>
-          <li>
-            <strong>Step 4:</strong> Pour in coconut milk and season with salt
-            and pepper. Simmer for about 15-20 minutes, or until the vegetables
-            are tender and the sauce thickens.
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> Pour in coconut milk
+            and season with salt and pepper. Simmer for about 15-20 minutes, or
+            until the vegetables are tender and the sauce thickens.
           </li>
-          <li>
-            <strong>Step 5:</strong> Garnish with fresh cilantro leaves and
-            serve hot with rice or naan.
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Garnish with fresh
+            cilantro leaves and serve hot with rice or naan.
           </li>
         </ol>
       </div>
@@ -110,9 +119,9 @@ const VeganCurryRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 
