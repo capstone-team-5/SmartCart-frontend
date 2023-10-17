@@ -2,14 +2,8 @@
 
 import { Chart } from "react-google-charts";
 
-
-
 const BarGraphSavingsComponent = () => {
-    return (
-        <div>
-
-        </div>
-    )
+  return <div></div>;
 };
 
-export default BarGraphSavingsComponent
+export default BarGraphSavingsComponent;
