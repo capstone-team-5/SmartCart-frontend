@@ -56,50 +56,60 @@ const GrilledCheeseSandwichRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Grilled Cheese Sandwich</h3>
-      <img
-        src="https://www.cooking-therapy.com/wp-content/uploads/2021/09/Roasted-Squash-Grilled-Cheese-4-2.jpg"
-        alt="Grilled Cheese Sandwich"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>2 slices of bread</li>
-          <li>2 slices of cheese (e.g., cheddar, American)</li>
-          <li>2 tablespoons butter</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Grilled Cheese Sandwich
+          </h3>
+          <img
+            src="https://www.cooking-therapy.com/wp-content/uploads/2021/09/Roasted-Squash-Grilled-Cheese-4-2.jpg"
+            alt="Grilled Cheese Sandwich"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">2 slices of bread</li>
+            <li className="mb-4">
+              2 slices of cheese (e.g., cheddar, American)
+            </li>
+            <li className="mb-4">2 tablespoons butter</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> Place a slice of cheese between two slices
-            of bread to form a sandwich.
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> Place a slice of cheese
+            between two slices of bread to form a sandwich.
           </li>
-          <li>
-            <strong>Step 2:</strong> Heat a skillet or griddle over medium-low
-            heat.
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> Heat a skillet or
+            griddle over medium-low heat.
           </li>
-          <li>
-            <strong>Step 3:</strong> Melt 1 tablespoon of butter in the skillet
-            or on the griddle.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> Melt 1 tablespoon of
+            butter in the skillet or on the griddle.
           </li>
-          <li>
-            <strong>Step 4:</strong> Place the sandwich in the skillet and cook
-            until the bread is golden brown and crispy.
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> Place the sandwich in
+            the skillet and cook until the bread is golden brown and crispy.
           </li>
-          <li>
-            <strong>Step 5:</strong> Flip the sandwich, adding the remaining
-            tablespoon of butter to the skillet if needed.
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Flip the sandwich,
+            adding the remaining tablespoon of butter to the skillet if needed.
           </li>
-          <li>
-            <strong>Step 6:</strong> Cook until the second side is golden brown
-            and the cheese is melted.
+          <li className="mb-4">
+            <strong className="text-xl">Step 6:</strong> Cook until the second
+            side is golden brown and the cheese is melted.
           </li>
-          <li>
-            <strong>Step 7:</strong> Remove from heat, slice, and serve the
-            Grilled Cheese sandwich hot.
+          <li className="mb-4">
+            <strong className="text-xl">Step 7:</strong> Remove from heat,
+            slice, and serve the Grilled Cheese sandwich hot.
           </li>
         </ol>
       </div>
@@ -107,9 +117,9 @@ const GrilledCheeseSandwichRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

@@ -56,39 +56,48 @@ const HomemadePotatoChipsRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Homemade Potato Chips</h3>
-      <img
-        src="https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Homemade-Potato-Chips_EXPS_WRSM17_39614_C03_22_1b.jpg"
-        alt="Homemade Potato Chips"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>4 large potatoes, thinly sliced</li>
-          <li>2 cups vegetable oil</li>
-          <li>Salt to taste</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Homemade Potato Chips
+          </h3>
+          <img
+            src="https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Homemade-Potato-Chips_EXPS_WRSM17_39614_C03_22_1b.jpg"
+            alt="Homemade Potato Chips"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">4 large potatoes, thinly sliced</li>
+            <li className="mb-4">2 cups vegetable oil</li>
+            <li className="mb-4">Salt to taste</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> Rinse the potato slices in cold water to
-            remove excess starch. Pat them dry with a paper towel.
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> Rinse the potato slices
+            in cold water to remove excess starch. Pat them dry with a paper
+            towel.
           </li>
-          <li>
-            <strong>Step 2:</strong> Heat vegetable oil in a deep fryer or a
-            large heavy skillet to 375°F (190°C).
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> Heat vegetable oil in a
+            deep fryer or a large heavy skillet to 375°F (190°C).
           </li>
-          <li>
-            <strong>Step 3:</strong> Fry the potato slices in small batches
-            until golden brown, about 3-4 minutes per batch. Use a slotted spoon
-            to remove chips and drain them on paper towels.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> Fry the potato slices
+            in small batches until golden brown, about 3-4 minutes per batch.
+            Use a slotted spoon to remove chips and drain them on paper towels.
           </li>
-          <li>
-            <strong>Step 4:</strong> Sprinkle with salt while still warm. Let
-            them cool before serving.
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> Sprinkle with salt
+            while still warm. Let them cool before serving.
           </li>
         </ol>
       </div>
@@ -96,9 +105,9 @@ const HomemadePotatoChipsRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

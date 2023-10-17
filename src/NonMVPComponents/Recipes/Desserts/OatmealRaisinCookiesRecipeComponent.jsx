@@ -3,7 +3,7 @@ import axios from "axios";
 
 const OatmealRaisinCookiesRecipeComponent = ({
   addIngredientsToCart,
-  nameOfIngredients
+  nameOfIngredients,
 }) => {
   const [message, setMessage] = useState("");
   const [allItems, setAllItems] = useState([]);
@@ -56,57 +56,79 @@ const OatmealRaisinCookiesRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Oatmeal Raisin Cookies</h3>
-      <img
-        src="https://bakerbynature.com/wp-content/uploads/2020/07/Brown-Butter-Oatmeal-Raisin-Cookies-01234-1-of-1.jpg"
-        alt="Oatmeal Raisin Cookies"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>1 cup unsalted butter, softened</li>
-          <li>1 cup granulated sugar</li>
-          <li>1 cup packed brown sugar</li>
-          <li>2 large eggs</li>
-          <li>1 teaspoon pure vanilla extract</li>
-          <li>2 cups all-purpose flour</li>
-          <li>1 teaspoon baking soda</li>
-          <li>1 teaspoon ground cinnamon</li>
-          <li>1/2 teaspoon salt</li>
-          <li>3 cups old-fashioned oats</li>
-          <li>1 cup raisins</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Oatmeal Raisin Cookies
+          </h3>
+          <img
+            src="https://bakerbynature.com/wp-content/uploads/2020/07/Brown-Butter-Oatmeal-Raisin-Cookies-01234-1-of-1.jpg"
+            alt="Oatmeal Raisin Cookies"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">1 cup unsalted butter, softened</li>
+            <li className="mb-4">1 cup granulated sugar</li>
+            <li className="mb-4">1 cup packed brown sugar</li>
+            <li className="mb-4">2 large eggs</li>
+            <li className="mb-4">1 teaspoon pure vanilla extract</li>
+            <li className="mb-4">2 cups all-purpose flour</li>
+            <li className="mb-4">1 teaspoon baking soda</li>
+            <li className="mb-4">1 teaspoon ground cinnamon</li>
+            <li className="mb-4">1/2 teaspoon salt</li>
+            <li className="mb-4">3 cups old-fashioned oats</li>
+            <li className="mb-4">1 cup raisins</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> Preheat your oven to 350°F (175°C). Line baking sheets with parchment paper.
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> Preheat your oven to
+            350°F (175°C). Line baking sheets with parchment paper.
           </li>
-          <li>
-            <strong>Step 2:</strong> In a large mixing bowl, cream together the softened butter, granulated sugar, and brown sugar until smooth.
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> In a large mixing bowl,
+            cream together the softened butter, granulated sugar, and brown
+            sugar until smooth.
           </li>
-          <li>
-            <strong>Step 3:</strong> Beat in the eggs one at a time, then stir in the vanilla.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> Beat in the eggs one at
+            a time, then stir in the vanilla.
           </li>
-          <li>
-            <strong>Step 4:</strong> In a separate bowl, combine the flour, baking soda, ground cinnamon, and salt. Gradually add this dry mixture to the butter mixture and mix until just blended.
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> In a separate bowl,
+            combine the flour, baking soda, ground cinnamon, and salt. Gradually
+            add this dry mixture to the butter mixture and mix until just
+            blended.
           </li>
-          <li>
-            <strong>Step 5:</strong> Stir in the old-fashioned oats and raisins until evenly distributed.
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Stir in the
+            old-fashioned oats and raisins until evenly distributed.
           </li>
-          <li>
-            <strong>Step 6:</strong> Drop rounded tablespoons of dough onto the prepared baking sheets. Flatten each cookie slightly with a fork.
+          <li className="mb-4">
+            <strong className="text-xl">Step 6:</strong> Drop rounded
+            tablespoons of dough onto the prepared baking sheets. Flatten each
+            cookie slightly with a fork.
           </li>
-          <li>
-            <strong>Step 7:</strong> Bake in the preheated oven for 10-12 minutes or until the edges are golden brown.
+          <li className="mb-4">
+            <strong className="text-xl">Step 7:</strong> Bake in the preheated
+            oven for 10-12 minutes or until the edges are golden brown.
           </li>
-          <li>
-            <strong>Step 8:</strong> Allow the cookies to cool on the baking sheets for a few minutes before transferring them to wire racks to cool completely.
+          <li className="mb-4">
+            <strong className="text-xl">Step 8:</strong> Allow the cookies to
+            cool on the baking sheets for a few minutes before transferring them
+            to wire racks to cool completely.
           </li>
-          <li>
-            <strong>Step 9:</strong> Enjoy your delicious homemade Oatmeal Raisin Cookies!
+          <li className="mb-4">
+            <strong className="text-xl">Step 9:</strong> Enjoy your delicious
+            homemade Oatmeal Raisin Cookies!
           </li>
         </ol>
       </div>
@@ -114,9 +136,9 @@ const OatmealRaisinCookiesRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

@@ -56,64 +56,77 @@ const ChocolateChipCookiesRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Chocolate Chip Cookies</h3>
-      <img
-        src="https://www.modernhoney.com/wp-content/uploads/2019/01/The-Best-Chocolate-Chip-Cookies-2-500x500.jpg"
-        alt="Chocolate Chip Cookies"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>1 cup (2 sticks) unsalted butter, softened</li>
-          <li>3/4 cup granulated sugar</li>
-          <li>3/4 cup packed brown sugar</li>
-          <li>1 teaspoon vanilla extract</li>
-          <li>2 large eggs</li>
-          <li>2 1/4 cups all-purpose flour</li>
-          <li>1 teaspoon baking soda</li>
-          <li>1/2 teaspoon salt</li>
-          <li>2 cups semisweet chocolate chips</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Chocolate Chip Cookies
+          </h3>
+          <img
+            src="https://www.modernhoney.com/wp-content/uploads/2019/01/The-Best-Chocolate-Chip-Cookies-2-500x500.jpg"
+            alt="Chocolate Chip Cookies"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">1 cup (2 sticks) unsalted butter, softened</li>
+            <li className="mb-4">3/4 cup granulated sugar</li>
+            <li className="mb-4">3/4 cup packed brown sugar</li>
+            <li className="mb-4">1 teaspoon vanilla extract</li>
+            <li className="mb-4">2 large eggs</li>
+            <li className="mb-4">2 1/4 cups all-purpose flour</li>
+            <li className="mb-4">1 teaspoon baking soda</li>
+            <li className="mb-4">1/2 teaspoon salt</li>
+            <li className="mb-4">2 cups semisweet chocolate chips</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> Preheat your oven to 375°F (190°C).
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> Preheat your oven to
+            375°F (190°C).
           </li>
-          <li>
-            <strong>Step 2:</strong> In a large mixing bowl, cream together the
-            softened butter, granulated sugar, brown sugar, and vanilla extract
-            until smooth.
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> In a large mixing bowl,
+            cream together the softened butter, granulated sugar, brown sugar,
+            and vanilla extract until smooth.
           </li>
-          <li>
-            <strong>Step 3:</strong> Add the eggs one at a time, beating well
-            after each addition.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> Add the eggs one at a
+            time, beating well after each addition.
           </li>
-          <li>
-            <strong>Step 4:</strong> In a separate bowl, whisk together the
-            all-purpose flour, baking soda, and salt. Gradually add the dry
-            ingredients to the wet ingredients and mix until just combined.
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> In a separate bowl,
+            whisk together the all-purpose flour, baking soda, and salt.
+            Gradually add the dry ingredients to the wet ingredients and mix
+            until just combined.
           </li>
-          <li>
-            <strong>Step 5:</strong> Stir in the semisweet chocolate chips.
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Stir in the semisweet
+            chocolate chips.
           </li>
-          <li>
-            <strong>Step 6:</strong> Drop rounded tablespoons of cookie dough
-            onto ungreased baking sheets.
+          <li className="mb-4">
+            <strong className="text-xl">Step 6:</strong> Drop rounded
+            tablespoons of cookie dough onto ungreased baking sheets.
           </li>
-          <li>
-            <strong>Step 7:</strong> Bake in the preheated oven for 9-11 minutes
-            or until the edges are golden but the centers are still soft.
+          <li className="mb-4">
+            <strong className="text-xl">Step 7:</strong> Bake in the preheated
+            oven for 9-11 minutes or until the edges are golden but the centers
+            are still soft.
           </li>
-          <li>
-            <strong>Step 8:</strong> Remove from the oven and let the cookies
-            cool on the baking sheets for a few minutes before transferring them
-            to wire racks to cool completely.
+          <li className="mb-4">
+            <strong className="text-xl">Step 8:</strong> Remove from the oven
+            and let the cookies cool on the baking sheets for a few minutes
+            before transferring them to wire racks to cool completely.
           </li>
-          <li>
-            <strong>Step 9:</strong> Enjoy your homemade Chocolate Chip Cookies!
+          <li className="mb-4">
+            <strong className="text-xl">Step 9:</strong> Enjoy your homemade
+            Chocolate Chip Cookies!
           </li>
         </ol>
       </div>
@@ -121,9 +134,9 @@ const ChocolateChipCookiesRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

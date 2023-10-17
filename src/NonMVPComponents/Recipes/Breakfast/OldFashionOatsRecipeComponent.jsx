@@ -56,51 +56,59 @@ const OldFashionOatsRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">
-        Old Fashion Oats with Raspberries and Peaches
-      </h3>
-      <img
-        src="https://www.eatingwell.com/thmb/-UULlbERQCfJRQTnb5bwjoo9-UQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/old-fashioned-oatmeal-hero-05-060861b81cb641cea272e068aba093fd.jpg"
-        alt="Old Fashion Oats with Raspberries and Peaches"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>1 cup old-fashioned oats</li>
-          <li>2 cups milk (or non-dairy milk)</li>
-          <li>2 tablespoons honey (or maple syrup)</li>
-          <li>1/2 teaspoon vanilla extract</li>
-          <li>1 cup fresh raspberries</li>
-          <li>1 cup fresh peaches, diced</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Old Fashion Oats with Raspberries and Peaches
+          </h3>
+          <img
+            src="https://www.eatingwell.com/thmb/-UULlbERQCfJRQTnb5bwjoo9-UQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/old-fashioned-oatmeal-hero-05-060861b81cb641cea272e068aba093fd.jpg"
+            alt="Old Fashion Oats with Raspberries and Peaches"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">1 cup old-fashioned oats</li>
+            <li className="mb-4">2 cups milk (or non-dairy milk)</li>
+            <li className="mb-4">2 tablespoons honey (or maple syrup)</li>
+            <li className="mb-4">1/2 teaspoon vanilla extract</li>
+            <li className="mb-4">1 cup fresh raspberries</li>
+            <li className="mb-4">1 cup fresh peaches, diced</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> In a saucepan, combine the old-fashioned
-            oats and milk. Cook over medium heat, stirring occasionally, until
-            the oats are tender and the mixture has thickened, about 5-7
-            minutes.
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> In a saucepan, combine
+            the old-fashioned oats and milk. Cook over medium heat, stirring
+            occasionally, until the oats are tender and the mixture has
+            thickened, about 5-7 minutes.
           </li>
-          <li>
-            <strong>Step 2:</strong> Stir in the honey (or maple syrup) and
-            vanilla extract.
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> Stir in the honey (or
+            maple syrup) and vanilla extract.
           </li>
-          <li>
-            <strong>Step 3:</strong> Remove from heat and let it cool slightly.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> Remove from heat and
+            let it cool slightly.
           </li>
-          <li>
-            <strong>Step 4:</strong> Divide the oat mixture into serving bowls.
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> Divide the oat mixture
+            into serving bowls.
           </li>
-          <li>
-            <strong>Step 5:</strong> Top with sliced raspberries and diced
-            peaches.
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Top with sliced
+            raspberries and diced peaches.
           </li>
-          <li>
-            <strong>Step 6:</strong> Serve Old Fashion Oats with Raspberries and
-            Peaches warm.
+          <li className="mb-4">
+            <strong className="text-xl">Step 6:</strong> Serve Old Fashion Oats
+            with Raspberries and Peaches warm.
           </li>
         </ol>
       </div>
@@ -108,9 +116,9 @@ const OldFashionOatsRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

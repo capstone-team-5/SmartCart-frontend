@@ -56,46 +56,57 @@ const YogurtParfaitRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Yogurt Parfait</h3>
-      <img
-        src="https://simplyhomecooked.com/wp-content/uploads/2021/08/yogurt-parfait-4.jpg"
-        alt="Yogurt Parfait"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>1 cup Greek yogurt</li>
-          <li>1/2 cup granola</li>
-          <li>1/2 cup fresh berries (e.g., strawberries, blueberries)</li>
-          <li>1 tablespoon honey</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Yogurt Parfait
+          </h3>
+          <img
+            src="https://simplyhomecooked.com/wp-content/uploads/2021/08/yogurt-parfait-4.jpg"
+            alt="Yogurt Parfait"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">1 cup Greek yogurt</li>
+            <li className="mb-4">1/2 cup granola</li>
+            <li className="mb-4">
+              1/2 cup fresh berries (e.g., strawberries, blueberries)
+            </li>
+            <li className="mb-4">1 tablespoon honey</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> In a glass or bowl, layer 1/4 cup Greek
-            yogurt at the bottom.
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> In a glass or bowl,
+            layer 1/4 cup Greek yogurt at the bottom.
           </li>
-          <li>
-            <strong>Step 2:</strong> Add 2 tablespoons of granola on top of the
-            yogurt.
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> Add 2 tablespoons of
+            granola on top of the yogurt.
           </li>
-          <li>
-            <strong>Step 3:</strong> Add 1/4 cup fresh berries on top of the
-            granola.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> Add 1/4 cup fresh
+            berries on top of the granola.
           </li>
-          <li>
-            <strong>Step 4:</strong> Repeat the layers until the glass or bowl
-            is filled, ending with a few berries on top.
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> Repeat the layers until
+            the glass or bowl is filled, ending with a few berries on top.
           </li>
-          <li>
-            <strong>Step 5:</strong> Drizzle honey over the top for added
-            sweetness.
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Drizzle honey over the
+            top for added sweetness.
           </li>
-          <li>
-            <strong>Step 6:</strong> Serve the Yogurt Parfait immediately.
+          <li className="mb-4">
+            <strong className="text-xl">Step 6:</strong> Serve the Yogurt
+            Parfait immediately.
           </li>
         </ol>
       </div>
@@ -103,9 +114,9 @@ const YogurtParfaitRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

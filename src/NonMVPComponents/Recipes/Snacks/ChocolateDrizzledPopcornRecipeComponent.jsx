@@ -56,48 +56,57 @@ const ChocolateDrizzledPopcornRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">
-        Chocolate Drizzled Popcorn
-      </h3>
-      <img
-        src="https://www.thechunkychef.com/wp-content/uploads/2020/01/Chocolate-Covered-Popcorn-gift.jpg"
-        alt="Chocolate Drizzled Popcorn"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>10 cups popped popcorn</li>
-          <li>1 cup semisweet chocolate chips</li>
-          <li>1/4 cup white chocolate chips (optional)</li>
-          <li>1 tablespoon vegetable oil</li>
-          <li>Salt to taste</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Chocolate Drizzled Popcorn
+          </h3>
+          <img
+            src="https://www.thechunkychef.com/wp-content/uploads/2020/01/Chocolate-Covered-Popcorn-gift.jpg"
+            alt="Chocolate Drizzled Popcorn"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">10 cups popped popcorn</li>
+            <li className="mb-4">1 cup semisweet chocolate chips</li>
+            <li className="mb-4">1/4 cup white chocolate chips (optional)</li>
+            <li className="mb-4">1 tablespoon vegetable oil</li>
+            <li className="mb-4">Salt to taste</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> Line a baking sheet with parchment paper
-            and spread the popped popcorn evenly on it.
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> Line a baking sheet
+            with parchment paper and spread the popped popcorn evenly on it.
           </li>
-          <li>
-            <strong>Step 2:</strong> In a microwave-safe bowl, melt the
-            semisweet chocolate chips and white chocolate chips (if using) with
-            vegetable oil in 30-second intervals, stirring each time, until
-            smooth.
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> In a microwave-safe
+            bowl, melt the semisweet chocolate chips and white chocolate chips
+            (if using) with vegetable oil in 30-second intervals, stirring each
+            time, until smooth.
           </li>
-          <li>
-            <strong>Step 3:</strong> Drizzle the melted chocolate over the
-            popcorn and immediately sprinkle with a pinch of salt.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> Drizzle the melted
+            chocolate over the popcorn and immediately sprinkle with a pinch of
+            salt.
           </li>
-          <li>
-            <strong>Step 4:</strong> Let the chocolate drizzle cool and harden,
-            which may take about 30 minutes at room temperature.
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> Let the chocolate
+            drizzle cool and harden, which may take about 30 minutes at room
+            temperature.
           </li>
-          <li>
-            <strong>Step 5:</strong> Once the chocolate is set, break the
-            popcorn into clusters and enjoy your Chocolate Drizzled Popcorn!
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Once the chocolate is
+            set, break the popcorn into clusters and enjoy your Chocolate
+            Drizzled Popcorn!
           </li>
         </ol>
       </div>
@@ -105,9 +114,9 @@ const ChocolateDrizzledPopcornRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

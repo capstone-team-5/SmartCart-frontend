@@ -56,48 +56,54 @@ const CapreseSandwichRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Caprese Sandwich</h3>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">Caprese Sandwich</h3>
       <img
         src="https://www.eatingwell.com/thmb/uAo_rveXpw6wB0j01eOstQoLS9A=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/caprese-sandwich-e0bb2b846cf14cd7a0eb2d3f4d4b6aa2.jpg"
         alt="Caprese Sandwich"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
+        className="w-full h-60 object-contain"
+        />
+      </div>
+      <div>
+        <h3 className="text-xl font-bold mb-8">Ingredients</h3>
         <ul className="list-disc pl-6 mb-4">
-          <li>2 slices of ciabatta or baguette</li>
-          <li>2 slices of fresh mozzarella cheese</li>
-          <li>2 slices of ripe tomatoes</li>
-          <li>Fresh basil leaves</li>
-          <li>1 tablespoon extra-virgin olive oil</li>
-          <li>Balsamic glaze (optional)</li>
-          <li>Salt and pepper to taste</li>
-        </ul>
+          <li className="mb-4">2 slices of ciabatta or baguette</li>
+          <li className="mb-4">2 slices of fresh mozzarella cheese</li>
+          <li className="mb-4">2 slices of ripe tomatoes</li>
+          <li className="mb-4">Fresh basil leaves</li>
+          <li className="mb-4">1 tablespoon extra-virgin olive oil</li>
+          <li className="mb-4">Balsamic glaze (optional)</li>
+          <li className="mb-4">Salt and pepper to taste</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> Drizzle olive oil on one side of each bread
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> Drizzle olive oil on one side of each bread
             slice.
           </li>
-          <li>
-            <strong>Step 2:</strong> Layer one slice of mozzarella, tomato
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> Layer one slice of mozzarella, tomato
             slices, and fresh basil leaves on one slice of bread.
           </li>
-          <li>
-            <strong>Step 3:</strong> Season with salt and pepper to taste.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> Season with salt and pepper to taste.
           </li>
-          <li>
-            <strong>Step 4:</strong> Place the second slice of bread on top to
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> Place the second slice of bread on top to
             form a sandwich.
           </li>
-          <li>
-            <strong>Step 5:</strong> Optionally, drizzle balsamic glaze over the
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Optionally, drizzle balsamic glaze over the
             sandwich.
           </li>
-          <li>
-            <strong>Step 6:</strong> Serve the Caprese Sandwich immediately.
+          <li className="mb-4">
+            <strong className="text-xl">Step 6:</strong> Serve the Caprese Sandwich immediately.
           </li>
         </ol>
       </div>
@@ -105,9 +111,9 @@ const CapreseSandwichRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

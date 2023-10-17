@@ -56,56 +56,62 @@ const StrawberryIceCreamRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
         Homemade Strawberry Ice Cream
       </h3>
       <img
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCGrHPtMinRNe6_wwRtVrpc-svyEHqdkAw-lyGSxSm4ZfDE3vvbCIU7YP_KxjjbAcCSyU&usqp=CAU"
         alt="Homemade Strawberry Ice Cream"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>2 cups fresh strawberries, hulled and sliced</li>
-          <li>1 cup granulated sugar, divided</li>
-          <li>2 cups heavy cream</li>
-          <li>1 cup whole milk</li>
-          <li>1 teaspoon vanilla extract</li>
-        </ul>
+        className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+          <li className="mb-4">2 cups fresh strawberries, hulled and sliced</li>
+          <li className="mb-4">1 cup granulated sugar, divided</li>
+          <li className="mb-4">2 cups heavy cream</li>
+          <li className="mb-4">1 cup whole milk</li>
+          <li className="mb-4">1 teaspoon vanilla extract</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> In a mixing bowl, combine the sliced
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> In a mixing bowl, combine the sliced
             strawberries and 1/2 cup of granulated sugar. Let them sit for about
             15 minutes, allowing the strawberries to release their juices.
           </li>
-          <li>
-            <strong>Step 2:</strong> After 15 minutes, use a blender or food
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> After 15 minutes, use a blender or food
             processor to puree the strawberry mixture until smooth.
           </li>
-          <li>
-            <strong>Step 3:</strong> In a separate bowl, whisk together the
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> In a separate bowl, whisk together the
             remaining 1/2 cup of sugar, heavy cream, whole milk, and vanilla
             extract until the sugar is dissolved.
           </li>
-          <li>
-            <strong>Step 4:</strong> Combine the strawberry puree with the cream
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> Combine the strawberry puree with the cream
             mixture and mix well.
           </li>
-          <li>
-            <strong>Step 5:</strong> Pour the mixture into an ice cream maker
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Pour the mixture into an ice cream maker
             and churn according to the manufacturer's instructions until it
             reaches a soft-serve consistency.
           </li>
-          <li>
-            <strong>Step 6:</strong> Transfer the ice cream to an airtight
+          <li className="mb-4">
+            <strong className="text-xl">Step 6:</strong> Transfer the ice cream to an airtight
             container and freeze for at least 4 hours or until firm.
           </li>
-          <li>
-            <strong>Step 7:</strong> Scoop and enjoy your Homemade Strawberry
+          <li className="mb-4">
+            <strong className="text-xl">Step 7:</strong> Scoop and enjoy your Homemade Strawberry
             Ice Cream!
           </li>
         </ol>
@@ -114,9 +120,9 @@ const StrawberryIceCreamRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

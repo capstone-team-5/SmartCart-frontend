@@ -56,53 +56,66 @@ const WholeWheatVeggieWrapRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Whole-Wheat Veggie Wrap</h3>
-      <img
-        src="https://www.eatingwell.com/thmb/LXaZhfk1F8PEEQ2IUbV88RwzJA8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/4548031-ed05dced770140b790dc6b75ae29be7b.jpg"
-        alt="Whole-Wheat Veggie Wrap"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>1 whole-wheat tortilla wrap</li>
-          <li>1/2 cup hummus</li>
-          <li>1/2 cup mixed greens (e.g., spinach, lettuce)</li>
-          <li>1/4 cup sliced cucumber</li>
-          <li>1/4 cup sliced bell peppers</li>
-          <li>1/4 cup shredded carrots</li>
-          <li>1/4 cup sliced cherry tomatoes</li>
-          <li>Salt and pepper to taste</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Whole-Wheat Veggie Wrap
+          </h3>
+          <img
+            src="https://www.eatingwell.com/thmb/LXaZhfk1F8PEEQ2IUbV88RwzJA8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/4548031-ed05dced770140b790dc6b75ae29be7b.jpg"
+            alt="Whole-Wheat Veggie Wrap"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">1 whole-wheat tortilla wrap</li>
+            <li className="mb-4">1/2 cup hummus</li>
+            <li className="mb-4">
+              1/2 cup mixed greens (e.g., spinach, lettuce)
+            </li>
+            <li className="mb-4">1/4 cup sliced cucumber</li>
+            <li className="mb-4">1/4 cup sliced bell peppers</li>
+            <li className="mb-4">1/4 cup shredded carrots</li>
+            <li className="mb-4">1/4 cup sliced cherry tomatoes</li>
+            <li className="mb-4">Salt and pepper to taste</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> Lay the whole-wheat tortilla wrap flat on a
-            clean surface.
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> Lay the whole-wheat
+            tortilla wrap flat on a clean surface.
           </li>
-          <li>
-            <strong>Step 2:</strong> Spread hummus evenly over the tortilla.
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> Spread hummus evenly
+            over the tortilla.
           </li>
-          <li>
-            <strong>Step 3:</strong> Layer mixed greens, sliced cucumber, bell
-            peppers, shredded carrots, and sliced cherry tomatoes over the
-            hummus.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> Layer mixed greens,
+            sliced cucumber, bell peppers, shredded carrots, and sliced cherry
+            tomatoes over the hummus.
           </li>
-          <li>
-            <strong>Step 4:</strong> Season with salt and pepper to taste.
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> Season with salt and
+            pepper to taste.
           </li>
-          <li>
-            <strong>Step 5:</strong> Fold in the sides of the tortilla and roll
-            it up tightly.
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Fold in the sides of
+            the tortilla and roll it up tightly.
           </li>
-          <li>
-            <strong>Step 6:</strong> Slice the wrap in half diagonally.
+          <li className="mb-4">
+            <strong className="text-xl">Step 6:</strong> Slice the wrap in half
+            diagonally.
           </li>
-          <li>
-            <strong>Step 7:</strong> Serve the Whole-Wheat Veggie Wrap
-            immediately or wrap it in parchment paper for later.
+          <li className="mb-4">
+            <strong className="text-xl">Step 7:</strong> Serve the Whole-Wheat
+            Veggie Wrap immediately or wrap it in parchment paper for later.
           </li>
         </ol>
       </div>
@@ -110,9 +123,9 @@ const WholeWheatVeggieWrapRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

@@ -56,56 +56,66 @@ const BaconCheeseburgerRecipe1Component = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Bacon Cheeseburger</h3>
-      <img
-        src="https://www.sargento.com/assets/Uploads/Recipe/Image/burger_0__FillWzExNzAsNTgzXQ.jpg"
-        alt="Bacon Cheeseburger"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>1/2 lb ground beef</li>
-          <li>2 slices of bacon</li>
-          <li>2 slices of cheddar cheese</li>
-          <li>2 hamburger buns</li>
-          <li>Lettuce leaves</li>
-          <li>Sliced tomato</li>
-          <li>Sliced red onion</li>
-          <li>Ketchup and mustard</li>
-          <li>Salt and pepper to taste</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Bacon Cheeseburger
+          </h3>
+          <img
+            src="https://www.sargento.com/assets/Uploads/Recipe/Image/burger_0__FillWzExNzAsNTgzXQ.jpg"
+            alt="Bacon Cheeseburger"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">1/2 lb ground beef</li>
+            <li className="mb-4">2 slices of bacon</li>
+            <li className="mb-4">2 slices of cheddar cheese</li>
+            <li className="mb-4">2 hamburger buns</li>
+            <li className="mb-4">Lettuce leaves</li>
+            <li className="mb-4">Sliced tomato</li>
+            <li className="mb-4">Sliced red onion</li>
+            <li className="mb-4">Ketchup and mustard</li>
+            <li className="mb-4">Salt and pepper to taste</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> Cook bacon in a skillet until crispy.
-            Remove and drain on paper towels.
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> Cook bacon in a skillet
+            until crispy. Remove and drain on paper towels.
           </li>
-          <li>
-            <strong>Step 2:</strong> In the same skillet, cook ground beef over
-            medium-high heat until browned. Season with salt and pepper.
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> In the same skillet,
+            cook ground beef over medium-high heat until browned. Season with
+            salt and pepper.
           </li>
-          <li>
-            <strong>Step 3:</strong> Place cheddar cheese slices on top of the
-            beef patties to melt.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> Place cheddar cheese
+            slices on top of the beef patties to melt.
           </li>
-          <li>
-            <strong>Step 4:</strong> Toast hamburger buns in the skillet or on
-            the grill.
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> Toast hamburger buns in
+            the skillet or on the grill.
           </li>
-          <li>
-            <strong>Step 5:</strong> Assemble the burgers by placing lettuce
-            leaves, a beef patty with melted cheese, bacon slices, sliced
-            tomato, and red onion on the bun.
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Assemble the burgers by
+            placing lettuce leaves, a beef patty with melted cheese, bacon
+            slices, sliced tomato, and red onion on the bun.
           </li>
-          <li>
-            <strong>Step 6:</strong> Add ketchup and mustard to taste.
+          <li className="mb-4">
+            <strong className="text-xl">Step 6:</strong> Add ketchup and mustard
+            to taste.
           </li>
-          <li>
-            <strong>Step 7:</strong> Top with the other bun half and serve the
-            Bacon Cheeseburger immediately.
+          <li className="mb-4">
+            <strong className="text-xl">Step 7:</strong> Top with the other bun
+            half and serve the Bacon Cheeseburger immediately.
           </li>
         </ol>
       </div>
@@ -113,9 +123,9 @@ const BaconCheeseburgerRecipe1Component = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

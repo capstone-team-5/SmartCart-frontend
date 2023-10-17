@@ -56,55 +56,65 @@ const CrispyOnionRingsRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Crispy Onion Rings</h3>
-      <img
-        src="https://www.mylatinatable.com/wp-content/uploads/2016/01/foto-heroe-1024x693-2-500x375.jpg"
-        alt="Crispy Onion Rings"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>2 large onions</li>
-          <li>2 cups buttermilk</li>
-          <li>2 cups all-purpose flour</li>
-          <li>1 teaspoon paprika</li>
-          <li>1/2 teaspoon cayenne pepper</li>
-          <li>1/2 teaspoon garlic powder</li>
-          <li>Salt and pepper to taste</li>
-          <li>Vegetable oil for frying</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Crispy Onion Rings
+          </h3>
+          <img
+            src="https://www.mylatinatable.com/wp-content/uploads/2016/01/foto-heroe-1024x693-2-500x375.jpg"
+            alt="Crispy Onion Rings"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">2 large onions</li>
+            <li className="mb-4">2 cups buttermilk</li>
+            <li className="mb-4">2 cups all-purpose flour</li>
+            <li className="mb-4">1 teaspoon paprika</li>
+            <li className="mb-4">1/2 teaspoon cayenne pepper</li>
+            <li className="mb-4">1/2 teaspoon garlic powder</li>
+            <li className="mb-4">Salt and pepper to taste</li>
+            <li className="mb-4">Vegetable oil for frying</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> Peel and slice the onions into rings.
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> Peel and slice the
+            onions into rings.
           </li>
-          <li>
-            <strong>Step 2:</strong> Place the onion rings in a bowl and pour
-            buttermilk over them. Let them soak for about 30 minutes.
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> Place the onion rings
+            in a bowl and pour buttermilk over them. Let them soak for about 30
+            minutes.
           </li>
-          <li>
-            <strong>Step 3:</strong> In a separate bowl, mix flour, paprika,
-            cayenne pepper, garlic powder, salt, and pepper.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> In a separate bowl, mix
+            flour, paprika, cayenne pepper, garlic powder, salt, and pepper.
           </li>
-          <li>
-            <strong>Step 4:</strong> Heat vegetable oil in a deep fryer or a
-            large pot to 375°F (190°C).
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> Heat vegetable oil in a
+            deep fryer or a large pot to 375°F (190°C).
           </li>
-          <li>
-            <strong>Step 5:</strong> Remove the onion rings from the buttermilk
-            and coat them in the flour mixture.
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Remove the onion rings
+            from the buttermilk and coat them in the flour mixture.
           </li>
-          <li>
-            <strong>Step 6:</strong> Fry the onion rings in batches until golden
-            brown and crispy, about 2-3 minutes per batch. Drain on paper
-            towels.
+          <li className="mb-4">
+            <strong className="text-xl">Step 6:</strong> Fry the onion rings in
+            batches until golden brown and crispy, about 2-3 minutes per batch.
+            Drain on paper towels.
           </li>
-          <li>
-            <strong>Step 7:</strong> Serve the Crispy Onion Rings hot with your
-            favorite dipping sauce.
+          <li className="mb-4">
+            <strong className="text-xl">Step 7:</strong> Serve the Crispy Onion
+            Rings hot with your favorite dipping sauce.
           </li>
         </ol>
       </div>
@@ -112,9 +122,9 @@ const CrispyOnionRingsRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

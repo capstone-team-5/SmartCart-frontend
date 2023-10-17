@@ -56,60 +56,69 @@ const ButterToffeePopcornRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Butter Toffee Popcorn</h3>
-      <img
-        src="https://res.cloudinary.com/hksqkdlah/image/upload/8913_sfs-crackerjackpopcorn-006-275830.jpg"
-        alt="Butter Toffee Popcorn"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>10 cups popped popcorn</li>
-          <li>1 cup unsalted butter</li>
-          <li>2 cups brown sugar</li>
-          <li>1/2 cup light corn syrup</li>
-          <li>1/2 teaspoon salt</li>
-          <li>1/2 teaspoon baking soda</li>
-          <li>1 teaspoon vanilla extract</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Butter Toffee Popcorn
+          </h3>
+          <img
+            src="https://res.cloudinary.com/hksqkdlah/image/upload/8913_sfs-crackerjackpopcorn-006-275830.jpg"
+            alt="Butter Toffee Popcorn"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">10 cups popped popcorn</li>
+            <li className="mb-4">1 cup unsalted butter</li>
+            <li className="mb-4">2 cups brown sugar</li>
+            <li className="mb-4">1/2 cup light corn syrup</li>
+            <li className="mb-4">1/2 teaspoon salt</li>
+            <li className="mb-4">1/2 teaspoon baking soda</li>
+            <li className="mb-4">1 teaspoon vanilla extract</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> Preheat your oven to 250°F (120°C). Place
-            the popped popcorn in a large mixing bowl.
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> Preheat your oven to
+            250°F (120°C). Place the popped popcorn in a large mixing bowl.
           </li>
-          <li>
-            <strong>Step 2:</strong> In a medium saucepan over medium heat, melt
-            the butter. Stir in the brown sugar, corn syrup, and salt. Bring the
-            mixture to a boil, stirring constantly.
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> In a medium saucepan
+            over medium heat, melt the butter. Stir in the brown sugar, corn
+            syrup, and salt. Bring the mixture to a boil, stirring constantly.
           </li>
-          <li>
-            <strong>Step 3:</strong> Once the mixture is boiling, stop stirring
-            and let it boil for 4-5 minutes without stirring. Remove from heat.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> Once the mixture is
+            boiling, stop stirring and let it boil for 4-5 minutes without
+            stirring. Remove from heat.
           </li>
-          <li>
-            <strong>Step 4:</strong> Stir in the baking soda and vanilla extract
-            until well combined.
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> Stir in the baking soda
+            and vanilla extract until well combined.
           </li>
-          <li>
-            <strong>Step 5:</strong> Pour the toffee mixture over the popped
-            popcorn and gently toss to coat the popcorn evenly.
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Pour the toffee mixture
+            over the popped popcorn and gently toss to coat the popcorn evenly.
           </li>
-          <li>
-            <strong>Step 6:</strong> Spread the coated popcorn onto a baking
-            sheet lined with parchment paper.
+          <li className="mb-4">
+            <strong className="text-xl">Step 6:</strong> Spread the coated
+            popcorn onto a baking sheet lined with parchment paper.
           </li>
-          <li>
-            <strong>Step 7:</strong> Bake in the preheated oven for 45 minutes,
-            stirring every 15 minutes.
+          <li className="mb-4">
+            <strong className="text-xl">Step 7:</strong> Bake in the preheated
+            oven for 45 minutes, stirring every 15 minutes.
           </li>
-          <li>
-            <strong>Step 8:</strong> Remove from the oven and let it cool
-            completely. Once cooled, break into pieces and enjoy your butter
-            toffee popcorn!
+          <li className="mb-4">
+            <strong className="text-xl">Step 8:</strong> Remove from the oven
+            and let it cool completely. Once cooled, break into pieces and enjoy
+            your butter toffee popcorn!
           </li>
         </ol>
       </div>
@@ -117,9 +126,9 @@ const ButterToffeePopcornRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

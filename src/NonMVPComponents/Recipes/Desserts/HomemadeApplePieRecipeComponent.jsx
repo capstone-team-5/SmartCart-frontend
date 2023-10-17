@@ -56,68 +56,80 @@ const HomemadeApplePieRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Homemade Apple Pie</h3>
-      <img
-        src="https://amandascookin.com/wp-content/uploads/2016/11/homemade-apple-pie-680.jpg"
-        alt="Homemade Apple Pie"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>
-            6-7 cups peeled, cored, and sliced apples (about 6-7 medium-sized
-            apples)
-          </li>
-          <li>3/4 cup granulated sugar</li>
-          <li>2 tablespoons all-purpose flour</li>
-          <li>1 teaspoon ground cinnamon</li>
-          <li>1/4 teaspoon ground nutmeg</li>
-          <li>1/4 teaspoon salt</li>
-          <li>1 tablespoon lemon juice</li>
-          <li>2 tablespoons unsalted butter</li>
-          <li>2 prepared pie crusts (1 for the bottom and 1 for the top)</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Homemade Apple Pie
+          </h3>
+          <img
+            src="https://amandascookin.com/wp-content/uploads/2016/11/homemade-apple-pie-680.jpg"
+            alt="Homemade Apple Pie"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">
+              6-7 cups peeled, cored, and sliced apples (about 6-7 medium-sized
+              apples)
+            </li>
+            <li className="mb-4">3/4 cup granulated sugar</li>
+            <li className="mb-4">2 tablespoons all-purpose flour</li>
+            <li className="mb-4">1 teaspoon ground cinnamon</li>
+            <li className="mb-4">1/4 teaspoon ground nutmeg</li>
+            <li className="mb-4">1/4 teaspoon salt</li>
+            <li className="mb-4">1 tablespoon lemon juice</li>
+            <li className="mb-4">2 tablespoons unsalted butter</li>
+            <li className="mb-4">
+              2 prepared pie crusts (1 for the bottom and 1 for the top)
+            </li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> Preheat your oven to 425°F (220°C).
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> Preheat your oven to
+            425°F (220°C).
           </li>
-          <li>
-            <strong>Step 2:</strong> In a large bowl, combine the sliced apples,
-            granulated sugar, all-purpose flour, ground cinnamon, ground nutmeg,
-            salt, and lemon juice. Toss until the apples are evenly coated.
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> In a large bowl,
+            combine the sliced apples, granulated sugar, all-purpose flour,
+            ground cinnamon, ground nutmeg, salt, and lemon juice. Toss until
+            the apples are evenly coated.
           </li>
-          <li>
-            <strong>Step 3:</strong> Place one of the prepared pie crusts in a
-            9-inch pie dish.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> Place one of the
+            prepared pie crusts in a 9-inch pie dish.
           </li>
-          <li>
-            <strong>Step 4:</strong> Spoon the apple filling into the pie crust,
-            spreading it out evenly.
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> Spoon the apple filling
+            into the pie crust, spreading it out evenly.
           </li>
-          <li>
-            <strong>Step 5:</strong> Dot the top of the apple filling with small
-            pieces of unsalted butter.
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Dot the top of the
+            apple filling with small pieces of unsalted butter.
           </li>
-          <li>
-            <strong>Step 6:</strong> Place the second pie crust over the filling
-            and crimp the edges to seal the pie.
+          <li className="mb-4">
+            <strong className="text-xl">Step 6:</strong> Place the second pie
+            crust over the filling and crimp the edges to seal the pie.
           </li>
-          <li>
-            <strong>Step 7:</strong> Cut small slits in the top crust to allow
-            steam to escape.
+          <li className="mb-4">
+            <strong className="text-xl">Step 7:</strong> Cut small slits in the
+            top crust to allow steam to escape.
           </li>
-          <li>
-            <strong>Step 8:</strong> Bake in the preheated oven for 45-55
-            minutes, or until the crust is golden brown and the filling is
-            bubbling.
+          <li className="mb-4">
+            <strong className="text-xl">Step 8:</strong> Bake in the preheated
+            oven for 45-55 minutes, or until the crust is golden brown and the
+            filling is bubbling.
           </li>
-          <li>
-            <strong>Step 9:</strong> Remove from the oven and let the pie cool
-            before serving. Enjoy your Homemade Apple Pie!
+          <li className="mb-4">
+            <strong className="text-xl">Step 9:</strong> Remove from the oven
+            and let the pie cool before serving. Enjoy your Homemade Apple Pie!
           </li>
         </ol>
       </div>
@@ -125,9 +137,9 @@ const HomemadeApplePieRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 

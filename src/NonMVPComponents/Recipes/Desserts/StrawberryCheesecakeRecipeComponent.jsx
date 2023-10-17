@@ -56,74 +56,90 @@ const StrawberryCheesecakeRecipeComponent = ({
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg">
-      <h3 className="text-2xl font-semibold mb-4">Strawberry Cheesecake</h3>
-      <img
-        src="https://drivemehungry.com/wp-content/uploads/2022/07/strawberry-cheesecake-11.jpg"
-        alt="Strawberry Cheesecake"
-        style={{ width: "300px", height: "auto" }}
-      />
-      <div className="recipe">
-        <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-        <ul className="list-disc pl-6 mb-4">
-          <li>1 1/2 cups graham cracker crumbs</li>
-          <li>1/4 cup granulated sugar</li>
-          <li>1/2 cup unsalted butter, melted</li>
-          <li>4 (8-ounce) packages cream cheese, softened</li>
-          <li>1 cup granulated sugar</li>
-          <li>1 teaspoon vanilla extract</li>
-          <li>4 large eggs</li>
-          <li>2 cups fresh strawberries, chopped</li>
-          <li>1/4 cup all-purpose flour</li>
-          <li>1/4 cup powdered sugar</li>
-        </ul>
+    <div className="bg-white dark:bg-gray-800 dark:text-white p-4 shadow-md rounded-lg">
+      <div className="grid grid-cols-2">
+        <div>
+          <h3 className="text-2xl font-extrabold mb-8 text-center">
+            Strawberry Cheesecake
+          </h3>
+          <img
+            src="https://drivemehungry.com/wp-content/uploads/2022/07/strawberry-cheesecake-11.jpg"
+            alt="Strawberry Cheesecake"
+            className="w-full h-60 object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-8">Ingredients</h3>
+          <ul className="list-disc pl-6 mb-4">
+            <li className="mb-4">1 1/2 cups graham cracker crumbs</li>
+            <li className="mb-4">1/4 cup granulated sugar</li>
+            <li className="mb-4">1/2 cup unsalted butter, melted</li>
+            <li className="mb-4">
+              4 (8-ounce) packages cream cheese, softened
+            </li>
+            <li className="mb-4">1 cup granulated sugar</li>
+            <li className="mb-4">1 teaspoon vanilla extract</li>
+            <li className="mb-4">4 large eggs</li>
+            <li className="mb-4">2 cups fresh strawberries, chopped</li>
+            <li className="mb-4">1/4 cup all-purpose flour</li>
+            <li className="mb-4">1/4 cup powdered sugar</li>
+          </ul>
+        </div>
+      </div>
 
-        <h3 className="text-lg font-semibold mb-2">Directions</h3>
-        <ol className="list-decimal pl-6 mb-4">
-          <li>
-            <strong>Step 1:</strong> Preheat your oven to 325°F (160°C). Grease
-            and line the bottom of a 9-inch springform pan with parchment paper.
+      <div>
+        <h3 className="text-xl font-bold mb-8">Directions</h3>
+        <ol className="pl-6 mb-4">
+          <li className="mb-4">
+            <strong className="text-xl">Step 1:</strong> Preheat your oven to
+            325°F (160°C). Grease and line the bottom of a 9-inch springform pan
+            with parchment paper.
           </li>
-          <li>
-            <strong>Step 2:</strong> In a medium bowl, combine graham cracker
-            crumbs, 1/4 cup granulated sugar, and melted butter. Press the
-            mixture into the bottom of the prepared pan.
+          <li className="mb-4">
+            <strong className="text-xl">Step 2:</strong> In a medium bowl,
+            combine graham cracker crumbs, 1/4 cup granulated sugar, and melted
+            butter. Press the mixture into the bottom of the prepared pan.
           </li>
-          <li>
-            <strong>Step 3:</strong> In a blender or food processor, blend the
-            strawberries until smooth. Add 1/4 cup all-purpose flour to the
-            strawberry puree and mix until well combined. Set aside.
+          <li className="mb-4">
+            <strong className="text-xl">Step 3:</strong> In a blender or food
+            processor, blend the strawberries until smooth. Add 1/4 cup
+            all-purpose flour to the strawberry puree and mix until well
+            combined. Set aside.
           </li>
-          <li>
-            <strong>Step 4:</strong> In a large mixing bowl, beat cream cheese,
-            1 cup granulated sugar, and vanilla extract until smooth. Add eggs,
-            one at a time, mixing well after each addition.
+          <li className="mb-4">
+            <strong className="text-xl">Step 4:</strong> In a large mixing bowl,
+            beat cream cheese, 1 cup granulated sugar, and vanilla extract until
+            smooth. Add eggs, one at a time, mixing well after each addition.
           </li>
-          <li>
-            <strong>Step 5:</strong> Pour half of the cream cheese mixture over
-            the crust in the pan. Spoon half of the strawberry mixture over the
-            cream cheese layer. Repeat with the remaining cream cheese and
-            strawberry mixtures.
+          <li className="mb-4">
+            <strong className="text-xl">Step 5:</strong> Pour half of the cream
+            cheese mixture over the crust in the pan. Spoon half of the
+            strawberry mixture over the cream cheese layer. Repeat with the
+            remaining cream cheese and strawberry mixtures.
           </li>
-          <li>
-            <strong>Step 6:</strong> Use a knife to gently swirl the strawberry
-            mixture into the cream cheese mixture to create a marbled effect.
+          <li className="mb-4">
+            <strong className="text-xl">Step 6:</strong> Use a knife to gently
+            swirl the strawberry mixture into the cream cheese mixture to create
+            a marbled effect.
           </li>
-          <li>
-            <strong>Step 7:</strong> Bake in the preheated oven for 45-50
-            minutes or until the center is set. Turn off the oven and leave the
-            cheesecake inside for 1 hour.
+          <li className="mb-4">
+            <strong className="text-xl">Step 7:</strong> Bake in the preheated
+            oven for 45-50 minutes or until the center is set. Turn off the oven
+            and leave the cheesecake inside for 1 hour.
           </li>
-          <li>
-            <strong>Step 8:</strong> Remove the cheesecake from the oven and
-            refrigerate for at least 4 hours or until completely chilled.
+          <li className="mb-4">
+            <strong className="text-xl">Step 8:</strong> Remove the cheesecake
+            from the oven and refrigerate for at least 4 hours or until
+            completely chilled.
           </li>
-          <li>
-            <strong>Step 9:</strong> Before serving, dust the top with powdered
-            sugar and garnish with fresh strawberries if desired.
+          <li className="mb-4">
+            <strong className="text-xl">Step 9:</strong> Before serving, dust
+            the top with powdered sugar and garnish with fresh strawberries if
+            desired.
           </li>
-          <li>
-            <strong>Step 10:</strong> Enjoy your homemade Strawberry Cheesecake!
+          <li className="mb-4">
+            <strong className="text-xl">Step 10:</strong> Enjoy your homemade
+            Strawberry Cheesecake!
           </li>
         </ol>
       </div>
@@ -131,9 +147,9 @@ const StrawberryCheesecakeRecipeComponent = ({
       <div className="flex justify-center">
         <button
           onClick={handleAddToCartClick}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Add Ingredients To Cart
+          Add All Ingredients To Cart
         </button>
       </div>
 
