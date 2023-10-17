@@ -9,6 +9,7 @@ import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
 import { auth } from "../Firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { GiMeal } from "react-icons/gi";
+import Aprill from "../Assets/Aprill.png";
 import {
   MdLogout,
   MdSavings,
@@ -92,7 +93,7 @@ const userDropDown = [
   },
   {
     title: "Sign Out",
-    link: "/signout",
+    link: "/",
   },
 ];
 
@@ -482,7 +483,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   </div>
                 </Link>
                 <Link
-                  to="#"
+                  to="/"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
                   <MdLogout className="dark:text-white" />
@@ -504,15 +505,15 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               onClick={toggleUserDropdown}
             >
               <span className="sr-only">Open user menu</span>
-              <FaUserAlt
+              {/* <FaUserAlt
                 size={30}
                 className="w-8 h-8 rounded-full object-contain text-white"
-              />
-              {/* <img
-                className="w-8 h-8 rounded-full object-contain"
-                src={sana}
-                alt="user icon"
               /> */}
+              <img
+                className="w-8 h-8 rounded-full object-contain"
+                src={Aprill}
+                alt="user icon"
+              />
             </button>
             {/* <!-- Dropdown menu --> */}
             <div
@@ -569,8 +570,9 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
               >
                 <li>
                   <Link
-                    to="#"
+                    to="/"
                     className="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    onClick={userSignOut}
                   >
                     Sign out
                   </Link>

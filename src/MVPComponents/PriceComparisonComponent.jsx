@@ -147,6 +147,9 @@ const PriceComparisonComponent = ({
                         {store.store_state}, {store.store_zipcode}
                       </p>
                       <p>{store.store_phone_number}</p>
+                      <p className="font-medium">
+                        This Store Accepts EBT & WIC
+                      </p>
                     </div>
                   </div>
 

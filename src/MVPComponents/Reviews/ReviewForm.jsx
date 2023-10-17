@@ -8,9 +8,9 @@ function ReviewForm(props) {
 
   const [review, setReview] = useState({
     shopper_firebase_uid: "",
-   review_rating: "",
+    review_rating: "",
     review_comment: "",
-    review_timestamp:"",
+    review_timestamp: "",
     store_id: id,
   });
 
@@ -32,11 +32,11 @@ function ReviewForm(props) {
       props.toggleView();
     }
     setReview({
-        shopper_firebase_uid: "",
-        review_rating: "",
-        review_comment: "",
-        review_timestamp:"",
-        store_id: id,
+      shopper_firebase_uid: "",
+      review_rating: "",
+      review_comment: "",
+      review_timestamp: "",
+      store_id: id,
     });
   };
   return (
@@ -57,8 +57,6 @@ function ReviewForm(props) {
             className="border border-gray-300 rounded-md px-3 py-2 relative bg-white shadow outline-none focus:outline-none focus:ring lg:w-3/4"
           />
         </div>
-
-        
 
         <div className="flex flex-col w-full">
           <label htmlFor="rating" className="mb-1 font-medium text-gray-700">

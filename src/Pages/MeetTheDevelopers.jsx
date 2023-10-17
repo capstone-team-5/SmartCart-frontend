@@ -5,9 +5,7 @@ import MeetTheDevelopersComponent from "../NonMVPComponents/MeetTheDevelopersCom
 const MeetTheDevelopers = () => {
   return (
     <div>
-      <h3>
-        <MeetTheDevelopersComponent />
-      </h3>
+      <MeetTheDevelopersComponent />
     </div>
   );
 };

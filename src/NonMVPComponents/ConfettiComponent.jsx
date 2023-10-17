@@ -7,7 +7,7 @@ const ConfettiComponent = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowConfetti(true);
-    }, 500); // 3 seconds
+    }, 300); // 3 seconds
 
     return () => clearTimeout(timer);
   }, []);

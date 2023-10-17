@@ -32,13 +32,15 @@ const SavingsComponent = ({ comparison }) => {
   return (
     <div className="p-4">
       <ConfettiComponent />
-      <h2 className="text-2xl font-semibold">Your Savings</h2>
+      <h2 className="text-xl font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white mt-12">
+        Your Savings
+      </h2>
       {loading ? (
         <p>Loading...</p>
       ) : (
         <div className="mt-4">
           {savings !== null && (
-            <p className="mt-2">
+            <p className="text-xl text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white mt-20 mb-20 font-extrabold ">
               {/* You saved ${savings} by shopping at <strong>{selectedStore}</strong>. */}
               You saved ${20.89} by shopping at <strong>{selectedStore}</strong>
               .

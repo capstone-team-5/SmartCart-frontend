@@ -45,13 +45,13 @@ const CustomerTestimonialsComponent = () => {
       id: 1,
       name: "Jordan Manley",
       job: "Senior Instructor Pursuit",
-      text: "With my large caseload, I love that this saves me time and money.",
+      text: "With this app, I can choose a market that best fits the things I value: price and location! ",
       image:
         "https://media.licdn.com/dms/image/C4D03AQEEQaOc98LPgw/profile-displayphoto-shrink_800_800/0/1579980988739?e=1702512000&v=beta&t=nc0e8FU0ZAf2veVIn4RlRCwiI0_uvSoHRV5Rx2_8Jn0",
     },
     {
       id: 2,
-      name: "Stephen Chyau",
+      name: "Libby Jordan",
       job: "Biochemist",
       text: "I can't get enough of this site.",
       image: Libby,
@@ -66,22 +66,22 @@ const CustomerTestimonialsComponent = () => {
     },
     {
       id: 4,
-      name: "Afshin Babveh",
-      job: "Design Lead",
-      text: "The amount I've saved using this app is mind blowing.",
+      name: "Rachel Liang",
+      job: "Data Operations Manager",
+      text: "This is the best money and time saver for busy people! I love that this app gives me visibility into my neighborhood shops that I might neglected otherwise.  ",
       image:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80",
     },
     {
       id: 5,
-      name: "Michael Law",
+      name: "Mani Ryan",
       job: "Neighborhood Terror",
       text: "hiiiiiissssssssss",
       image: "https://i.scdn.co/image/ab6761610000e5ebd5100eebd11d8d4aa8b13da6",
     },
     {
       id: 6,
-      name: "Nataja",
+      name: "John Brian",
       job: "Truck Driver",
       text: "As a person who has no time for anything, this is the perfect app for me",
       image:
