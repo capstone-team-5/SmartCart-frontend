@@ -13,7 +13,10 @@ const MacaronsRecipe = ({ addIngredientsToCart }) => {
 
   return (
     <div>
-      <MacaronsRecipeComponent addIngredientsToCart={addIngredientsToCart} />
+      <MacaronsRecipeComponent
+        addIngredientsToCart={addIngredientsToCart}
+        nameOfIngredients={nameOfIngredients}
+      />
     </div>
   );
 };

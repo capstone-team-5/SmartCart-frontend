@@ -3,10 +3,11 @@
 import StrawberryIceCreamRecipeComponent from "../../../NonMVPComponents/Recipes/Desserts/StrawberryIceCreamRecipeComponent";
 
 const StrawberryIceCreamRecipe = ({ addIngredientsToCart }) => {
+
   const nameOfIngredients = [
     "Strawberries",
     "Domino Granulated Sugar",
-    "Milk",
+    "Deans Dairy Pure Milk",
     "McCormick Pure Vanilla Extract",
   ];
 
@@ -15,6 +16,8 @@ const StrawberryIceCreamRecipe = ({ addIngredientsToCart }) => {
     <div>
       <StrawberryIceCreamRecipeComponent
         addIngredientsToCart={addIngredientsToCart}
+        nameOfIngredients={nameOfIngredients}
+
       />
     </div>
   );

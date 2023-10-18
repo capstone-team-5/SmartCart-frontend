@@ -3,6 +3,7 @@
 import ChocolateChipCookiesRecipeComponent from "../../../NonMVPComponents/Recipes/Desserts/ChocolateChipCookiesRecipeComponent";
 
 const ChocolateChipCookiesRecipe = ({ addIngredientsToCart }) => {
+
   const nameOfIngredients = [
     "Domino Granulated Sugar",
     "McCormick Pure Vanilla Extract",
@@ -10,6 +11,8 @@ const ChocolateChipCookiesRecipe = ({ addIngredientsToCart }) => {
     "King Arthur Flour",
     "Arm & Hammer Baking Soda",
     "Nestlé Toll House Semi-Sweet Chocolate Chips",
+    "Domino Dark Brown Sugar",
+    "Iodized Salt"
   ];
 
   //   missing   unsalted butter, brown sugar, Iodized Salt
@@ -17,6 +20,7 @@ const ChocolateChipCookiesRecipe = ({ addIngredientsToCart }) => {
     <div>
       <ChocolateChipCookiesRecipeComponent
         addIngredientsToCart={addIngredientsToCart}
+        nameOfIngredients={nameOfIngredients}
       />
     </div>
   );

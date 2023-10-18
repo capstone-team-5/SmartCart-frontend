@@ -2,10 +2,16 @@
 
 import BajanCouCouWithFlyingFishRecipeComponent from "../../../NonMVPComponents/Recipes/Dinner/BajanCouCouWithFlyingFishRecipeComponent";
 
-const BajanCouCouWithFlyingFishRecipe = () => {
+const BajanCouCouWithFlyingFishRecipe = ({ addIngredientsToCart }) => {
+  
+  const nameOfIngredients = ["Yellow Onion", "Green Peppers", "Garlic", "Land OLakes Salted Butter", "Coarse Kosher Salt", "McCormick Pure Ground Black pepper"]
+  
   return (
     <div>
-      <BajanCouCouWithFlyingFishRecipeComponent />
+      <BajanCouCouWithFlyingFishRecipeComponent
+        addIngredientsToCart={addIngredientsToCart}
+        nameOfIngredients={nameOfIngredients}
+      />
     </div>
   );
 };
