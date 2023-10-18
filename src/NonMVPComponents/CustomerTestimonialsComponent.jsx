@@ -51,7 +51,7 @@ const CustomerTestimonialsComponent = () => {
     },
     {
       id: 2,
-      name: "Libby Jordan",
+      name: "Libby",
       job: "Biochemist",
       text: "I can't get enough of this site.",
       image: Libby,
