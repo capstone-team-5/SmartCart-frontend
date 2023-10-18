@@ -107,6 +107,7 @@ import Bakery from "./MVPComponents/HomeComponent/Bakery";
 import Dairy from "./MVPComponents/HomeComponent/Dairy";
 import Snacks from "./MVPComponents/HomeComponent/Snacks";
 import Seafood from "./MVPComponents/HomeComponent/Seafood";
+import Poultry1 from "./MVPComponents/HomeComponent/Poultry1";
 
 // Styling
 import "./App.css";
@@ -1061,6 +1062,7 @@ function App() {
           />
           <Route element={<Meat addToCart={handleAddToCart} />} path="/meat" />
           <Route element={<Seafood addToCart={handleAddToCart} />} path="/seafood" />
+          <Route element={<Poultry1 addToCart={handleAddToCart} />} path="/poultry" />
           <Route
             element={<Legumes addToCart={handleAddToCart} />}
             path="/legumes"
