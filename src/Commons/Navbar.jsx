@@ -65,7 +65,7 @@ const navLinks = [
     link: "/user/:id/savings/:selectedStore",
   },
   {
-    title: "Our Testimonials",
+    title: "Testimonials",
     link: "/testimonials",
   },
   {
