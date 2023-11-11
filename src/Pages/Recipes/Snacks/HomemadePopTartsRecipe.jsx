@@ -2,10 +2,16 @@
 
 import HomemadePopTartsRecipeComponent from "../../../NonMVPComponents/Recipes/Snacks/HomemadePopTartsRecipeComponent";
 
-const HomemadePopTartsRecipe = () => {
+const HomemadePopTartsRecipe = ({ addIngredientsToCart }) => {
+  
+  const nameOfIngredients = ["Strawberries", "Domino Granulated Sugar", "Domino Powdered Sugar", "Deans Dairy Pure Milk", "McCormick Pure Vanilla Extract"]
+
   return (
     <div>
-      <HomemadePopTartsRecipeComponent />
+      <HomemadePopTartsRecipeComponent
+        addIngredientsToCart={addIngredientsToCart}
+        nameOfIngredients={nameOfIngredients}
+      />
     </div>
   );
 };

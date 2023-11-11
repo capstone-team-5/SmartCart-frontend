@@ -24,11 +24,13 @@ const Categories = () => {
       name: "Seafood",
       logoSrc:
         "https://farmtojar.com/wp-content/uploads/2022/09/012BD4A8-9167-4182-BFDD-0CDDE752D2B0.jpeg",
+        link: "/seafood",
     },
     {
       name: "Poultry",
       logoSrc:
         "https://cdn11.bigcommerce.com/s-efc47/images/stencil/1280x1280/products/2579/5433/images__13526__32612.1535055045.jpg?c=2",
+        link: "/poultry"
     },
     {
       name: "Dairy",

@@ -11,10 +11,11 @@ const TresLechesCakeRecipe = ({ addIngredientsToCart }) => {
     "Large White Eggs",
     "McCormick Pure Vanilla Extract",
   ];
-  // missingg unsalted butter, sweetened condensed milk,  evaporated milk,  heavy cream
+  // missing unsalted butter, sweetened condensed milk,  evaporated milk,  heavy cream
   return (
     <TresLechesCakeRecipeComponent
       addIngredientsToCart={addIngredientsToCart}
+      nameOfIngredients={nameOfIngredients}
     />
   );
 };

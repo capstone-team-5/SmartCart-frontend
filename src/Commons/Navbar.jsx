@@ -65,7 +65,7 @@ const navLinks = [
     link: "/user/:id/savings/:selectedStore",
   },
   {
-    title: "Our Testimonials",
+    title: "Testimonials",
     link: "/testimonials",
   },
   {
@@ -393,7 +393,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                 </Link>
 
                 <Link
-                  to="#"
+                  to="/categories"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
                   <MdCategory className="dark:text-white" />
@@ -402,7 +402,7 @@ const Navbar = ({ cartLength, handleThemeChange }) => {
                   </div>
                 </Link>
                 <Link
-                  to="#"
+                  to="/cart"
                   className="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
                 >
                   <HiOutlineShoppingCart className="dark:text-white" />

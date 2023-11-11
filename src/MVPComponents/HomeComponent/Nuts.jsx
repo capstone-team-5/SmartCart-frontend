@@ -67,11 +67,13 @@ const Nuts = ({ addToCart }) => {
                   className="duration-700 ease-in-out dark:bg-gray-900"
                   data-carousel-item
                 >
+                  <Link to={`/product/${product.product_id}`}>
                   <img
                     className="group-hover:opacity-60 transition duration-500 w-full h-48 object-contain"
                     src={product.product_image}
                     alt={product.product_name}
                   />
+                  </Link>
                 </div>
               </div>
 

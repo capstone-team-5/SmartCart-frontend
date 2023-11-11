@@ -18,6 +18,7 @@ const GermanChocolateCakeRecipe = ({ addIngredientsToCart }) => {
   return (
     <GermanChocolateCakeRecipeComponent
       addIngredientsToCart={addIngredientsToCart}
+      nameOfIngredients={nameOfIngredients}
     />
   );
 };

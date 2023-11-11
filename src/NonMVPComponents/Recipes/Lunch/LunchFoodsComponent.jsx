@@ -25,7 +25,7 @@ const recipes = [
     link: "/recipes/lunch-food-bacon-cheeseburger",
     imgSrc:
       "https://www.sargento.com/assets/Uploads/Recipe/Image/burger_0__FillWzExNzAsNTgzXQ.jpg",
-    name: "Blueberry Waffles",
+    name: "Bacon Cheeseburger",
   },
   {
     link: "/recipes/lunch-food-cajun-prawn-pizza",
