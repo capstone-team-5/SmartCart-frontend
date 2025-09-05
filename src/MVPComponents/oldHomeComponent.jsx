@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const API = process.env.REACT_APP_BACKEND_API;
+console.log('api:', API);
 
 const HomeComponent = ({ addToCart }) => {
   const [products, setProducts] = useState([]);

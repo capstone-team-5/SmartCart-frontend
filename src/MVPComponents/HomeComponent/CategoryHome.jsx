@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const API = process.env.REACT_APP_BACKEND_API;
 
+
 const CategoryHome = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -21,6 +22,12 @@ const CategoryHome = () => {
         const vegetablesResponse = await axios.get(`${API}/products/fourCart`);
         const spicesResponse = await axios.get(`${API}/products/fourMRT`);
         const dairyResponse = await axios.get(`${API}/products/fourGreens`);
+
+        // 👇 Add console logs to inspect data
+      console.log("fourFruits:", fruitsResponse.data);
+      console.log("fourCart:", vegetablesResponse.data);
+      console.log("fourMRT:", spicesResponse.data);
+      console.log("fourGreens:", dairyResponse.data);
 
         setSections({
           fruits: fruitsResponse.data,
